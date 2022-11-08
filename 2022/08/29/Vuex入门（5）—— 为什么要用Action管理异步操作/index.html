@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Vue-vuex身上的要用Action管理异步操作 | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Action 类似于 mutation，不同在于： 1.Action 提交的是 mutation，而不是直接变更状态。 2.Action 可以包含任意异步操作。   官方给的定义我没什么意见,事实上我通过mutation异步操作,好像跟用action管理也没什么区别。关于为什么要用Action管理异步操作，我会通过一个简单的例子和一个复杂的例子来进行说明，事实上，如果初学者没有考虑到实际场景的复杂">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue-vuex身上的要用Action管理异步操作">
+<meta property="og:url" content="https://18821767806wxg.github.io/2022/08/29/Vuex%E5%85%A5%E9%97%A8%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94%20%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8Action%E7%AE%A1%E7%90%86%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="Action 类似于 mutation，不同在于： 1.Action 提交的是 mutation，而不是直接变更状态。 2.Action 可以包含任意异步操作。   官方给的定义我没什么意见,事实上我通过mutation异步操作,好像跟用action管理也没什么区别。关于为什么要用Action管理异步操作，我会通过一个简单的例子和一个复杂的例子来进行说明，事实上，如果初学者没有考虑到实际场景的复杂">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-29T07:48:06.000Z">
+<meta property="article:modified_time" content="2022-08-29T07:48:06.000Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=475479888&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/10/">React博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">相识就是一种缘分欢迎进入我的博客，主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Vuex入门（5）—— 为什么要用Action管理异步操作" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/08/29/Vuex%E5%85%A5%E9%97%A8%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94%20%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8Action%E7%AE%A1%E7%90%86%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/" class="article-date">
+  	<time datetime="2022-08-29T07:48:06.000Z" itemprop="datePublished">2022-08-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue-vuex身上的要用Action管理异步操作
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Action 类似于 mutation，不同在于：</p>
+<p>1.Action 提交的是 mutation，而不是直接变更状态。</p>
+<p>2.Action 可以包含任意异步操作。</p>
+<p>  官方给的定义我没什么意见,事实上我通过mutation异步操作,好像跟用action管理也没什么区别。关于为什么要用Action管理异步操作，我会通过一个简单的例子和一个复杂的例子来进行说明，事实上，如果初学者没有考虑到实际场景的复杂情况，会觉得Action根本没有一点软用，这个时候就要把问题想得复杂一些了，然后才能看到Action的作用。</p>
+<p>  先来看一个简单的例子，也是我对如果不用Action进行异步操作的一些初步探索。</p>
+<p>  第一步：我非常作死的重写了mutation状态管理器中对状态操作的一些写法，我使用了异步操作代替了之前的操作。</p>
+<p>// mutation.js<br>const increment = (state) =&gt; {<br>  setTimeout(() =&gt; {<br>    state.count++<br>  }, 1000)<br>}<br>const decrement = (state) =&gt; {<br>  setTimeout(() =&gt; {<br>    state.count–<br>  }, 2000)<br>  state.count–<br>}<br>export {increment, decrement}<br>  第二步：试验一下能否成功</p>
+<template>
+  <div>
+    <button @click="decrement">-</button>
+    <span></span>
+    <button @click="increment">+</button>
+  </div>
+</template>
+ 
+<script>
+import { mapState, mapMutations} from 'vuex'
+export default {
+  computed: {
+    ...mapState(['count'])
+  },
+  methods: {
+    ...mapMutations(['increment', 'decrement']),
+  }
+}
+</script>
+<style>
+ 
+</style>
+
+<p>  第三步：发现除了每次操作加减时候有一秒的延时，不管你怎么操作，结果都是正确的，是符合社会主义核心价值观的。</p>
+<p> 第四步:用Action处理异步操作（先得把之前作死改掉的mutation的代码改回来）</p>
+<p>// 正常的mutation<br>const increment = (state) =&gt; {<br>  state.count++<br>}<br>const decrement = (state) =&gt; {<br>  state.count–<br>}<br>export {increment, decrement}<br>// action.js处理一些异步操作<br>// Action 函数接受一个与 store 实例具有相同方法和属性的 context 对象<br>let incrementAsync = (content) =&gt; {<br>  setTimeout(() =&gt; {<br>    content.commit(‘increment’)<br>  }, 1000)<br>}<br>let decrementAsync = (content) =&gt; {<br>  setTimeout(() =&gt; {<br>    content.commit(‘decrement’)<br>  }, 1000)<br>}<br>export {incrementAsync, decrementAsync}<br><template><br>  <div><br>    &lt;button @click=”decrementAsync”&gt;-</button><br>    <span></span><br>    &lt;button @click=”incrementAsync”&gt;+</button><br>  </div><br></template></p>
+<script>
+import { mapState, mapMutations, mapActions } from 'vuex'
+export default {
+  computed: {
+    ...mapState(['count'])
+  },
+  methods: {
+    ...mapMutations(['increment', 'decrement']),
+    ...mapActions(['incrementAsync', 'decrementAsync']) //这里用了辅助函数，不了解的可以看这个系列的第二篇文章
+  }
+}
+</script>
+<style>
+ 
+</style>
+<p>第五步：测试一下效果，你会感觉跟没有用action直接用mutation的结果一毛一样。再看一下官网说明。</p>
+<p> 所以，官网说的这句话有问题？<br> 确实有问题，因为在mutation中执行异步操作并不会报错，也能正确更改状态，所以并不是所谓的“必须同步执行”这么苛刻，只能说你最好不要这么做。（这里说一句题外话，我初学vuex的时候，大概去年，在mutaition中一旦有异步操作，控制台立马就会有警告，不知道是记错了还是现在删除了这个设定）</p>
+<p>上面的例子可能太过简单，以至于Action看起来都发挥不了什么作用。</p>
+<p>下面来看一个复杂的例子，这个例子有助于理解为什么要用Action管理异步操作<br>需求如下</p>
+<p>state中存储了一个状态，我们还是复用刚才的count</p>
+<p>现在有两个异步操作，他们都能改变count的值</p>
+<p>第二个异步操作的条件依赖第一个异步操作的结果，比如第一个异步操作执行了count ++ ，count :0 = &gt;1，第二个异步操作会先判断当前count的值，if(count === 1) { do something…} else { do something… }</p>
+<p> 当异步操作涉及互相依赖的情况的时候，我们肯定希望被依赖的操作执行完成之后，再执行依赖项，这样能保证程序执行得到正确的结果，但异步操作，如接口访问这种，往往是不能确定执行完成的时间的，</p>
+<p>通常你在接口A中得到一个值，a</p>
+<p>接口B需要使用这个值结合B接口返回的值进行一些判断操作，if(a&amp;&amp;b){ … }</p>
+<p>这个时候如果B接口执行完毕了，A接口的值还没过来的话，就可能得到错误的结果。 a =&gt; undefined</p>
+<p>  所以这里牵扯到了一个异步操作的顺序执行问题，既然是异步操作问题，基本都会用到ES6的promise函数去解决，有兴趣的可以用看一下我的文章——关于promise的一些使用和原理。</p>
+<p>  下面我们重写一下代码</p>
+<p>// Action 函数接受一个与 store 实例具有相同方法和属性的 context 对象<br>let incrementAsync = (content) =&gt; {<br>  return new Promise((resolve, reject) =&gt; {<br>    setTimeout(() =&gt; {<br>      content.commit(‘increment’)<br>      resolve()<br>    }, 1000)<br>  })<br>}<br>let decrementAsync = (content) =&gt; {<br>  return new Promise((resolve, reject) =&gt; {<br>    setTimeout(() =&gt; {<br>      content.commit(‘decrement’)<br>      resolve()<br>    }, 1000)<br>  })<br>}<br>export {incrementAsync, decrementAsync}</p>
+<template>
+  <div>
+    <button @click="dec">-</button>
+    <span></span>
+    <button @click="add">+</button>
+  </div>
+</template>
+ 
+<script>
+import { mapState, mapMutations, mapActions } from 'vuex'
+export default {
+  computed: {
+    ...mapState(['count'])
+  },
+  methods: {
+    ...mapMutations(['increment', 'decrement']),
+    ...mapActions(['incrementAsync', 'decrementAsync']),
+    add () {
+      this.incrementAsync().then(() => {
+        this.increment()
+      })
+    },
+    dec () {
+      this.decrementAsync().then(() => {
+        // do something
+      })
+    }
+  }
+}
+</script>
+<style>
+ 
+</style>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Vue3-Vue3快速上手
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/08/29/32vuex/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue-vuex-1, vuex-persistedstate插件使用解决刷新页面数据丢失问题及简单自定义插件模拟功能实现</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

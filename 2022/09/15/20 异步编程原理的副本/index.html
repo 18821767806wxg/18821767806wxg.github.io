@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>js-异步编程原理 | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="异步编程原理JavaScript 引擎负责解析，执行 JavaScript 代码，但它并不能单独运行，通常都得有一个宿主环境，一般如浏览器或 Node 服务器，前文说到的单线程是指在这些宿主环境创建单一线程，提供一种机制，调用 JavaScript 引擎完成多个 JavaScript 代码块的调度，这种机制就称为事件循环（ Event Loop ）。 关于事件循环流程分解如下： 宿主环境为 Jav">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js-异步编程原理">
+<meta property="og:url" content="https://18821767806wxg.github.io/2022/09/15/20%20%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%8E%9F%E7%90%86%E7%9A%84%E5%89%AF%E6%9C%AC/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="异步编程原理JavaScript 引擎负责解析，执行 JavaScript 代码，但它并不能单独运行，通常都得有一个宿主环境，一般如浏览器或 Node 服务器，前文说到的单线程是指在这些宿主环境创建单一线程，提供一种机制，调用 JavaScript 引擎完成多个 JavaScript 代码块的调度，这种机制就称为事件循环（ Event Loop ）。 关于事件循环流程分解如下： 宿主环境为 Jav">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pics0.baidu.com/feed/0b46f21fbe096b63bd7dd5dd79c34f40e9f8acc8.jpeg?token=4eca9533d590b3ed5e2e6922f0b2f7f2&s=25B06D335D38DE011A4534CB02008033">
+<meta property="og:image" content="https://pics4.baidu.com/feed/72f082025aafa40ffd6105ccde94cb4b79f01975.jpeg?token=ca08273304b97bbb1f079bc3c4fd60d2&s=0C98ED1209D86CC80EDDC5DE0000D0B1">
+<meta property="og:image" content="https://pics1.baidu.com/feed/e850352ac65c1038cfb273fcc7e15b17b17e8931.jpeg?token=0b84ad8e7ccb941b4adf70720dd0d877&s=6D9AEC121F406D430CFCE5DA0000D0B2">
+<meta property="og:image" content="https://pics3.baidu.com/feed/dc54564e9258d10962760abda7a804bb6d814d19.jpeg?token=3d55d771aa3792b50b2603d9662fe9f7&s=59A83C72953044231C75E8DE0000C0B3">
+<meta property="og:image" content="https://pics1.baidu.com/feed/a044ad345982b2b751bdbddb445d03eb77099b80.jpeg?token=528b67eb6f61d06dcbf8d5787c676dc2&s=4D00ED1201D84DC8187C01DA000050B2">
+<meta property="article:published_time" content="2022-09-15T08:29:42.643Z">
+<meta property="article:modified_time" content="2022-09-15T08:37:04.807Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pics0.baidu.com/feed/0b46f21fbe096b63bd7dd5dd79c34f40e9f8acc8.jpeg?token=4eca9533d590b3ed5e2e6922f0b2f7f2&s=25B06D335D38DE011A4534CB02008033">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=475479888&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/10/">React博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">相识就是一种缘分欢迎进入我的博客，主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-20 异步编程原理的副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/09/15/20%20%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%8E%9F%E7%90%86%E7%9A%84%E5%89%AF%E6%9C%AC/" class="article-date">
+  	<time datetime="2022-09-15T08:29:42.643Z" itemprop="datePublished">2022-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js-异步编程原理
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="异步编程原理"><a href="#异步编程原理" class="headerlink" title="异步编程原理"></a>异步编程原理</h2><p>JavaScript 引擎负责解析，执行 JavaScript 代码，但它并不能单独运行，通常都得有一个宿主环境，一般如浏览器或 Node 服务器，前文说到的单线程是指在这些宿主环境创建单一线程，提供一种机制，调用 JavaScript 引擎完成多个 JavaScript 代码块的调度，这种机制就称为事件循环（ Event Loop ）。</p>
+<p>关于事件循环流程分解如下：</p>
+<p>宿主环境为 JavaScript 创建线程时，会创建堆 (heap) 和栈 (stack) ，堆内存储 JavaScript 对象，栈内存储执行上下文；栈内执行上下文的同步任务按序执行，执行完即退栈，而当异步任务执行时，该异步任务进入等待状态（不入栈），同时通知线程：当触发该事件时（或该异步操作响应返回时），需向消息队列插入一个事件消息；当事件触发或响应返回时，线程向消息队列插入该事件消息（包含事件及回调）；当栈内同步任务执行完毕后，线程从消息队列取出一个事件消息，其对应异步任务（函数）入栈，执行回调函数，如果未绑定回调，这个消息会被丢弃，执行完任务后退栈；当线程空闲（即执行栈清空）时继续拉取消息队列下一轮消息（next tick ，事件循环流转一次称为一次 tick ）。</p>
+<p><img src="https://pics0.baidu.com/feed/0b46f21fbe096b63bd7dd5dd79c34f40e9f8acc8.jpeg?token=4eca9533d590b3ed5e2e6922f0b2f7f2&s=25B06D335D38DE011A4534CB02008033" alt="img"></p>
+<p>很多的队列先后按顺序执行任务就形成了 Event</p>
+<h3 id="异步编程实现"><a href="#异步编程实现" class="headerlink" title="异步编程实现"></a>异步编程实现</h3><h4 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h4><p>优点：简单、容易理解和部署。</p>
+<p>缺点：不利于代码的阅读和维护，各个部分之间高度耦合（ Coupling ），流程会很混乱。</p>
+<h4 id="Promise-对象"><a href="#Promise-对象" class="headerlink" title="Promise 对象"></a>Promise 对象</h4><p>一个 promise 可能有三种状态：等待（ pending ）、已完成（ fulfilled ）、已拒绝（ rejected ） ;</p>
+<p><img src="https://pics4.baidu.com/feed/72f082025aafa40ffd6105ccde94cb4b79f01975.jpeg?token=ca08273304b97bbb1f079bc3c4fd60d2&s=0C98ED1209D86CC80EDDC5DE0000D0B1" alt="img"></p>
+<p>resolve，接受一个成功值，传递给绑定的 fulfilled 回调函数中。主要工作是将当前状态变为 fulfilled 状态，同时调用绑定的 fulfilled 回调函数。</p>
+<p>reject，接受一个失败信息，传递给绑定的 rejected 回调函数中。主要工作是将当前状态变为 rejected 状态，同时调用绑定的 rejected 回调函数。</p>
+<p>then 方法返回一个 Promise。它有两个参数，分别为 Promise 在成功和失败情况下的回调函数。</p>
+<p>语法：</p>
+<p><img src="https://pics1.baidu.com/feed/e850352ac65c1038cfb273fcc7e15b17b17e8931.jpeg?token=0b84ad8e7ccb941b4adf70720dd0d877&s=6D9AEC121F406D430CFCE5DA0000D0B2" alt="img"></p>
+<p><img src="https://pics3.baidu.com/feed/dc54564e9258d10962760abda7a804bb6d814d19.jpeg?token=3d55d771aa3792b50b2603d9662fe9f7&s=59A83C72953044231C75E8DE0000C0B3" alt="img"></p>
+<p>概括来说 promise 是对异步的执行结果的描述对象。</p>
+<h4 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h4><p>Generator 函数是 ES6 提供的一种异步编程解决方案 ，允许函数的暂停和恢复。</p>
+<p>异步任务的封装：</p>
+<p><img src="https://pics1.baidu.com/feed/a044ad345982b2b751bdbddb445d03eb77099b80.jpeg?token=528b67eb6f61d06dcbf8d5787c676dc2&s=4D00ED1201D84DC8187C01DA000050B2" alt="img"></p>
+<p>整个过程类似于，浏览器遇到标识符 * 之后，就明白这个函数是生成器函数，一旦遇到 yield 标识符，就会将以后的函数放入此异步函数之内，待异步返回结果后再进行执行。</p>
+<p>更深一步，从内存上来讲：</p>
+<p>普通函数在被调用时，JS 引擎会创建一个栈帧，在里面准备好局部变量、函数参数、临时值、代码执行的位置（也就是说这个函数的第一行对应到代码区里的第几行机器码），在当前栈帧里设置好返回位置，然后将新帧压入栈顶。待函数执行结束后，这个栈帧将被弹出栈然后销毁，返回值会被传给上一个栈帧。</p>
+<p>当执行到 yield 语句时， Generator 的栈帧同样会被弹出栈外，但 Generator 在这里耍了个花招 —— 它在堆里保存了栈帧的引用（或拷贝）！这样当 it.next 方法被调用时， JS 引擎便不会重新创建一个栈帧，而是把堆里的栈帧直接入栈。因为栈帧里保存了函数执行所需的全部上下文以及当前执行的位置，所以当这一切都被恢复如初之时，就好像程序从原本暂停的地方继续向前执行了。</p>
+<p>而因为每次 yield 和 it.next 都对应一次出栈和入栈，所以可以直接利用已有的栈机制，实现值的传出和传入。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/09/15/21%20Event-Loop%E7%9A%84%E5%89%AF%E6%9C%AC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          js-Event-Loop
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/09/15/19%20%E7%B1%BB%E7%9A%84%E5%89%AF%E6%9C%AC/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">js-类</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

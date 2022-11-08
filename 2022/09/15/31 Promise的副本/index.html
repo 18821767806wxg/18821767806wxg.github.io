@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>js-Promise | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Promise ES6新增的构造函数Promise，用来处理异步的程序(为了解决回调地狱)  介绍 开启承诺：三天之后放假，然后呢：成功了，去哪玩，失败了，扫码  如同：开启ajax请求，请求资源，成功了，渲染页面，失败了，报错   承诺正在进行时  承诺失败OR承诺成功   语法 new Promise( function(resolve, reject) &amp;#123;...&amp;#125; &#x2F;*">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js-Promise">
+<meta property="og:url" content="https://18821767806wxg.github.io/2022/09/15/31%20Promise%E7%9A%84%E5%89%AF%E6%9C%AC/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="Promise ES6新增的构造函数Promise，用来处理异步的程序(为了解决回调地狱)  介绍 开启承诺：三天之后放假，然后呢：成功了，去哪玩，失败了，扫码  如同：开启ajax请求，请求资源，成功了，渲染页面，失败了，报错   承诺正在进行时  承诺失败OR承诺成功   语法 new Promise( function(resolve, reject) &amp;#123;...&amp;#125; &#x2F;*">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://mdn.mozillademos.org/files/8633/promises.png">
+<meta property="article:published_time" content="2022-09-15T08:29:42.696Z">
+<meta property="article:modified_time" content="2022-09-15T08:38:22.991Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mdn.mozillademos.org/files/8633/promises.png">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=475479888&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/10/">React博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">相识就是一种缘分欢迎进入我的博客，主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-31 Promise的副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/09/15/31%20Promise%E7%9A%84%E5%89%AF%E6%9C%AC/" class="article-date">
+  	<time datetime="2022-09-15T08:29:42.696Z" itemprop="datePublished">2022-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js-Promise
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><blockquote>
+<p><code>ES6</code>新增的<code>构造函数Promise</code>，用来处理异步的程序(为了解决回调地狱)</p>
+</blockquote>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ol>
+<li><p>开启承诺：三天之后放假，然后呢：成功了，去哪玩，失败了，扫码</p>
+<pre><code> 如同：开启ajax请求，请求资源，成功了，渲染页面，失败了，报错
+</code></pre>
+</li>
+<li><p>承诺正在进行时</p>
+</li>
+<li><p>承诺失败OR承诺成功</p>
+</li>
+</ol>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><blockquote>
+<pre><code class="js">new Promise( function(resolve, reject) &#123;...&#125; /* executor */  );
+</code></pre>
+</blockquote>
+<pre><code class="js">var p = new Promise(function(a,b)&#123;
+    // 正在进行时....
+    setTimeout(() =&gt; &#123;
+        a();
+    &#125;, Math.random()*1000);
+    setTimeout(() =&gt; &#123;
+        b();
+    &#125;, Math.random()*1000);
+&#125;);
+p.then(function()&#123;
+    // 成功时，要做的事情
+    // .....
+    console.log(1)
+&#125;,function()&#123;
+    // 失败时，要做的事情
+    // .....
+    console.log(2)
+&#125;)
+</code></pre>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li><p>executor</p>
+<p>executor是带有 <code>resolve</code> 和 <code>reject</code> 两个参数的函数 。Promise构造函数执行时立即调用<code>executor</code> 函数， <code>resolve</code> 和 <code>reject</code> 两个函数作为参数传递给<code>executor</code>（executor 函数在Promise构造函数返回所建promise实例对象前被调用）。<code>resolve</code> 和 <code>reject</code> 函数被调用时，分别将promise的状态改为<em>fulfilled（</em>完成）或rejected（失败）。executor 内部通常会执行一些异步操作，一旦异步操作执行完毕(可能成功/失败)，要么调用resolve函数来将promise状态改成<em>fulfilled</em>，要么调用<code>reject</code> 函数将promise的状态改为rejected。如果在executor函数中抛出一个错误，那么该promise 状态为rejected。executor函数的返回值被忽略。</p>
+</li>
+</ul>
+<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p><code>**Promise**</code> 对象是一个代理对象（代理一个值），被代理的值在Promise对象创建时可能是未知的。它允许你为异步操作的成功和失败分别绑定相应的处理方法（handlers）。 这让异步方法可以像同步方法那样返回值，但并不是立即返回最终执行结果，而是一个能代表未来出现的结果的promise对象</p>
+<p>一个 <code>Promise</code>有以下几种状态:</p>
+<ul>
+<li><em>pending</em>: 初始状态，既不是成功，也不是失败状态。</li>
+<li><em>fulfilled</em>: 意味着操作成功完成。</li>
+<li><em>rejected</em>: 意味着操作失败。</li>
+</ul>
+<p>pending 状态的 Promise 对象可能会变为fulfilled 状态并传递一个值给相应的状态处理方法，也可能变为失败状态（rejected）并传递失败信息。当其中任一种情况出现时，Promise 对象的 <code>then</code> 方法绑定的处理方法（handlers ）就会被调用（then方法包含两个参数：onfulfilled 和 onrejected，它们都是 Function 类型。当Promise状态为<em>fulfilled</em>时，调用 then 的 onfulfilled 方法，当Promise状态为<em>rejected</em>时，调用 then 的 onrejected 方法， 所以在异步操作的完成和绑定处理方法之间不存在竞争）。</p>
+<p>因为 <code>Promise.prototype.then</code> 和  <code>Promise.prototype.catch</code> 方法返回promise 对象， 所以它们可以被链式调用。</p>
+<p><img src="https://mdn.mozillademos.org/files/8633/promises.png" alt="img"></p>
+<p><strong>不要和惰性求值混淆：</strong> 有一些语言中有惰性求值和延时计算的特性，它们也被称为“promises”，例如Scheme. Javascript中的promise代表一种已经发生的状态， 而且可以通过回调方法链在一起。 如果你想要的是表达式的延时计算，考虑无参数的”<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions">箭头方法</a>“:  <code>f = () =&gt;</code><em>表达式</em> 创建惰性求值的表达式<em>，</em>使用 <code>f()</code> 求值。</p>
+<p><strong>注意：</strong> 如果一个promise对象处在fulfilled或rejected状态而不是pending状态，那么它也可以被称为<em>settled</em>状态。你可能也会听到一个术语<em>resolved</em> ，它表示promise对象处于settled状态。关于promise的术语， Domenic Denicola 的 <a target="_blank" rel="noopener" href="https://github.com/domenic/promises-unwrapping/blob/master/docs/states-and-fates.md">States and fates</a> 有更多详情可供参考。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="Promise-all-iterable"><a href="#Promise-all-iterable" class="headerlink" title="Promise.all(iterable)"></a>Promise.all(iterable)</h4><p>​    这个方法返回一个新的promise对象，该promise对象在iterable参数对象里所有的promise对象都成功的时候才会触发成功，一旦有任何一个iterable里面的promise对象失败则立即触发该promise对象的失败。这个新的promise对象在触发成功状态以后，会把一个包含iterable里所有promise返回值的数组作为成功回调的返回值，顺序跟iterable的顺序保持一致；如果这个新的promise对象触发了失败状态，它会把iterable里第一个触发失败的promise对象的错误信息作为它的失败错误信息。Promise.all方法常被用于处理多个promise对象的状态集合。（可以参考jQuery.when方法—译者注）</p>
+<h4 id="Promise-race-iterable"><a href="#Promise-race-iterable" class="headerlink" title="Promise.race(iterable)"></a>Promise.race(iterable)</h4><p>​    当iterable参数里的任意一个子promise被成功或失败后，父promise马上也会用子promise的成功返回值或失败详情作为参数调用父promise绑定的相应句柄，并返回该promise对象。</p>
+<h4 id="Promise-reject-reason"><a href="#Promise-reject-reason" class="headerlink" title="Promise.reject(reason)"></a>Promise.reject(reason)</h4><p>​    返回一个状态为失败的Promise对象，并将给定的失败信息传递给对应的处理方法</p>
+<h4 id="Promise-resolve-value"><a href="#Promise-resolve-value" class="headerlink" title="Promise.resolve(value)"></a>Promise.resolve(value)</h4><p>​    返回一个状态由给定value决定的Promise对象。如果该值是thenable(即，带有then方法的对象)，返回的Promise对象的最终状态由then方法执行决定；否则的话(该value为空，基本类型或者不带then方法的对象),返回的Promise对象状态为fulfilled，并且将该value传递给对应的then方法。通常而言，如果你不知道一个值是否是Promise对象，使用Promise.resolve(value) 来返回一个Promise对象,这样就能将该value以Promise对象形式使用。</p>
+<h2 id="Promise-原型"><a href="#Promise-原型" class="headerlink" title="Promise 原型"></a>Promise 原型</h2><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ul>
+<li><p><code>Promise.prototype.constructor</code></p>
+<p>返回被创建的实例函数.  默认为 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> 函数.</p>
+</li>
+</ul>
+<h3 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch"><code>Promise.prototype.catch(onRejected)</code></a></p>
+<p>添加一个拒绝(rejection) 回调到当前 promise, 返回一个新的promise。当这个回调函数被调用，新 promise 将以它的返回值来resolve，否则如果当前promise 进入fulfilled状态，则以当前promise的完成结果作为新promise的完成结果.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/then"><code>Promise.prototype.then(onFulfilled, onRejected)</code></a></p>
+<p>添加解决(fulfillment)和拒绝(rejection)回调到当前 promise, 返回一个新的 promise, 将以回调的返回值来resolve.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally"><code>Promise.prototype.finally(onFinally)</code></a></p>
+<p>添加一个事件处理回调于当前promise对象，并且在原promise对象解析完毕后，返回一个新的promise对象。回调会在当前promise运行完毕后被调用，无论当前promise的状态是完成(fulfilled)还是失败(rejected)</p>
+</li>
+</ul>
+<h2 id="promise改造ajax-amp-jsonp"><a href="#promise改造ajax-amp-jsonp" class="headerlink" title="promise改造ajax&amp;jsonp"></a>promise改造ajax&amp;jsonp</h2><h3 id="ajaxget封装"><a href="#ajaxget封装" class="headerlink" title="ajaxget封装"></a>ajaxget封装</h3><pre><code class="JS">url1 = &quot;http://127.0.0.1/myown/promise/php/data1.php&quot;
+url2 = &quot;http://127.0.0.1/myown/promise/php/data2.php&quot;
+url3 = &quot;http://127.0.0.1/myown/promise/php/data3.php&quot;
+
+function getAjax(url, data) &#123;
+    var p = new Promise(function (success, error) &#123;
+        var str = &quot;&quot;;
+        data = data || &#123;&#125;;
+        var xhr = new XMLHttpRequest();
+        for (var i in data) &#123;
+            str += `$&#123;i&#125;=$&#123;data[i]&#125;&amp;`;
+        &#125;
+        str = str.slice(0, str.length - 1);
+        url = url + &quot;?&quot; + str + &quot;__retr0__=&quot; + new Date().getDate();
+        xhr.open(&quot;get&quot;, url, true);
+        xhr.onreadystatechange = function () &#123;
+            if (xhr.readyState === 4 &amp;&amp; xhr.status === 200) &#123;
+                success(xhr.responseText);
+            &#125; else if (xhr.readyState === 4 &amp;&amp; xhr.status != 200) &#123;
+                error(xhr.status);
+            &#125;
+        &#125;
+        xhr.send();
+    &#125;)
+    return p;
+&#125;
+var p1 = getAjax(url1)
+var p2 = getAjax(url2)
+var p3 = getAjax(url3)
+Promise.all([p1, p2, p3]).then(function (res) &#123;
+    console.log(res);
+&#125;, function (res) &#123;
+    console.log(res)
+&#125;)
+</code></pre>
+<h3 id="ajaxpost封装"><a href="#ajaxpost封装" class="headerlink" title="ajaxpost封装"></a>ajaxpost封装</h3><pre><code class="JS">url1 = &quot;http://127.0.0.1/myown/promise/php/data1.php&quot;;
+url2 = &quot;http://127.0.0.1/myown/promise/php/data2.php&quot;;
+url3 = &quot;http://127.0.0.1/myown/promise/php/data3.php&quot;;
+
+function postAjax(url, data) &#123;
+    var p = new Promise(function (success, error) &#123;
+        data = data || &#123;&#125;;
+        var str = &quot;&quot;;
+        var xhr = new XMLHttpRequest();
+        for (var i in data) &#123;
+            str += `$&#123;i&#125;=$&#123;data[i]&#125;&amp;`;
+        &#125;
+        xhr.open(&quot;post&quot;, url, true);
+        xhr.onreadystatechange = function () &#123;
+            if (xhr.readyState === 4 &amp;&amp; xhr.status === 200) &#123;
+
+                success(xhr.responseText);
+            &#125; else if (xhr.readyState === 4 &amp;&amp; xhr.status != 200) &#123;
+                error(xhr.status);
+            &#125;
+        &#125;
+        console.log(1)
+        xhr.setRequestHeader(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded&quot;);
+        xhr.send(str);
+    &#125;)
+    return p;
+&#125;
+var p1 = postAjax(url1);
+var p2 = postAjax(url2);
+var p3 = postAjax(url3);
+Promise.all([p1, p2, p3]).then(function (res) &#123;
+    console.log(res);
+&#125;, function (res) &#123;
+    console.log(res);
+&#125;)
+</code></pre>
+<h3 id="jsonp封装"><a href="#jsonp封装" class="headerlink" title="jsonp封装"></a>jsonp封装</h3><h4 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h4><pre><code class="js">url1 = &quot;http://127.0.0.1/myown/promise/php/jsonp1.php&quot;;
+url2 = &quot;http://127.0.0.1/myown/promise/php/jsonp2.php&quot;;
+url3 = &quot;http://127.0.0.1/myown/promise/php/jsonp3.php&quot;;
+
+function jsonp(url, data) &#123;
+    var p = new Promise(function (success) &#123;
+        var str = &quot;&quot;;
+        var script = document.createElement(&quot;script&quot;);
+        for (var i in data) &#123;
+            str += `$&#123;i&#125;=$&#123;data[i]&#125;&amp;`;
+        &#125;
+        url = url + &quot;?&quot; + str + &quot;__retr0__=&quot; + new Date().getTime();
+        script.src = url;
+        window[data[data.cbName]] = function (res) &#123;
+            success(res);
+        &#125;
+        document.body.appendChild(script);
+    &#125;)
+    return p;
+&#125;
+var p1 = jsonp(url1, &#123;
+    user: &quot;admin&quot;,
+    pass: &quot;admi&quot;,
+    cbName: &quot;callback&quot;,
+    callback: &quot;qqq&quot;
+&#125;);
+var p2 = jsonp(url2, &#123;
+    user: &quot;root&quot;,
+    pass: &quot;root&quot;,
+    cbName: &quot;callback&quot;,
+    callback: &quot;bbb&quot;
+&#125;);
+var p3 = jsonp(url3, &#123;
+    user: &quot;retr0&quot;,
+    pass: &quot;retr&quot;,
+    cbName: &quot;callback&quot;,
+    callback: &quot;ccc&quot;
+&#125;);
+Promise.all([p1, p2, p3]).then(function (res) &#123;
+    console.log(res)
+&#125;)
+</code></pre>
+<h4 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h4><pre><code class="php">&lt;?php
+$u = $_GET[&quot;user&quot;];
+$p = $_GET[&quot;pass&quot;];
+$cb = $_GET[&quot;callback&quot;];
+$data = &quot;这是JSONP接受到的数据&quot; . $u . &quot;------&quot; . $p;
+echo &quot;$cb(&#39;&quot; . $data . &quot;&#39;)&quot;;
+?&gt;
+</code></pre>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/09/15/33js%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E7%9A%84%E5%89%AF%E6%9C%AC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          js-数组常用方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/09/15/27%20Storage%E7%9A%84%E5%89%AF%E6%9C%AC/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">js-storage</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>React-immutable | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="immutable https:&#x2F;&#x2F;github.com&#x2F;immutable-js&#x2F;immutable-js  介绍每次修改一个 Immutable 对象时都会创建一个新的不可变的对象，在新对象上操作并不会影响到原对象的数据。这个库的实现是深拷贝还是浅拷贝？ 深拷贝和浅拷贝的关系 var arr &#x3D; &amp;#123;&amp;#125;; var arr2 &#x3D; arr &#x2F;&#x2F;浅拷贝，引用地址相同    Obje">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-immutable">
+<meta property="og:url" content="https://18821767806wxg.github.io/2022/08/25/18%20immutable/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="immutable https:&#x2F;&#x2F;github.com&#x2F;immutable-js&#x2F;immutable-js  介绍每次修改一个 Immutable 对象时都会创建一个新的不可变的对象，在新对象上操作并不会影响到原对象的数据。这个库的实现是深拷贝还是浅拷贝？ 深拷贝和浅拷贝的关系 var arr &#x3D; &amp;#123;&amp;#125;; var arr2 &#x3D; arr &#x2F;&#x2F;浅拷贝，引用地址相同    Obje">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-25T03:09:56.000Z">
+<meta property="article:modified_time" content="2022-08-25T03:09:56.000Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=475479888&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/10/">React博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">相识就是一种缘分欢迎进入我的博客，主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-18 immutable" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/08/25/18%20immutable/" class="article-date">
+  	<time datetime="2022-08-25T03:09:56.000Z" itemprop="datePublished">2022-08-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React-immutable
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="immutable"><a href="#immutable" class="headerlink" title="immutable"></a>immutable</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/immutable-js/immutable-js">https://github.com/immutable-js/immutable-js</a></p>
+</blockquote>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>每次修改一个 Immutable 对象时都会创建一个新的不可变的对象，在新对象上操作并不会影响到原对象的数据。这个库的实现是深拷贝还是浅拷贝？</p>
+<h2 id="深拷贝和浅拷贝的关系"><a href="#深拷贝和浅拷贝的关系" class="headerlink" title="深拷贝和浅拷贝的关系"></a>深拷贝和浅拷贝的关系</h2><ol>
+<li><pre><code class="js">var arr = &#123;&#125;;
+var arr2 = arr
+//浅拷贝，引用地址相同
+</code></pre>
+</li>
+<li><p> Object.assign() 只是一级属性复制，比浅拷贝多深拷贝了一层而已。</p>
+</li>
+<li><pre><code class="js">const obj1 = JSON.parse(JSON.stringify(obj))
+//数组，对象都好用(缺点: 不能有undefined)
+</code></pre>
+</li>
+</ol>
+<h2 id="Immutable优化性能的方式"><a href="#Immutable优化性能的方式" class="headerlink" title="Immutable优化性能的方式"></a>Immutable优化性能的方式</h2><p>Immutable 实现的原理是 Persistent Data Structure（持久化数据结构）， 也就是使用旧数据创建新数据时，要保证旧数据同时可用且不变。同时为了避免deepCopy 把所有节点都复制一遍带来的性能损耗，Immutable 使用了 Structural Sharing（结构共享），即如果对象树中一个节点发生变化，只修改这个节点和受它影响的父节点，其它节点则进行共享。</p>
+<p><a target="_blank" rel="noopener" href="https://upload-images.jianshu.io/upload_images/2165169-cebb05bca02f1772">https://upload-images.jianshu.io/upload_images/2165169-cebb05bca02f1772</a></p>
+<pre><code class="js">import &#123;Map&#125; from &#39;immutable&#39;
+let a = Map(&#123;
+    select:&#39;users&#39;,
+    filter:Map(&#123;name:&#39;Cam&#39;&#125;)
+&#125;)
+let b = a.set(&#39;select&#39;,&#39;people&#39;);
+a===b; //false
+a.get(&#39;filter&#39;) === b.get(&#39;filter&#39;); // true
+</code></pre>
+<p>延伸：如果上述select 属性 给一个组件用，因为此值改变了，shouldComponentUpdate 应该返回true, 而filter 属性给另一个组件用，通过判断并无变化，shouldComponentUpdate 应该返回false，此组件就避免了重复进行diff对比</p>
+<h2 id="Immutable中常用类型（Map，List）"><a href="#Immutable中常用类型（Map，List）" class="headerlink" title="Immutable中常用类型（Map，List）"></a>Immutable中常用类型（Map，List）</h2><h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><pre><code class="js">const &#123;Map&#125; = require(&quot;immutable&quot;)
+const preState = &#123;
+  a:1,
+  b:2
+&#125;
+let map1 = Map(preState)
+let map2 = map1.set(&#39;b&#39;,&#39;3&#39;)
+console.log(map1.toJS(),map2.toJS());
+//&#123; a: 1, b: 2 &#125; &#123; a: 1, b: &#39;3&#39; &#125;
+</code></pre>
+<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><pre><code class="js">const &#123;List&#125; = require(&quot;immutable&quot;)
+const preState = [&#39;111&#39;,&#39;222&#39;,&#39;333&#39;]
+let arr1 = List(preState)
+//List内置绝大部分的数组方法
+let arr2 = arr1.push(444)
+console.log(arr1.toJS(),arr2.toJS());
+//[&#39;111&#39;,&#39;222&#39;,&#39;333&#39;]   [&#39;111&#39;,&#39;222&#39;,&#39;333&#39;,444]
+</code></pre>
+<h3 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h3><pre><code class="js">const &#123;Map&#125; = require(&quot;immutable&quot;)
+const preState = &#123;
+  a:1,
+  b:2
+&#125;
+let map1 = Map(preState)
+let map2 = map1.merge(&#123;name:&#39;admin&#39;&#125;)
+console.log(map1.toJS(),map2.toJS());
+//&#123; a: 1, b: 2 &#125; &#123; a: 1, b: 2, name: &#39;admin&#39; &#125;
+</code></pre>
+<h3 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h3><pre><code class="js">const &#123;List&#125; = require(&quot;immutable&quot;)
+const preState = [&#39;111&#39;,&#39;222&#39;,&#39;333&#39;]
+let arr1 = List(preState)
+//List内置绝大部分的数组方法
+let arr2 = arr1.concat([444,555,666])
+console.log(arr1.toJS(),arr2.toJS());
+//[&#39;111&#39;,&#39;222&#39;,&#39;333&#39;] [&#39;111&#39;,&#39;222&#39;,&#39;333&#39;,444,555,666]
+</code></pre>
+<h3 id="fromJS"><a href="#fromJS" class="headerlink" title="fromJS"></a>fromJS</h3><pre><code class="js">const &#123;fromJS&#125; = require(&quot;immutable&quot;)
+const prevState = &#123;
+  name:&#39;retr0&#39;,
+  age:1,
+  location:&#123;
+    city:1,
+    sss:2,
+    ddd:&#123;
+      aaa:34
+    &#125;
+  &#125;
+&#125; 
+let map1 = fromJS(prevState)
+let map2 = map1.setIn([&#39;location&#39;,&#39;city&#39;],231231)
+console.log(map2.toJS());
+/*
+    &#123;
+      name: &#39;retr0&#39;,
+      age: 1,
+      location: &#123; city: 231231, sss: 2, ddd: &#123; aaa: 34 &#125; &#125;
+      &#125;
+*/
+</code></pre>
+<h2 id="Immutable-Redux的开发方式"><a href="#Immutable-Redux的开发方式" class="headerlink" title="Immutable+Redux的开发方式"></a>Immutable+Redux的开发方式</h2><pre><code class="js">import &#123;fromJS&#125; from &#39;immutable&#39;
+const righteducer = (prevState=[],action)=&gt;&#123;
+  let &#123;type,payload&#125; = action;
+  switch(type)&#123;
+    case &quot;right&quot;:
+      let newState = fromJS(prevState).concat(payload).toJS()
+      return newState
+    default:return prevState
+  &#125;
+  
+&#125;
+export default righteducer
+</code></pre>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ol>
+<li>容易跟原生混淆</li>
+<li>文档与调试不方便</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/08/25/19%20redux-persist/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          React- redux-persist实现redux持久化，存到localStorage
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/08/25/17%20redux-thunk/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React-redux-thunk</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

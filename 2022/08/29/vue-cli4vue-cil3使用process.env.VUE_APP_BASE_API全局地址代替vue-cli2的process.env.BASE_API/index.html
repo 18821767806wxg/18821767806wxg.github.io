@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Vue-vue-cli4/vue-cil3使用process.env.VUE_APP_BASE_API全局地址代替vue-cli2的process.env.BASE_API | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="vue-cli4&#x2F;vue-cil3使用process.env.VUE_APP_BASE_API全局地址代替vue-cli2的process.env.BASE_API前几天Vue3.0正式发布，也说明了Vue3.0后面不会再有大规模改动，大家可以开始系统性学习了，虽然目前大多数公司使用的还是Vue2.0，但这只是一个过渡阶段，Vue3.0经历了两年的开发，在去年Vue2.0也引入了Vue3.0体验组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue-vue-cli4&#x2F;vue-cil3使用process.env.VUE_APP_BASE_API全局地址代替vue-cli2的process.env.BASE_API">
+<meta property="og:url" content="https://18821767806wxg.github.io/2022/08/29/vue-cli4vue-cil3%E4%BD%BF%E7%94%A8process.env.VUE_APP_BASE_API%E5%85%A8%E5%B1%80%E5%9C%B0%E5%9D%80%E4%BB%A3%E6%9B%BFvue-cli2%E7%9A%84process.env.BASE_API/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="vue-cli4&#x2F;vue-cil3使用process.env.VUE_APP_BASE_API全局地址代替vue-cli2的process.env.BASE_API前几天Vue3.0正式发布，也说明了Vue3.0后面不会再有大规模改动，大家可以开始系统性学习了，虽然目前大多数公司使用的还是Vue2.0，但这只是一个过渡阶段，Vue3.0经历了两年的开发，在去年Vue2.0也引入了Vue3.0体验组">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-29T07:34:58.000Z">
+<meta property="article:modified_time" content="2022-08-29T07:34:58.000Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=475479888&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/10/">React博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">相识就是一种缘分欢迎进入我的博客，主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-vue-cli4vue-cil3使用process.env.VUE_APP_BASE_API全局地址代替vue-cli2的process.env.BASE_API" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/08/29/vue-cli4vue-cil3%E4%BD%BF%E7%94%A8process.env.VUE_APP_BASE_API%E5%85%A8%E5%B1%80%E5%9C%B0%E5%9D%80%E4%BB%A3%E6%9B%BFvue-cli2%E7%9A%84process.env.BASE_API/" class="article-date">
+  	<time datetime="2022-08-29T07:34:58.000Z" itemprop="datePublished">2022-08-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue-vue-cli4/vue-cil3使用process.env.VUE_APP_BASE_API全局地址代替vue-cli2的process.env.BASE_API
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="vue-cli4-vue-cil3使用process-env-VUE-APP-BASE-API全局地址代替vue-cli2的process-env-BASE-API"><a href="#vue-cli4-vue-cil3使用process-env-VUE-APP-BASE-API全局地址代替vue-cli2的process-env-BASE-API" class="headerlink" title="vue-cli4/vue-cil3使用process.env.VUE_APP_BASE_API全局地址代替vue-cli2的process.env.BASE_API"></a>vue-cli4/vue-cil3使用process.env.VUE_APP_BASE_API全局地址代替vue-cli2的process.env.BASE_API</h1><p>前几天Vue3.0正式发布，也说明了Vue3.0后面不会再有大规模改动，大家可以开始系统性学习了，虽然目前大多数公司使用的还是Vue2.0，但这只是一个过渡阶段，Vue3.0经历了两年的开发，在去年Vue2.0也引入了Vue3.0体验组件，后面基本是新项目肯定会使用Vue3.0，Vue2.0到Vue3.0变化还是蛮大的。今天就一起学一下vue-cli4/vue-cil3和vue-cli2在全局地址.env上的使用吧。</p>
+<p>由于我们的项目需要在不同环境下进行运行(开发，生产，测试等)，这避免我们需要多次的去切换请求的地址以及相关的配置，vue-cli2是可以直接在config文件中进行配置的，但是vue-cli4和vue-cli3已经简化了，没有config文件怎么办？</p>
+<p>一、建立.env系列文件<br>首先我们在根 <a href="vue%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.md">vue项目配置文件.md</a> 目录新建3个文件，分别为.env.development，.env.production，.env.test<br>注意文件是只有后缀的。</p>
+<p>.env.development 模式用于serve，开发环境，就是开始环境的时候会引用这个文件里面的配置</p>
+<p>.env.production模式用于build，线上环境。</p>
+<p>.env.test 测试环境</p>
+<p>二、修改文件<br>分别在文件内写上：</p>
+<p>1.开发环境<br>//.env.development<br>VUE_APP_BASE_API = ‘需要请求API’<br>1<br>2<br>2.线上环境<br>//.env.production<br>VUE_APP_BASE_API = ‘需要请求API’<br>1<br>2<br>3.测试环境<br>//.env.test<br>VUE_APP_BASE_API = ‘需要请求API’<br>1<br>2<br>三、更改package.json文件<br> “scripts”: {<br>    “dev”: “vue-cli-service serve”,<br>    “test”: “vue-cli-service serve –mode test”,<br>    “build”: “vue-cli-service build”,<br>    “build:test”: “vue-cli-service build –mode test”,<br>    “lint”: “vue-cli-service lint”<br>  },<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>四、使用<br>当需要用到该变量是可以用process.env.VUE_APP_BASE_API进行取值。</p>
+<p>例如：</p>
+<p>在js文件中直接使用</p>
+<p>const service = axios.create({<br>    baseURL: process.env.VUE_APP_BASE_API,<br>    timeout: 10000,<br>})<br>1<br>2<br>3<br>4<br>1.Vue2.0页面写法<br>通过data定义</p>
+<template>
+    <div>
+        <a :href="this.uploadUrl">点击</a>
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            uploadUrl: process.env.VUE_APP_BASE_API,
+        }
+    }
+}
+</script>
+
+<style scoped>
+</style>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>使用computed()</p>
+<template>
+    <div>
+        <a :href="VUE_APP_BASE_API">点击</a>
+    </div>
+</template>
+
+<script>
+export default {
+    computed: {
+        VUE_APP_BASE_API(){
+            return process.env.VUE_APP_BASE_API
+        }
+    }
+}
+</script>
+
+<style scoped>
+</style>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>2.Vue3.0页面写法<br>Vue3.0使用setup()的一个写法</p>
+<template>
+    <div>
+        <a :href="uploadUrl">点击</a>
+    </div>
+</template>
+
+<script>
+export default {
+    setup() {
+        return {
+            uploadUrl:'process.env.VUE_APP_BASE_API'
+        }
+    }
+}
+</script>
+
+<style scoped>
+</style>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>或使用computed()</p>
+<template>
+    <div>
+        <a :href="VUE_APP_BASE_API">点击</a>
+    </div>
+</template>
+
+<script>
+import { computed } from 'vue'
+export default {
+    setup() {
+        const VUE_APP_BASE_API = computed(()=>{
+            return process.env.VUE_APP_BASE_API
+        })
+        return {
+            VUE_APP_BASE_API
+        }
+    }
+}
+</script>
+
+<style scoped>
+</style>
+<p>————————————————<br>版权声明：本文为CSDN博主「文化沙漠麦七」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42783654/article/details/108842949">https://blog.csdn.net/qq_42783654/article/details/108842949</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/08/29/vue%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E8%BF%9B%E9%98%B6%EF%BC%9A%E7%BB%84%E4%BB%B6Component%E8%AF%A6%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Vue-什么是组件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/08/29/vue%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20v-bind%20%E4%B8%8E%20v-on%20%E6%9D%A5%E5%AE%9E%E7%8E%B0%20v-model%20%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%20%EF%BC%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue-使用v-bind与v-on实现v-model</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

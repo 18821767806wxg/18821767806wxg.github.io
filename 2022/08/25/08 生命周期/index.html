@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>React-生命周期 | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="生命周期 初始化阶段 render 只能访问this.props和this.state，不允许修改状态和DOM输出  componentWillMount render之前最后一次修改状态的机会  在ssr中 这个方法将会被多次调用，所以会重复触发多少遍，同时在这里如果绑定事件，将无法解绑，导致内存泄漏，变得不够安全高效逐步废弃。 因此需要加上UNSAFE UNSAFE_componentWill">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-生命周期">
+<meta property="og:url" content="https://18821767806wxg.github.io/2022/08/25/08%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="生命周期 初始化阶段 render 只能访问this.props和this.state，不允许修改状态和DOM输出  componentWillMount render之前最后一次修改状态的机会  在ssr中 这个方法将会被多次调用，所以会重复触发多少遍，同时在这里如果绑定事件，将无法解绑，导致内存泄漏，变得不够安全高效逐步废弃。 因此需要加上UNSAFE UNSAFE_componentWill">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://segmentfault.com/img/bVbrzRm?w=800&h=799">
+<meta property="article:published_time" content="2022-08-25T03:05:50.000Z">
+<meta property="article:modified_time" content="2022-08-25T03:05:50.000Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://segmentfault.com/img/bVbrzRm?w=800&h=799">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=475479888&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/10/">React博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">相识就是一种缘分欢迎进入我的博客，主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-08 生命周期" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/08/25/08%20%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="article-date">
+  	<time datetime="2022-08-25T03:05:50.000Z" itemprop="datePublished">2022-08-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React-生命周期
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><p><img src="https://segmentfault.com/img/bVbrzRm?w=800&h=799" alt="53884612-fa2b0800-4056-11e9-879f-050e0b33e0e9.png?ynotemdtimestamp=1551878671356"></p>
+<p><strong>初始化阶段</strong></p>
+<h2 id="render"><a href="#render" class="headerlink" title="render"></a>render</h2><blockquote>
+<p>只能访问this.props和this.state，不允许修改状态和DOM输出</p>
+</blockquote>
+<h2 id="componentWillMount"><a href="#componentWillMount" class="headerlink" title="componentWillMount"></a>componentWillMount</h2><blockquote>
+<p>render之前最后一次修改状态的机会</p>
+</blockquote>
+<p>在ssr中 这个方法将会被多次调用，所以会重复触发多少遍，同时在这里如果绑定事件，将无法解绑，导致内存泄漏，变得不够安全高效逐步废弃。</p>
+<p>因此需要加上UNSAFE</p>
+<pre><code class="jsx">UNSAFE_componentWillMount () &#123;
+
+&#125;
+</code></pre>
+<h2 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount"></a>componentDidMount</h2><blockquote>
+<p>成功render并渲染完成真实DOM之后触发，可以修改DOM</p>
+</blockquote>
+<pre><code>componentWillMount () &#123;
+
+&#125;
+</code></pre>
+<p><strong>运行中阶段</strong></p>
+<h2 id="componentWillReceiveProps"><a href="#componentWillReceiveProps" class="headerlink" title="componentWillReceiveProps"></a>componentWillReceiveProps</h2><p>外部组件多次频繁更新传入多次不同的props，会导致不必要的异步请求</p>
+<h3 id="触发"><a href="#触发" class="headerlink" title="触发"></a>触发</h3><p><code>UNSAFE_componentWillReceiveProps(nextProps)</code> 在组件接收到新的参数时被触发，当父组件导致子组件更新的时候, 即使接收的 props 并没有变化, 这个函数也会被调用.</p>
+<h3 id="工作方式"><a href="#工作方式" class="headerlink" title="工作方式"></a>工作方式</h3><p>参数是组件接收到的新的 props , 用于比对新的 props 和原有的 props, 用户需要在函数体中调用 setState() 来更新组件的数据.</p>
+<pre><code class="jsx">UNSAFE_componentWillReceiveProps(nextProps)&#123;
+    if (this.props.currentExercise.id !== nextProps.currentExercise.id)&#123;
+        this.setState(&#123;...nextProps.currentExercise&#125;)
+    &#125;
+&#125;
+</code></pre>
+<h2 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate"></a>shouldComponentUpdate</h2><ol>
+<li><p>setState()函数在任何情况下都会导致组件重渲染吗？如果setState()中参数还是原来没有发生任何变化的state呢？</p>
+</li>
+<li><p>如果组件的state没有变化，并且从父组件接受的props也没有变化，那它就一定不会重渲染吗？</p>
+</li>
+<li><p>如果1，2两种情况下都会导致重渲染，我们该如何避免这种冗余的操作，从而优化性能？</p>
+</li>
+</ol>
+<p><strong>没有导致state的值发生变化的setState是否会导致重渲染 ——【会！】</strong></p>
+<p>shouldComponentUpdate是一个性能调优函数，是重渲染时render()函数调用前被调用的函数，它<strong>接受两个参数：nextProps和nextState</strong>，分别表示下一个props和下一个state的值。并且<strong>，当函数返回false时候，阻止接下来的render()函数的调用，阻止组件重渲染</strong>，而返回true时，组件照常重渲染。</p>
+<p>nextProps：修改后的属性</p>
+<p>nextState：修改后的状态</p>
+<p>可以根据状态和参数中的状态的对比，返回true/false来判断是否需要更新</p>
+<pre><code>shouldComponentUpdate (nextProps,nextState) &#123;
+    return !(this.state.myname === nextState.myname) ||!(this.state.myage === nextState.myage) 
+&#125;
+</code></pre>
+<h2 id="componentWillUpdate"><a href="#componentWillUpdate" class="headerlink" title="componentWillUpdate"></a>componentWillUpdate</h2><p>更新前记录DOM 状态, 可能会做一些处理，与componentDidUpdate相隔时间如果过长，会导致状态不太信</p>
+<pre><code class="jsx">import React, &#123; Component &#125; from &#39;react&#39;
+
+export default class App extends Component &#123;
+  state= &#123;
+    myname:&#39;retr0&#39;
+  &#125;
+  UNSAFE_componentWillUpdate () &#123;
+    console.log(&#39;componentWillUpdate&#39;);
+  &#125;
+  render() &#123;
+    return (
+      &lt;div&gt;
+        &#123;this.state.myname&#125;
+        &lt;button onClick=&#123;()=&gt;&#123;
+          this.setState(&#123;
+            myname:&#39;xiaoming&#39;
+          &#125;)
+        &#125;&#125;&gt;Click&lt;/button&gt;
+      &lt;/div&gt;
+    )
+  &#125;
+&#125;
+</code></pre>
+<h2 id="componentDidUpdate"><a href="#componentDidUpdate" class="headerlink" title="componentDidUpdate"></a>componentDidUpdate</h2><pre><code class="jsx">import React, &#123; Component &#125; from &#39;react&#39;
+
+export default class App extends Component &#123;
+  state= &#123;
+    myname:&#39;retr0&#39;
+  &#125;
+  componentDidUpdate () &#123;
+    console.log(&#39;componentDidUpdate&#39;);
+  &#125;
+  render() &#123;
+    return (
+      &lt;div&gt;
+        &#123;this.state.myname&#125;
+        &lt;button onClick=&#123;()=&gt;&#123;
+          this.setState(&#123;
+            myname:&#39;xiaoming&#39;
+          &#125;)
+        &#125;&#125;&gt;Click&lt;/button&gt;
+      &lt;/div&gt;
+    )
+  &#125;
+&#125;
+</code></pre>
+<p><strong>销毁阶段</strong></p>
+<h2 id="componentWillUnMount"><a href="#componentWillUnMount" class="headerlink" title="componentWillUnMount"></a>componentWillUnMount</h2><p>用于清除计时器，window.scroll=null等操作</p>
+<pre><code class="jsx">import React, &#123; Component &#125; from &#39;react&#39;
+class Navar extends Component &#123;
+  render () &#123;
+    return (
+      &lt;div style=&#123;&#123;background:'#f99'&#125;&#125;&gt;
+         navbar-&lt;button onClick=&#123;this.handleClick&#125;&gt;Click&lt;/button&gt;
+      &lt;/div&gt;
+    )
+  &#125;
+  handleClick = ()=&gt;&#123;
+    this.props.onEvent();
+  &#125;
+&#125;
+class Slidebar extends Component &#123;
+  render () &#123;
+    return (
+      &lt;div style=&#123;&#123;background:'#99f'&#125;&#125;&gt;
+        slidebar
+        &lt;ul&gt;
+          &lt;li&gt;11111&lt;/li&gt;
+          &lt;li&gt;22222&lt;/li&gt;
+          &lt;li&gt;33333&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    )
+  &#125;
+  //销毁声明周期
+  componentWillUnmount () &#123;
+    console.log(&#39;componentWillUnmount&#39;);
+  &#125;
+&#125;
+export default class 子传父 extends Component &#123;
+  state = &#123;
+    isShow:true
+  &#125;
+  render() &#123;
+    return (
+      &lt;div&gt;
+        App
+        &lt;Navar onEvent=&#123;()=&gt;&#123;
+          this.setState(&#123;
+            isShow : !this.state.isShow
+          &#125;)
+        &#125;&#125;/&gt;
+        &#123;this.state.isShow?&lt;Slidebar/&gt;:&#39;&#39;&#125;
+      &lt;/div&gt;
+    )
+  &#125;
+&#125;
+</code></pre>
+<p><strong>新增</strong></p>
+<h2 id="static-getDerivedStateFromProps"><a href="#static-getDerivedStateFromProps" class="headerlink" title="static getDerivedStateFromProps"></a>static getDerivedStateFromProps</h2><p><code>getDerivedStateFromProps</code> 是一个静态方法, 是一个和组件自身”不相关”的角色. 在这个静态方法中, 除了两个默认的位置参数 nextProps 和 currentState 以外, 你无法访问任何组件上的数据。第一次的初始化组件以及后续的更新过程中(包括自身状态更新以及父传子) ，返回一个对象作为新的state，返回null则说明不需要在这里更新state</p>
+<h3 id="会被频繁地触发"><a href="#会被频繁地触发" class="headerlink" title="会被频繁地触发"></a>会被频繁地触发</h3><p>无论是组件调用了 setState(), 接收的 props 发生了变化, 或是父组件的更新都会导致子组件上的 <code>getDerivedStateFromProps</code>被触发.</p>
+<h3 id="使用的时候必须非常小心"><a href="#使用的时候必须非常小心" class="headerlink" title="使用的时候必须非常小心"></a>使用的时候必须非常小心</h3><p>由于 <code>getDerivedStateFromProps</code> 会在 setState() 后被调用, 并且它的返回值会被用于更新数据. 这意味着你会在 setState() 之后触发 <code>getDerivedStateFromProps</code>, 然后可能意外地再次 “setState()”.</p>
+<p><code>getDerivedStateFromProps(nextProps)</code> 函数中的第一个位置参数未必是 “新” 的 props. 在组件内调用了 setState() 时, <code>getDerivedStateFromProps</code> 会被调用. 但是此时的组件其实并没有获得 “新” 的 props, 是的, 这个 nextProps 的值和原来的 props 是一样的.</p>
+<p>这就导致了我们在使用 <code>getDerivedStateFromProps</code> 时, 必须添加很多逻辑判断语句来处理 props 上的更新和 state 上的更新, 避免意外地返回了一个 Updater 再次更新数据, 导致数据异常.</p>
+<pre><code class="jsx">import React, &#123; Component &#125; from &#39;react&#39;
+
+class Child extends Component &#123;
+  state=&#123;
+    ajax:&#39;&#39;
+  &#125;
+  // UNSAFE_componentWillReceiveProps () &#123;
+  //   console.log(&#39;componentWillReceiveProps&#39;);
+  // &#125;
+  componentDidUpdate () &#123;
+    console.log(this.state.ajax);
+  &#125;
+  static getDerivedStateFromProps (nextProps,currentState)&#123;
+    return &#123;
+      ajax:nextProps.ajax
+    &#125;
+  &#125;
+  render () &#123;
+    return (
+      &lt;div&gt;
+        child - &#123;this.props.ajax&#125;
+      &lt;/div&gt;
+    )
+  &#125;
+&#125;
+
+export default class App extends Component &#123;
+  state= &#123;
+    ajax:9000
+  &#125;
+  render() &#123;
+    return (
+      &lt;div&gt;
+        &lt;Child ajax=&#123;this.state.ajax&#125;/&gt;
+        &lt;button onClick=&#123;()=&gt;&#123;
+          this.setState(&#123;
+            ajax:1000
+          &#125;)
+        &#125;&#125;&gt;Click&lt;/button&gt;
+      &lt;/div&gt;
+    )
+  &#125;
+&#125;
+</code></pre>
+<h3 id="更优雅的做法"><a href="#更优雅的做法" class="headerlink" title="更优雅的做法"></a>更优雅的做法</h3><p>React 官方博客中提供了以下几种方案:</p>
+<ol>
+<li>让表单控件变成完全受控组件, 不论是 onChange 处理函数还是 value 都由父组件控制, 这样用户无需再考虑这个组件 props 的变化和 state 的更新.</li>
+</ol>
+<pre><code class="jsx">function EmailInput(props) &#123;
+  return &lt;input onChange=&#123;props.onChange&#125; value=&#123;props.email&#125; /&gt;;
+&#125;
+</code></pre>
+<ol start="2">
+<li>让表单控件变成完全不受控组件, 但是具有 key 属性.<br> 仍然用自身的数据来控制 value. 但是接收 props 中的某个字段作为 key 属性的值, 以此响应 props 的更新: 当 key 的值变化时 React 会替换 (reset)组件, 从而重新生成初始化数据.</li>
+</ol>
+<blockquote>
+<p>When a key changes, React will create a new component instance rather than update the current one.</p>
+</blockquote>
+<p>示例代码:</p>
+<pre><code class="jsx">//组件内的代码
+class EmailInput extends Component &#123;
+  state = &#123; email: this.props.defaultEmail &#125;;
+
+  handleChange = event =&gt; &#123;
+    this.setState(&#123; email: event.target.value &#125;);
+  &#125;;
+
+  render() &#123;
+    return &lt;input onChange=&#123;this.handleChange&#125; value=&#123;this.state.email&#125; /&gt;;
+  &#125;
+&#125;
+</code></pre>
+<pre><code class="kotlin">// 在父组件中接收 props 中的数据作为 key
+&lt;EmailInput
+  defaultEmail=&#123;this.props.user.email&#125;
+  key=&#123;this.props.user.id&#125;
+/&gt;
+</code></pre>
+<ul>
+<li>其他方法请参考 <a target="_blank" rel="noopener" href="https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#alternative-1-reset-uncontrolled-component-with-an-id-prop">这里</a></li>
+</ul>
+<h2 id="getSnapshotBeforeUpdate"><a href="#getSnapshotBeforeUpdate" class="headerlink" title="getSnapshotBeforeUpdate"></a>getSnapshotBeforeUpdate</h2><p>取代了 componetWillUpdate ,触发时间为update发生的时候，在<code>render之后,dom渲染之前</code>返回一个值，作为componentDidUpdate的第三个参数。</p>
+<pre><code class="jsx">import React, &#123; Component &#125; from &#39;react&#39;
+
+export default class App extends Component &#123;
+  state = &#123;
+    mytext :&#39;retr0&#39;,
+  &#125;
+  // componentWillUpdate () &#123;
+  //   console.log(this.state.mytext);
+  // &#125;
+  getSnapshotBeforeUpdate () &#123;
+    console.log(this.state.mytext,&#39;获取滚动条的位置&#39;);
+    return &#123;
+      y:100
+    &#125;
+  &#125;
+  componentDidUpdate(prevProps, prevState,data) &#123;
+    console.log(prevProps,prevState,data);
+  &#125;
+  
+  render() &#123;
+    console.log(&#39;render&#39;);
+    return (
+      &lt;div&gt;
+        &#123;this.state.mytext&#125;
+        &lt;button onClick=&#123;()=&gt;&#123;
+          this.setState(&#123;
+            mytext:&#39;xiaoming&#39;
+          &#125;)
+        &#125;&#125;&gt;Click&lt;/button&gt;
+      &lt;/div&gt;
+    )
+  &#125;
+&#125;
+</code></pre>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/08/25/09%20pureComponent/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          React-pureComponent
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/08/25/07%20context/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React-Context 提供了一个无需为每层组件手动添加 props，就能在组件树间进行数据传递的方法。</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

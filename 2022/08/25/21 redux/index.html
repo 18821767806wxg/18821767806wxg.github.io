@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>React- Redux最主要是用作应用状态的管理 | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ReduxRedux最主要是用作应用状态的管理。简言之，Redux用一个单独的常量状态树（state对象）保存这一整个应用的状态，这个对象不能直接被改变。当一些数据变化了，一个新的对象就会被创建（使用actions和reducers），这样就可以进行数据追踪，实现时光旅行。 redux介绍及设计和使用的三大原则 state以单一对象存储在store对象中 state只读（每次都返回一个新对象） 使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React- Redux最主要是用作应用状态的管理">
+<meta property="og:url" content="https://18821767806wxg.github.io/2022/08/25/21%20redux/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="ReduxRedux最主要是用作应用状态的管理。简言之，Redux用一个单独的常量状态树（state对象）保存这一整个应用的状态，这个对象不能直接被改变。当一些数据变化了，一个新的对象就会被创建（使用actions和reducers），这样就可以进行数据追踪，实现时光旅行。 redux介绍及设计和使用的三大原则 state以单一对象存储在store对象中 state只读（每次都返回一个新对象） 使">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2547292-cae4b69ca467d0f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/638/format/webp">
+<meta property="article:published_time" content="2022-08-25T03:11:28.000Z">
+<meta property="article:modified_time" content="2022-08-25T03:11:28.000Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2547292-cae4b69ca467d0f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/638/format/webp">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=475479888&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/10/">React博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">相识就是一种缘分欢迎进入我的博客，主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-21 redux" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/08/25/21%20redux/" class="article-date">
+  	<time datetime="2022-08-25T03:11:28.000Z" itemprop="datePublished">2022-08-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React- Redux最主要是用作应用状态的管理
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><p>Redux最主要是用作应用状态的管理。简言之，Redux用一个单独的常量状态树（state对象）保存这一整个应用的状态，这个对象不能直接被改变。当一些数据变化了，一个新的对象就会被创建（使用actions和reducers），这样就可以进行数据追踪，实现时光旅行。</p>
+<h2 id="redux介绍及设计和使用的三大原则"><a href="#redux介绍及设计和使用的三大原则" class="headerlink" title="redux介绍及设计和使用的三大原则"></a>redux介绍及设计和使用的三大原则</h2><ul>
+<li>state以单一对象存储在store对象中</li>
+<li>state只读（每次都返回一个新对象）</li>
+<li>使用纯函数reducer执行state更新</li>
+</ul>
+<h2 id="redux工作流"><a href="#redux工作流" class="headerlink" title="redux工作流"></a>redux工作流</h2><p><img src="https://upload-images.jianshu.io/upload_images/2547292-cae4b69ca467d0f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/638/format/webp" alt="img"></p>
+<p>我个人粗浅的理解是：<br> Store的角色是整个应用的数据存储中心，集中大部分页面需要的状态数据；<br> ActionCreators ,view 层与data层的介质；<br> Reduce ，接收action并更新Store。<br> 所以流程是 用户通过界面组件 触发ActionCreator，携带Store中的旧State与Action 流向Reducer,Reducer返回新的state，并更新界面。</p>
+<h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><p>首先，让我们来给 action 下个定义。</p>
+<p><strong>Action</strong> 是把数据从应用（译者注：这里之所以不叫 view 是因为这些数据有可能是服务器响应，用户输入或其它非 view 的数据 ）传到 store 的有效载荷。它是 store 数据的<strong>唯一</strong>来源。一般来说你会通过 <a target="_blank" rel="noopener" href="https://www.redux.org.cn/docs/api/Store.html#dispatch"><code>store.dispatch()</code></a> 将 action 传到 store。</p>
+<p>添加新 todo 任务的 action 是这样的：</p>
+<pre><code class="js">const ADD_TODO = &#39;ADD_TODO&#39;
+&#123;
+  type: ADD_TODO,
+  text: &#39;Build my first Redux app&#39;
+&#125;
+</code></pre>
+<p>Action 本质上是 JavaScript 普通对象。我们约定，action 内必须使用一个字符串类型的 <code>type</code> 字段来表示将要执行的动作。多数情况下，<code>type</code> 会被定义成字符串常量。当应用规模越来越大时，建议使用单独的模块或文件来存放 action。</p>
+<pre><code class="js">import &#123; ADD_TODO, REMOVE_TODO &#125; from &#39;../actionTypes&#39;
+</code></pre>
+<blockquote>
+<h5 id="样板文件使用提醒"><a href="#样板文件使用提醒" class="headerlink" title="样板文件使用提醒"></a>样板文件使用提醒</h5><p>使用单独的模块或文件来定义 action type 常量并不是必须的，甚至根本不需要定义。对于小应用来说，使用字符串做 action type 更方便些。不过，在大型应用中把它们显式地定义成常量还是利大于弊的。参照 <a target="_blank" rel="noopener" href="https://www.redux.org.cn/docs/recipes/ReducingBoilerplate.html">减少样板代码</a> 获取更多保持代码简洁的实践经验。</p>
+</blockquote>
+<p>除了 <code>type</code> 字段外，action 对象的结构完全由你自己决定。参照 <a target="_blank" rel="noopener" href="https://github.com/acdlite/flux-standard-action">Flux 标准 Action</a> 获取关于如何构造 action 的建议。</p>
+<p>这时，我们还需要再添加一个 action index 来表示用户完成任务的动作序列号。因为数据是存放在数组中的，所以我们通过下标 <code>index</code> 来引用特定的任务。而实际项目中一般会在新建数据的时候生成唯一的 ID 作为数据的引用标识。</p>
+<pre><code class="js">&#123;
+  type: TOGGLE_TODO,
+  index: 5
+&#125;
+</code></pre>
+<p><strong>我们应该尽量减少在 action 中传递的数据</strong>。比如上面的例子，传递 <code>index</code> 就比把整个任务对象传过去要好。</p>
+<p>最后，再添加一个 action type 来表示当前的任务展示选项。</p>
+<pre><code class="js">&#123;
+  type: SET_VISIBILITY_FILTER,
+  filter: SHOW_COMPLETED
+&#125;
+</code></pre>
+<p>Action 创建函数</p>
+<p><strong>Action 创建函数</strong> 就是生成 action 的方法。“action” 和 “action 创建函数” 这两个概念很容易混在一起，使用时最好注意区分。</p>
+<p>在 Redux 中的 action 创建函数只是简单的返回一个 action:</p>
+<pre><code class="js">function addTodo(text) &#123;
+  return &#123;
+    type: ADD_TODO,
+    text
+  &#125;
+&#125;
+</code></pre>
+<p>这样做将使 action 创建函数更容易被移植和测试。</p>
+<p>在 <a target="_blank" rel="noopener" href="http://facebook.github.io/flux">传统的 Flux</a> 实现中，当调用 action 创建函数时，一般会触发一个 dispatch，像这样：</p>
+<pre><code class="js">function addTodoWithDispatch(text) &#123;
+  const action = &#123;
+    type: ADD_TODO,
+    text
+  &#125;
+  dispatch(action)
+&#125;
+</code></pre>
+<p>不同的是，Redux 中只需把 action 创建函数的结果传给 <code>dispatch()</code> 方法即可发起一次 dispatch 过程。</p>
+<pre><code class="js">dispatch(addTodo(text))
+dispatch(completeTodo(index))
+</code></pre>
+<p>或者创建一个 <strong>被绑定的 action 创建函数</strong> 来自动 dispatch：</p>
+<pre><code class="js">const boundAddTodo = text =&gt; dispatch(addTodo(text))
+const boundCompleteTodo = index =&gt; dispatch(completeTodo(index))
+</code></pre>
+<p>然后直接调用它们：</p>
+<pre><code>boundAddTodo(text);
+boundCompleteTodo(index);
+</code></pre>
+<p>store 里能直接通过 <a target="_blank" rel="noopener" href="https://www.redux.org.cn/docs/api/Store.html#dispatch"><code>store.dispatch()</code></a> 调用 <code>dispatch()</code> 方法，但是多数情况下你会使用 <a target="_blank" rel="noopener" href="http://github.com/gaearon/react-redux">react-redux</a> 提供的 <code>connect()</code> 帮助器来调用。<a target="_blank" rel="noopener" href="https://www.redux.org.cn/docs/api/bindActionCreators.html"><code>bindActionCreators()</code></a> 可以自动把多个 action 创建函数 绑定到 <code>dispatch()</code> 方法上。</p>
+<p>Action 创建函数也可以是异步非纯函数。你可以通过阅读 <a target="_blank" rel="noopener" href="https://www.redux.org.cn/docs/advanced/">高级教程</a> 中的 <a target="_blank" rel="noopener" href="https://www.redux.org.cn/docs/advanced/AsyncActions.html">异步 action</a>章节，学习如何处理 AJAX 响应和如何把 action 创建函数组合进异步控制流。因为基础教程中包含了阅读高级教程和异步 action 章节所需要的一些重要基础概念, 所以请在移步异步 action 之前, 务必先完成基础教程。</p>
+<p>源码</p>
+<h3 id="actions-js"><a href="#actions-js" class="headerlink" title="actions.js"></a><code>actions.js</code></h3><pre><code class="js">/*
+ * action 类型
+ */
+
+export const ADD_TODO = &#39;ADD_TODO&#39;;
+export const TOGGLE_TODO = &#39;TOGGLE_TODO&#39;
+export const SET_VISIBILITY_FILTER = &#39;SET_VISIBILITY_FILTER&#39;
+
+/*
+ * 其它的常量
+ */
+
+export const VisibilityFilters = &#123;
+  SHOW_ALL: &#39;SHOW_ALL&#39;,
+  SHOW_COMPLETED: &#39;SHOW_COMPLETED&#39;,
+  SHOW_ACTIVE: &#39;SHOW_ACTIVE&#39;
+&#125;
+
+/*
+ * action 创建函数
+ */
+
+export function addTodo(text) &#123;
+  return &#123; type: ADD_TODO, text &#125;
+&#125;
+
+export function toggleTodo(index) &#123;
+  return &#123; type: TOGGLE_TODO, index &#125;
+&#125;
+
+export function setVisibilityFilter(filter) &#123;
+  return &#123; type: SET_VISIBILITY_FILTER, filter &#125;
+&#125;
+</code></pre>
+<h2 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h2><p><strong>Reducers</strong> 指定了应用状态的变化如何响应 <a target="_blank" rel="noopener" href="https://www.redux.org.cn/docs/basics/Actions.html">actions</a> 并发送到 store 的，记住 actions 只是描述了<em>有事情发生了</em>这一事实，并没有描述应用如何更新 state。</p>
+<h3 id="设计-State-结构"><a href="#设计-State-结构" class="headerlink" title="设计 State 结构"></a>设计 State 结构</h3><p>在 Redux 应用中，所有的 state 都被保存在一个单一对象中。建议在写代码前先想一下这个对象的结构。如何才能以最简的形式把应用的 state 用对象描述出来？</p>
+<p>以 todo 应用为例，需要保存两种不同的数据：</p>
+<ul>
+<li>当前选中的任务过滤条件；</li>
+<li>完整的任务列表。</li>
+</ul>
+<p>通常，这个 state 树还需要存放其它一些数据，以及一些 UI 相关的 state。这样做没问题，但尽量把这些数据与 UI 相关的 state 分开。</p>
+<pre><code class="js">&#123;
+  visibilityFilter: &#39;SHOW_ALL&#39;,
+  todos: [
+    &#123;
+      text: &#39;Consider using Redux&#39;,
+      completed: true,
+    &#125;,
+    &#123;
+      text: &#39;Keep all state in a single tree&#39;,
+      completed: false
+    &#125;
+  ]
+&#125;
+</code></pre>
+<blockquote>
+<h5 id="处理-Reducer-关系时的注意事项"><a href="#处理-Reducer-关系时的注意事项" class="headerlink" title="处理 Reducer 关系时的注意事项"></a>处理 Reducer 关系时的注意事项</h5><p>开发复杂的应用时，不可避免会有一些数据相互引用。建议你尽可能地把 state 范式化，不存在嵌套。把所有数据放到一个对象里，每个数据以 ID 为主键，不同实体或列表间通过 ID 相互引用数据。把应用的 state 想像成数据库。这种方法在 <a target="_blank" rel="noopener" href="https://github.com/gaearon/normalizr">normalizr</a> 文档里有详细阐述。例如，实际开发中，在 state 里同时存放 <code>todosById: &#123; id -&gt; todo &#125;</code> 和 <code>todos: array</code> 是比较好的方式，本文中为了保持示例简单没有这样处理。</p>
+</blockquote>
+<h3 id="Action-处理"><a href="#Action-处理" class="headerlink" title="Action 处理"></a>Action 处理</h3><p>现在我们已经确定了 state 对象的结构，就可以开始开发 reducer。reducer 就是一个纯函数，接收旧的 state 和 action，返回新的 state。</p>
+<pre><code class="js">(previousState, action) =&gt; newState
+</code></pre>
+<p>之所以将这样的函数称之为reducer，是因为这种函数与被传入 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce"><code>Array.prototype.reduce(reducer, ?initialValue)</code></a> 里的回调函数属于相同的类型。保持 reducer 纯净非常重要。<strong>永远不要</strong>在 reducer 里做这些操作：</p>
+<ul>
+<li>修改传入参数；</li>
+<li>执行有副作用的操作，如 API 请求和路由跳转；</li>
+<li>调用非纯函数，如 <code>Date.now()</code> 或 <code>Math.random()</code>。</li>
+</ul>
+<p>在<a target="_blank" rel="noopener" href="https://www.redux.org.cn/docs/advanced/">高级篇</a>里会介绍如何执行有副作用的操作。现在只需要谨记 reducer 一定要保持纯净。<strong>只要传入参数相同，返回计算得到的下一个 state 就一定相同。没有特殊情况、没有副作用，没有 API 请求、没有变量修改，单纯执行计算。</strong></p>
+<p>明白了这些之后，就可以开始编写 reducer，并让它来处理之前定义过的 <a target="_blank" rel="noopener" href="https://www.redux.org.cn/docs/basics/Actions.html">action</a>。</p>
+<p>我们将以指定 state 的初始状态作为开始。Redux 首次执行时，state 为 <code>undefined</code>，此时我们可借机设置并返回应用的初始 state。</p>
+<pre><code class="js">import &#123; VisibilityFilters &#125; from &#39;./actions&#39;
+
+const initialState = &#123;
+  visibilityFilter: VisibilityFilters.SHOW_ALL,
+  todos: []
+&#125;;
+
+function todoApp(state, action) &#123;
+  if (typeof state === &#39;undefined&#39;) &#123;
+    return initialState
+  &#125;
+
+  // 这里暂不处理任何 action，
+  // 仅返回传入的 state。
+  return state
+&#125;
+</code></pre>
+<p>这里一个技巧是使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/default_parameters">ES6 参数默认值语法</a> 来精简代码。</p>
+<pre><code class="js">function todoApp(state = initialState, action) &#123;
+  // 这里暂不处理任何 action，
+  // 仅返回传入的 state。
+  return state
+&#125;
+</code></pre>
+<p>现在可以处理 <code>SET_VISIBILITY_FILTER</code>。需要做的只是改变 state 中的 <code>visibilityFilter</code>。</p>
+<pre><code class="js">function todoApp(state = initialState, action) &#123;
+  switch (action.type) &#123;
+    case SET_VISIBILITY_FILTER:
+      return Object.assign(&#123;&#125;, state, &#123;
+        visibilityFilter: action.filter
+      &#125;)
+    default:
+      return state
+  &#125;
+&#125;
+</code></pre>
+<p>注意:</p>
+<ol>
+<li><strong>不要修改 <code>state</code>。</strong> 使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a> 新建了一个副本。不能这样使用 <code>Object.assign(state, &#123; visibilityFilter: action.filter &#125;)</code>，因为它会改变第一个参数的值。你<strong>必须</strong>把第一个参数设置为空对象。你也可以开启对ES7提案<a target="_blank" rel="noopener" href="https://www.redux.org.cn/docs/recipes/UsingObjectSpreadOperator.html">对象展开运算符</a>的支持, 从而使用 <code>&#123; ...state, ...newState &#125;</code> 达到相同的目的。</li>
+<li><strong>在 <code>default</code> 情况下返回旧的 <code>state</code>。</strong>遇到未知的 action 时，一定要返回旧的 <code>state</code>。</li>
+</ol>
+<blockquote>
+<h5 id="Object-assign-须知"><a href="#Object-assign-须知" class="headerlink" title="Object.assign 须知"></a><code>Object.assign</code> 须知</h5><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a> 是 ES6 特性，但多数浏览器并不支持。你要么使用 polyfill，<a target="_blank" rel="noopener" href="https://github.com/babel-plugins/babel-plugin-object-assign">Babel 插件</a>，或者使用其它库如 <a target="_blank" rel="noopener" href="https://lodash.com/docs#assign"><code>_.assign()</code></a> 提供的帮助方法。</p>
+<h5 id="switch-和样板代码须知"><a href="#switch-和样板代码须知" class="headerlink" title="switch 和样板代码须知"></a><code>switch</code> 和样板代码须知</h5><p><code>switch</code> 语句并不是严格意义上的样板代码。Flux 中真实的样板代码是概念性的：更新必须要发送、Store 必须要注册到 Dispatcher、Store 必须是对象（开发同构应用时变得非常复杂）。为了解决这些问题，Redux 放弃了 event emitters（事件发送器），转而使用纯 reducer。</p>
+<p>很不幸到现在为止，还有很多人存在一个误区：根据文档中是否使用 <code>switch</code> 来决定是否使用它。如果你不喜欢 <code>switch</code>，完全可以自定义一个 <code>createReducer</code> 函数来接收一个事件处理函数列表，参照<a target="_blank" rel="noopener" href="https://www.redux.org.cn/docs/recipes/ReducingBoilerplate.html#reducers">“减少样板代码”</a>。</p>
+</blockquote>
+<h3 id="处理多个-action"><a href="#处理多个-action" class="headerlink" title="处理多个 action"></a>处理多个 action</h3><p>还有两个 action 需要处理。就像我们处理 <code>SET_VISIBILITY_FILTER</code> 一样，我们引入 <code>ADD_TODO</code> 和 <code>TOGGLE_TODO</code> 两个actions 并且扩展我们的 reducer 去处理 <code>ADD_TODO</code>.</p>
+<pre><code class="js">import &#123;
+  ADD_TODO,
+  TOGGLE_TODO,
+  SET_VISIBILITY_FILTER,
+  VisibilityFilters
+&#125; from &#39;./actions&#39;
+
+...
+
+function todoApp(state = initialState, action) &#123;
+  switch (action.type) &#123;
+    case SET_VISIBILITY_FILTER:
+      return Object.assign(&#123;&#125;, state, &#123;
+        visibilityFilter: action.filter
+      &#125;)
+    case ADD_TODO:
+      return Object.assign(&#123;&#125;, state, &#123;
+        todos: [
+          ...state.todos,
+          &#123;
+            text: action.text,
+            completed: false
+          &#125;
+        ]
+      &#125;)
+    default:
+      return state
+  &#125;
+&#125;
+</code></pre>
+<p>如上，不直接修改 <code>state</code> 中的字段，而是返回新对象。新的 <code>todos</code> 对象就相当于旧的 <code>todos</code> 在末尾加上新建的 todo。而这个新的 todo 又是基于 action 中的数据创建的。</p>
+<p>最后，<code>TOGGLE_TODO</code> 的实现也很好理解：</p>
+<pre><code class="js">case TOGGLE_TODO:
+  return Object.assign(&#123;&#125;, state, &#123;
+    todos: state.todos.map((todo, index) =&gt; &#123;
+      if (index === action.index) &#123;
+        return Object.assign(&#123;&#125;, todo, &#123;
+          completed: !todo.completed
+        &#125;)
+      &#125;
+      return todo
+    &#125;)
+  &#125;)
+</code></pre>
+<p>我们需要修改数组中指定的数据项而又不希望导致<strong>突变</strong>, 因此我们的做法是在创建一个新的数组后, 将那些无需修改的项原封不动移入, 接着对需修改的项用新生成的对象替换。(译者注：Javascript中的对象存储时均是由值和指向值的引用两个部分构成。此处<strong>突变</strong>指直接修改引用所指向的值, 而引用本身保持不变。) 如果经常需要这类的操作，可以选择使用帮助类 <a target="_blank" rel="noopener" href="https://facebook.github.io/react/docs/update.html">React-addons-update</a>，<a target="_blank" rel="noopener" href="https://github.com/substantial/updeep">updeep</a>，或者使用原生支持深度更新的库 <a target="_blank" rel="noopener" href="http://facebook.github.io/immutable-js/">Immutable</a>。最后，时刻谨记永远不要在克隆 <code>state</code> 前修改它。</p>
+<h3 id="拆分-Reducer"><a href="#拆分-Reducer" class="headerlink" title="拆分 Reducer"></a>拆分 Reducer</h3><p>目前的代码看起来有些冗长：</p>
+<pre><code class="js">function todoApp(state = initialState, action) &#123;
+  switch (action.type) &#123;
+    case SET_VISIBILITY_FILTER:
+      return Object.assign(&#123;&#125;, state, &#123;
+        visibilityFilter: action.filter
+      &#125;)
+    case ADD_TODO:
+      return Object.assign(&#123;&#125;, state, &#123;
+        todos: [
+          ...state.todos,
+          &#123;
+            text: action.text,
+            completed: false
+          &#125;
+        ]
+      &#125;)
+    case TOGGLE_TODO:
+      return Object.assign(&#123;&#125;, state, &#123;
+        todos: state.todos.map((todo, index) =&gt; &#123;
+          if (index === action.index) &#123;
+            return Object.assign(&#123;&#125;, todo, &#123;
+              completed: !todo.completed
+            &#125;)
+          &#125;
+          return todo
+        &#125;)
+      &#125;)
+    default:
+      return state
+  &#125;
+&#125;
+</code></pre>
+<p>上面代码能否变得更通俗易懂？这里的 <code>todos</code> 和 <code>visibilityFilter</code> 的更新看起来是相互独立的。有时 state 中的字段是相互依赖的，需要认真考虑，但在这个案例中我们可以把 <code>todos</code> 更新的业务逻辑拆分到一个单独的函数里：</p>
+<pre><code class="js">function todos(state = [], action) &#123;
+  switch (action.type) &#123;
+    case ADD_TODO:
+      return [
+        ...state,
+        &#123;
+          text: action.text,
+          completed: false
+        &#125;
+      ]
+    case TOGGLE_TODO:
+      return state.map((todo, index) =&gt; &#123;
+        if (index === action.index) &#123;
+          return Object.assign(&#123;&#125;, todo, &#123;
+            completed: !todo.completed
+          &#125;)
+        &#125;
+        return todo
+      &#125;)
+    default:
+      return state
+  &#125;
+&#125;
+
+function todoApp(state = initialState, action) &#123;
+  switch (action.type) &#123;
+    case SET_VISIBILITY_FILTER:
+      return Object.assign(&#123;&#125;, state, &#123;
+        visibilityFilter: action.filter
+      &#125;)
+    case ADD_TODO:
+      return Object.assign(&#123;&#125;, state, &#123;
+        todos: todos(state.todos, action)
+      &#125;)
+    case TOGGLE_TODO:
+      return Object.assign(&#123;&#125;, state, &#123;
+        todos: todos(state.todos, action)
+      &#125;)
+    default:
+      return state
+  &#125;
+&#125;
+</code></pre>
+<p>注意 <code>todos</code> 依旧接收 <code>state</code>，但它变成了一个数组！现在 <code>todoApp</code> 只把需要更新的一部分 state 传给 <code>todos</code> 函数，<code>todos</code> 函数自己确定如何更新这部分数据。<strong>这就是所谓的 *reducer 合成*，它是开发 Redux 应用最基础的模式。</strong></p>
+<p>下面深入探讨一下如何做 reducer 合成。能否抽出一个 reducer 来专门管理 <code>visibilityFilter</code>？当然可以：</p>
+<p>首先引用, 让我们使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">ES6 对象结构</a> 去声明 <code>SHOW_ALL</code>:</p>
+<pre><code class="js">const &#123; SHOW_ALL &#125; = VisibilityFilters
+</code></pre>
+<p>接下来：</p>
+<pre><code class="js">function visibilityFilter(state = SHOW_ALL, action) &#123;
+  switch (action.type) &#123;
+    case SET_VISIBILITY_FILTER:
+      return action.filter
+    default:
+      return state
+  &#125;
+&#125;
+</code></pre>
+<p>现在我们可以开发一个函数来做为主 reducer，它调用多个子 reducer 分别处理 state 中的一部分数据，然后再把这些数据合成一个大的单一对象。主 reducer 并不需要设置初始化时完整的 state。初始时，如果传入 <code>undefined</code>, 子 reducer 将负责返回它们的默认值。</p>
+<pre><code class="js">function todos(state = [], action) &#123;
+  switch (action.type) &#123;
+    case ADD_TODO:
+      return [
+        ...state,
+        &#123;
+          text: action.text,
+          completed: false
+        &#125;
+      ]
+    case TOGGLE_TODO:
+      return state.map((todo, index) =&gt; &#123;
+        if (index === action.index) &#123;
+          return Object.assign(&#123;&#125;, todo, &#123;
+            completed: !todo.completed
+          &#125;)
+        &#125;
+        return todo
+      &#125;)
+    default:
+      return state
+  &#125;
+&#125;
+
+function visibilityFilter(state = SHOW_ALL, action) &#123;
+  switch (action.type) &#123;
+    case SET_VISIBILITY_FILTER:
+      return action.filter
+    default:
+      return state
+  &#125;
+&#125;
+
+function todoApp(state = &#123;&#125;, action) &#123;
+  return &#123;
+    visibilityFilter: visibilityFilter(state.visibilityFilter, action),
+    todos: todos(state.todos, action)
+  &#125;
+&#125;
+</code></pre>
+<p><strong>注意每个 reducer 只负责管理全局 state 中它负责的一部分。每个 reducer 的 <code>state</code> 参数都不同，分别对应它管理的那部分 state 数据。</strong></p>
+<p>现在看起来好多了！随着应用的膨胀，我们还可以将拆分后的 reducer 放到不同的文件中, 以保持其独立性并用于专门处理不同的数据域。</p>
+<p>最后，Redux 提供了 <a target="_blank" rel="noopener" href="https://www.redux.org.cn/docs/api/combineReducers.html"><code>combineReducers()</code></a> 工具类来做上面 <code>todoApp</code> 做的事情，这样就能消灭一些样板代码了。有了它，可以这样重构 <code>todoApp</code>：</p>
+<pre><code class="js">import &#123; combineReducers &#125; from &#39;redux&#39;
+
+const todoApp = combineReducers(&#123;
+  visibilityFilter,
+  todos
+&#125;)
+
+export default todoApp
+</code></pre>
+<p>注意上面的写法和下面完全等价：</p>
+<pre><code class="js">export default function todoApp(state = &#123;&#125;, action) &#123;
+  return &#123;
+    visibilityFilter: visibilityFilter(state.visibilityFilter, action),
+    todos: todos(state.todos, action)
+  &#125;
+&#125;
+</code></pre>
+<p>你也可以给它们设置不同的 key，或者调用不同的函数。下面两种合成 reducer 方法完全等价：</p>
+<pre><code class="js">const reducer = combineReducers(&#123;
+  a: doSomethingWithA,
+  b: processB,
+  c: c
+&#125;)
+function reducer(state = &#123;&#125;, action) &#123;
+  return &#123;
+    a: doSomethingWithA(state.a, action),
+    b: processB(state.b, action),
+    c: c(state.c, action)
+  &#125;
+&#125;
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://www.redux.org.cn/docs/api/combineReducers.html"><code>combineReducers()</code></a> 所做的只是生成一个函数，这个函数来调用你的一系列 reducer，每个 reducer <strong>根据它们的 key 来筛选出 state 中的一部分数据并处理</strong>，然后这个生成的函数再将所有 reducer 的结果合并成一个大的对象。<a target="_blank" rel="noopener" href="https://github.com/gaearon/redux/issues/428#issuecomment-129223274">没有任何魔法。</a>正如其他 reducers，如果 combineReducers() 中包含的所有 reducers 都没有更改 state，那么也就不会创建一个新的对象。</p>
+<blockquote>
+<h5 id="ES6-用户使用注意"><a href="#ES6-用户使用注意" class="headerlink" title="ES6 用户使用注意"></a>ES6 用户使用注意</h5><p><code>combineReducers</code> 接收一个对象，可以把所有顶级的 reducer 放到一个独立的文件中，通过 <code>export</code> 暴露出每个 reducer 函数，然后使用 <code>import * as reducers</code> 得到一个以它们名字作为 key 的 object：</p>
+<pre><code class="js">import &#123; combineReducers &#125; from &#39;redux&#39;
+import * as reducers from &#39;./reducers&#39;
+
+const todoApp = combineReducers(reducers)
+</code></pre>
+<p>由于 <code>import *</code> 还是比较新的语法，为了避免<a target="_blank" rel="noopener" href="https://github.com/gaearon/redux/issues/428#issuecomment-129223274">困惑</a>，我们不会在本文档中使用它。但在一些社区示例中你可能会遇到它们。</p>
+</blockquote>
+<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><h4 id="reducers-js"><a href="#reducers-js" class="headerlink" title="reducers.js"></a><code>reducers.js</code></h4><pre><code class="js">import &#123; combineReducers &#125; from &#39;redux&#39;
+import &#123;
+  ADD_TODO,
+  TOGGLE_TODO,
+  SET_VISIBILITY_FILTER,
+  VisibilityFilters
+&#125; from &#39;./actions&#39;
+const &#123; SHOW_ALL &#125; = VisibilityFilters
+
+function visibilityFilter(state = SHOW_ALL, action) &#123;
+  switch (action.type) &#123;
+    case SET_VISIBILITY_FILTER:
+      return action.filter
+    default:
+      return state
+  &#125;
+&#125;
+
+function todos(state = [], action) &#123;
+  switch (action.type) &#123;
+    case ADD_TODO:
+      return [
+        ...state,
+        &#123;
+          text: action.text,
+          completed: false
+        &#125;
+      ]
+    case TOGGLE_TODO:
+      return state.map((todo, index) =&gt; &#123;
+        if (index === action.index) &#123;
+          return Object.assign(&#123;&#125;, todo, &#123;
+            completed: !todo.completed
+          &#125;)
+        &#125;
+        return todo
+      &#125;)
+    default:
+      return state
+  &#125;
+&#125;
+
+const todoApp = combineReducers(&#123;
+  visibilityFilter,
+  todos
+&#125;)
+
+export default todoApp
+</code></pre>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/08/25/22%20react%20hooks/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          React- React Hooks
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/08/25/20%20mobx/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React- mobx</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

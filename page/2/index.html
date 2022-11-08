@@ -1,0 +1,2403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将更新html5、css3知识点">
+<meta property="og:type" content="website">
+<meta property="og:title" content="我的博客">
+<meta property="og:url" content="https://18821767806wxg.github.io/page/2/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将更新html5、css3知识点">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=475479888&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/10/">React博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">相识就是一种缘分欢迎进入我的博客，主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-27 Storage的副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/09/15/27%20Storage%E7%9A%84%E5%89%AF%E6%9C%AC/" class="article-date">
+  	<time datetime="2022-09-15T08:29:42.686Z" itemprop="datePublished">2022-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/15/27%20Storage%E7%9A%84%E5%89%AF%E6%9C%AC/">
+        js-storage
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="storage"><a href="#storage" class="headerlink" title="storage"></a>storage</h2><h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><blockquote>
+<p>只读的<code>localStorage</code> 属性允许你访问一个<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document"><code>Document</code></a> 源（origin）的对象 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Storage"><code>Storage</code></a>；存储的数据将保存在浏览器会话中。<code>localStorage</code> 类似 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/sessionStorage"><code>sessionStorage</code></a>，但其区别在于：存储在 <code>localStorage</code> 的数据可以长期保留；而当页面会话结束——也就是说，当页面被关闭时，存储在 <code>sessionStorage</code> 的数据会被清除 。</p>
+<p>应注意，无论数据存储在 <code>localStorage</code> 还是 <code>sessionStorage</code> ，<strong>它们都特定于页面的协议。</strong></p>
+<p>另外，<code>localStorage</code> 中的键值对总是以字符串的形式存储。 (需要注意, 和js对象相比, 键值对总是以字符串的形式存储意味着数值类型会自动转化为字符串类型).</p>
+</blockquote>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><pre><code class="js">myStorage = localStorage;
+</code></pre>
+<h4 id="值"><a href="#值" class="headerlink" title="值"></a>值</h4><p>一个可被用于访问当前源（ origin ）的本地存储空间的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Storage"><code>Storage</code></a> 对象。</p>
+<h4 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h4><ul>
+<li><p><code>SecurityError</code></p>
+<p>请求违反了一个策略声明，或者源（ origin ）不是 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#Definition_of_an_origin">一个有效的 scheme/host/port tuple</a> （例如如果origin使用 <code>file:</code> 或者 <code>data:</code> 形式将可能发生）。比如，用户可以有禁用允许对指定的origin存留数据的浏览器配置。</p>
+</li>
+</ul>
+<p>下面的代码片段访问了当前域名下的本地 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Storage"><code>Storage</code></a> 对象，并通过 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Storage/setItem"><code>Storage.setItem()</code></a> 增加了一个数据项目。</p>
+<h4 id="setItem"><a href="#setItem" class="headerlink" title=".setItem()"></a>.setItem()</h4><pre><code>localStorage.setItem(&#39;myCat&#39;, &#39;Tom&#39;);
+</code></pre>
+<h4 id="getItem"><a href="#getItem" class="headerlink" title=".getItem()"></a>.getItem()</h4><p>该语法用于读取 <code>localStorage</code> 项，如下:</p>
+<pre><code>let cat = localStorage.getItem(&#39;myCat&#39;);
+</code></pre>
+<h4 id="removeItem"><a href="#removeItem" class="headerlink" title=".removeItem()"></a>.removeItem()</h4><p>该语法用于移除 <code>localStorage</code> 项，如下:</p>
+<pre><code>localStorage.removeItem(&#39;myCat&#39;);
+</code></pre>
+<h4 id="clear"><a href="#clear" class="headerlink" title=".clear()"></a>.clear()</h4><p>该语法用于移除所有的 <code>localStorage</code> 项，如下:</p>
+<pre><code>// 移除所有
+localStorage.clear();
+</code></pre>
+<h4 id="localStorage是对象，有自己的属性或值"><a href="#localStorage是对象，有自己的属性或值" class="headerlink" title="localStorage是对象，有自己的属性或值"></a>localStorage是对象，有自己的属性或值</h4><h4 id="增"><a href="#增" class="headerlink" title="增"></a>增</h4><p>localStorage.user = “admin”;</p>
+<h4 id="改"><a href="#改" class="headerlink" title="改"></a>改</h4><p>localStorage.user = “root”;</p>
+<h4 id="查"><a href="#查" class="headerlink" title="查"></a>查</h4><p>console.log(localStorage.user)</p>
+<h4 id="删"><a href="#删" class="headerlink" title="删"></a>删</h4><p>delete localStorage.user</p>
+<h3 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h3><blockquote>
+<p><code>sessionStorage</code> 属性允许你访问一个 session <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Storage"><code>Storage</code></a> 对象。它与 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage"><code>localStorage</code></a> 相似，不同之处在于 localStorage 里面存储的数据没有过期时间设置，而存储在 sessionStorage 里面的数据在页面会话结束时会被清除。页面会话在浏览器打开期间一直保持，并且重新加载或恢复页面仍会保持原来的页面会话。<strong>在新标签或窗口打开一个页面时会复制顶级浏览会话的上下文作为新会话的上下文，</strong>这点和 session cookies 的运行方式不同。</p>
+<p>应该注意，存储在sessionStorage或localStorage中的数据<strong>特定于该页面的协议</strong>。</p>
+</blockquote>
+<h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h4><pre><code class="js">// 保存数据到 sessionStorage
+sessionStorage.setItem(&#39;key&#39;, &#39;value&#39;);
+
+// 从 sessionStorage 获取数据
+let data = sessionStorage.getItem(&#39;key&#39;);
+
+// 从 sessionStorage 删除保存的数据
+sessionStorage.removeItem(&#39;key&#39;);
+
+// 从 sessionStorage 删除所有保存的数据
+sessionStorage.clear();
+</code></pre>
+<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><p>一个 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Storage"><code>Storage</code></a> 对象。</p>
+<h3 id="window-onStorage事件"><a href="#window-onStorage事件" class="headerlink" title="window.onStorage事件"></a>window.onStorage事件</h3><blockquote>
+<p><strong>WindowEventHandlers.onstorage</strong> 属性包含一个在<code>storage</code>事件触发时的事件句柄。 当存储域发生改变时会触发事件。(例如： 有新的项被存储)</p>
+<p>专门用来检测storage的变化</p>
+<p><strong>不能直接使用，只能检测<code>非当前页面</code>的storage的变化</strong>，而且只能检测同一个服务器环境下的页面</p>
+</blockquote>
+<h4 id="event-key"><a href="#event-key" class="headerlink" title="event.key"></a>event.key</h4><blockquote>
+<p>值发生变化的key</p>
+</blockquote>
+<h4 id="event-oldValue"><a href="#event-oldValue" class="headerlink" title="event.oldValue"></a>event.oldValue</h4><blockquote>
+<p>改变前的值</p>
+</blockquote>
+<h4 id="event-newValue"><a href="#event-newValue" class="headerlink" title="event.newValue"></a>event.newValue</h4><blockquote>
+<p>改变后的值</p>
+</blockquote>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><pre><code class="js">window.onstorage = function(e) &#123;
+  console.log( e.key + &#39; 键已经从 &#39; + e.oldValue + &#39; 改变为 &#39; + e.newValue + &#39;.&#39;);
+&#125;;
+</code></pre>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-26 COOKIES的副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/09/15/26%20COOKIES%E7%9A%84%E5%89%AF%E6%9C%AC/" class="article-date">
+  	<time datetime="2022-09-15T08:29:42.678Z" itemprop="datePublished">2022-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/15/26%20COOKIES%E7%9A%84%E5%89%AF%E6%9C%AC/">
+        js-cookie
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><h3 id="计算机通信协议"><a href="#计算机通信协议" class="headerlink" title="计算机通信协议"></a>计算机通信协议</h3><h4 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h4><blockquote>
+<p>ip地址，标记，接入互联网的每台设备的唯一身份</p>
+</blockquote>
+<h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><blockquote>
+<p>数据：面向连接的协议，可靠，三次握手协议</p>
+</blockquote>
+<h4 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h4><blockquote>
+<p>数据：面向数据的协议，不可靠，容易造成数据丢失</p>
+</blockquote>
+<h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h4><blockquote>
+<p>网页，超文本传输协议，html，无状态协议，为了安全，节约，http每次建立连接，传输数据之后，会自动断开</p>
+</blockquote>
+<h4 id="cookie-1"><a href="#cookie-1" class="headerlink" title="cookie"></a>cookie</h4><blockquote>
+<p>会话跟踪技术，帮助http记住状态</p>
+</blockquote>
+<h3 id="cookie的介绍"><a href="#cookie的介绍" class="headerlink" title="cookie的介绍"></a>cookie的介绍</h3><blockquote>
+<p>用来记录客户端到服务器的一次连接过程中产生的各种状态</p>
+<p>前后端数据交互的格式：字符</p>
+</blockquote>
+<h3 id="cookie记录状态"><a href="#cookie记录状态" class="headerlink" title="cookie记录状态"></a>cookie记录状态</h3><ul>
+<li>怎么给服务器？跟随http协议，发往服务器</li>
+<li>记录在哪？本地浏览器的缓存中，在硬盘上，不是内存</li>
+<li>以什么形式记录？字符</li>
+<li>大小限制：4K左右，1K=1024字节，1个中文，找2个字节</li>
+<li>条数限制：50条左右</li>
+<li>时间限制：默认是会话级，关闭浏览器自动删除；随意设置，没有永久，必须指定时间</li>
+<li>使用限制：不允许跨域，不允许跨浏览器，不允许跨路径（父文件夹不能拿子文件夹中的cookie）</li>
+</ul>
+<h3 id="cookie的属性"><a href="#cookie的属性" class="headerlink" title="cookie的属性"></a>cookie的属性</h3><h4 id="path"><a href="#path" class="headerlink" title="path"></a>path</h4><p>​    path表示cookie所在的目录，asp.net默认为/，就是根目录。</p>
+<p>​    在同一个服务器上有目录如下：/test/,/test/cd/,/test/dd/，现设一个cookie1的path为/test/，cookie2的path为/test/cd/，那么test下的所有页面都可以访问到cookie1，而/test/和/test/dd/的子页面不能访问cookie2。这是因为cookie能让其path路径下的页面访问。</p>
+<h4 id="expires"><a href="#expires" class="headerlink" title="expires"></a>expires</h4><p>​    指定了cookie的生存期，默认情况下cookie是暂时存在的，他们存储的值只在浏览器会话期间存在，当用户退出浏览器后这些值也会丢失，如果想让cookie存在一段时间，就要为expires属性设置为未来的一个用毫秒数表示的过期日期或时间点，expires默认为设置的expires的当前时间。现在已经被max-age属性所取代，max-age用秒来设置cookie的生存期。</p>
+<p>​    如果max-age属性为正数，则表示该cookie会在max-age秒之后自动失效。浏览器会将max-age为正数的cookie持久化，即写到对应的cookie文件中。无论客户关闭了浏览器还是电脑，只要还在max-age秒之前，登录网站时该cookie仍然有效。</p>
+<p>​    如果max-age为负数，则表示该cookie仅在本浏览器窗口以及本窗口打开的子窗口内有效，关闭窗口后该cookie即失效。max-age为负数的Cookie，为临时性cookie，不会被持久化，不会被写到cookie文件中。cookie信息保存在浏览器内存中，因此关闭浏览器该cookie就消失了。cookie默认的max-age值为-1。</p>
+<p>​    如果max-age为0，则表示删除该cookie。cookie机制没有提供删除cookie的方法，因此通过设置该cookie即时失效实现删除cookie的效果。失效的Cookie会被浏览器从cookie文件或者内存中删除。</p>
+<p>如果不设置expires或者max-age这个cookie默认是Session的，也就是关闭浏览器该cookie就消失了。</p>
+<p>​    这里要说明一下：Session的cookie在ie6下，如果用户实在网页上跳转打开页面或新开窗口（包括target=”_blank”，鼠标右键新开窗口），都是在同一个Session内。如果用户新开浏览器程序或者说是进程再打开当前的页面就不是同一个Session。其他浏览器只要你Session存在，还是同一个Session，cookie还能共享。在前段时间的项目中ie6下吃了很大一个亏。</p>
+<h3 id="封装cookie"><a href="#封装cookie" class="headerlink" title="封装cookie"></a>封装cookie</h3><h4 id="增"><a href="#增" class="headerlink" title="增"></a>增</h4><pre><code class="js">function setCookie(key, val, options) &#123;
+    options = options || &#123;&#125;;
+    var time = &quot;&quot;;
+    if (options.Expires) &#123;
+        var d = new Date();
+        d.setDate(d.getDate() + options.Expires);
+        time = &quot;;expires=&quot; + d;
+    &#125;
+    var path = &quot;&quot;;
+    path = options.path ? &quot;;path=&quot; + options.path : &quot;&quot;;
+    document.cookie = key + &quot;=&quot; + val + time + path;
+&#125;
+setCookie(&quot;user&quot;,&quot;admin&quot;,&#123;
+    Expires:7,
+    path：&quot;/cookie&quot;
+&#125;)
+</code></pre>
+<h4 id="删"><a href="#删" class="headerlink" title="删"></a>删</h4><pre><code class="js">function setCookie(key, val, options) &#123;
+    options = options || &#123;&#125;;
+    var time = &quot;&quot;;
+    if (options.Expires) &#123;
+        var d = new Date();
+        d.setDate(d.getDate() + options.Expires);
+        time = &quot;;expires=&quot; + d;
+    &#125;
+    var path = &quot;&quot;;
+    path = options.path ? &quot;;path=&quot; + options.path : &quot;&quot;;
+    document.cookie = key + &quot;=&quot; + val + time + path;
+&#125;
+setCookie(&quot;user&quot;,&quot;admin&quot;,&#123;
+    Expires:7
+&#125;)
+setCookie(&quot;user&quot;,&quot;admin&quot;,&#123;
+    Expires:-1
+&#125;)//利用cookie有效期，将有效期调整为当前日期的前一天即可销毁
+</code></pre>
+<h4 id="改"><a href="#改" class="headerlink" title="改"></a>改</h4><pre><code class="js">function setCookie(key, val, options) &#123;
+    options = options || &#123;&#125;;
+    var time = &quot;&quot;;
+    if (options.Expires) &#123;
+        var d = new Date();
+        d.setDate(d.getDate() + options.Expires);
+        time = &quot;;expires=&quot; + d;
+    &#125;
+    var path = &quot;&quot;;
+    path = options.path ? &quot;;path=&quot; + options.path : &quot;&quot;;
+    document.cookie = key + &quot;=&quot; + val + time + path;
+&#125;
+setCookie(&quot;user&quot;,&quot;admin&quot;,&#123;
+    Expires:7
+&#125;)
+setCookie(&quot;user&quot;,&quot;123456&quot;,&#123;
+    Expires:6
+&#125;)
+</code></pre>
+<h4 id="查"><a href="#查" class="headerlink" title="查"></a>查</h4><pre><code class="js">function getCookie(key) &#123;
+    var arr = document.cookie.split(&quot;; &quot;);
+    var v = &quot;&quot;;
+    arr.forEach((val) =&gt; &#123;
+        if (val.split(&quot;=&quot;)[0] === key) &#123;
+            v = val.split(&quot;=&quot;)[1];
+        &#125;
+    &#125;)
+    return v;
+&#125;
+</code></pre>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-25 JSONP的副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/09/15/25%20JSONP%E7%9A%84%E5%89%AF%E6%9C%AC/" class="article-date">
+  	<time datetime="2022-09-15T08:29:42.666Z" itemprop="datePublished">2022-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/15/25%20JSONP%E7%9A%84%E5%89%AF%E6%9C%AC/">
+        js-JSONP
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h2><blockquote>
+<p>利用<script>标签可以跨域，让服务器端返回可执行的Javascript函数，参数为要回发的数据。</p>
+</blockquote>
+<h3 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h3><blockquote>
+<p><strong>同源策略</strong>限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。</p>
+</blockquote>
+<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>如果两个页面的协议，端口（如果有指定）和主机都相同，则两个页面具有相同的<strong>源</strong>。我们也可以把它称为“协议/主机/端口 tuple”，或简单地叫做“tuple”. (“tuple” ，“元”，是指一些事物组合在一起形成一个整体，比如（1，2）叫二元，（1，2，3）叫三元)</p>
+<p>下表给出了相对<code>http://store.company.com/dir/page.html</code>同源检测的示例:</p>
+<table>
+<thead>
+<tr>
+<th>URL</th>
+<th>结果</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>http://store.company.com/dir2/other.html</code></td>
+<td>成功</td>
+<td>只有路径不同</td>
+</tr>
+<tr>
+<td><code>http://store.company.com/dir/inner/another.html</code></td>
+<td>成功</td>
+<td>只有路径不同</td>
+</tr>
+<tr>
+<td><code>https://store.company.com/secure.html</code></td>
+<td>失败</td>
+<td>不同协议 ( https和http )</td>
+</tr>
+<tr>
+<td><code>http://store.company.com:81/dir/etc.html</code></td>
+<td>失败</td>
+<td>不同端口 ( http:// 80是默认的)</td>
+</tr>
+<tr>
+<td><code>http://news.company.com/dir/other.html</code></td>
+<td>失败</td>
+<td>不同域名 ( news和store )</td>
+</tr>
+</tbody></table>
+<h3 id="JSON和JSONP"><a href="#JSON和JSONP" class="headerlink" title="JSON和JSONP"></a>JSON和JSONP</h3><p>JSONP和JSON好像啊，他们之间有什么联系吗？</p>
+<p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。对于JSON大家应该是很了解了吧，不是很清楚的朋友可以去<a href="https://link.zhihu.com/?target=http://www.json.org/json-zh.html">json.org</a>上了解下，简单易懂。</p>
+<p><strong>JSONP是JSON with Padding的略称。它是一个非官方的协议，它允许在服务器端集成Script tags返回至客户端，通过javascript callback的形式实现跨域访问（这仅仅是JSONP简单的实现形式）。</strong>–来源百度</p>
+<p>　　JSONP就像是JSON+Padding一样(Padding这里我们理解为填充)， 我们先看下面的小例子然后再详细介绍。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><h4 id="JS代码"><a href="#JS代码" class="headerlink" title="JS代码"></a>JS代码</h4><pre><code class="js">var url = &quot;http://localhost/myown/jsonp/jsonp2.php&quot;;
+document.onclick = function () &#123;
+    jsonp(url, (res) =&gt; &#123;
+        console.log(res);
+    &#125;, &#123;
+        cb: &quot;qwe&quot;,
+        cbname: &quot;cb&quot;,
+        user: &quot;root&quot;,
+        pass: &quot;root&quot;
+    &#125;)
+&#125;
+
+function jsonp(url, callback, obj) &#123;
+    var str = &quot;&quot;;
+    var script = document.createElement(&quot;script&quot;);
+    for (var i in obj) &#123;
+        str += `$&#123;i&#125;=$&#123;obj[i]&#125;&amp;`;
+    &#125;
+    url = url + &quot;?&quot; + str + &quot;__retr0__=&quot; + new Date().getTime();
+    script.src = url;
+    document.body.appendChild(script);
+    window[obj[obj.cbname]] = function (res) &#123;
+            callback(res);
+    &#125;
+    script.remove();
+&#125;
+</code></pre>
+<h4 id="php代码"><a href="#php代码" class="headerlink" title="php代码"></a>php代码</h4><pre><code class="php">&lt;?php
+$u = $_GET[&quot;user&quot;];
+$p = $_GET[&quot;pass&quot;];
+$cb = $_GET[&quot;cb&quot;];
+$data = &quot;这是JSONP接受到的数据&quot; . $u . &quot;------&quot; . $p;
+echo &quot;$cb(&#39;&quot; . $data . &quot;&#39;)&quot;;
+?&gt;
+</code></pre>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-21 Event-Loop的副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/09/15/21%20Event-Loop%E7%9A%84%E5%89%AF%E6%9C%AC/" class="article-date">
+  	<time datetime="2022-09-15T08:29:42.651Z" itemprop="datePublished">2022-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/15/21%20Event-Loop%E7%9A%84%E5%89%AF%E6%9C%AC/">
+        js-Event-Loop
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Event-Loop"><a href="#Event-Loop" class="headerlink" title="Event-Loop"></a>Event-Loop</h2><h3 id="JavaScript的运行机制"><a href="#JavaScript的运行机制" class="headerlink" title="JavaScript的运行机制"></a>JavaScript的运行机制</h3><p>（1）所有同步任务都在主线程上执行，形成一个执行栈（execution context stack）。</p>
+<p>（2）主线程之外，还存在”任务队列”(task queue)。只要异步任务有了运行结果，就在”任务队列”之中放置一个事件。</p>
+<p>（3）一旦”执行栈”中的所有同步任务执行完毕，系统就会读取”任务队列”，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。</p>
+<p>（4）主线程不断重复上面的第三步</p>
+<p>概括即是: 调用栈中的同步任务都执行完毕，栈内被清空了，就代表主线程空闲了，这个时候就会去任务队列中按照顺序读取一个任务放入到栈中执行。每次栈内被清空，都会去读取任务队列有没有任务，有就读取执行，一直循环读取-执行的操作</p>
+<blockquote>
+<p>一个事件循环中有一个或者是多个任务队列</p>
+</blockquote>
+<h3 id="异步任务分类"><a href="#异步任务分类" class="headerlink" title="异步任务分类"></a>异步任务分类</h3><ol>
+<li>宏任务: script（整体代码）, setTimeout, setInterval, setImmediate, I/O, UI rendering</li>
+<li>微任务: process.nextTick（Nodejs）, Promises, Object.observe, MutationObserver</li>
+</ol>
+<h3 id="Event-Loop定义"><a href="#Event-Loop定义" class="headerlink" title="Event-Loop定义"></a>Event-Loop定义</h3><p>主线程从”任务队列”中读取执行事件，这个过程是循环不断的，这个机制被称为事件循环。此机制具体如下:主线程会不断从任务队列中按顺序取任务执行，每执行完一个任务都会检查microtask队列是否为空（执行完一个任务的具体标志是函数执行栈为空），如果不为空则会一次性执行完所有microtask。然后再进入下一个循环去任务队列中取下一个任务执行。</p>
+<blockquote>
+<h4 id="详细说明"><a href="#详细说明" class="headerlink" title="详细说明:"></a>详细说明:</h4></blockquote>
+<ol>
+<li>选择当前要执行的宏任务队列，选择一个最先进入任务队列的宏任务，如果没有宏任务可以选择，则会跳转至microtask的执行步骤。</li>
+<li>将事件循环的当前运行宏任务设置为已选择的宏任务。</li>
+<li>运行宏任务。</li>
+<li>将事件循环的当前运行任务设置为null。</li>
+<li>将运行完的宏任务从宏任务队列中移除。</li>
+<li>microtasks步骤：进入microtask检查点。</li>
+<li>更新界面渲染。</li>
+<li>返回第一步。</li>
+</ol>
+<p><strong>执行进入microtask检查的的具体步骤如下:</strong></p>
+<ol>
+<li>设置进入microtask检查点的标志为true。</li>
+<li>当事件循环的微任务队列不为空时：选择一个最先进入microtask队列的microtask；设置事件循环的当前运行任务为已选择的microtask；运行microtask；设置事件循环的当前运行任务为null；将运行结束的microtask从microtask队列中移除。</li>
+<li>对于相应事件循环的每个环境设置对象（environment settings object）,通知它们哪些promise为rejected。</li>
+<li>清理indexedDB的事务。</li>
+<li>设置进入microtask检查点的标志为false。</li>
+</ol>
+<p><strong>需要注意的是:当前执行栈执行完毕时会立刻先处理所有微任务队列中的事件, 然后再去宏任务队列中取出一个事件。同一次事件循环中, 微任务永远在宏任务之前执行。</strong></p>
+<p>图示:</p>
+<p><img src="https://user-gold-cdn.xitu.io/2019/3/22/169a4038c4e156f0?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="event-loop2"></p>
+<p>先看一个简单的示例：</p>
+<pre><code class="js">setTimeout(()=&gt;&#123;
+    console.log(&quot;setTimeout1&quot;);
+    Promise.resolve().then(data =&gt; &#123;
+        console.log(222);
+    &#125;);
+&#125;);
+setTimeout(()=&gt;&#123;
+    console.log(&quot;setTimeout2&quot;);
+&#125;);
+Promise.resolve().then(data=&gt;&#123;
+    console.log(111);
+&#125;);
+</code></pre>
+<p>思考一下, 运行结果是什么？</p>
+<p>运行结果为:</p>
+<pre><code class="js">111
+setTimeout1
+222
+setTimeout2
+</code></pre>
+<p>我们来看一下为什么？</p>
+<p>我们来详细说明一下, JS引擎是如何执行这段代码的:</p>
+<ol>
+<li>主线程上没有需要执行的代码</li>
+<li>接着遇到setTimeout 0，它的作用是在 0ms 后将回调函数放到宏任务队列中(这个任务在下一次的事件循环中执行)。</li>
+<li>接着遇到setTimeout 0，它的作用是在 0ms 后将回调函数放到宏任务队列中(这个任务在再下一次的事件循环中执行)。</li>
+<li>首先检查微任务队列, 即 microtask队列，发现此队列不为空，执行第一个promise的then回调，输出 ‘111’。</li>
+<li>此时microtask队列为空，进入下一个事件循环, 检查宏任务队列，发现有 setTimeout的回调函数，立即执行回调函数输出 ‘setTimeout1’,检查microtask 队列，发现队列不为空，执行promise的then回调，输出’222’，microtask队列为空，进入下一个事件循环。</li>
+<li>检查宏任务队列，发现有 setTimeout的回调函数, 立即执行回调函数输出’setTimeout2’。</li>
+</ol>
+<p>再思考一下下面代码的执行顺序:</p>
+<pre><code class="js">console.log(&#39;script start&#39;);
+
+setTimeout(function () &#123;
+    console.log(&#39;setTimeout---0&#39;);
+&#125;, 0);
+
+setTimeout(function () &#123;
+    console.log(&#39;setTimeout---200&#39;);
+    setTimeout(function () &#123;
+        console.log(&#39;inner-setTimeout---0&#39;);
+    &#125;);
+    Promise.resolve().then(function () &#123;
+        console.log(&#39;promise5&#39;);
+    &#125;);
+&#125;, 200);
+
+Promise.resolve().then(function () &#123;
+    console.log(&#39;promise1&#39;);
+&#125;).then(function () &#123;
+    console.log(&#39;promise2&#39;);
+&#125;);
+Promise.resolve().then(function () &#123;
+    console.log(&#39;promise3&#39;);
+&#125;);
+console.log(&#39;script end&#39;);
+</code></pre>
+<p>思考一下, 运行结果是什么？</p>
+<p>运行结果为:</p>
+<pre><code class="js">script start
+script end
+promise1
+promise3
+promise2
+setTimeout---0
+setTimeout---200
+promise5
+inner-setTimeout---0
+</code></pre>
+<p>那么为什么？</p>
+<p>我们来详细说明一下, JS引擎是如何执行这段代码的:</p>
+<ol>
+<li>首先顺序执行完主进程上的同步任务，第一句和最后一句的console.log</li>
+<li>接着遇到setTimeout 0，它的作用是在 0ms 后将回调函数放到宏任务队列中(这个任务在下一次的事件循环中执行)。</li>
+<li>接着遇到setTimeout 200，它的作用是在 200ms 后将回调函数放到宏任务队列中(这个任务在再下一次的事件循环中执行)。</li>
+<li>同步任务执行完之后，首先检查微任务队列, 即 microtask队列，发现此队列不为空，执行第一个promise的then回调，输出 ‘promise1’，然后执行第二个promise的then回调，输出’promise3’，由于第一个promise的.then()的返回依然是promise，所以第二个.then()会放到microtask队列继续执行，输出 ‘promise2’;</li>
+<li>此时microtask队列为空，进入下一个事件循环, 检查宏任务队列，发现有 setTimeout的回调函数，立即执行回调函数输出 ‘setTimeout—0’,检查microtask 队列，队列为空，进入下一次事件循环.</li>
+<li>检查宏任务队列，发现有 setTimeout的回调函数, 立即执行回调函数输出’setTimeout—200’.</li>
+<li>接着遇到setTimeout 0，它的作用是在 0ms 后将回调函数放到宏任务队列中，检查微任务队列，即 microtask 队列，发现此队列不为空，执行promise的then回调，输出’promise5’。</li>
+<li>此时microtask队列为空，进入下一个事件循环，检查宏任务队列，发现有 setTimeout 的回调函数，立即执行回调函数输出，输出’inner-setTimeout—0’。代码执行结束.</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-20 异步编程原理的副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/09/15/20%20%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%8E%9F%E7%90%86%E7%9A%84%E5%89%AF%E6%9C%AC/" class="article-date">
+  	<time datetime="2022-09-15T08:29:42.643Z" itemprop="datePublished">2022-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/15/20%20%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%8E%9F%E7%90%86%E7%9A%84%E5%89%AF%E6%9C%AC/">
+        js-异步编程原理
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="异步编程原理"><a href="#异步编程原理" class="headerlink" title="异步编程原理"></a>异步编程原理</h2><p>JavaScript 引擎负责解析，执行 JavaScript 代码，但它并不能单独运行，通常都得有一个宿主环境，一般如浏览器或 Node 服务器，前文说到的单线程是指在这些宿主环境创建单一线程，提供一种机制，调用 JavaScript 引擎完成多个 JavaScript 代码块的调度，这种机制就称为事件循环（ Event Loop ）。</p>
+<p>关于事件循环流程分解如下：</p>
+<p>宿主环境为 JavaScript 创建线程时，会创建堆 (heap) 和栈 (stack) ，堆内存储 JavaScript 对象，栈内存储执行上下文；栈内执行上下文的同步任务按序执行，执行完即退栈，而当异步任务执行时，该异步任务进入等待状态（不入栈），同时通知线程：当触发该事件时（或该异步操作响应返回时），需向消息队列插入一个事件消息；当事件触发或响应返回时，线程向消息队列插入该事件消息（包含事件及回调）；当栈内同步任务执行完毕后，线程从消息队列取出一个事件消息，其对应异步任务（函数）入栈，执行回调函数，如果未绑定回调，这个消息会被丢弃，执行完任务后退栈；当线程空闲（即执行栈清空）时继续拉取消息队列下一轮消息（next tick ，事件循环流转一次称为一次 tick ）。</p>
+<p><img src="https://pics0.baidu.com/feed/0b46f21fbe096b63bd7dd5dd79c34f40e9f8acc8.jpeg?token=4eca9533d590b3ed5e2e6922f0b2f7f2&s=25B06D335D38DE011A4534CB02008033" alt="img"></p>
+<p>很多的队列先后按顺序执行任务就形成了 Event</p>
+<h3 id="异步编程实现"><a href="#异步编程实现" class="headerlink" title="异步编程实现"></a>异步编程实现</h3><h4 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h4><p>优点：简单、容易理解和部署。</p>
+<p>缺点：不利于代码的阅读和维护，各个部分之间高度耦合（ Coupling ），流程会很混乱。</p>
+<h4 id="Promise-对象"><a href="#Promise-对象" class="headerlink" title="Promise 对象"></a>Promise 对象</h4><p>一个 promise 可能有三种状态：等待（ pending ）、已完成（ fulfilled ）、已拒绝（ rejected ） ;</p>
+<p><img src="https://pics4.baidu.com/feed/72f082025aafa40ffd6105ccde94cb4b79f01975.jpeg?token=ca08273304b97bbb1f079bc3c4fd60d2&s=0C98ED1209D86CC80EDDC5DE0000D0B1" alt="img"></p>
+<p>resolve，接受一个成功值，传递给绑定的 fulfilled 回调函数中。主要工作是将当前状态变为 fulfilled 状态，同时调用绑定的 fulfilled 回调函数。</p>
+<p>reject，接受一个失败信息，传递给绑定的 rejected 回调函数中。主要工作是将当前状态变为 rejected 状态，同时调用绑定的 rejected 回调函数。</p>
+<p>then 方法返回一个 Promise。它有两个参数，分别为 Promise 在成功和失败情况下的回调函数。</p>
+<p>语法：</p>
+<p><img src="https://pics1.baidu.com/feed/e850352ac65c1038cfb273fcc7e15b17b17e8931.jpeg?token=0b84ad8e7ccb941b4adf70720dd0d877&s=6D9AEC121F406D430CFCE5DA0000D0B2" alt="img"></p>
+<p><img src="https://pics3.baidu.com/feed/dc54564e9258d10962760abda7a804bb6d814d19.jpeg?token=3d55d771aa3792b50b2603d9662fe9f7&s=59A83C72953044231C75E8DE0000C0B3" alt="img"></p>
+<p>概括来说 promise 是对异步的执行结果的描述对象。</p>
+<h4 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h4><p>Generator 函数是 ES6 提供的一种异步编程解决方案 ，允许函数的暂停和恢复。</p>
+<p>异步任务的封装：</p>
+<p><img src="https://pics1.baidu.com/feed/a044ad345982b2b751bdbddb445d03eb77099b80.jpeg?token=528b67eb6f61d06dcbf8d5787c676dc2&s=4D00ED1201D84DC8187C01DA000050B2" alt="img"></p>
+<p>整个过程类似于，浏览器遇到标识符 * 之后，就明白这个函数是生成器函数，一旦遇到 yield 标识符，就会将以后的函数放入此异步函数之内，待异步返回结果后再进行执行。</p>
+<p>更深一步，从内存上来讲：</p>
+<p>普通函数在被调用时，JS 引擎会创建一个栈帧，在里面准备好局部变量、函数参数、临时值、代码执行的位置（也就是说这个函数的第一行对应到代码区里的第几行机器码），在当前栈帧里设置好返回位置，然后将新帧压入栈顶。待函数执行结束后，这个栈帧将被弹出栈然后销毁，返回值会被传给上一个栈帧。</p>
+<p>当执行到 yield 语句时， Generator 的栈帧同样会被弹出栈外，但 Generator 在这里耍了个花招 —— 它在堆里保存了栈帧的引用（或拷贝）！这样当 it.next 方法被调用时， JS 引擎便不会重新创建一个栈帧，而是把堆里的栈帧直接入栈。因为栈帧里保存了函数执行所需的全部上下文以及当前执行的位置，所以当这一切都被恢复如初之时，就好像程序从原本暂停的地方继续向前执行了。</p>
+<p>而因为每次 yield 和 it.next 都对应一次出栈和入栈，所以可以直接利用已有的栈机制，实现值的传出和传入。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-19 类的副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/09/15/19%20%E7%B1%BB%E7%9A%84%E5%89%AF%E6%9C%AC/" class="article-date">
+  	<time datetime="2022-09-15T08:29:42.624Z" itemprop="datePublished">2022-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/15/19%20%E7%B1%BB%E7%9A%84%E5%89%AF%E6%9C%AC/">
+        js-类
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><blockquote>
+<p>ECMAScript 2015 中引入的 JavaScript 类实质上是 JavaScript 现有的基于原型的继承的语法糖。类语法<strong>不会</strong>为JavaScript引入新的面向对象的继承模型。</p>
+</blockquote>
+<h3 id="定义类"><a href="#定义类" class="headerlink" title="定义类"></a>定义类</h3><p>类实际上是个“特殊的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions">函数</a>”，就像你能够定义的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/function">函数表达式</a>和<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/function">函数声明</a>一样，类语法有两个组成部分：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/class">类表达式</a>和<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/class">类声明</a>。</p>
+<h3 id="类声明"><a href="#类声明" class="headerlink" title="类声明"></a>类声明</h3><p>定义一个类的一种方法是使用一个<strong>类声明</strong>。要声明一个类，你可以使用带有<code>class</code>关键字的类名（这里是“Rectangle”）。</p>
+<pre><code class="js">class Rectangle &#123;
+  constructor(height, width) &#123;
+    this.height = height;
+    this.width = width;
+  &#125;
+&#125;
+</code></pre>
+<h3 id="不会提升"><a href="#不会提升" class="headerlink" title="不会提升"></a>不会提升</h3><p><strong>函数声明</strong>和<strong>类声明</strong>之间的一个重要区别是函数声明会<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Glossary/Hoisting">提升</a>，类声明不会。你首先需要声明你的类，然后访问它，否则像下面的代码会抛出一个<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError"><code>ReferenceError</code></a>：</p>
+<pre><code class="js">let p = new Rectangle(); 
+// ReferenceError
+
+class Rectangle &#123;&#125;
+</code></pre>
+<h3 id="类表达式"><a href="#类表达式" class="headerlink" title="类表达式"></a>类表达式</h3><p>一个<strong>类表达式</strong>是定义一个类的另一种方式。类表达式可以是被命名的或匿名的。赋予一个命名类表达式的名称是类的主体的本地名称。</p>
+<pre><code class="js">/* 匿名类 */ 
+let Rectangle = class &#123;
+  constructor(height, width) &#123;
+    this.height = height;
+    this.width = width;
+  &#125;
+&#125;;
+
+/* 命名的类 */ 
+let Rectangle = class Rectangle &#123;
+  constructor(height, width) &#123;
+    this.height = height;
+    this.width = width;
+  &#125;
+&#125;;
+</code></pre>
+<p><strong>注意:</strong> 类<strong>表达式</strong>也同样受到类<strong>声明</strong>中提到的提升问题的限制。</p>
+<h3 id="使用-extends-创建子类"><a href="#使用-extends-创建子类" class="headerlink" title="使用 extends 创建子类"></a>使用 extends 创建子类</h3>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-15 正则表达式的副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/09/15/15%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%89%AF%E6%9C%AC/" class="article-date">
+  	<time datetime="2022-09-15T08:29:42.599Z" itemprop="datePublished">2022-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/15/15%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%89%AF%E6%9C%AC/">
+        js-正则表达式
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><blockquote>
+<p>正则表达式是用于匹配字符串中字符组合的模式。在 JavaScript中，正则表达式也是对象。这些模式被用于 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/RegExp"><code>RegExp</code></a> 的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec"><code>exec</code></a> 和 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test"><code>test</code></a> 方法, 以及 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/String"><code>String</code></a> 的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/match"><code>match</code></a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/matchAll"><code>matchAll</code></a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace"><code>replace</code></a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/search"><code>search</code></a> 和 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/split"><code>split</code></a> 方法。本章介绍 JavaScript 正则表达式。</p>
+</blockquote>
+<h3 id="创建正则"><a href="#创建正则" class="headerlink" title="创建正则"></a>创建正则</h3><h4 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h4><pre><code class="js">var reg = /a/; 
+var r1 = /test/g;
+</code></pre>
+<h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><pre><code class="js">var reg = new RegExp(&quot;a&quot;);
+var r2 = new RegExp(&#39;test&#39;, &#39;g&#39;);
+</code></pre>
+<h3 id="使用正则"><a href="#使用正则" class="headerlink" title="使用正则"></a>使用正则</h3><h4 id="reg-test-str"><a href="#reg-test-str" class="headerlink" title="reg.test(str)"></a>reg.test(str)</h4><blockquote>
+<p><code>test()</code> 方法执行一个检索，用来查看正则表达式与指定的字符串是否匹配。返回 <code>true</code> 或 <code>false</code>。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">regexObj.test(str)
+</code></pre>
+</li>
+<li><p>返回值</p>
+<p>如果正则表达式与指定的字符串匹配 ，返回<code>true</code>；否则<code>false</code>。</p>
+</li>
+<li><p>实例</p>
+<pre><code class="js">let str = &#39;hello world!&#39;;
+let result = /^hello/.test(str);
+console.log(result); 
+// true
+</code></pre>
+</li>
+</ul>
+<h4 id="reg-exec-str"><a href="#reg-exec-str" class="headerlink" title="reg.exec(str)"></a>reg.exec(str)</h4><blockquote>
+<p><code>exec() </code>方法在一个指定字符串中执行一个搜索匹配。返回一个结果数组或 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null"><code>null</code></a>。</p>
+<p>如果你只是为了判断是否匹配（true或 false），可以使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test"><code>RegExp.test()</code></a> 方法，或者 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/search"><code>String.search()</code></a> 方法。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">regexObj.exec(str)
+</code></pre>
+</li>
+<li><p>返回值</p>
+<p>如果匹配成功，<code>exec</code>() 方法返回一个数组，并更新正则表达式对象的属性。返回的数组将完全匹配成功的文本作为第一项，将正则括号里匹配成功的作为数组填充到后面。</p>
+<p>如果匹配失败，exec() 方法返回 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null"><code>null</code></a>。</p>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var re = /^(0[0-9]|1[0-9]|2[0-3]|[0-9])\:([0-5][0-9])\:([0-5][0-9])$/;
+console.log(re.exec(&#39;19:05:30&#39;)); // [&#39;19:05:30&#39;, &#39;19&#39;, &#39;05&#39;, &#39;30&#39;]
+</code></pre>
+</li>
+</ul>
+<h4 id="str-match-reg"><a href="#str-match-reg" class="headerlink" title="str.match(reg)"></a>str.match(reg)</h4><blockquote>
+<p><strong><code>match()</code></strong> 方法检索返回一个字符串匹配正则表达式的的结果。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">str.match(regexp)
+</code></pre>
+</li>
+<li><p>返回值</p>
+<ul>
+<li>如果使用g标志，则将返回与完整正则表达式匹配的所有结果，但不会返回捕获组。</li>
+<li>如果未使用g标志，则仅返回第一个完整匹配及其相关的捕获组（<code>Array</code>）。 在这种情况下，返回的项目将具有如下所述的其他属性。</li>
+</ul>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var str = &#39;For more information, see Chapter 3.4.5.1&#39;;
+var re = /see (chapter \d+(\.\d)*)/i;
+var found = str.match(re);
+
+console.log(found);
+
+// logs [ &#39;see Chapter 3.4.5.1&#39;,
+//        &#39;Chapter 3.4.5.1&#39;,
+//        &#39;.1&#39;,
+//        index: 22,
+//        input: &#39;For more information, see Chapter 3.4.5.1&#39; ]
+
+// &#39;see Chapter 3.4.5.1&#39; 是整个匹配。
+// &#39;Chapter 3.4.5.1&#39; 被&#39;(chapter \d+(\.\d)*)&#39;捕获。
+// &#39;.1&#39; 是被&#39;(\.\d)&#39;捕获的最后一个值。
+// &#39;index&#39; 属性(22) 是整个匹配从零开始的索引。
+// &#39;input&#39; 属性是被解析的原始字符串。
+</code></pre>
+</li>
+</ul>
+<h4 id="str-replace-reg-newstr"><a href="#str-replace-reg-newstr" class="headerlink" title="str.replace(reg,newstr)"></a>str.replace(reg,newstr)</h4><blockquote>
+<p><strong><code>replace()</code></strong> 方法返回一个由替换值（<code>replacement</code>）替换一些或所有匹配的模式（<code>pattern</code>）后的新字符串。模式可以是一个字符串或者一个<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/RegExp">正则表达式</a>，替换值可以是一个字符串或者一个每次匹配都要调用的回调函数。</p>
+<p>原字符串不会改变。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">一个部分或全部匹配由替代模式所取代的新的字符串。
+</code></pre>
+</li>
+<li><p>返回值</p>
+<p>如果正则表达式与指定的字符串匹配 ，返回<code>true</code>；否则<code>false</code>。</p>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var str2 = &quot; andy Wu &quot;;
+var reg2 = /(^\s*)|(\s*$)/g;
+console.log(str2.replace(reg2,&quot;&quot;))//&quot;andy Wu&quot;
+</code></pre>
+</li>
+</ul>
+<h4 id="str-search-reg"><a href="#str-search-reg" class="headerlink" title="str.search(reg)"></a>str.search(reg)</h4><blockquote>
+<p><strong><code>search()</code></strong> 方法执行正则表达式和 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/String"><code>String</code></a> 对象之间的一个搜索匹配。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">str.search(regexp)
+</code></pre>
+</li>
+<li><p>返回值</p>
+<p>如果匹配成功，则 <code>search()</code> 返回正则表达式在字符串中首次匹配项的索引;否则，返回 <strong>-1</strong>。</p>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var str = &quot;hey JudE&quot;;
+var re = /[A-Z]/g;
+var re2 = /[.]/g;
+console.log(str.search(re)); // returns 4, which is the index of the first capital letter &quot;J&quot;
+console.log(str.search(re2)); // returns -1 cannot find &#39;.&#39; dot punctuation
+</code></pre>
+</li>
+</ul>
+<h3 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h3><h4 id="g：全局"><a href="#g：全局" class="headerlink" title="g：全局"></a>g：全局</h4><h4 id="i-忽略大小写"><a href="#i-忽略大小写" class="headerlink" title="i:忽略大小写"></a>i:忽略大小写</h4><h4 id="：或"><a href="#：或" class="headerlink" title="|：或"></a>|：或</h4><blockquote>
+<p>匹配‘x’或者‘y’。</p>
+<p>例如，/green|red/匹配“green apple”中的‘green’和“red apple”中的‘red’</p>
+</blockquote>
+<h4 id="：至少一个"><a href="#：至少一个" class="headerlink" title="+：至少一个"></a>+：至少一个</h4><blockquote>
+<p>匹配前面一个表达式 1 次或者多次。等价于 <code>&#123;1,&#125;</code>。</p>
+<p>例如，<code>/a+/</code> 会匹配 “candy” 中的 ‘a’ 和 “caaaaaaandy” 中所有的 ‘a’，但是在 “cndy” 中不会匹配任何内容。</p>
+</blockquote>
+<h4 id="：0到1个"><a href="#：0到1个" class="headerlink" title="?：0到1个"></a>?：0到1个</h4><blockquote>
+<p>匹配前面一个表达式 0 次或者 1 次。等价于 <code>&#123;0,1&#125;</code>。</p>
+<p>例如，<code>/e?le?/</code> 匹配 “angel” 中的 ‘el’、”angle” 中的 ‘le’ 以及 “oslo’ 中的 ‘l’。</p>
+<p>如果<strong>紧跟在任何量词 *、 +、? 或 {} 的后面</strong>，将会使量词变为<strong>非贪婪</strong>（匹配尽量少的字符），和缺省使用的<strong>贪婪模式</strong>（匹配尽可能多的字符）正好相反。例如，对 “123abc” 使用 <code>/\d+/</code> 将会匹配 “123”，而使用 <code>/\d+?/</code> 则只会匹配到 “1”。</p>
+<p>还用于先行断言中，如本表的 <code>x(?=y)</code> 和 <code>x(?!y)</code> 条目所述。</p>
+</blockquote>
+<h4 id="：0到多个"><a href="#：0到多个" class="headerlink" title="*：0到多个"></a>*：0到多个</h4><blockquote>
+<p> 匹配前一个表达式 0 次或多次。等价于 <code>&#123;0,&#125;</code>。例如，<code>/bo*/</code> 会匹配 “A ghost boooooed” 中的 ‘booooo’ 和 “A bird warbled” 中的 ‘b’，但是在 “A goat grunted” 中不会匹配任何内容。</p>
+</blockquote>
+<h4 id=""><a href="#" class="headerlink" title="."></a>.</h4><blockquote>
+<p>（小数点）默认匹配除换行符之外的任何单个字符。</p>
+<p>例如，<code>/.n/</code> 将会匹配 “nay, an apple is on the tree” 中的 ‘an’ 和 ‘on’，但是不会匹配 ‘nay’。</p>
+<p>如果 <code>s</code> (“dotAll”) 标志位被设为 true，它也会匹配换行符。</p>
+</blockquote>
+<h4 id="-1"><a href="#-1" class="headerlink" title="{}"></a>{}</h4><table>
+<thead>
+<tr>
+<th><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-quantifier"><code>&#123;n&#125;</code></a></th>
+<th>n 是一个正整数，匹配了前面一个字符刚好出现了 n 次。 比如， /a{2}/ 不会匹配“candy”中的’a’,但是会匹配“caandy”中所有的 a，以及“caaandy”中的前两个’a’。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-quantifier"><code>&#123;n,&#125;</code></a></td>
+<td>n是一个正整数，匹配前一个字符至少出现了n次。例如, /a{2,}/ 匹配 “aa”, “aaaa” 和 “aaaaa” 但是不匹配 “a”。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-quantifier-range"><code>&#123;n,m&#125;</code></a></td>
+<td>n 和 m 都是整数。匹配前面的字符至少n次，最多m次。如果 n 或者 m 的值是0， 这个值被忽略。例如，/a{1, 3}/ 并不匹配“cndy”中的任意字符，匹配“candy”中的a，匹配“caandy”中的前两个a，也匹配“caaaaaaandy”中的前三个a。注意，当匹配”caaaaaaandy“时，匹配的值是“aaa”，即使原始的字符串中有更多的a。</td>
+</tr>
+</tbody></table>
+<blockquote>
+</blockquote>
+<h4 id="-2"><a href="#-2" class="headerlink" title="()"></a>()</h4><blockquote>
+<p>一个整体，按照小括号的而出现顺序，分为第一部分，第二部分,..</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-capturing-parentheses"><code>(x)</code></a></th>
+<th>像下面的例子展示的那样，它会匹配 ‘x’ 并且记住匹配项。其中括号被称为<em>捕获括号</em>。模式 <code>/(foo) (bar) \1 \2/</code> 中的 ‘<code>(foo)</code>‘ 和 ‘<code>(bar)</code>‘ 匹配并记住字符串 “foo bar foo bar” 中前两个单词。模式中的 <code>\1</code> 和 <code>\2</code> 表示第一个和第二个被捕获括号匹配的子字符串，即 <code>foo</code> 和 <code>bar</code>，匹配了原字符串中的后两个单词。注意 <code>\1</code>、<code>\2</code>、…、<code>\n</code> 是用在正则表达式的匹配环节，详情可以参阅后文的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions$edit#special-backreference">\n</a> 条目。而在正则表达式的替换环节，则要使用像 <code>$1</code>、<code>$2</code>、…、<code>$n</code> 这样的语法，例如，<code>&#39;bar foo&#39;.replace(/(...) (...)/, &#39;$2 $1&#39;)</code>。<code>$&amp;</code> 表示整个用于匹配的原字符串。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-non-capturing-parentheses"><code>(?:x)</code></a></td>
+<td>匹配 ‘x’ 但是不记住匹配项。这种括号叫作<em>非捕获括号</em>，使得你能够定义与正则表达式运算符一起使用的子表达式。看看这个例子 <code>/(?:foo)&#123;1,2&#125;/</code>。如果表达式是 <code>/foo&#123;1,2&#125;/</code>，<code>&#123;1,2&#125;</code> 将只应用于 ‘foo’ 的最后一个字符 ‘o’。如果使用非捕获括号，则 <code>&#123;1,2&#125;</code> 会应用于整个 ‘foo’ 单词。更多信息，可以参阅下文的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Using_parentheses">Using parentheses</a> 条目.</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-lookahead"><code>x(?=y)</code></a></td>
+<td>匹配’x’仅仅当’x’后面跟着’y’.这种叫做先行断言。例如，/Jack(?=Sprat)/会匹配到’Jack’仅仅当它后面跟着’Sprat’。/Jack(?=Sprat|Frost)/匹配‘Jack’仅仅当它后面跟着’Sprat’或者是‘Frost’。但是‘Sprat’和‘Frost’都不是匹配结果的一部分。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-lookahead"><code>(?&lt;=y)</code></a>x</td>
+<td>匹配’x’仅仅当’x’前面是’y’.这种叫做后行断言。例如，/(?&lt;=Jack)Sprat/会匹配到’ Sprat ‘仅仅当它前面是’ Jack ‘。/(?&lt;=Jack|Tom)Sprat/匹配‘ Sprat ’仅仅当它前面是’Jack’或者是‘Tom’。但是‘Jack’和‘Tom’都不是匹配结果的一部分。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-negated-look-ahead"><code>x(?!y)</code></a></td>
+<td>仅仅当’x’后面不跟着’y’时匹配’x’，这被称为正向否定查找。例如，仅仅当这个数字后面没有跟小数点的时候，/\d+(?!.)/ 匹配一个数字。正则表达式/\d+(?!.)/.exec(“3.141”)匹配‘141’而不是‘3.141’</td>
+</tr>
+<tr>
+<td>`(?</td>
+<td>仅仅当’x’前面不是’y’时匹配’x’，这被称为反向否定查找。例如, 仅仅当这个数字前面没有负号的时候，<code>/(? 匹配一个数字。 </code>/(? 匹配到 “3”. `/(? 因为这个数字前有负号，所以没有匹配到。</td>
+</tr>
+</tbody></table>
+<h4 id="-3"><a href="#-3" class="headerlink" title="[]"></a>[]</h4><blockquote>
+<p>中元符，中括号中的内容会依次取或</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><code>[xyz\]</code></th>
+<th>一个字符集合。匹配方括号中的任意字符，包括<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Grammar_and_types">转义序列</a>。你可以使用破折号（-）来指定一个字符范围。对于点（.）和星号（*）这样的特殊符号在一个字符集中没有特殊的意义。他们不必进行转义，不过转义也是起作用的。 例如，[abcd] 和[a-d]是一样的。他们都匹配”brisket”中的‘b’,也都匹配“city”中的‘c’。/[a-z.]+/ 和/[\w.]+/与字符串“test.i.ng”匹配。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[^xyz\]</code></td>
+<td>一个反向字符集。也就是说， 它匹配任何没有包含在方括号中的字符。你可以使用破折号（-）来指定一个字符范围。任何普通字符在这里都是起作用的。例如，[^abc] 和 [^a-c] 是一样的。他们匹配”brisket”中的‘r’，也匹配“chop”中的‘h’。</td>
+</tr>
+<tr>
+<td><code>[\b\]</code></td>
+<td>匹配一个退格(U+0008)。（不要和\b混淆了。）</td>
+</tr>
+</tbody></table>
+<h4 id="-4"><a href="#-4" class="headerlink" title="\"></a>\</h4><blockquote>
+<p>依照下列规则匹配：</p>
+<p>在非特殊字符之前的反斜杠表示下一个字符是特殊字符，不能按照字面理解。例如，前面没有 “&quot; 的 “b” 通常匹配小写字母 “b”，即字符会被作为字面理解，无论它出现在哪里。但如果前面加了 “&quot;，它将不再匹配任何字符，而是表示一个<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#note">字符边界</a>。</p>
+<p>在特殊字符之前的反斜杠表示下一个字符不是特殊字符，应该按照字面理解。详情请参阅下文中的 “转义（Escaping）” 部分。</p>
+<p>如果你想将字符串传递给 RegExp 构造函数，不要忘记在字符串字面量中反斜杠是转义字符。所以为了在模式中添加一个反斜杠，你需要在字符串字面量中转义它。<code>/[a-z]\s/i</code> 和 <code>new RegExp(&quot;[a-z]\\s&quot;, &quot;i&quot;)</code> 创建了相同的正则表达式：一个用于搜索后面紧跟着空白字符（<code>\s</code> 可看后文）并且在 a-z 范围内的任意字符的表达式。为了通过字符串字面量给 RegExp 构造函数创建包含反斜杠的表达式，你需要在字符串级别和表达式级别都对它进行转义。例如 <code>/[a-z]:\\/i</code> 和 <code>new RegExp(&quot;[a-z]:\\\\&quot;,&quot;i&quot;)</code> 会创建相同的表达式，即匹配类似 “C:&quot; 字符串。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-word-boundary"><code>\b</code></a></th>
+<th>匹配一个词的边界。一个词的边界就是一个词不被另外一个“字”字符跟随的位置或者前面跟其他“字”字符的位置，例如在字母和空格之间。注意，匹配中不包括匹配的字边界。换句话说，一个匹配的词的边界的内容的长度是0。（不要和[\b]混淆了）使用”moon”举例： /\bm/匹配“moon”中的‘m’； /oo\b/并不匹配”moon”中的’oo’，因为’oo’被一个“字”字符’n’紧跟着。 /oon\b/匹配”moon”中的’oon’，因为’oon’是这个字符串的结束部分。这样他没有被一个“字”字符紧跟着。 /\w\b\w/将不能匹配任何字符串，因为在一个单词中间的字符永远也不可能同时满足没有“字”字符跟随和有“字”字符跟随两种情况。<strong>注意:</strong> JavaScript的正则表达式引擎将<a target="_blank" rel="noopener" href="http://www.ecma-international.org/ecma-262/5.1/#sec-15.10.2.6">特定的字符集</a>定义为“字”字符。不在该集合中的任何字符都被认为是一个断词。这组字符相当有限：它只包括大写和小写的罗马字母，十进制数字和下划线字符。不幸的是，重要的字符，例如“é”或“ü”，被视为断词。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-non-word-boundary"><code>\B</code></a></td>
+<td>匹配一个非单词边界。匹配如下几种情况：字符串第一个字符为非“字”字符字符串最后一个字符为非“字”字符两个单词字符之间两个非单词字符之间空字符串例如，/\B../匹配”noonday”中的’oo’, 而/y\B../匹配”possibly yesterday”中的’yes‘</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-control"><code>\c*X*</code></a></td>
+<td>当X是处于A到Z之间的字符的时候，匹配字符串中的一个控制符。例如，<code>/\cM/</code> 匹配字符串中的 control-M (U+000D)。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-digit"><code>\d</code></a></td>
+<td>匹配一个数字<code>。``等价于[0-9]</code>。例如， <code>/\d/</code> 或者 <code>/[0-9]/</code> 匹配”B2 is the suite number.”中的’2’。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-non-digit"><code>\D</code></a></td>
+<td>匹配一个非数字字符<code>。``等价于[^0-9]</code>。例如， <code>/\D/</code> 或者 <code>/[^0-9]/</code> 匹配”B2 is the suite number.”中的’B’ 。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-form-feed"><code>\f</code></a></td>
+<td>匹配一个换页符 (U+000C)。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-line-feed"><code>\n</code></a></td>
+<td>匹配一个换行符 (U+000A)。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-carriage-return"><code>\r</code></a></td>
+<td>匹配一个回车符 (U+000D)。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-white-space"><code>\s</code></a></td>
+<td>匹配一个空白字符，包括空格、制表符、换页符和换行符。等价于[ \f\n\r\t\v\u00a0\u1680\u180e\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]。例如, <code>/\s\w*/</code> 匹配”foo bar.”中的’ bar’。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-non-white-space"><code>\S</code></a></td>
+<td>匹配一个非空白字符。等价于 <code>[^ </code>\f\n\r\t\v\u00a0\u1680\u180e\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff<code>]</code>。例如，<code>/\S\w*/</code> 匹配”foo bar.”中的’foo’。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-tab"><code>\t</code></a></td>
+<td>匹配一个水平制表符 (U+0009)。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-vertical-tab"><code>\v</code></a></td>
+<td>匹配一个垂直制表符 (U+000B)。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-word"><code>\w</code></a></td>
+<td>匹配一个单字字符（字母、数字或者下划线）。等价于 <code>[A-Za-z0-9_]</code>。例如, <code>/\w/</code> 匹配 “apple,” 中的 ‘a’，”$5.28,”中的 ‘5’ 和 “3D.” 中的 ‘3’。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-non-word"><code>\W</code></a></td>
+<td>匹配一个非单字字符。等价于 <code>[^A-Za-z0-9_]</code>。例如, <code>/\W/</code> 或者 <code>/[^A-Za-z0-9_]/</code> 匹配 “50%.” 中的 ‘%’。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-backreference"><code>\*n*</code></a></td>
+<td>在正则表达式中，它返回最后的第n个子捕获匹配的子字符串(捕获的数目以左括号计数)。比如 <code>/apple(,)\sorange\1/</code> 匹配”apple, orange, cherry, peach.”中的’apple, orange,’ 。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-null"><code>\0</code></a></td>
+<td>匹配 NULL（U+0000）字符， 不要在这后面跟其它小数，因为 <code>\0</code> 是一个八进制转义序列。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-hex-escape"><code>\xhh</code></a></td>
+<td>与代码 hh 匹配字符（两个十六进制数字）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-unicode-escape"><code>\uhhhh</code></a></td>
+<td>与代码 hhhh 匹配字符（四个十六进制数字）。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-unicode-escape-es6"><code>\u&#123;hhhh&#125;</code></a></td>
+<td>（仅当设置了u标志时）使用 Unicode 值 hhhh 匹配字符（十六进制数字）。</td>
+</tr>
+</tbody></table>
+<h4 id="d"><a href="#d" class="headerlink" title="\d"></a>\d</h4><blockquote>
+<p>0-9的数组</p>
+</blockquote>
+<h4 id="w"><a href="#w" class="headerlink" title="\w"></a>\w</h4><blockquote>
+<p>数字字母下划线，[0-9a-zA-Z_]</p>
+</blockquote>
+<h4 id="D"><a href="#D" class="headerlink" title="\D"></a>\D</h4><blockquote>
+<p>除了数字</p>
+</blockquote>
+<h4 id="W"><a href="#W" class="headerlink" title="\W"></a>\W</h4><blockquote>
+<p>除了数字字母下划线</p>
+</blockquote>
+<h4 id="-5"><a href="#-5" class="headerlink" title="^"></a>^</h4><blockquote>
+<p>除了，非，但是仅限在[]中使用时，才是这个意思</p>
+<p>开头，在[]外使用才是这个意思</p>
+<p>匹配输入的开始。如果多行标志被设置为 true，那么也匹配换行符后紧跟的位置。</p>
+<p>例如，<code>/^A/</code> 并不会匹配 “an A” 中的 ‘A’，但是会匹配 “An E” 中的 ‘A’。</p>
+<p>当 ‘<code>^</code>‘ 作为第一个字符出现在一个字符集合模式时，它将会有不同的含义。<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#special-negated-character-set">反向字符集合</a> 一节有详细介绍和示例。</p>
+</blockquote>
+<h4 id="-6"><a href="#-6" class="headerlink" title="$"></a>$</h4><blockquote>
+<p>匹配输入的结束。如果多行标示被设置为 true，那么也匹配换行符前的位置。</p>
+<p>例如，<code>/t$/</code> 并不会匹配 “eater” 中的 ‘t’，但是会匹配 “eat” 中的 ‘t’。</p>
+</blockquote>
+<h3 id="贪婪匹配"><a href="#贪婪匹配" class="headerlink" title="贪婪匹配"></a>贪婪匹配</h3><p>需要特别指出的是，正则匹配默认是贪婪匹配，也就是匹配尽可能多的字符。举例如下，匹配出数字后面的<code>0</code>：</p>
+<pre><code class="js">var re = /^(\d+)(0*)$/;
+re.exec(&#39;102300&#39;); // [&#39;102300&#39;, &#39;102300&#39;, &#39;&#39;]
+</code></pre>
+<p>由于<code>\d+</code>采用贪婪匹配，直接把后面的<code>0</code>全部匹配了，结果<code>0*</code>只能匹配空字符串了。</p>
+<p>必须让<code>\d+</code>采用非贪婪匹配（也就是尽可能少匹配），才能把后面的<code>0</code>匹配出来，加个<code>?</code>就可以让<code>\d+</code>采用非贪婪匹配：</p>
+<pre><code class="js">var re = /^(\d+?)(0*)$/;
+re.exec(&#39;102300&#39;); // [&#39;102300&#39;, &#39;1023&#39;, &#39;00&#39;]
+</code></pre>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-14 Event对象的副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/09/15/14%20Event%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%89%AF%E6%9C%AC/" class="article-date">
+  	<time datetime="2022-09-15T08:29:42.584Z" itemprop="datePublished">2022-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/15/14%20Event%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%89%AF%E6%9C%AC/">
+        js-Event 对象
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Event-对象"><a href="#Event-对象" class="headerlink" title="Event 对象"></a>Event 对象</h3><blockquote>
+<p>​    Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。</p>
+<p>​    事件通常与函数结合使用，函数不会在事件发生前被执行！</p>
+<p>​    注意，所有事件的语法都是一样的，行为的触发方式有区别</p>
+</blockquote>
+<p><strong>只有在事件发生的时候，才会产生事件对象，无法手动创建，并且事件对象只能在处理函数内部访问，处理函数允许结束后该对象自动销毁</strong></p>
+<p>绑定方式：赋值式</p>
+<pre><code class="js">元素.事件名 = function()&#123;&#125;;
+</code></pre>
+<ul>
+<li>事件源：元素，绑定事件的元素</li>
+<li>事件类型：onclick：触发事件的行为</li>
+<li>事件处理函数：function：触发这个事件时要做的事情</li>
+</ul>
+<h4 id="获取事件对象"><a href="#获取事件对象" class="headerlink" title="获取事件对象"></a>获取事件对象</h4><p>事件处理函数的第一个参数：正常浏览器</p>
+<pre><code class="js">var obox = document.querySelector(&quot;.box&quot;);
+obox.onclick = function(eve)&#123;
+    console.log(eve);
+&#125;
+</code></pre>
+<p>通过window找event属性：IE浏览器</p>
+<pre><code class="js">var obox = document.querySelector(&quot;.box&quot;);
+obox.onclick = function(eve)&#123;
+    console.log(window.event);
+&#125;
+</code></pre>
+<h5 id="兼容性写法"><a href="#兼容性写法" class="headerlink" title="兼容性写法"></a>兼容性写法</h5><pre><code class="js">var obox = document.querySelector(&quot;.box&quot;);
+obox.onclick = function(eve)&#123;
+    var e = eve || window.event;
+&#125;
+</code></pre>
+<h5 id="type"><a href="#type" class="headerlink" title="type"></a>type</h5><p>事件类型</p>
+<pre><code class="js">var obox = document.querySelector(&quot;.box&quot;);
+obox.onclick = function(eve)&#123;
+    var e = eve || window.event;
+    console.log(e.type)//click，这里显示触发事件的类型
+&#125;
+</code></pre>
+<h5 id="target"><a href="#target" class="headerlink" title="target"></a>target</h5><blockquote>
+<p>触发事件的对象 (某个DOM元素) 的引用。当事件处理程序在事件的冒泡或捕获阶段被调用时，它与<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event/currentTarget"><code>event.currentTarget</code></a>不同。</p>
+</blockquote>
+<pre><code class="js">var obox = document.querySelector(&quot;.box&quot;);
+obox.onclick = function(eve)&#123;
+    var e = eve || window.event;
+    console.log(e.target)//&lt;div class=&quot;box&gt;&lt;/div&gt;&quot;，这里显示触发事件的对象
+&#125;
+</code></pre>
+<h5 id="button"><a href="#button" class="headerlink" title="button"></a>button</h5><blockquote>
+<p>**<code>mouseEvent.button</code>**是只读属性，它返回一个值，代表用户按下并触发了事件的鼠标按键。</p>
+<p>这个属性只能够表明在触发事件的单个或多个按键按下或释放过程中哪些按键被按下了。因此，它对判断<code>mouseenter</code>, <code>mouseleave</code>, <code>mouseover</code>, <code>mouseout</code> or <code>mousemove</code>这些事件并不可靠。</p>
+<p>用户可能会改变鼠标按键的配置，因此当一个事件的**<code>MouseEvent.button</code>**值为0时，它可能不是由物理上设备最左边的按键触发的。但是对于标准按键布局的鼠标设备来说，这个值应该是能正确使用的。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var buttonPressed = instanceOfMouseEvent.button
+</code></pre>
+</li>
+<li><p>返回值</p>
+<p>一个数值，代表按下的鼠标按键：</p>
+<p>0：主按键被按下，通常指鼠标左键 or the un-initialized state<br>1：辅助按键被按下，通常指鼠标滚轮 or the middle button (if present)<br>2：次按键被按下，通常指鼠标右键<br>3：第四个按钮被按下，通常指浏览器后退按钮<br>4：第五个按钮被按下，通常指浏览器的前进按钮<br>对于配置为左手使用的鼠标，按键操作将正好相反。此种情况下，从右至左读取值。</p>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var whichButton = function (e) &#123;
+    // Handle different event models
+    var e = e || window.event;
+    var btnCode;
+
+    if (&#39;object&#39; === typeof e) &#123;
+        btnCode = e.button;
+
+        switch (btnCode) &#123;
+            case 0:
+                console.log(&#39;Left button clicked.&#39;);
+            break;
+
+            case 1:
+                console.log(&#39;Middle button clicked.&#39;);
+            break;
+
+            case 2:
+                console.log(&#39;Right button clicked.&#39;);
+            break;
+
+            default:
+                console.log(&#39;Unexpected code: &#39; + btnCode);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="buttons"><a href="#buttons" class="headerlink" title="buttons"></a>buttons</h5><p>返回对应的鼠标按键</p>
+<h4 id="MouseEvent"><a href="#MouseEvent" class="headerlink" title="MouseEvent."></a>MouseEvent.</h4><p><img src="file:///D:/APP/feiq/Recv%20Files/JavaScript/%E8%AF%BE%E4%BB%B6/day11/%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1-%E4%B8%8A_files/Image%20[3].png" alt="img"></p>
+<p>鼠标相对于事件源的坐标</p>
+<h5 id="offsetX"><a href="#offsetX" class="headerlink" title="offsetX"></a>offsetX</h5><blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a> 接口的只读属性 <strong>offsetX</strong> 规定了事件对象与目标节点的内填充边（padding edge）在 X 轴方向上的偏移量。</p>
+<p>鼠标相对于事件源的坐标</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var xOffset = instanceOfMouseEvent.offsetX;
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">一个双精度浮点值。早期的规范将其规定为整数值。详见浏览器兼容性部分。
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var box = document.querySelector(&quot;.box&quot;);
+box.onclick = (eve)=&gt;&#123;
+var e = eve || window.event;
+console.log(e.offsetX,e.offsetY)
+console.log(e.clientX,e.clientY)
+console.log(e.pageX,e.pageY)
+console.log(e.screenX,e.screenY)
+
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="offsetY"><a href="#offsetY" class="headerlink" title="offsetY"></a>offsetY</h5><blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a> 接口的只读属性 <strong>offsetX</strong> 规定了事件对象与目标节点的内填充边（padding edge）在 X 轴方向上的偏移量。</p>
+<p>鼠标相对于事件源的坐标</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var xOffset = instanceOfMouseEvent.offsetX;
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">一个双精度浮点值。早期的规范将其规定为整数值。详见浏览器兼容性部分。
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var box = document.querySelector(&quot;.box&quot;);
+box.onclick = (eve)=&gt;&#123;
+var e = eve || window.event;
+console.log(e.offsetX,e.offsetY)
+console.log(e.clientX,e.clientY)
+console.log(e.pageX,e.pageY)
+console.log(e.screenX,e.screenY)
+
+&#125;
+</code></pre>
+</li>
+</ul>
+<p>鼠标相对于页面可视区域的坐标</p>
+<h5 id="clientX"><a href="#clientX" class="headerlink" title="clientX"></a>clientX</h5><blockquote>
+<p><strong><code>MouseEvent.clientX</code></strong> 是只读属性， 它提供事件发生时的应用客户端区域的水平坐标 (与页面坐标不同)。例如，不论页面是否有水平滚动，当你点击客户端区域的左上角时，鼠标事件的 <code>clientX</code> 值都将为 0 。最初这个属性被定义为长整型（long integer），如今 <strong>CSSOM</strong> 视图模块将其重新定义为双精度浮点数（double float）。</p>
+<p>鼠标相对于页面可视区域的坐标</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var x = instanceOfMouseEvent.clientX
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">被 CSSOM View Module 重新定义为一个 double 类型的浮点值. 原来这个属性是被定义为一个 long 整数. 可以在 &quot;浏览器兼容性&quot; 那里查看详细内容.
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var box = document.querySelector(&quot;.box&quot;);
+box.onclick = (eve)=&gt;&#123;
+var e = eve || window.event;
+console.log(e.offsetX,e.offsetY)
+console.log(e.clientX,e.clientY)
+console.log(e.pageX,e.pageY)
+console.log(e.screenX,e.screenY)
+
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="clientY"><a href="#clientY" class="headerlink" title="clientY"></a>clientY</h5><blockquote>
+<p><strong><code>MouseEvent.clientX</code></strong> 是只读属性， 它提供事件发生时的应用客户端区域的Y坐标 (与页面坐标不同)。例如，不论页面是否有水平滚动，当你点击客户端区域的左上角时，鼠标事件的 <code>clientX</code> 值都将为 0 。最初这个属性被定义为长整型（long integer），如今 <strong>CSSOM</strong> 视图模块将其重新定义为双精度浮点数（double float）。</p>
+<p>鼠标相对于页面可视区域的坐标</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var x = instanceOfMouseEvent.clientY
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">被 CSSOM View Module 重新定义为一个 double 类型的浮点值. 原来这个属性是被定义为一个 long 整数. 可以在 &quot;浏览器兼容性&quot; 那里查看详细内容.
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var box = document.querySelector(&quot;.box&quot;);
+box.onclick = (eve)=&gt;&#123;
+var e = eve || window.event;
+console.log(e.offsetX,e.offsetY)
+console.log(e.clientX,e.clientY)
+console.log(e.pageX,e.pageY)
+console.log(e.screenX,e.screenY)
+
+&#125;
+</code></pre>
+</li>
+</ul>
+<p>鼠标相对于页面的坐标</p>
+<h5 id="pageX"><a href="#pageX" class="headerlink" title="pageX"></a>pageX</h5><blockquote>
+<p><code>pageX</code> 是一个由<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a>接口返回的相对于整个文档的x（水平）坐标以像素为单位的只读属性。</p>
+<p>这个属性将基于文档的边缘，考虑任何页面的水平方向上的滚动。举个例子，如果页面向右滚动 200px 并出现了滚动条，这部分在窗口之外，然后鼠标点击距离窗口左边 100px 的位置，pageX 所返回的值将是 300。</p>
+<p>起初这个属性被定义为长整型。 CSSOM 视图模块将它重新定位为双浮点数类型。请参阅浏览器兼容性部分了解详情。</p>
+<p>鼠标相对于页面的坐标</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var pos = event.pageX
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var box = document.querySelector(&quot;.box&quot;);
+box.onclick = (eve)=&gt;&#123;
+var e = eve || window.event;
+console.log(e.offsetX,e.offsetY)
+console.log(e.clientX,e.clientY)
+console.log(e.pageX,e.pageY)
+console.log(e.screenX,e.screenY)
+
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="pageY"><a href="#pageY" class="headerlink" title="pageY"></a>pageY</h5><blockquote>
+<p>pageY<code> 是一个由[</code>MouseEvent`](<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent)%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E7%9A%84%E7%9B%B8%E5%AF%B9%E4%BA%8E%E6%95%B4%E4%B8%AA%E6%96%87%E6%A1%A3%E7%9A%84Y%EF%BC%88%E6%B0%B4%E5%B9%B3%EF%BC%89%E5%9D%90%E6%A0%87%E4%BB%A5%E5%83%8F%E7%B4%A0%E4%B8%BA%E5%8D%95%E4%BD%8D%E7%9A%84%E5%8F%AA%E8%AF%BB%E5%B1%9E%E6%80%A7%E3%80%82">https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent)接口返回的相对于整个文档的Y（水平）坐标以像素为单位的只读属性。</a></p>
+<p>鼠标相对于页面的坐标</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var pos = event.pageY
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var box = document.querySelector(&quot;.box&quot;);
+box.onclick = (eve)=&gt;&#123;
+var e = eve || window.event;
+console.log(e.offsetX,e.offsetY)
+console.log(e.clientX,e.clientY)
+console.log(e.pageX,e.pageY)
+console.log(e.screenX,e.screenY)
+&#125;
+</code></pre>
+</li>
+</ul>
+<p>鼠标相对于屏幕的坐标</p>
+<h5 id="screenX"><a href="#screenX" class="headerlink" title="screenX"></a>screenX</h5><blockquote>
+<p><strong><code>screenX</code></strong> 是只读属性，他提供了鼠标相对于屏幕坐标系的水平偏移量。</p>
+<p>鼠标相对于屏幕的坐标</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var pixelNumber = instanceOfMouseEvent.screenX
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">一个双浮点值。早期版本的规格定义这是一个 整数指的像素数。有关详细信息，请参见浏览器兼容性部分。
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var box = document.querySelector(&quot;.box&quot;);
+box.onclick = (eve)=&gt;&#123;
+    var e = eve || window.event;
+    console.log(e.offsetX,e.offsetY)
+    console.log(e.clientX,e.clientY)
+    console.log(e.pageX,e.pageY)
+    console.log(e.screenX,e.screenY)
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="screenY"><a href="#screenY" class="headerlink" title="screenY"></a>screenY</h5><blockquote>
+<p><strong><code>screenY</code></strong> 是只读属性，他提供了鼠标相对于屏幕坐标系的垂直偏移量。</p>
+<p>鼠标相对于屏幕的坐标</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var pixelNumber = instanceOfMouseEvent.screenY
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">一个双浮点值。早期版本的规格定义这是一个 整数指的像素数。有关详细信息，请参见浏览器兼容性部分。
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var box = document.querySelector(&quot;.box&quot;);
+box.onclick = (eve)=&gt;&#123;
+var e = eve || window.event;
+console.log(e.offsetX,e.offsetY)
+console.log(e.clientX,e.clientY)
+console.log(e.pageX,e.pageY)
+console.log(e.screenX,e.screenY)
+
+&#125;
+</code></pre>
+</li>
+</ul>
+<h4 id="KeyboardEvent"><a href="#KeyboardEvent" class="headerlink" title="KeyboardEvent."></a>KeyboardEvent.</h4><blockquote>
+<p><code>KeyboardEvent </code>对象描述了键盘的交互方式。 每个事件都描述了一个按键（Each event describes a key）；事件类型<code>keydown</code>， <code>keypress</code> 与 <code>keyup</code> 可以确定是哪种事件在活动。</p>
+</blockquote>
+<h5 id="keyCode"><a href="#keyCode" class="headerlink" title="keyCode"></a>keyCode</h5><blockquote>
+<p>返回当前按键的ASCII码</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ASCII码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>空格</td>
+<td>32</td>
+</tr>
+<tr>
+<td>回车</td>
+<td>13</td>
+</tr>
+<tr>
+<td>左</td>
+<td>37</td>
+</tr>
+<tr>
+<td>上</td>
+<td>38</td>
+</tr>
+<tr>
+<td>右</td>
+<td>39</td>
+</tr>
+<tr>
+<td>下</td>
+<td>40</td>
+</tr>
+</tbody></table>
+<h5 id="which"><a href="#which" class="headerlink" title="which"></a>which</h5><h5 id="兼容性写法-1"><a href="#兼容性写法-1" class="headerlink" title="兼容性写法"></a>兼容性写法</h5><pre><code class="js">document.onkeydown = function(eve)&#123;
+        var e = eve || window.event;
+        var code = e.keyCode || e.which;
+    &#125;
+</code></pre>
+<h5 id="ctrlKey"><a href="#ctrlKey" class="headerlink" title="ctrlKey"></a>ctrlKey</h5><blockquote>
+<p>鼠标事件<strong>ctrlKey是只读属性，可返回一个布尔值，当ctrl键被按下，返回true，否则返回false</strong></p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var ctrlKeyPressed = instanceOfMouseEvent.ctrlKey
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">A boolean
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code>document.onkeypress = ()=&gt;&#123;
+    console.log(e.ctrlKey);/如果按下了ctrl就为true,没按下ctrl就为false
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="altKey"><a href="#altKey" class="headerlink" title="altKey"></a>altKey</h5><blockquote>
+<p>鼠标事件<strong>altKey是只读属性，可返回一个布尔值，当alt键被按下，返回true，否则返回false</strong></p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var altKeyPressed = instanceOfMouseEvent.altKey
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">A boolean
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">document.onkeypress = ()=&gt;&#123;
+    console.log(e.altKey);/如果按下了alt就为true,没按下alt就为false
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="shiftKey"><a href="#shiftKey" class="headerlink" title="shiftKey"></a>shiftKey</h5><blockquote>
+<p>鼠标事件<strong>shiftKey是只读属性，可返回一个布尔值，当shift键被按下，返回true，否则返回false</strong></p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var shiftKeyPressed = instanceOfMouseEvent.shiftKey
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">A boolean
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code>document.onkeypress = ()=&gt;&#123;
+    console.log(e.shiftKey);/如果按下了shift就为true,没按下shift就为false
+&#125;
+</code></pre>
+</li>
+</ul>
+<h4 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h4><blockquote>
+<p>当内层元素的事件被触发时，会依次向上触发所有父级的相同事件，即便父级没有事件处理函数，但父级有事件，因此依然会往上冒泡</p>
+</blockquote>
+<h5 id="event-stopPropagation"><a href="#event-stopPropagation" class="headerlink" title="event.stopPropagation"></a>event.stopPropagation</h5><blockquote>
+<p>阻止捕获和冒泡阶段中当前事件的进一步传播。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">event.stopPropagation(); 
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">function stopBubble(e) &#123;
+    if (e.stopPropagation) &#123;
+        e.stopPropagation();
+    &#125; else &#123;
+        e.cancelBubble = true;
+    &#125;
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="event-cancelBubble"><a href="#event-cancelBubble" class="headerlink" title="event.cancelBubble"></a>event.cancelBubble</h5><blockquote>
+<p>获取或设置一个布尔值,表明当前事件是否要取消冒泡.</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">event.cancelBubble = bool;
+var bool = event.cancelBubble;
+</code></pre>
+<p>如果一个事件是可冒泡的,则它的cancelBubble<code>属性的默认值为 </code>false<code>,代表允许该事件向上冒泡. 将</code>cancelBubble<code>属性设置为</code>true以后,可以阻止该事件的进一步冒泡行为.</p>
+</li>
+<li><p>实例</p>
+<pre><code class="js">function stopBubble(e) &#123;
+    if (e.stopPropagation) &#123;
+        e.stopPropagation();
+    &#125; else &#123;
+        e.cancelBubble = true;
+    &#125;
+&#125;
+</code></pre>
+</li>
+</ul>
+<h4 id="阻止浏览器默认行为"><a href="#阻止浏览器默认行为" class="headerlink" title="阻止浏览器默认行为"></a>阻止浏览器默认行为</h4><h5 id="Event-returnValue"><a href="#Event-returnValue" class="headerlink" title="Event.returnValue"></a>Event.returnValue</h5><blockquote>
+<p> <code>Event.returnValue</code> 属性表示该事件的默认操作是否已被阻止。默认情况下，它被设置为true，允许发生默认操作。将该属性设置为false，可以防止默认操作。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">event.returnValue = bool;
+var bool = event.returnValue;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">e.returnValue = false;
+</code></pre>
+</li>
+</ul>
+<h5 id="Event-preventDefault"><a href="#Event-preventDefault" class="headerlink" title="Event.preventDefault"></a>Event.preventDefault</h5><blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a> 接口的 <code>preventDefault()</code>方法，告诉<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Glossary/user_agent">user agent</a>：如果此事件没有被显式处理，那么它默认的动作也不要做（因为默认是要做的）。此事件还是继续传播，除非碰到事件侦听器调用<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event/stopPropagation"><code>stopPropagation()</code></a> 或<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event/stopImmediatePropagation"><code>stopImmediatePropagation()</code></a>，才停止传播。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">event.preventDefault();
+</code></pre>
+</li>
+<li><p>返回值</p>
+<p><strong>undefined</strong></p>
+</li>
+<li><p>实例</p>
+<pre><code class="js">e.preventDefault()
+</code></pre>
+</li>
+</ul>
+<h5 id="兼容性写法-2"><a href="#兼容性写法-2" class="headerlink" title="兼容性写法"></a>兼容性写法</h5><pre><code class="js">function stopDefault(e)&#123;
+    if(e.preventDefault)    e.preventDefault();//兼容其他浏览器
+    else    e.returnValue = false;//兼容IE
+&#125;
+</code></pre>
+<h5 id="return-false"><a href="#return-false" class="headerlink" title="return false"></a>return false</h5><p>在某一事件类型的事件处理函数结尾加上<code>return false</code>会阻止该事件类型的默认行为</p>
+<h4 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h4><blockquote>
+<p> 事件触发阶段主要由于事件流：DOM0级事件处理阶段和DOM2级事件处理</p>
+</blockquote>
+<h5 id="DOM0级事件"><a href="#DOM0级事件" class="headerlink" title="DOM0级事件"></a>DOM0级事件</h5><p>​        通过一种赋值方式，是被所有浏览器所支持的，简单易懂容易操作：元素.onclick = function(){}</p>
+<h5 id="DOM2级事件"><a href="#DOM2级事件" class="headerlink" title="DOM2级事件"></a>DOM2级事件</h5><p>​        通过所有DOM节点中的方法，可以重复绑定，但是浏览器兼容存在问题</p>
+<h5 id="触发顺序"><a href="#触发顺序" class="headerlink" title="触发顺序"></a>触发顺序</h5><ul>
+<li>事件冒泡：从里向外</li>
+<li>事件捕获：从外向内</li>
+<li>目标阶段：当前元素的当前事件</li>
+</ul>
+<p><img src="file:///D:/APP/feiq/Recv%20Files/JavaScript/%E8%AF%BE%E4%BB%B6/day12/%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1-%E4%B8%8B_files/Image.jpg" alt="img"></p>
+<h4 id="事件监听器"><a href="#事件监听器" class="headerlink" title="事件监听器"></a>事件监听器</h4><h5 id="addEventListener"><a href="#addEventListener" class="headerlink" title="addEventListener()"></a>addEventListener()</h5><blockquote>
+<p><strong>EventTarget.addEventListener()</strong> 方法将指定的监听器注册到 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget"><code>EventTarget</code></a> 上，当该对象触发指定的事件时，指定的回调函数就会被执行。 事件目标可以是一个文档上的元素 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element"><code>Element</code></a>,<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document"><code>Document</code></a>和<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window"><code>Window</code></a>或者任何其他支持事件的对象 (比如 <code>XMLHttpRequest</code>)<code>。</code></p>
+<p><code>addEventListener()</code>的工作原理是将实现<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventListener"><code>EventListener</code></a>的函数或对象添加到调用它的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget"><code>EventTarget</code></a>上的指定事件类型的事件侦听器列表中。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">target.addEventListener(type, listener[, options]);
+target.addEventListener(type, listener[, useCapture]);
+target.addEventListener(type, listener[, useCapture, wantsUntrusted  ]);  // Gecko/Mozilla only
+</code></pre>
+</li>
+<li><p>返回值</p>
+<p><strong>undefined</strong></p>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var obox = document.querySelector(&quot;.box&quot;);
+obox.addEventListener(&quot;click&quot;,function()&#123;
+    console.log(1);
+&#125;)
+</code></pre>
+</li>
+</ul>
+<h5 id="add兼容性写法"><a href="#add兼容性写法" class="headerlink" title="add兼容性写法"></a>add兼容性写法</h5><pre><code class="js">function addEvent(ele,type,callback)&#123;
+    if(ele.attachEvent)    ele.attachEvent(&quot;on&quot;+type,callback);//兼容IE
+    else    ele.addEventListener(type,callback);
+&#125;
+</code></pre>
+<h5 id="removeEventListener"><a href="#removeEventListener" class="headerlink" title="removeEventListener()"></a>removeEventListener()</h5><blockquote>
+<p>删除使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener"><code>EventTarget.addEventListener()</code></a> 方法添加的事件。使用事件类型，事件侦听器函数本身，以及可能影响匹配过程的各种可选择的选项的组合来标识要删除的事件侦听器。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">target.removeEventListener(type, listener[, options]);
+target.removeEventListener(type, listener[, useCapture]);
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var obox = document.querySelector(&quot;.box&quot;);
+function fn1()&#123;
+    console.log(1);
+&#125;
+obox.addEventListener(&quot;click&quot;,fn1)
+obox.removeEventListener(&quot;click&quot;,fn1)
+</code></pre>
+</li>
+</ul>
+<h5 id="remove兼容性写法"><a href="#remove兼容性写法" class="headerlink" title="remove兼容性写法"></a>remove兼容性写法</h5><pre><code class="js">function removeEvent(ele,type,callback)&#123;
+    if(ele.detachEvent)    ele.detachEvent(&quot;on&quot;+type,callback);//兼容IE
+    else    ele.removeEventListener(type,callback);
+&#125;
+</code></pre>
+<h4 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h4><blockquote>
+<p>将多个子元素的相同事件，加给共同的现有的父元素，实现节省事件的目的</p>
+</blockquote>
+<h5 id="事件委托的好处4"><a href="#事件委托的好处4" class="headerlink" title="事件委托的好处4"></a>事件委托的好处4</h5><ul>
+<li>节省性能</li>
+<li>可以给页面上暂时不存在的元素绑定事件</li>
+</ul>
+<h5 id="event-target"><a href="#event-target" class="headerlink" title="event.target"></a>event.target</h5><blockquote>
+<p>触发事件的对象 (某个DOM元素) 的引用。当事件处理程序在事件的冒泡或捕获阶段被调用时，它与<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event/currentTarget"><code>event.currentTarget</code></a>不同。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">let theTarget = event.target
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">// Make a list
+var ul = document.createElement(&#39;ul&#39;);
+document.body.appendChild(ul);
+
+var li1 = document.createElement(&#39;li&#39;);
+var li2 = document.createElement(&#39;li&#39;);
+ul.appendChild(li1);
+ul.appendChild(li2);
+
+function hide(e)&#123;
+  // e.target 引用着 &lt;li&gt; 元素
+  // 不像 e.currentTarget 引用着其父级的 &lt;ul&gt; 元素.
+  e.target.style.visibility = &#39;hidden&#39;;
+&#125;
+
+// 添加监听事件到列表，当每个 &lt;li&gt; 被点击的时候都会触发。
+ul.addEventListener(&#39;click&#39;, hide, false);
+</code></pre>
+</li>
+</ul>
+<h5 id="兼容写法"><a href="#兼容写法" class="headerlink" title="兼容写法"></a>兼容写法</h5><pre><code class="js"> otable.onclick = function(eve)&#123;
+        var e = eve || window.event;
+        var target = e.target || e.srcElement;//只看这行
+        if(target.nodeName === &quot;TD&quot;)&#123;
+            var ipt = document.createElement(&quot;input&quot;);
+            ipt.value = target.innerHTML;
+            target.innerHTML = &quot;&quot;;
+            target.appendChild(ipt);
+            ipt.focus();
+
+            var that = target;
+            ipt.onblur = function()&#123;
+                that.innerHTML = this.value;
+            &#125;
+            ipt.onclick = function(eve)&#123;
+                var e = eve || window.event;
+                e.stopPropagation();
+            &#125;
+        &#125;
+    &#125;
+</code></pre>
+<h5 id="闭包封装写法"><a href="#闭包封装写法" class="headerlink" title="闭包封装写法"></a>闭包封装写法</h5><p>HTML：</p>
+<pre><code class="html">&lt;div class=&quot;box&quot;&gt;
+    &lt;p class=&quot;red&quot;&gt;段落1&lt;/p&gt;
+    &lt;span&gt;文本1&lt;/span&gt;
+    &lt;p&gt;段落2&lt;/p&gt;
+    &lt;span&gt;文本2&lt;/span&gt;
+    &lt;p class=&quot;red&quot;&gt;段落3&lt;/p&gt;
+    &lt;span&gt;文本3&lt;/span&gt;
+    &lt;h2&gt;二级标题1&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div class=&quot;box1&quot;&gt;
+    &lt;p&gt;段落1&lt;/p&gt;
+    &lt;span class=&quot;red&quot;&gt;文本1&lt;/span&gt;
+    &lt;p&gt;段落2&lt;/p&gt;
+    &lt;span&gt;文本2&lt;/span&gt;
+    &lt;p class=&quot;red&quot;&gt;段落3&lt;/p&gt;
+    &lt;span&gt;文本3&lt;/span&gt;
+    &lt;h2 class=&quot;red&quot;&gt;二级标题2&lt;/h2&gt;
+&lt;/div&gt;
+</code></pre>
+<p>JS：</p>
+<pre><code class="js">let obox = document.querySelector(&quot;.box&quot;);
+    let obox1 = document.querySelector(&quot;.box1&quot;);
+    let aspan = document.querySelectorAll(&quot;.box span&quot;)
+    let ap = document.querySelectorAll(&quot;.box1 p&quot;)
+    let ared = document.querySelectorAll(&quot;.box1 .red&quot;)
+    obox.onclick = fn(aspan,function()&#123;
+        console.log(this);
+        this.style.color = &quot;red&quot;;
+    &#125;);
+    obox1.onclick = fn(ared,function () &#123; 
+        console.log(this);
+     &#125;)
+
+    function fn(achild,callback)&#123;
+        return function(eve)&#123;
+            let e = eve ||window.event;
+            let target = e.target || e.srcElement;
+            for(let i=0;i&lt;achild.length;i++)
+            &#123;
+                if(target == achild[i])
+                &#123;
+                    callback.call(target);
+                &#125;
+            &#125;
+        &#125;
+
+    &#125;
+</code></pre>
+<h4 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h4><table>
+<thead>
+<tr>
+<th>定义</th>
+<th>事件名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>左键单击</td>
+<td>click</td>
+</tr>
+<tr>
+<td>双击</td>
+<td>dblclick</td>
+</tr>
+<tr>
+<td>右键单击</td>
+<td>contextmenu</td>
+</tr>
+<tr>
+<td>按下</td>
+<td>mousedown</td>
+</tr>
+<tr>
+<td>移动</td>
+<td>mousemove</td>
+</tr>
+<tr>
+<td>抬起</td>
+<td>mouseup</td>
+</tr>
+<tr>
+<td>进入</td>
+<td>mouseover</td>
+</tr>
+<tr>
+<td>离开</td>
+<td>mouseout</td>
+</tr>
+</tbody></table>
+<h5 id="鼠标拖拽效果"><a href="#鼠标拖拽效果" class="headerlink" title="鼠标拖拽效果"></a>鼠标拖拽效果</h5><blockquote>
+<ol>
+<li>按下鼠标</li>
+<li>移动鼠标 </li>
+<li>松开鼠标</li>
+</ol>
+</blockquote>
+<ol>
+<li><p>给目标元素添加onmousedown事件，拖拽的前提是在目标元素按下鼠标左键</p>
+</li>
+<li><p>当onmousedown发生以后，此刻给document添加onmousemove事件，意味着此刻鼠标在网页的移动都将改变目标元素的位置</p>
+</li>
+<li><p>在onmousemove事件中，设定目标元素的left和top</p>
+<p>公式：</p>
+<p>目标元素的left = 鼠标的clientX – （鼠标和元素的横坐标差，即offsetX）</p>
+<p>目标元素的top = 鼠标的clientY– （鼠标和元素的纵坐标差，即offsetY）</p>
+</li>
+<li><p>当onmousedown发生以后，此刻给document添加onmouseup事件，意味着此刻鼠标在网页的任意位置松开鼠标，都会放弃拖拽的效果   在onmouseup事件中，取消document的onmousemove事件即可。</p>
+</li>
+</ol>
+<p> <a href="..%5C%E4%BD%9C%E4%B8%9A%5Cday12%5C%E5%BC%B9%E5%87%BA%E7%AA%97%E5%8F%A3%E6%8B%96%E6%8B%BD.html">弹出窗口拖拽.html</a> </p>
+<h4 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h4><table>
+<thead>
+<tr>
+<th>定义</th>
+<th>事件名</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>按下</td>
+<td>keydown</td>
+<td>一般作用于能加焦点的元素</td>
+</tr>
+<tr>
+<td>抬起</td>
+<td>keyup</td>
+<td>一般作用于能加焦点的元素</td>
+</tr>
+<tr>
+<td>敲击</td>
+<td>keypress</td>
+<td>一般作用于能加焦点的元素</td>
+</tr>
+</tbody></table>
+<h4 id="表单事件"><a href="#表单事件" class="headerlink" title="表单事件"></a>表单事件</h4><table>
+<thead>
+<tr>
+<th>定义</th>
+<th>事件名</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>获取焦点</td>
+<td>focus</td>
+<td></td>
+</tr>
+<tr>
+<td>失去焦点</td>
+<td>blur</td>
+<td></td>
+</tr>
+<tr>
+<td>内容改变</td>
+<td>change</td>
+<td>失去焦点后触发</td>
+</tr>
+<tr>
+<td>提交</td>
+<td>submit</td>
+<td>作用于form元素</td>
+</tr>
+<tr>
+<td>重置</td>
+<td>reset</td>
+<td>作用于form元素</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>input</td>
+<td>立即触发</td>
+</tr>
+</tbody></table>
+<h4 id="浏览器事件"><a href="#浏览器事件" class="headerlink" title="浏览器事件"></a>浏览器事件</h4><table>
+<thead>
+<tr>
+<th>浏览器事件</th>
+<th>window</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加载完成</td>
+<td>load</td>
+</tr>
+<tr>
+<td>滚动</td>
+<td>scroll</td>
+</tr>
+<tr>
+<td>改变大小</td>
+<td>resize</td>
+</tr>
+</tbody></table>
+<h5 id="onscroll"><a href="#onscroll" class="headerlink" title="onscroll"></a>onscroll</h5><blockquote>
+<p>事件在元素滚动条在滚动时触发。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">window.onscroll = ()=&gt;&#123;
+    console.log(1);
+&#125;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">&lt;body style=&quot;height: 5000px;&quot;&gt;//有滚动条时才可以触发滚动事件
+&lt;/body&gt;
+
+&lt;script&gt;
+   
+    window.onscroll = () =&gt; &#123;
+        console.log(1);
+    &#125;
+&lt;/script&gt;
+</code></pre>
+</li>
+<li><p>相关变量</p>
+<ol>
+<li><p><strong>document.documentElement.scrollTop</strong></p>
+<p>获取右滚动条的位置，可以赋值给该变量，赋值后配合事件触发会改变滚动条的位置</p>
+<pre><code class="js">    document.onclick = function()&#123;
+        document.documentElement.scrollTop += 100;
+    &#125;
+</code></pre>
+</li>
+<li><p><strong>document.documentElement.scrollLeft</strong></p>
+<p>获取下滚动条的位置，可以赋值给该变量，赋值后配合事件触发会改变滚动条的位置</p>
+<pre><code class="js">    document.onclick = function()&#123;
+        document.documentElement.scrollLeft += 100;
+    &#125;
+</code></pre>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="onresize"><a href="#onresize" class="headerlink" title="onresize()"></a>onresize()</h5><blockquote>
+<p> onresize 事件会在窗口或框架被调整大小时发生。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">onresize=&quot;SomeJavaScriptCode&quot;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">window.onresize = ()=&gt;&#123;
+    console.log(document.documentElement.clientWidth);
+    console.log(document.documentElement.clientHeight);
+&#125;
+</code></pre>
+</li>
+<li><p>相关变量</p>
+<ol>
+<li><p><strong>document.documentElement.clientWidth</strong></p>
+<p>浏览器窗口宽度</p>
+</li>
+<li><p><strong>document.documentElement.clientHeight</strong></p>
+<p>浏览器窗口高度</p>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="onload"><a href="#onload" class="headerlink" title="onload()"></a>onload()</h5><blockquote>
+<p> onload 事件会在页面或图像加载完成后立即发生。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">onload=&quot;SomeJavaScriptCode&quot;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">&lt;head&gt;
+    &lt;script&gt;
+        // onload：页面和资源加载完成触发
+        onload = function()&#123;
+            // console.log(1)
+            var box = document.getElementById(&quot;box&quot;);
+            console.log(box);
+        &#125;
+
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body style=&quot;height: 3000px;&quot;&gt;
+    &lt;div id=&quot;box&quot;&gt;123&lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>按照<strong>浏览器的渲染规则</strong>，该实例的<strong>JS代码</strong>放在了body<strong>前面</strong>去执行，会造成先渲染到JS的时候找不到div元素，因此无法正常工作。</p>
+<p>因此，当JS代码放在body前面执行时，需要配合onload事件才能触发JS</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-13 JS的执行和编译过程的副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/09/15/13%20JS%E7%9A%84%E6%89%A7%E8%A1%8C%E5%92%8C%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%E7%9A%84%E5%89%AF%E6%9C%AC/" class="article-date">
+  	<time datetime="2022-09-15T08:29:42.577Z" itemprop="datePublished">2022-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/15/13%20JS%E7%9A%84%E6%89%A7%E8%A1%8C%E5%92%8C%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%E7%9A%84%E5%89%AF%E6%9C%AC/">
+        js-13 JS的执行和编译过程的副本
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h2><blockquote>
+<p>基于事件驱动并独立于平台的脚本/客户端语言</p>
+</blockquote>
+<h3 id="JS的执行和编译过程"><a href="#JS的执行和编译过程" class="headerlink" title="JS的执行和编译过程"></a>JS的执行和编译过程</h3><h4 id="解析器"><a href="#解析器" class="headerlink" title="解析器"></a>解析器</h4><blockquote>
+<ol>
+<li><p>没有执行，检查：提升，语法</p>
+</li>
+<li><p>提升：提升到一个临时空间内，</p>
+</li>
+<li><p>语法：语法不对，抛出错误，直接终止一切</p>
+</li>
+</ol>
+</blockquote>
+<p>提升：提升到一个临时空间内，</p>
+<p>语法：语法不对，抛出错误，直接终止一切</p>
+<h4 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h4><blockquote>
+<ol>
+<li><p>执行</p>
+</li>
+<li><p>如果解析器没有遇到报错，并且把所有的提升都做好了，才会执行编译器</p>
+</li>
+<li><p>当编译器执行时，会先去临时空间中读取要操作的变量，直接使用</p>
+</li>
+</ol>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

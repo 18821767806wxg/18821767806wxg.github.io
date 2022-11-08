@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>js-引用数据类型 | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="引用数据类型对象Object 对象的概念：对象事物的描述 对象的语法（组成，本质）：属性名和属性值，键值对  var people &#x3D; &amp;#123;     name:&quot;admin&quot;,     age:18,     sex:&quot;男&quot;,     like:&quot;ball&quot;,     sayhello:function()&amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js-引用数据类型">
+<meta property="og:url" content="https://18821767806wxg.github.io/2022/09/15/02%20%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%89%AF%E6%9C%AC/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="引用数据类型对象Object 对象的概念：对象事物的描述 对象的语法（组成，本质）：属性名和属性值，键值对  var people &#x3D; &amp;#123;     name:&quot;admin&quot;,     age:18,     sex:&quot;男&quot;,     like:&quot;ball&quot;,     sayhello:function()&amp;#123;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-15T08:29:42.514Z">
+<meta property="article:modified_time" content="2022-09-15T08:30:55.974Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=475479888&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/10/">React博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">相识就是一种缘分欢迎进入我的博客，主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-02 引用数据类型的副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/09/15/02%20%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%89%AF%E6%9C%AC/" class="article-date">
+  	<time datetime="2022-09-15T08:29:42.514Z" itemprop="datePublished">2022-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js-引用数据类型
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h2><h3 id="对象Object"><a href="#对象Object" class="headerlink" title="对象Object"></a>对象Object</h3><ul>
+<li>对象的概念：对象事物的描述</li>
+<li>对象的语法（组成，本质）：属性名和属性值，<strong>键值对</strong></li>
+</ul>
+<pre><code class="JS">var people = &#123;
+    name:&quot;admin&quot;,
+    age:18,
+    sex:&quot;男&quot;,
+    like:&quot;ball&quot;,
+    sayhello:function()&#123;
+        console.log(&quot;我叫&quot;+people.name+&quot;今年&quot;+people.age+&quot;性别&quot;+people.sex+&quot;爱好&quot;+people.like)
+    &#125;
+&#125;
+
+people.sayhello();
+</code></pre>
+<ul>
+<li>对象的作用（意义）:储存数据，编程</li>
+<li>对象中的值的叫法和操作：对象里的变量叫<strong>属性</strong>，对象里的函数叫<strong>方法</strong></li>
+</ul>
+<h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><ul>
+<li><strong>.语法</strong>：对象.属性（方法名），当属性名和方法名确定</li>
+</ul>
+<pre><code class="js">obj1.name = &quot;hello&quot;;
+console.log(obj1.name);
+</code></pre>
+<ul>
+<li> <strong>[ ]语法</strong>，当属性名和方法名不确定</li>
+</ul>
+<pre><code class="js">var obj1 = &#123;&#125;;
+var str = &quot;age&quot;;
+console.log(obj1[str]);
+obj1[str] = &quot;男&quot;;
+console.log(obj1[&quot;name&quot;]);
+console.log(obj1);
+</code></pre>
+<h3 id="函数Function"><a href="#函数Function" class="headerlink" title="函数Function"></a>函数Function</h3><blockquote>
+<p>函数是由事件驱动的或者当他被调用时可执行的可重复使用的代码块。</p>
+</blockquote>
+<h4 id="函数的好处"><a href="#函数的好处" class="headerlink" title="函数的好处"></a>函数的好处</h4><ol>
+<li>重复使用－－－－空调不可能是一次性的，可以重复使用</li>
+<li>忽略细节－－－－会用空调不一定会生产空调</li>
+<li>选择执行－－－－夏冬使用，春秋不用</li>
+</ol>
+<h4 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h4><ol>
+<li><p><strong>声明式</strong></p>
+<table>
+<thead>
+<tr>
+<th>function</th>
+<th>为声明函数的关键字，指出这是一个函数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fn</td>
+<td>是函数名，类似于永来存储函数的变量</td>
+</tr>
+<tr>
+<td>()</td>
+<td>为函数的参数，多个参数用 , 隔开</td>
+</tr>
+<tr>
+<td>{}</td>
+<td>放置函数体，用于执行时，所要编译的代码段</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>赋值式</strong></p>
+<pre><code class="js">var fn = function()&#123;&#125;;
+</code></pre>
+<p>​    这种方式下，虽然这个函数没有名字，但是这个函数赋值给了fn，因此通过变量fn也能调用到这个函数，以上两种声明方式等价都可以使用，函数名/变量名＋()  调用执行。</p>
+</li>
+</ol>
+<h4 id="函数的调用"><a href="#函数的调用" class="headerlink" title="函数的调用"></a>函数的调用</h4><ol>
+<li><p>自身执行</p>
+<ul>
+<li>函数名(),任何情况下，只要函数名()了，函数立即执行</li>
+</ul>
+</li>
+<li><p>事件调用</p>
+<ul>
+<li><p>元素.事件 = 函数名</p>
+<pre><code class="js">box.onclick = fn;
+</code></pre>
+</li>
+<li><p>元素.事件 = 函数的内容</p>
+<pre><code class="js">box.onclick = function()&#123;...&#125;
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="函数写法的分类"><a href="#函数写法的分类" class="headerlink" title="函数写法的分类"></a>函数写法的分类</h4><ol>
+<li><p>有名函数</p>
+<ul>
+<li>声明式创建的函数：function fn(){}</li>
+</ul>
+</li>
+<li><p>无名函数</p>
+<p>注意：无名函数不允许直接存在，必须作为值使用，是一种表达式，或值</p>
+<pre><code class="js">function()&#123;
+  console.log(1)
+&#125;
+</code></pre>
+<p>使用:</p>
+<ol>
+<li><strong>作为赋值式创建函数的值</strong>：<strong>var fn = function(){}</strong></li>
+<li><strong>事件处理函数</strong>，直接作为事件执行函数存在：<strong>元素.事件 = function(){}</strong></li>
+<li><strong>回调函数</strong>：作为函数的参数存在，也是一个值：</li>
+</ol>
+<pre><code class="js">function fn(a)&#123;a(1)&#125;; fn(function(b)&#123;...&#125;)；
+</code></pre>
+<ol start="4">
+<li><strong>作为匿名函数的函数体存在</strong>：**(function(){})()**  </li>
+</ol>
+</li>
+<li><p>匿名函数</p>
+<pre><code class="js">(function()&#123;&#125;)()
+</code></pre>
+<p>特点：自动执行</p>
+</li>
+</ol>
+<h4 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h4><ol>
+<li><p><strong>形参</strong></p>
+<ol>
+<li>定义时的参数叫形参，</li>
+<li>形参保存了实参</li>
+<li>形参是变量</li>
+<li>形参相当于赋值元素运算符=号，左边的内容</li>
+</ol>
+</li>
+<li><p><strong>实参</strong></p>
+<ol>
+<li>执行时的参数叫实参</li>
+<li>实参被形参接收</li>
+<li>实参是值</li>
+<li>实参相当于赋值元素运算符=号，右边的内容</li>
+</ol>
+</li>
+<li><p><strong>参数的个数</strong></p>
+<ul>
+<li><p>可以传无限个</p>
+</li>
+<li><p>关系：实参和形参，数量一致，按照顺序一一对应</p>
+</li>
+<li><p>形参多，多出来的形参是undefined</p>
+</li>
+<li><p>实参多，多出来的实参，被传到arguments（实参全部都会比传到arguments)</p>
+</li>
+</ul>
+</li>
+<li><p><strong>参数的类型</strong></p>
+<ul>
+<li>任何类型</li>
+</ul>
+</li>
+</ol>
+<h4 id="函数的回调"><a href="#函数的回调" class="headerlink" title="函数的回调"></a>函数的回调</h4><blockquote>
+<p>​    回调函数是一段可执行的代码段，它作为一个参数传递给其他的代码，其作用是在需要的时候方便调用这段（回调函数）代码。</p>
+<p>​    在JavaScript中函数也是对象的一种，同样对象可以作为参数传递给函数，因此函数也可以作为参数传递给另外一个函数，这个作为参数的函数就是回调函数</p>
+</blockquote>
+<pre><code class="js">   function sum(x,y,callback)&#123;
+                var sum = x+y;
+                callback(sum);
+        &#125;
+        sum(1,3,function(sum)&#123;
+                console.log(sum)
+        &#125;)
+</code></pre>
+<h4 id="函数的return"><a href="#函数的return" class="headerlink" title="函数的return"></a>函数的return</h4><blockquote>
+<p>将函数的执行或处理结果，返回到执行语句上，方便二次使用</p>
+</blockquote>
+<ol start="3">
+<li><p><strong>默认情况下，函数返回undefined</strong></p>
+</li>
+<li><p>如果需要有返回值，要在函数中使用关键字：return</p>
+</li>
+<li><p>return 值</p>
+</li>
+</ol>
+<ul>
+<li>为什么要有返回值，如果是处理数据的函数，处理之后的数据，有可能需要二次使用，需要有返回值，返回处理好的数据</li>
+</ul>
+<ol start="6">
+<li><p>通过return来返回无名函数</p>
+<pre><code class="js">    function fn(a)&#123;
+            return function(b)&#123;
+                    return function (c)&#123;
+                            return function (d)&#123;
+                                    return a+b+c+d;
+                            &#125;
+                    &#125;
+            &#125;
+    &#125;
+    fn(3)(4)(5)(6)=3+4+5+6;
+</code></pre>
+</li>
+<li><p>return 可以返回几次数据:<strong>1次</strong></p>
+<ul>
+<li>函数中，可以写多个return，但是函数只能执行一次return，执行之后，函数会立即结束，后面代码不再执行</li>
+</ul>
+</li>
+</ol>
+<h4 id="arguments对象"><a href="#arguments对象" class="headerlink" title="arguments对象"></a>arguments对象</h4><p>arguments是函数中专有的一个对象，只有在函数中能拿到，用来保存函数所有的实参。</p>
+<ol>
+<li>arguments其实是一个伪数组，可以使用数组的所有方法和属性（length)。</li>
+<li>arguments.length实际上就是实参的个数。</li>
+<li>借助arguments找到所有的实参：console.log(arguments);</li>
+</ol>
+<h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><blockquote>
+<p>变量生效的区域</p>
+<p>能不能跨作用域访问：</p>
+<ol>
+<li>同级局部不能跨</li>
+<li>不能拿子，子能拿父</li>
+<li>多个父子级作用域内都有，找最近的作用域</li>
+</ol>
+</blockquote>
+<h5 id="局部作用域"><a href="#局部作用域" class="headerlink" title="局部作用域"></a>局部作用域</h5><blockquote>
+<p>区域：每个函数都是一个局部</p>
+</blockquote>
+<ol>
+<li><p>生命周期：朝生暮死，作用域声明时被创建，作用域结束时被释放</p>
+</li>
+<li><p>缺点：更麻烦，每个局部都需要定义某个变量，甚至是几个局部都相同的变量</p>
+</li>
+</ol>
+<h5 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h5><blockquote>
+<p>整个代码文件，不属于任何一个函数，就是全局</p>
+</blockquote>
+<ol>
+<li>生命周期：一直存在，在任何位置都可以拿到</li>
+<li>缺点：更浪费性能</li>
+</ol>
+<h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><blockquote>
+<p>递归算法：在函数内部，执行自己</p>
+</blockquote>
+<pre><code class="js">    function fn(n)&#123;
+        if(n == 1 || n == 2)&#123;
+            return 1
+        &#125;else&#123;
+            return fn(n-1) + fn(n-2);
+        &#125;
+    &#125;
+    console.log(fn(8));
+</code></pre>
+<p><strong>递归最重要的就是停止条件</strong></p>
+<h4 id="Function-prototype方法"><a href="#Function-prototype方法" class="headerlink" title="Function.prototype方法"></a>Function.prototype方法</h4><h5 id="blind"><a href="#blind" class="headerlink" title="blind()"></a>blind()</h5><blockquote>
+<p><code>bind()</code> 方法创建一个新的函数，在 <code>bind()</code> 被调用时，这个新函数的 <code>this</code> 被指定为 <code>bind()</code> 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">function.bind(thisArg[, arg1[, arg2[, ...]]])
+</code></pre>
+</li>
+<li><p>返回值</p>
+<p>​    返回一个原函数的拷贝，并拥有指定的 this 值和初始参数。</p>
+</li>
+<li><p>实例</p>
+<pre><code class="js">this.x = 9;    // 在浏览器中，this 指向全局的 &quot;window&quot; 对象
+var module = &#123;
+  x: 81,
+  getX: function() &#123; return this.x; &#125;
+&#125;;
+
+module.getX(); // 81
+
+var retrieveX = module.getX;
+retrieveX();   
+// 返回 9 - 因为函数是在全局作用域中调用的
+
+// 创建一个新函数，把 &#39;this&#39; 绑定到 module 对象
+// 新手可能会将全局变量 x 与 module 的属性 x 混淆
+var boundGetX = retrieveX.bind(module);
+boundGetX(); // 81
+</code></pre>
+</li>
+</ul>
+<h5 id="call"><a href="#call" class="headerlink" title="call()"></a>call()</h5><blockquote>
+<p><code>call()</code> 方法使用一个指定的 <code>this</code> 值和单独给出的一个或多个参数来调用一个函数。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">function.call(thisArg, arg1, arg2, ...)
+</code></pre>
+</li>
+<li><p>返回值</p>
+<p>​    使用调用者提供的 <code>this</code> 值和参数调用该函数的返回值。若该方法没有返回值，则返回 <code>undefined</code>。</p>
+</li>
+<li><p>实例</p>
+<pre><code class="js">//使用call 方法调用父构造函数
+function Product(name, price) &#123;
+  this.name = name;
+  this.price = price;
+&#125;
+
+function Food(name, price) &#123;
+  Product.call(this, name, price);
+  this.category = &#39;food&#39;;
+&#125;
+
+function Toy(name, price) &#123;
+  Product.call(this, name, price);
+  this.category = &#39;toy&#39;;
+&#125;
+
+var cheese = new Food(&#39;feta&#39;, 5);
+var fun = new Toy(&#39;robot&#39;, 40);
+
+//使用call方法调用匿名函数
+var animals = [
+  &#123; species: &#39;Lion&#39;, name: &#39;King&#39; &#125;,
+  &#123; species: &#39;Whale&#39;, name: &#39;Fail&#39; &#125;
+];
+
+for (var i = 0; i &lt; animals.length; i++) &#123;
+  (function(i) &#123;
+    this.print = function() &#123;
+      console.log(&#39;#&#39; + i + &#39; &#39; + this.species
+                  + &#39;: &#39; + this.name);
+    &#125;
+    this.print();
+  &#125;).call(animals[i], i);
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="apply"><a href="#apply" class="headerlink" title="apply()"></a>apply()</h5><blockquote>
+<p><strong><code>apply()</code></strong> 方法调用一个具有给定<code>this</code>值的函数，以及作为一个数组（或<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Indexed_collections#Working_with_array-like_objects">类似数组对象</a>）提供的参数。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">func.apply(thisArg, [argsArray])
+</code></pre>
+</li>
+<li><p>返回值</p>
+<p>​    调用有指定<code>this</code>值和参数的函数的结果。</p>
+</li>
+<li><p>实例</p>
+<pre><code class="js">//用 apply 将数组添加到另一个数组
+var array = [&#39;a&#39;, &#39;b&#39;];
+var elements = [0, 1, 2];
+array.push.apply(array, elements);
+console.info(array); // [&quot;a&quot;, &quot;b&quot;, 0, 1, 2]
+</code></pre>
+</li>
+</ul>
+<h3 id="数组Array"><a href="#数组Array" class="headerlink" title="数组Array"></a>数组Array</h3><blockquote>
+<p>概念：一组数据，数据的组合</p>
+<p>意义：可以操作多个数据</p>
+</blockquote>
+<h4 id="数组的创建"><a href="#数组的创建" class="headerlink" title="数组的创建"></a>数组的创建</h4><ul>
+<li><p>字面量</p>
+<pre><code class="js">var arr = [];
+</code></pre>
+</li>
+<li><p>构造函数：</p>
+<pre><code class="js">var arr = new Array();
+</code></pre>
+</li>
+<li><p>二者的唯一区别：</p>
+<p>字面量：当只有一个数据，还是数值时，字面量会在数组中保存这个数值</p>
+<p>构造函数：会将这个数值作为长度</p>
+<pre><code class="js"> var arr = [6];
+    var arr2 = new Array(6);
+    console.log(arr);//[6]
+    console.log(arr2);//(6) [empty × 6]
+    console.log(arr.length)//1
+    console.log(arr2.length)//6
+</code></pre>
+</li>
+</ul>
+<h4 id="Array-prototype方法"><a href="#Array-prototype方法" class="headerlink" title="Array.prototype方法"></a>Array.prototype方法</h4><p>索引操作</p>
+<ul>
+<li><p>增：给不存在的索引赋值</p>
+<pre><code class="js">var arr = [1,2,3];
+arr[5] = 5;
+console.log(arr);//(6) [1, 2, 3, empty × 2, 5]
+console.log(arr.length);//6
+</code></pre>
+</li>
+<li><p>删</p>
+<pre><code class="js">var arr = [1,2,3];
+arr.length = 2;
+console.log(arr);//(2) [1, 2]
+</code></pre>
+</li>
+<li><p>改</p>
+<pre><code class="js">var arr = [1,2,3];
+arr[1] = 4;
+console.log(arr);//(3) [1,4,3]
+</code></pre>
+</li>
+<li><p>查：数组的遍历</p>
+<pre><code class="js">var arr = [1,2,3];
+for(var i=0;i&lt;3;i++)
+    &#123;
+        console.log(arr[i]);
+    &#125;
+</code></pre>
+</li>
+</ul>
+<p><strong>方法操作(方法：对象中的函数属性)</strong></p>
+<h6 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h6><p><strong>功能：</strong>用于连接两个或多个数组，该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。<br> <strong>参数：</strong>concat(data1,data2,…);所有参数可选，要合并的数据；data为数组时，将data合并到原数组；data为具体数据时直接添加到原数组尾部；省略时创建原数组的副本。</p>
+<pre><code class="js">var arr1 = [1,2,3]
+var arr2 = arr1.concat();
+console.log(arr1);           //[1,2,3]---原数组
+console.log(arr1 === arr2);  //false
+console.log(arr2);           //[1,2,3]---原数组的副本
+
+console.log(arr1.concat(&quot;hello&quot;,&quot;world&quot;));           //[1,2,3,&quot;hello&quot;,&quot;world&quot;]
+console.log(arr1.concat([&quot;a&quot;,&quot;b&quot;],[[3,4],&#123;&quot;name&quot;:&quot;admin&quot;&#125;]));   //[1,2,3,&quot;a&quot;,&quot;b&quot;,[3,4],&#123;&quot;name&quot;:&quot;admin&quot;&#125;]
+console.log(arr1);           //[1,2,3]---原数组未改变
+
+1,2,3,4].concat(1,2,3,[1,[1,2,3,4,5],3]);//(10) [1, 2, 3, 4, 1, 2, 3, 1, Array(5), 3]
+</code></pre>
+<h6 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h6><p><strong>功能：</strong>根据指定分隔符将数组中的所有元素放入一个字符串，并返回这个字符串。<br> <strong>参数：</strong>join(str);参数可选，默认为”,”号，以传入的字符作为分隔符。</p>
+<pre><code class="jsx">    var arr = [1,2,3];
+    console.log(arr.join());         //1,2,3
+    console.log(arr.join(&quot;-&quot;));      //1-2-3
+    console.log(arr);                //[1,2,3]---原数组未改变
+</code></pre>
+<h6 id="pop"><a href="#pop" class="headerlink" title="pop()"></a>pop()</h6><p><strong>功能：</strong>方法用于删除并返回数组的最后一个元素。<br> <strong>参数：</strong>无</p>
+<pre><code class="jsx">    var arr = [1,2,3];
+    console.log(arr.pop());     //3
+    console.log(arr);           //[1,2]---原数组改变
+</code></pre>
+<h6 id="shift"><a href="#shift" class="headerlink" title="shift()"></a>shift()</h6><p><strong>功能：</strong>方法用于删除并返回数组的第一个元素。<br> <strong>参数：</strong>无</p>
+<pre><code class="jsx">    var arr = [1,2,3]
+    console.log(arr.shift());       //1
+    console.log(arr);               //[2,3]---原数组改变
+</code></pre>
+<h6 id="unshift"><a href="#unshift" class="headerlink" title="unshift()"></a>unshift()</h6><p><strong>功能：</strong>向数组的开头添加一个或更多元素，并返回新的长度。<br> <strong>参数：</strong>unshift(newData1, newData2, ……)</p>
+<pre><code class="jsx">    var arr = [1,2,3];
+    console.log(arr.unshift(&quot;hello&quot;));  //4
+    console.log(arr);                   //[&quot;hello&quot;,1,2,3]---原数组改变
+    console.log(arr.unshift(&quot;a&quot;,&quot;b&quot;));  //6
+    console.log(arr);                   //[&quot;a&quot;,&quot;b&quot;,&quot;hello&quot;,1,2,3]---原数组改变
+</code></pre>
+<h6 id="push"><a href="#push" class="headerlink" title="push()"></a>push()</h6><p><strong>功能：</strong>向数组的末尾添加一个或更多元素，并返回新的长度。<br> <strong>参数：</strong>push(newData1, newData2, ……)</p>
+<pre><code class="jsx">    var arr = [1,2,3];
+    console.log(arr.push(&quot;hello&quot;));  //4
+    console.log(arr);                //[1,2,3,&quot;hello&quot;]---原数组改变
+    console.log(arr.push(&quot;a&quot;,&quot;b&quot;));  //6
+    console.log(arr);                //[1,2,3,&quot;hello&quot;,&quot;a&quot;,&quot;b&quot;]---原数组改变
+</code></pre>
+<h6 id="reverse"><a href="#reverse" class="headerlink" title="reverse()"></a>reverse()</h6><p><strong>功能：</strong>颠倒数组中元素的顺序。<br> <strong>参数：</strong>无</p>
+<pre><code class="jsx">    var arr = [1,2,3];
+    console.log(arr.reverse());     //[3,2,1]
+    console.log(arr);               //[3,2,1]---原数组改变
+</code></pre>
+<h6 id="slice"><a href="#slice" class="headerlink" title="slice()"></a>slice()</h6><p><strong>功能：</strong>可从已有的数组中返回选定的元素。该方法接收两个参数slice(start,end)，strat为必选，表示从第几位开始；end为可选，表示到第几位结束(不包含end位)，省略表示到最后一位；start和end都可以为负数，负数时表示从最后一位开始算起，如-1表示最后一位。<br> <strong>参数：</strong>slice(startIndex, endIndex)</p>
+<pre><code class="ruby">    var arr = [&quot;Tom&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    console.log(arr.slice(1,3));        //[&quot;Jack&quot;,&quot;Lucy&quot;]
+    console.log(arr.slice(1));          //[&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;]
+    console.log(arr.slice(-4,-1));      //[&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;]
+    console.log(arr.slice(-2));         //[&quot;Lily&quot;,&quot;May&quot;]
+    console.log(arr.slice(1,-2));       //[&quot;Jack&quot;,&quot;Lucy&quot;]
+    console.log(arr);                   //[&quot;Tom&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;]---原数组未改变
+</code></pre>
+<h6 id="sort"><a href="#sort" class="headerlink" title="sort()"></a>sort()</h6><p><strong>功能：</strong>对数组中的元素进行排序，默认是升序。</p>
+<pre><code class="jsx">    var arr = [6,1,5,2,3];
+    console.log(arr.sort());    //[1, 2, 3, 5, 6]
+    console.log(arr);           //[1, 2, 3, 5, 6]---原数组改变
+</code></pre>
+<p>但是在排序前，会先调用数组的toString方法，将每个元素都转成字符之后，再进行排序，此时会按照字符串的排序，逐位比较，进行排序。</p>
+<pre><code class="jsx">    var arr = [6,1024,52,256,369];
+    console.log(arr.sort());    //[1024, 256, 369, 52, 6]
+    console.log(arr);           //[1024, 256, 369, 52, 6]---原数组改变
+</code></pre>
+<p><strong>参数：</strong>sort(callback)<br> 如果需要按照数值排序，需要传参。sort(callback)，callback为回调函数，该函数应该具有两个参数，比较这两个参数，然后返回一个用于说明这两个值的相对顺序的数字（a-b）。其返回值如下：<br> 若 a 小于 b，返回一个小于 0 的值。<br> 若 a 等于 b，则返回 0。<br> 若 a 大于 b，则返回一个大于 0 的值。</p>
+<pre><code class="jsx">    var arr = [6,1024,52,256,369];
+    console.log(arr.sort(fn));  //[6, 52, 256, 369, 1024]
+    console.log(arr);           //[6, 52, 256, 369, 1024]---原数组改变
+    function fn(a,b)&#123;
+        return a-b;
+    &#125;
+</code></pre>
+<h6 id="splice"><a href="#splice" class="headerlink" title="splice()"></a>splice()</h6><p><strong>功能：</strong>向数组中添加，或从数组删除，或替换数组中的元素，然后返回被删除/替换的元素。<br> <strong>参数：</strong>splice(start,num,data1,data2,…); 所有参数全部可选。</p>
+<ol>
+<li>不传参时：无操作</li>
+</ol>
+<pre><code class="js">    var arr = [&quot;Tom&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    console.log(arr.splice());      //[]
+    console.log(arr);               //[&quot;Tom&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;]---无操作
+</code></pre>
+<ol start="2">
+<li>只传入start：表示从索引为start的数据开始删除，直到数组结束</li>
+</ol>
+<pre><code class="js">    var arr = [&quot;Tom&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];    
+    console.log(arr.splice(2));     //[&quot;Lucy&quot;, &quot;Lily&quot;, &quot;May&quot;]
+    console.log(arr);               //[&quot;Tom&quot;, &quot;Jack&quot;]---原数组改变
+</code></pre>
+<ol start="3">
+<li>传入start和num：表示从索引为start的数据开始删除，删除num个</li>
+</ol>
+<pre><code class="js">    var arr = [&quot;Tom&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];    
+    console.log(arr.splice(2,2));   //[&quot;Lucy&quot;, &quot;Lily&quot;]
+    console.log(arr);               //[&quot;Tom&quot;, &quot;Jack&quot;, &quot;May&quot;]---原数组改变
+</code></pre>
+<ol start="4">
+<li>删除和替换更多：表示从索引为start的数据开始删除，删除num个，并将第三个参数及后面所有参数，插入到start的位置</li>
+</ol>
+<pre><code class="js">    var arr = [&quot;Tom&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];    
+    console.log(arr.splice(2,2,&quot;a&quot;,&quot;b&quot;));  //[&quot;Lucy&quot;, &quot;Lily&quot;]
+    console.log(arr);                      //[&quot;Tom&quot;, &quot;Jack&quot;, &quot;a&quot;, &quot;b&quot;, &quot;May&quot;]---原数组改变
+</code></pre>
+<ol start="5">
+<li>增加更多：表示从索引为start的数据开始删除，删除num个，并将第三个参数及后面所有参数，插入到start的位置</li>
+</ol>
+<pre><code class="js">    var arr = [&quot;Tom&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];    
+    console.log(arr.splice(2,0,&quot;a&quot;,&quot;b&quot;));  //[]
+    console.log(arr);    //[&quot;Tom&quot;, &quot;Jack&quot;, &quot;a&quot;, &quot;b&quot;, &quot;Lucy&quot;, &quot;Lily&quot;, &quot;May&quot;]---原数组改变
+</code></pre>
+<h6 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h6><p><strong>功能：</strong>转换成字符串，类似于没有参数的join()。该方法会在数据发生隐式类型转换时被自动调用，如果手动调用，就是直接转为字符串。<br> <strong>参数：</strong>无</p>
+<pre><code class="js">    var arr = [1,2,3];
+    console.log(arr.toString());     //1,2,3
+    console.log(arr);                //[1,2,3]---原数组未改变
+</code></pre>
+<h6 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf()"></a>valueOf()</h6><p><strong>功能：</strong>返回数组的原始值（一般情况下其实就是数组自身），一般由js在后台调用，并不显式的出现在代码中<br> <strong>参数：</strong>无</p>
+<pre><code class="jsx">    var arr = [1,2,3];
+    console.log(arr.valueOf());         //[1,2,3]
+    console.log(arr);                   //[1,2,3]
+    //为了证明返回的是数组自身
+    console.log(arr.valueOf() == arr);  //true
+</code></pre>
+<h6 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf()"></a>indexOf()</h6><p><strong>功能：</strong>根据指定的数据，从左向右，查询在数组中出现的位置，如果不存在指定的数据，返回-1。该方法是查询方法，不会对数组产生改变。<br> <strong>参数：</strong>indexOf(value, start);value为要查询的数据；start为可选，表示开始查询的位置，当start为负数时，从数组的尾部向前数；如果查询不到value的存在，则方法返回-1</p>
+<pre><code class="jsx">    var arr = [&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;];
+    console.log(arr.indexOf(&quot;l&quot;));        //2
+    console.log(arr.indexOf(&quot;l&quot;,3));      //3
+    console.log(arr.indexOf(&quot;l&quot;,4));      //-1
+    console.log(arr.indexOf(&quot;l&quot;,-1));     //-1
+    console.log(arr.indexOf(&quot;l&quot;,-3));     //2
+</code></pre>
+<h6 id="lastIndexOf"><a href="#lastIndexOf" class="headerlink" title="lastIndexOf()"></a>lastIndexOf()</h6><p><strong>功能：</strong>根据指定的数据，从右向左，查询在数组中出现的位置，如果不存在指定的数据，返回-1。该方法是查询方法，不会对数组产生改变。<br> <strong>参数：</strong>lastIndexOf(value, start);value为要查询的数据；start为可选，表示开始查询的位置，当start为负数时，从数组的尾部向前数；如果查询不到value的存在，则方法返回-1</p>
+<pre><code class="jsx">    var arr = [&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;];
+    console.log(arr.lastIndexOf(&quot;l&quot;));        //3
+    console.log(arr.lastIndexOf(&quot;l&quot;,3));      //3
+    console.log(arr.lastIndexOf(&quot;l&quot;,1));      //-1
+    console.log(arr.lastIndexOf(&quot;l&quot;,-3));     //2
+    console.log(arr.lastIndexOf(&quot;l&quot;,-4));     //-1
+</code></pre>
+<h6 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h6><p><strong>功能：</strong>ES5新增方法，用来遍历数组，该方法没有返回值。forEach接收的回调函数会根据数组的每一项执行，该回调函数默认有三个参数，分别为：遍历到的数组的数据，对应的索引，数组自身。<br> <strong>参数：</strong>forEach(callback);callback默认有三个参数，分别为value，index，self。</p>
+<pre><code class="js">    var arr = [&quot;Tom&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    var a = arr.forEach(function(value,index,self)&#123;
+        console.log(value + &quot;--&quot; + index + &quot;--&quot; + (arr === self));
+    &#125;)
+    // 打印结果为：
+    // Tom--0--true
+    // Jack--1--true
+    // Lucy--2--true
+    // Lily--3--true
+    // May--4--true
+    console.log(a);     //undefined---forEach没有返回值
+    //该方法为遍历方法，不会修改原数组
+</code></pre>
+<h6 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h6><p><strong>功能：</strong>1.同forEach功能；2.map的回调函数会将执行结果返回，最后map将所有回调函数的返回值组成新数组返回。<br> <strong>参数：</strong>map(callback);callback默认有三个参数，分别为value，index，self。</p>
+<pre><code class="js">    //功能1：同forEach
+    var arr = [&quot;Tom&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    var a = arr.map(function(value,index,self)&#123;
+        console.log(value + &quot;--&quot; + index + &quot;--&quot; + (arr === self))
+    &#125;)
+    // 打印结果为：
+    // Tom--0--true
+    // Jack--1--true
+    // Lucy--2--true
+    // Lily--3--true
+    // May--4--true
+
+    //功能2：每次回调函数的返回值被map组成新数组返回
+    var arr = [&quot;Tom&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    var a = arr.map(function(value,index,self)&#123;
+        return &quot;hi:&quot;+value;
+    &#125;)
+    console.log(a);     //[&quot;hi:Tom&quot;, &quot;hi:Jack&quot;, &quot;hi:Lucy&quot;, &quot;hi:Lily&quot;, &quot;hi:May&quot;]
+    console.log(arr);   //[&quot;Tom&quot;, &quot;Jack&quot;, &quot;Lucy&quot;, &quot;Lily&quot;, &quot;May&quot;]---原数组未改变
+</code></pre>
+<h6 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h6><p><strong>功能：</strong>1.同forEach功能；2.filter的回调函数需要返回布尔值，当为true时，将本次数组的数据返回给filter，最后filter将所有回调函数的返回值组成新数组返回（此功能可理解为“过滤”）。<br> <strong>参数：</strong>filter(callback);callback默认有三个参数，分别为value，index，self。</p>
+<pre><code class="js">    //功能1：同forEach
+    var arr = [&quot;Tom&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    var a = arr.filter(function(value,index,self)&#123;
+        console.log(value + &quot;--&quot; + index + &quot;--&quot; + (arr === self))
+    &#125;)
+    // 打印结果为：
+    // Tom--0--true
+    // Jack--1--true
+    // Lucy--2--true
+    // Lily--3--true
+    // May--4--true
+
+    //功能2：当回调函数的返回值为true时，本次的数组值返回给filter，被filter组成新数组返回
+    var arr = [&quot;Tom&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    var a = arr.filter(function(value,index,self)&#123;
+        return value.length &gt; 3;
+    &#125;)
+    console.log(a);         //[&quot;Jack&quot;, &quot;Lucy&quot;, &quot;Lily&quot;]
+    console.log(arr);       //[&quot;Tom&quot;, &quot;Jack&quot;, &quot;Lucy&quot;, &quot;Lily&quot;, &quot;May&quot;]---原数组未改变
+</code></pre>
+<h6 id="includes"><a href="#includes" class="headerlink" title="includes()"></a>includes()</h6><blockquote>
+<p><code>includes()</code> 方法用来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回 true，否则返回false。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">arr.includes(valueToFind[, fromIndex])
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">返回一个布尔值 Boolean ，如果在数组中找到了（如果传入了 fromIndex ，表示在 fromIndex 指定的索引范围中找到了）则返回 true 。
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var arr = [1,2,2,4,5,6,7];
+console.log(arr.includes(8));//false
+console.log(arr.includes(1));//true
+console.log(arr.includes(2));//true
+</code></pre>
+</li>
+</ul>
+<h6 id="every"><a href="#every" class="headerlink" title="every()"></a>every()</h6><p><strong>功能：</strong>判断数组中每一项是否都满足条件，只有所有项都满足条件，才会返回true。<br> <strong>参数：</strong>every()接收一个回调函数作为参数，这个回调函数需要有返回值，every(callback);callback默认有三个参数，分别为value，index，self。</p>
+<p><strong>功能1：</strong>当回调函数的返回值为true时，类似于forEach的功能，遍历所有；如果为false，那么停止执行，后面的数据不再遍历，停在第一个返回false的位置。</p>
+<pre><code class="jsx">    //demo1:
+    var arr = [&quot;Tom&quot;,&quot;abc&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    var a = arr.every(function(value,index,self)&#123;
+        console.log(value + &quot;--&quot; + index + &quot;--&quot; + (arr == self))
+    &#125;)
+    // 打印结果为：
+    // Tom--0--true
+    //因为回调函数中没有return true，默认返回undefined，等同于返回false
+
+    //demo2:
+    var arr = [&quot;Tom&quot;,&quot;abc&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    var a = arr.every(function(value,index,self)&#123;
+        console.log(value + &quot;--&quot; + index + &quot;--&quot; + (arr == self))
+        return value.length &lt; 4;
+    &#125;)
+    // 打印结果为：
+    // Tom--0--true
+    // abc--1--true
+    // Jack--2--true
+    //因为当遍历到Jack时，回调函数到return返回false，此时Jack已经遍历，但是后面数据就不再被遍历了
+
+    //demo3:
+    var arr = [&quot;Tom&quot;,&quot;abc&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    var a = arr.every(function(value,index,self)&#123;
+        console.log(value + &quot;--&quot; + index + &quot;--&quot; + (arr == self))
+        return true;
+    &#125;)
+    // 打印结果为：
+    // Tom--0--true
+    // abc--1--true
+    // Jack--2--true
+    // Lucy--3--true
+    // Lily--4--true
+    // May--5--true
+    //因为每个回调函数的返回值都是true，那么会遍历数组所有数据，等同于forEach功能
+</code></pre>
+<p><strong>功能2：</strong>当每个回调函数的返回值都为true时，every的返回值为true，只要有一个回调函数的返回值为false，every的返回值都为false</p>
+<pre><code class="jsx">    //demo1:
+    var arr = [&quot;Tom&quot;,&quot;abc&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    var a = arr.every(function(value,index,self)&#123;
+        return value.length &gt; 3;
+    &#125;)
+    console.log(a);           //false
+
+    //demo2:
+    var arr = [&quot;Tom&quot;,&quot;abc&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    var a = arr.every(function(value,index,self)&#123;
+        return value.length &gt; 2;
+    &#125;)
+    console.log(a);           //true
+</code></pre>
+<h6 id="some"><a href="#some" class="headerlink" title="some()"></a>some()</h6><p><strong>功能：</strong>判断数组中是否存在满足条件的项，只要有一项满足条件，就会返回true。<br> <strong>参数：</strong>some()接收一个回调函数作为参数，这个回调函数需要有返回值，some(callback);callback默认有三个参数，分别为value，index，self。</p>
+<p><strong>功能1：</strong>因为要判断数组中的每一项，只要有一个回调函数返回true，some都会返回true，所以与every正好相反，当遇到一个回调函数的返回值为true时，可以确定结果，那么停止执行，后面都数据不再遍历，停在第一个返回true的位置；当回调函数的返回值为false时，需要继续向后执行，到最后才能确定结果，所以会遍历所有数据，实现类似于forEach的功能，遍历所有。</p>
+<pre><code class="jsx">    //demo1:
+    var arr = [&quot;Tom&quot;,&quot;abc&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    var a = arr.some(function(value,index,self)&#123;
+        console.log(value + &quot;--&quot; + index + &quot;--&quot; + (arr == self))
+        return value.length &gt; 3;
+    &#125;)
+    // 打印结果为：
+    // Tom--0--true
+    // abc--1--true
+    // Jack--2--true
+
+    //demo2:
+    var arr = [&quot;Tom&quot;,&quot;abc&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    var a = arr.some(function(value,index,self)&#123;
+        console.log(value + &quot;--&quot; + index + &quot;--&quot; + (arr == self))
+        return true;
+    &#125;)
+    // 打印结果为：
+    // Tom--0--true
+
+    //demo3:
+    var arr = [&quot;Tom&quot;,&quot;abc&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    var a = arr.some(function(value,index,self)&#123;
+        console.log(value + &quot;--&quot; + index + &quot;--&quot; + (arr == self))
+        return false;
+    &#125;)
+    // 打印结果为：
+    // Tom--0--true
+    // abc--1--true
+    // Jack--2--true
+    // Lucy--3--true
+    // Lily--4--true
+    // May--5--true
+</code></pre>
+<p><strong>功能2：</strong>与every相反，只要有一个回调函数的返回值都为true，some的返回值为true，所有回调函数的返回值为false，some的返回值才为false</p>
+<pre><code class="jsx">    //demo1:
+    var arr = [&quot;Tom&quot;,&quot;abc&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    var a = arr.some(function(value,index,self)&#123;
+        return value.length &gt; 3;
+    &#125;)
+    console.log(a);             //true
+
+    //demo2:
+    var arr = [&quot;Tom&quot;,&quot;abc&quot;,&quot;Jack&quot;,&quot;Lucy&quot;,&quot;Lily&quot;,&quot;May&quot;];
+    var a = arr.some(function(value,index,self)&#123;
+        return value.length &gt; 4;
+    &#125;)
+    console.log(a);             //false
+</code></pre>
+<h6 id="reduce"><a href="#reduce" class="headerlink" title="reduce()"></a>reduce()</h6><p><strong>功能：</strong>从数组的第一项开始，逐个遍历到最后，迭代数组的所有项，然后构建一个最终返回的值。</p>
+<p><strong>参数：</strong>reduce()接收一个或两个参数：第一个是回调函数，表示在数组的每一项上调用的函数；第二个参数（可选的）作为归并的初始值，被回调函数第一次执行时的第一个参数接收。<br> reduce(callback,initial);callback默认有四个参数，分别为prev，now，index，self。<br> callback返回的任何值都会作为下一次执行的第一个参数。<br> 如果initial参数被省略，那么第一次迭代发生在数组的第二项上，因此callback的第一个参数是数组的第一项，第二个参数就是数组的第二项。</p>
+<pre><code class="jsx">    //demo1:不省略initial参数，回调函数没有返回值
+    var arr = [10,20,30,40,50];
+    arr.reduce(function(prev,now,index,self)&#123;
+        console.log(prev + &quot;--&quot; + now + &quot;--&quot; + index + &quot;--&quot; + (arr == self))
+    &#125;, 2019)
+    // 打印结果为：
+    // 2019--10--0--true
+    // undefined--20--1--true
+    // undefined--30--2--true
+    // undefined--40--3--true
+    // undefined--50--4--true
+    // 此时回调函数没有return，所以从第二次开始，prev拿到的是undefined
+
+    //demo2:省略initial参数，回调函数没有返回值
+    var arr = [10,20,30,40,50];
+    arr.reduce(function(prev,now,index,self)&#123;
+        console.log(prev + &quot;--&quot; + now + &quot;--&quot; + index + &quot;--&quot; + (arr == self))
+    &#125;)
+    // 打印结果为：第一次，回调函数的第一个参数是数组的第一项。第二个参数就是数组的第二项
+    // 10--20--1--true
+    // undefined--30--2--true
+    // undefined--40--3--true
+    // undefined--50--4--true
+    // 此时回调函数没有return，所以从第二次开始，prev拿到的是undefined
+
+    //demo3:不省略initial参数，回调函数有返回值
+    var arr = [10,20,30,40,50];
+    arr.reduce(function(prev,now,index,self)&#123;
+        console.log(prev + &quot;--&quot; + now + &quot;--&quot; + index + &quot;--&quot; + (arr == self));
+        return &quot;hello&quot;;
+    &#125;, 2019)
+    // 打印结果为：
+    // 2019--10--0--true
+    // hello--20--1--true
+    // hello--30--2--true
+    // hello--40--3--true
+    // hello--50--4--true
+    // 此时回调函数有return，所以从第二次开始，prev拿到的是回调函数return的值
+
+    //demo4:省略initial参数，回调函数有返回值
+    var arr = [10,20,30,40,50];
+    arr.reduce(function(prev,now,index,self)&#123;
+        console.log(prev + &quot;--&quot; + now + &quot;--&quot; + index + &quot;--&quot; + (arr == self));
+        return &quot;hello&quot;;
+    &#125;)
+    // 打印结果为：第一次，回调函数的第一个参数是数组的第一项。第二个参数就是数组的第二项
+    // 10--20--1--true
+    // hello--30--2--true
+    // hello--40--3--true
+    // hello--50--4--true
+    // 此时回调函数有return，所以从第二次开始，prev拿到的是回调函数return的值
+
+    //demo5：使用reduce计算数组中所有数据的和
+    var arr = [10,20,30,40,50];
+    var sum = arr.reduce(function(prev,now,index,self)&#123;
+        return prev + now;
+    &#125;)
+    console.log(sum);      //150
+    // 回调函数的最后一次return的结果被返回到reduce方法的身上
+
+    //demo6：使用reduce计算数组中所有数据的和
+    var arr = [10,20,30,40,50];
+    var sum = arr.reduce(function(prev,now,index,self)&#123;
+        return prev + now;
+    &#125;, 8)
+    console.log(sum);      //158
+    // 回调函数的最后一次return的结果被返回到reduce方法的身上
+    // 因为reduce有第二个参数initial，在第一次执行时被计算，所以最终结果被加上8
+</code></pre>
+<h6 id="reduceRight"><a href="#reduceRight" class="headerlink" title="reduceRight()"></a>reduceRight()</h6><p><strong>功能：</strong>（与reduce类似）从数组的最后一项开始，向前逐个遍历到第一位，迭代数组的所有项，然后构建一个最终返回的值。<br> <strong>参数：</strong>同reduce。<br> <strong>demo：</strong>同reduce</p>
+<h5 id="数组的排序"><a href="#数组的排序" class="headerlink" title="数组的排序"></a>数组的排序</h5><h6 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a><strong>冒泡排序</strong></h6><pre><code class="js">var arr = [5,99,2,9,1,5,67,7,10,23]      //定义一个杂乱的数组
+    for(var i=0;i&lt;arr.length-1;i++)&#123;         //大循环，用于遍历数组每个元素
+        for(var j=0;j&lt;arr.length-i-1;j++)&#123;   //小循环，用于将数组中的某个元素与其它所有元素相比较
+            var temp;                         //声明一个局部变量，当作第三个空瓶子
+            if(arr[j]&gt;arr[j+1])&#123;           //判断当前元素和后一个元素的大小，如果当前元素比后一个元素大
+                temp = arr[j+1];           //将后一个元素（小元素）放在空瓶子里
+                arr[j+1] = arr[j];         //将当前元素（大元素）放在后一个元素的位置
+                arr[j] = temp;             //将小元素从空瓶子中拿出来，放在当前元素的位置
+            &#125;
+        &#125; 
+    &#125;
+    console.log(arr);                      //完成循环之后，初始数组的顺序已经发生改变
+</code></pre>
+<h6 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a><strong>选择排序</strong></h6><pre><code class="js">    var arr = [5,99,2,9,1,5,67,7,10,23]
+    for(var i=0;i&lt;arr.length-1;i++)&#123;       //大循环，需要比对的次数
+        var min = arr[i];                  //假定一个最小值
+        var minIndex = i;                  //假定最小值的索引
+        for(var j=i+1;j&lt;arr.length;j++)&#123;   //小循环，每次需要比对的次数
+            if(min&gt;arr[j])&#123;                //判断最小值是否为真的最小值
+                min = arr[j];              //获取真正的最小值
+                minIndex = j;              //获取真正最小值的索引
+            &#125;
+        &#125;
+
+        arr[minIndex] = arr[i];            //将当前元素放在最小值的位置
+        arr[i] = min;                      //将最小值放在当前元素的位置
+    &#125;
+    console.log(arr);                      //输入排序好的数组 
+</code></pre>
+<h1 id="数组的方法some和includes"><a href="#数组的方法some和includes" class="headerlink" title="数组的方法some和includes"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wwwxxjsyy/p/12558954.html">数组的方法some和includes</a></h1><p>some() 方法用于检测数组中的元素是否满足指定条件（函数提供）。</p>
+<p>some() 方法会依次执行数组的每个元素：</p>
+<ul>
+<li>如果有一个元素满足条件，则表达式返回<em>true</em> , 剩余的元素不会再执行检测。</li>
+<li>如果没有满足条件的元素，则返回false。</li>
+<li></li>
+</ul>
+<p><strong>注意：</strong> some() 不会对空数组进行检测。</p>
+<p>​      some() 不会改变原始数组。</p>
+<p>includes() 方法用来判断一个数组是否包含一个指定的值，如果是返回 true，否则false</p>
+<p>两者经常会搭配使用。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/09/15/03%20JS%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%89%AF%E6%9C%AC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          js-JavaScript对象Math
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/09/15/01%20%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%89%AF%E6%9C%AC/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">js-基本数据类型</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

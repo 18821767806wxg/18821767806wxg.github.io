@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>js原生-js数据类型，堆和栈 | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言其实一开始对栈、堆的概念特别模糊，只知道好像跟内存有关，又好像事件循环也沾一点边。面试薄荷的时候，面试官正好也问到了这个问题，当时只能大方的承认不会。痛定思痛，回去好好的研究一番。 我们将从JS的内存机制以及事件机制和大量的🌰（例子）来了解栈、堆究竟是个什么玩意。概念比较多，不用死读，所有的🌰心里想一遍，浏览器console看一遍就很清楚了。 let’s go JS内存机制因为JavaSc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js原生-js数据类型，堆和栈">
+<meta property="og:url" content="https://18821767806wxg.github.io/2022/09/15/%E5%A0%86%E6%A0%88/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="前言其实一开始对栈、堆的概念特别模糊，只知道好像跟内存有关，又好像事件循环也沾一点边。面试薄荷的时候，面试官正好也问到了这个问题，当时只能大方的承认不会。痛定思痛，回去好好的研究一番。 我们将从JS的内存机制以及事件机制和大量的🌰（例子）来了解栈、堆究竟是个什么玩意。概念比较多，不用死读，所有的🌰心里想一遍，浏览器console看一遍就很清楚了。 let’s go JS内存机制因为JavaSc">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/13/163f6b03478ae38a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/13/163f6b0347adb343?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/11/163ecdcf3a44f381?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/13/163f6b033cff7849?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/6/13/163f6b03477d89cb?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="article:published_time" content="2022-09-15T08:14:47.366Z">
+<meta property="article:modified_time" content="2022-09-15T08:19:04.833Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/6/13/163f6b03478ae38a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=475479888&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/10/">React博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">相识就是一种缘分欢迎进入我的博客，主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-堆栈" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/09/15/%E5%A0%86%E6%A0%88/" class="article-date">
+  	<time datetime="2022-09-15T08:14:47.366Z" itemprop="datePublished">2022-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js原生-js数据类型，堆和栈
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>其实一开始对栈、堆的概念特别模糊，只知道好像跟内存有关，又好像事件循环也沾一点边。面试薄荷的时候，面试官正好也问到了这个问题，当时只能大方的承认不会。痛定思痛，回去好好的研究一番。 我们将从<code>JS的内存机制</code>以及<code>事件机制</code>和<code>大量的🌰（例子）</code>来了解栈、堆究竟是个什么玩意。概念比较多，不用死读，所有的🌰心里想一遍，浏览器console看一遍就很清楚了。 let’s go</p>
+<h2 id="JS内存机制"><a href="#JS内存机制" class="headerlink" title="JS内存机制"></a>JS内存机制</h2><p>因为JavaScript具有自动垃圾回收机制，所以对于前端开发来说，内存空间并不是一个经常被提及的概念，很容易被大家忽视。特别是很多不专业的朋友在进入到前端之后，会对内存空间的认知比较模糊。</p>
+<p>在JS中，每一个数据都需要一个内存空间。内存空间又被分为两种，**栈内存(stack)**与**堆内存(heap)**。</p>
+<h3 id="栈内存一般储存基础数据类型"><a href="#栈内存一般储存基础数据类型" class="headerlink" title="栈内存一般储存基础数据类型"></a>栈内存一般储存基础数据类型</h3><pre><code class="js"> Number String Null Undefined Boolean 
+ (es6新引入了一种数据类型，Symbol)
+</code></pre>
+<h4 id="最简单的🌰"><a href="#最简单的🌰" class="headerlink" title="最简单的🌰"></a>最简单的🌰</h4><pre><code class="js">var a = 1 
+</code></pre>
+<p>我们定义一个变量a，系统自动分配存储空间。我们可以直接操作保存在栈内存空间的值，因此基础数据类型都是按值访问。</p>
+<p>数据在栈内存中的存储与使用方式类似于数据结构中的堆栈数据结构，遵循<strong>后进先出</strong>的原则。</p>
+<h3 id="堆内存一般储存引用数据类型"><a href="#堆内存一般储存引用数据类型" class="headerlink" title="堆内存一般储存引用数据类型"></a>堆内存一般储存引用数据类型</h3><h4 id="堆内存的🌰"><a href="#堆内存的🌰" class="headerlink" title="堆内存的🌰"></a>堆内存的🌰</h4><pre><code class="js">var b = &#123; xi : 20 &#125;
+</code></pre>
+<p>与其他语言不同，JS的引用数据类型，比如数组Array，它们值的大小是不固定的。引用数据类型的值是保存在堆内存中的对象。JavaScript<strong>不允许直接访问堆内存中的位置</strong>，因此我们不能直接操作对象的堆内存空间。看一下下面的图，加深理解。</p>
+<h4 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h4><p>￼ </p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/13/163f6b03478ae38a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="wechatimg104"></p>
+<pre><code class="js">var a1 = 0;   // 栈 
+var a2 = &#39;this is string&#39;; // 栈
+var a3 = null; // 栈
+
+var b = &#123; m: 20 &#125;; // 变量b存在于栈中，&#123;m: 20&#125; 作为对象存在于堆内存中
+var c = [1, 2, 3]; // 变量c存在于栈中，[1, 2, 3] 作为对象存在于堆内存中
+</code></pre>
+<p>因此当我们要访问堆内存中的引用数据类型时，实际上我们首先是<strong>从栈中获取了该对象的地址引用（或者地址指针）</strong>，然后再从堆内存中取得我们需要的数据。</p>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><pre><code class="js">var a = 20;
+var b = a;
+b = 30;
+console.log(a)
+
+var m = &#123; a: 10, b: 20 &#125;
+var n = m;
+n.a = 15;
+console.log(m.a)
+</code></pre>
+<p>同学们自己在console里打一遍，再结合下面的图例，就很好理解了</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/13/163f6b0347adb343?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="wechatimg106"></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/11/163ecdcf3a44f381?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="15282536739797"></p>
+<p>内存机制我们了解了，又引出一个新的问题，栈里只能存基础数据类型吗，我们经常用的function存在哪里呢？</p>
+<h2 id="浏览器的事件机制"><a href="#浏览器的事件机制" class="headerlink" title="浏览器的事件机制"></a>浏览器的事件机制</h2><h4 id="一个经常被搬上面试题的🌰"><a href="#一个经常被搬上面试题的🌰" class="headerlink" title="一个经常被搬上面试题的🌰"></a>一个经常被搬上面试题的🌰</h4><pre><code class="js">console.log(1)
+let promise = new Promise(function(resolve,reject)&#123;
+    console.log(3)
+    resolve(100)
+&#125;).then(function(data)&#123;
+    console.log(100)
+&#125;)
+setTimeout(function()&#123;
+    console.log(4);
+&#125;)
+console.log(2)
+</code></pre>
+<blockquote>
+<p>上面这个demo的结果值是 1 3 2 100 4</p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/13/163f6b033cff7849?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="wechatimg105"></p>
+<p><strong>对象</strong>放在<strong>heap（堆）**里，**常见的基础类型和函数**放在**stack（栈）**里，函数执行的时候在**栈<strong>里执行。栈里函数执行的时候可能会调一些</strong>Dom操作，ajax操作和setTimeout定时器</strong>，这时候要等stack（栈）里面的所有程序先走<strong>（注意：栈里的代码是先进后出）</strong>，走完后再走WebAPIs，WebAPIs执行后的结果放在callback queue（回调的队列里，注意：队列里的代码先放进去的先执行），也就是当栈里面的程序走完之后，再从任务队列中读取事件，将队列中的事件放到执行栈中依次执行，这个过程是循环不断的。</p>
+<ul>
+<li>1.所有同步任务都在主线程上执行，形成一个执行栈</li>
+<li>2.主线程之外，还存在一个任务队列。只要异步任务有了运行结果，就在任务队列之中放置一个事件。</li>
+<li>3.一旦执行栈中的所有同步任务执行完毕，系统就会读取任务队列,将队列中的事件放到执行栈中依次执行</li>
+<li>4.主线程从任务队列中读取事件，这个过程是循环不断的</li>
+</ul>
+<p>概念又臭又长，没关系，我们先粗略的扫一眼，接着往下看。</p>
+<h4 id="举一个🌰说明栈的执行方式"><a href="#举一个🌰说明栈的执行方式" class="headerlink" title="举一个🌰说明栈的执行方式"></a>举一个🌰说明栈的执行方式</h4><pre><code class="js">var a = &quot;aa&quot;;
+function one()&#123;
+    let a = 1;
+    two();
+    function two()&#123;
+        let b = 2;
+        three();
+        function three()&#123;
+            console.log(b)
+        &#125;
+    &#125;
+&#125;
+console.log(a);
+one();
+</code></pre>
+<blockquote>
+<p>demo的结果是 aa 2</p>
+</blockquote>
+<h4 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h4><p><img src="https://user-gold-cdn.xitu.io/2018/6/13/163f6b03477d89cb?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="wechatimg107"></p>
+<p>执行栈里面最先放的是全局作用域（代码执行有一个全局文本的环境），然后再放one， one执行再把two放进来，two执行再把three放进来，一层叠一层。</p>
+<p>最先走的肯定是three，因为two要是先销毁了，那three的代码b就拿不到了，所以是<strong>先进后出</strong>（先进的后出），所以，three最先出，然后是two出，再是one出。</p>
+<h3 id="那队列又是怎么一回事呢？"><a href="#那队列又是怎么一回事呢？" class="headerlink" title="那队列又是怎么一回事呢？"></a>那队列又是怎么一回事呢？</h3><h4 id="再举一个🌰"><a href="#再举一个🌰" class="headerlink" title="再举一个🌰"></a>再举一个🌰</h4><pre><code class="js">console.log(1);
+console.log(2);
+setTimeout(function()&#123;
+    console.log(3);
+&#125;)
+setTimeout(function()&#123;
+    console.log(4);
+&#125;)
+console.log(5);
+</code></pre>
+<blockquote>
+<p>首先执行了栈里的代码，1 2 5。 前面说到的<strong>settimeout</strong>会被放在队列里，当栈执行完了之后，从队列里添加到栈里执行（此时是依次执行），得到 3 4</p>
+</blockquote>
+<h4 id="再再举一个🌰"><a href="#再再举一个🌰" class="headerlink" title="再再举一个🌰"></a>再再举一个🌰</h4><pre><code class="js">console.log(1);
+console.log(2);
+
+setTimeout(function()&#123;
+    console.log(3);
+    setTimeout(function()&#123;
+        console.log(6);
+    &#125;)
+&#125;)
+setTimeout(function()&#123;
+    console.log(4);
+    setTimeout(function()&#123;
+        console.log(7);
+    &#125;)
+&#125;)
+console.log(5)
+</code></pre>
+<blockquote>
+<p>同样，先执行栈里的同步代码 1 2 5. 再同样，最外层的settimeout会放在队列里，当栈里面执行完成以后，放在栈中执行，3 4。 而嵌套的2个settimeout，会放在一个新的队列中，去执行 6 7.</p>
+</blockquote>
+<h4 id="再再再看一个🌰"><a href="#再再再看一个🌰" class="headerlink" title="再再再看一个🌰"></a>再再再看一个🌰</h4><pre><code class="js">console.log(1);
+console.log(2);
+
+setTimeout(function()&#123;
+    console.log(3);
+    setTimeout(function()&#123;
+        console.log(6);
+    &#125;)
+&#125;,400)
+setTimeout(function()&#123;
+    console.log(4);
+    setTimeout(function()&#123;
+        console.log(7);
+    &#125;)
+&#125;,100)
+console.log(5)
+</code></pre>
+<blockquote>
+<p>如上：这里的顺序是1，2，5，4，7，3，6。也就是只要两个set时间不一样的时候 ，就set时间短的先走完，包括set里面的回调函数，再走set时间慢的。（因为只有当时间到了的时候，才会把set放到队列里面去）</p>
+</blockquote>
+<pre><code class="js">setTimeout(function()&#123;
+    console.log(&#39;setTimeout&#39;)
+&#125;,0)
+for(var i = 0;i&lt;10;i++)&#123;
+    console.log(i)
+&#125;
+</code></pre>
+<blockquote>
+<p>这个demo的结果是 0 1 2 3 4 5 6 7 8 9 setTimeout</p>
+</blockquote>
+<p>所以，得出结论，永远都是<strong>栈里的代码先行执行</strong>，再从队列中依次读事件，加入栈中执行</p>
+<p>stack（栈）里面都走完之后，就会依次读取任务队列,将队列中的事件放到执行栈中依次执行，这个时候栈中又出现了事件，这个事件又去调用了WebAPIs里的异步方法，那这些异步方法会在再被调用的时候放在队列里，然后这个主线程（也就是stack）执行完后又将从任务队列中依次读取事件，这个过程是循环不断的。</p>
+<h4 id="再回到我们的第一个🌰"><a href="#再回到我们的第一个🌰" class="headerlink" title="再回到我们的第一个🌰"></a>再回到我们的第一个🌰</h4><pre><code class="js">console.log(1)
+let promise = new Promise(function(resolve,reject)&#123;
+    console.log(3)
+    resolve(100)
+&#125;).then(function(data)&#123;
+    console.log(100)
+&#125;)
+setTimeout(function()&#123;
+    console.log(4);
+&#125;)
+console.log(2)
+</code></pre>
+<blockquote>
+<p>上面这个demo的结果值是 1 3 2 100 4</p>
+</blockquote>
+<ul>
+<li>为什么setTimeout要在Promise.then之后执行呢？</li>
+<li>为什么new Promise又在console.log(2)之前执行呢？</li>
+</ul>
+<p>setTimeout是宏任务,而Promise.then是微任务 这里的new Promise()是同步的,所以是立即执行的。</p>
+<h4 id="这就要引入一个新的话题宏任务和微任务（面试也会经常提及到）"><a href="#这就要引入一个新的话题宏任务和微任务（面试也会经常提及到）" class="headerlink" title="这就要引入一个新的话题宏任务和微任务（面试也会经常提及到）"></a>这就要引入一个新的话题<em>宏任务</em>和<em>微任务</em>（面试也会经常提及到）</h4><h2 id="宏任务和微任务"><a href="#宏任务和微任务" class="headerlink" title="宏任务和微任务"></a>宏任务和微任务</h2><h5 id="参考-Tasks-microtasks-queues-and-schedules（https-jakearchibald-com-2015-tasks-microtasks-queues-and-schedules-utm-source-html5weekly）"><a href="#参考-Tasks-microtasks-queues-and-schedules（https-jakearchibald-com-2015-tasks-microtasks-queues-and-schedules-utm-source-html5weekly）" class="headerlink" title="参考  Tasks, microtasks, queues and schedules（https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/?utm_source=html5weekly）"></a>参考  Tasks, microtasks, queues and schedules（<a target="_blank" rel="noopener" href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/?utm_source=html5weekly%EF%BC%89">https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/?utm_source=html5weekly）</a></h5><p><strong>概念：微任务和宏任务都是属于队列，而不是放在栈中</strong></p>
+<h4 id="一个新的🌰"><a href="#一个新的🌰" class="headerlink" title="一个新的🌰"></a>一个新的🌰</h4><pre><code class="js">console.log(&#39;1&#39;);
+
+setTimeout(function() &#123;
+  console.log(&#39;setTimeout&#39;);
+&#125;, 0);
+
+Promise.resolve().then(function() &#123;
+  console.log(&#39;promise1&#39;);
+&#125;).then(function() &#123;
+  console.log(&#39;promise2&#39;);
+&#125;);
+
+console.log(&#39;2&#39;);
+</code></pre>
+<blockquote>
+<p>1 2 promise1 promise2 setTimeout</p>
+</blockquote>
+<h3 id="宏任务（task）"><a href="#宏任务（task）" class="headerlink" title="宏任务（task）"></a>宏任务（task）</h3><p>浏览器为了能够使得JS内部宏任务与DOM任务能够有序的执行，会在一个task执行结束后，在下一个 task 执行开始前，对页面进行重新渲染 （task-&gt;渲染-&gt;task-&gt;…） 鼠标点击会触发一个事件回调，需要执行一个宏任务，然后解析HTMl。但是，<strong>setTimeout不一样</strong>，<strong>setTimeout的作用是等待给定的时间后为它的回调产生一个新的宏任务</strong>。这就是为什么打印‘<strong>setTimeout</strong>’在‘<strong>promise1</strong> , <strong>promise2</strong>’之后。因为打印‘<strong>promise1</strong> , <strong>promise2</strong>’是第一个宏任务里面的事情，而‘<strong>setTimeout</strong>’是<strong>另一个新的独立的</strong>任务里面打印的。</p>
+<h3 id="微任务-Microtasks"><a href="#微任务-Microtasks" class="headerlink" title="微任务 (Microtasks)"></a>微任务 (Microtasks)</h3><p>微任务通常来说就是需要在当前 task 执行结束后立即执行的任务 比如对一系列动作做出反馈，或者是需要异步的执行任务而又不需要分配一个新的 task，这样便可以<strong>减小一点性能的开销</strong>。只要执行栈中没有其他的js代码正在执行且每个宏任务执行完，微任务队列会立即执行。如果在微任务执行期间微任务队列加入了新的微任务，会将新的微任务加入队列尾部，之后也会被执行。微任务包括了mutation observe的回调还有接下来的例子<strong>promise的回调</strong>。</p>
+<p>一旦一个pormise有了结果，或者早已有了结果（有了结果是指这个promise到了fulfilled或rejected状态），他就会为它的回调产生一个微任务，这就保证了回调异步的执行即使这个promise早已有了结果。所以对一个已经有了结果的**promise调用.then()**会立即产生一个微任务。这就是为什么‘promise1’,’promise2’会打印在‘script end’之后，因为所有微任务执行的时候，当前执行栈的代码必须已经执行完毕。‘promise1’,’promise2’会打印在‘setTimeout’之前是因为所有微任务总会在下一个宏任务之前全部执行完毕。</p>
+<h4 id="还是🌰"><a href="#还是🌰" class="headerlink" title="还是🌰"></a>还是🌰</h4><pre><code class="js">&lt;div class=&quot;outer&quot;&gt;
+  &lt;div class=&quot;inner&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+//  elements
+var outer = document.querySelector(&#39;.outer&#39;);
+var inner = document.querySelector(&#39;.inner&#39;);
+
+
+//监听element属性变化
+new MutationObserver(function() &#123;
+  console.log(&#39;mutate&#39;);
+&#125;).observe(outer, &#123;
+  attributes: true
+&#125;);
+
+// click listener…
+function onClick() &#123;
+  console.log(&#39;click&#39;);
+
+  setTimeout(function() &#123;
+    console.log(&#39;timeout&#39;);
+  &#125;, 0);
+
+  Promise.resolve().then(function() &#123;
+    console.log(&#39;promise&#39;);
+  &#125;);
+
+  outer.setAttribute(&#39;data-random&#39;, Math.random());
+&#125;
+
+// 
+inner.addEventListener(&#39;click&#39;, onClick);
+outer.addEventListener(&#39;click&#39;, onClick);
+</code></pre>
+<blockquote>
+<p>click promise mutate click promise mutate (2) timeout</p>
+</blockquote>
+<p>很好的解释了，setTimeout会在微任务（Promise.then、MutationObserver.observe）执行完成之后，加入一个新的宏任务中</p>
+<h4 id="多看一些🌰"><a href="#多看一些🌰" class="headerlink" title="多看一些🌰"></a>多看一些🌰</h4><pre><code class="js">console.log(1);
+setTimeout(function()&#123;
+    console.log(2);
+    Promise.resolve(1).then(function()&#123;
+        console.log(&#39;promise1&#39;)
+    &#125;)
+&#125;)
+setTimeout(function()&#123;
+    console.log(3)
+    Promise.resolve(1).then(function()&#123;
+        console.log(&#39;promise2&#39;)
+    &#125;)
+&#125;)
+setTimeout(function()&#123;
+    console.log(4)
+    Promise.resolve(1).then(function()&#123;
+        console.log(&#39;promise3&#39;)
+    &#125;)
+&#125;)
+</code></pre>
+<blockquote>
+<p>1 2 promise1 3 promise2 4 promise3</p>
+</blockquote>
+<pre><code class="js">console.log(1);
+setTimeout(function()&#123;
+    console.log(2);
+    Promise.resolve(1).then(function()&#123;
+        console.log(&#39;promise1&#39;)
+
+        setTimeout(function()&#123;
+            console.log(3)
+            Promise.resolve(1).then(function()&#123;
+                console.log(&#39;promise2&#39;)
+            &#125;)
+        &#125;)
+
+    &#125;)
+&#125;)
+</code></pre>
+<blockquote>
+<p>1 2 promise1 3 promise2</p>
+</blockquote>
+<h2 id="总结回顾"><a href="#总结回顾" class="headerlink" title="总结回顾"></a>总结回顾</h2><ul>
+<li>栈：<ul>
+<li>存储基础数据类型</li>
+<li>按值访问</li>
+<li>存储的值大小固定</li>
+<li>由系统自动分配内存空间</li>
+<li>空间小，运行效率高</li>
+<li>先进后出，后进先出</li>
+<li>栈中的DOM，ajax，setTimeout会依次进入到队列中,当栈中代码执行完毕后，再将队列中的事件放到执行栈中依次执行。</li>
+<li>微任务和宏任务</li>
+</ul>
+</li>
+<li>堆:<ul>
+<li>存储引用数据类型</li>
+<li>按引用访问</li>
+<li>存储的值大小不定，可动态调整</li>
+<li>主要用来存放对象</li>
+<li>空间大，但是运行效率相对较低</li>
+<li>无序存储，可根据引用直接获取</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/09/15/%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          js原生-节流与防抖
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/09/14/01%20react%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React- react基础</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

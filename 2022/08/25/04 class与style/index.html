@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Vue-class与style | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="class与style绑定HTML Class对象语法&lt;div id&#x3D;&#39;box&#39;&gt;     &lt;div :class&#x3D;&#39;classObj&#39;&gt;动态绑定ClassName&lt;&#x2F;div&gt; &lt;&#x2F;div&gt;  new Vue(&amp;#123;     el:&#39;#box&#39;,     data:&amp;#123;         c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue-class与style">
+<meta property="og:url" content="https://18821767806wxg.github.io/2022/08/25/04%20class%E4%B8%8Estyle/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="class与style绑定HTML Class对象语法&lt;div id&#x3D;&#39;box&#39;&gt;     &lt;div :class&#x3D;&#39;classObj&#39;&gt;动态绑定ClassName&lt;&#x2F;div&gt; &lt;&#x2F;div&gt;  new Vue(&amp;#123;     el:&#39;#box&#39;,     data:&amp;#123;         c">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-25T02:54:30.000Z">
+<meta property="article:modified_time" content="2022-08-25T02:54:30.000Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=475479888&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/10/">React博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">相识就是一种缘分欢迎进入我的博客，主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-04 class与style" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/08/25/04%20class%E4%B8%8Estyle/" class="article-date">
+  	<time datetime="2022-08-25T02:54:30.000Z" itemprop="datePublished">2022-08-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue-class与style
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="class与style"><a href="#class与style" class="headerlink" title="class与style"></a>class与style</h1><h2 id="绑定HTML-Class"><a href="#绑定HTML-Class" class="headerlink" title="绑定HTML Class"></a>绑定HTML Class</h2><h3 id="对象语法"><a href="#对象语法" class="headerlink" title="对象语法"></a>对象语法</h3><pre><code class="html">&lt;div id=&#39;box&#39;&gt;
+    &lt;div :class=&#39;classObj&#39;&gt;动态绑定ClassName&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="js">new Vue(&#123;
+    el:&#39;#box&#39;,
+    data:&#123;
+        classObj:&#123;
+            aa:1,//true则显示该class名，false则不会
+               bb:0,
+            cc:1
+        &#125;
+    &#125;
+&#125;)
+</code></pre>
+<h3 id="数组语法"><a href="#数组语法" class="headerlink" title="数组语法"></a>数组语法</h3><pre><code class="html">&lt;div id=&#39;box&#39;&gt;
+    &lt;div :class=&#39;classArr&#39;&gt;动态绑定ClassName&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="js">new Vue(&#123;
+    el:&#39;#box&#39;,
+    data:&#123;
+        classArr:[&#39;aa&#39;,&#39;cc&#39;]//数组里有的都会显示为className
+    &#125;
+&#125;)
+</code></pre>
+<h2 id="绑定内联样式"><a href="#绑定内联样式" class="headerlink" title="绑定内联样式"></a>绑定内联样式</h2><h3 id="对象语法-1"><a href="#对象语法-1" class="headerlink" title="对象语法"></a>对象语法</h3><pre><code class="html">&lt;div id=&#39;box&#39;&gt;
+    &lt;div :style=&#39;styleObj&#39;&gt;动态修改样式&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="js">new Vue(&#123;
+    el:&#39;#box&#39;,
+    data:&#123;
+        styleObj:&#123;
+            backgroundColor:&#39;#14c145&#39;
+        &#125;
+        //注意，直接用this.styleObj.属性=val，是无法渲染页面的，必须要使用
+        // Vue.set(this.styleObj,属性,val)才可以渲染页面
+    &#125;
+&#125;)
+</code></pre>
+<h3 id="数组语法-1"><a href="#数组语法-1" class="headerlink" title="数组语法"></a>数组语法</h3><pre><code class="html">&lt;div id=&#39;box&#39;&gt;
+    &lt;div :class=&#39;styleArr&#39;&gt;动态修 改样式&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="js">new Vue(&#123;
+    el:&#39;#box&#39;,
+    data:&#123;
+        styleArr:[&#123;
+            backgroundColor:&quot;#14c145&quot;,
+            fontSize:&#39;12px&#39;
+        &#125;]//注意，往数组中push对象，可以渲染页面
+        //this.styleArr.push(&#123;color:&#39;red&#39;&#125;)
+    &#125;
+&#125;)
+</code></pre>
+<p>#####对象方法<br>-最简单的绑定（这里的active加不加单引号都可以，以下也一样都能渲染）</p>
+<pre><code>:class=&quot;&#123; &#39;active&#39;: isActive &#125;&quot;
+</code></pre>
+<p>1<br>判断是否绑定一个active</p>
+<pre><code>:class=&quot;&#123;&#39;active&#39;:isActive===-1&#125;&quot;  
+或者
+:class=&quot;&#123;&#39;active&#39;:isActive===index&#125;&quot;
+</code></pre>
+<p>绑定并判断多个</p>
+<pre><code>第一种（用逗号隔开）
+:class=&quot;&#123; &#39;active&#39;: isActive, &#39;sort&#39;: isSort &#125;&quot;
+第二种（放在data里面）
+//也可以把后面绑定的对象写在一个变量放在data里面，可以变成下面这样
+:class=&quot;classObject&quot;
+data() &#123;
+  return &#123;
+    classObject:&#123; active: true, sort:false &#125;
+  &#125;
+&#125;
+第三种（使用computed属性）
+:class=&quot;classObject&quot;
+data() &#123;
+  return &#123;
+    isActive: true,
+    isSort: false
+  &#125;
+&#125;,
+computed: &#123;
+  classObject: function () &#123;
+    return &#123;
+      active: this.isActive,
+      sort:this.isSort
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<p>#####数组方法</p>
+<pre><code>单纯数组
+:class=&quot;[isActive,isSort]&quot;
+data() &#123;
+  return&#123;
+    isActive:&#39;active&#39;,
+    isSort:&#39;sort&#39;
+ &#125;
+&#125;
+</code></pre>
+<p>数组与三元运算符结合判断选择需要的class<br>$$<br>（注意：三元运算符后面的“：”两边的class需要加上单引号，否则不能正确渲染）<br>:class=”[isActive?’active’:’’]”<br>或者<br>:class=”[isActive==1?’active’:’’]”<br>或者<br>:class=”[isActive==index?’active’:’’]”<br>或者<br>:class=”[isActive==index?’active’:’otherActiveClass’]”<br>$$<br>数组对象结合动态判断<br>//前面这个active在对象里面可以不加单引号，后面这个sort要加单引号</p>
+<pre><code>:class=&quot;[&#123; active: isActive &#125;, &#39;sort&#39;]&quot;
+或者
+:class=&quot;[&#123; active: isActive===1 &#125;, &#39;sort&#39;]&quot;
+或者
+:class=&quot;[&#123; active: isActive===index &#125;, &#39;sort&#39;]&quot;
+</code></pre>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/08/25/05%20%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Vue-条件渲染
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/08/25/03%20Vue%E4%B8%AD%E7%9A%84%E8%99%9A%E6%8B%9FDOM/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue-什么是虚拟DOM?</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2022 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
