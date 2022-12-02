@@ -217,6 +217,266 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-24 过渡效果" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/08/29/24%20%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C/" class="article-date">
+  	<time datetime="2022-08-29T07:29:24.000Z" itemprop="datePublished">2022-08-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/29/24%20%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C/">
+        Vue-过渡效果
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="进入-离开-amp-列表过渡"><a href="#进入-离开-amp-列表过渡" class="headerlink" title="进入/离开 &amp; 列表过渡"></a>进入/离开 &amp; 列表过渡</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Vue 在插入、更新或者移除 DOM 时，提供多种不同方式的应用过渡效果。<br>包括以下工具：</p>
+<ul>
+<li>在 CSS 过渡和动画中自动应用 class</li>
+<li>可以配合使用第三方 CSS 动画库，如 Animate.css</li>
+<li>在过渡钩子函数中使用 JavaScript 直接操作 DOM</li>
+<li>可以配合使用第三方 JavaScript 动画库，如 Velocity.js</li>
+</ul>
+<h2 id="单元素-组件的过渡"><a href="#单元素-组件的过渡" class="headerlink" title="单元素/组件的过渡"></a>单元素/组件的过渡</h2><p>Vue 提供了 <code>transition</code> 的封装组件，在下列情形中，可以给任何元素和组件添加进入/离开过渡</p>
+<ul>
+<li>条件渲染 (使用 <code>v-if</code>)</li>
+<li>条件展示 (使用 <code>v-show</code>)</li>
+<li>动态组件</li>
+<li>组件根节点</li>
+</ul>
+<p>这里是一个典型的例子：</p>
+<pre><code class="html">&lt;div id=&quot;demo&quot;&gt;
+    &lt;button v-on:click=&quot;show = !show&quot;&gt;
+        Toggle
+    &lt;/button&gt;
+    &lt;transition name=&quot;fade&quot;&gt;
+        &lt;p v-if=&quot;show&quot;&gt;hello&lt;/p&gt;
+    &lt;/transition&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="js">new Vue(&#123;
+  el: &#39;#demo&#39;,
+  data: &#123;
+    show: true
+  &#125;
+&#125;)
+.fade-enter-active, .fade-leave-active &#123;
+  transition: opacity .5s;
+&#125;
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ &#123;
+  opacity: 0;
+&#125;
+</code></pre>
+<p>当插入或删除包含在 <code>transition</code> 组件中的元素时，Vue 将会做以下处理：</p>
+<ol>
+<li>自动嗅探目标元素是否应用了 CSS 过渡或动画，如果是，在恰当的时机添加/删除 CSS 类名。</li>
+<li>如果过渡组件提供了 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/transitions.html#JavaScript-%E9%92%A9%E5%AD%90">JavaScript 钩子函数</a>，这些钩子函数将在恰当的时机被调用。</li>
+<li>如果没有找到 JavaScript 钩子并且也没有检测到 CSS 过渡/动画，DOM 操作 (插入/删除) 在下一帧中立即执行。(注意：此指浏览器逐帧动画机制，和 Vue 的 <code>nextTick</code> 概念不同)</li>
+</ol>
+<h3 id="过渡的类名"><a href="#过渡的类名" class="headerlink" title="过渡的类名"></a>过渡的类名</h3><p>在进入/离开的过渡中，会有 6 个 class 切换。</p>
+<ol>
+<li><code>v-enter</code>：定义进入过渡的开始状态。在元素被插入之前生效，在元素被插入之后的下一帧移除。</li>
+<li><code>v-enter-active</code>：定义进入过渡生效时的状态。在整个进入过渡的阶段中应用，在元素被插入之前生效，在过渡/动画完成之后移除。这个类可以被用来定义进入过渡的过程时间，延迟和曲线函数。</li>
+<li><code>v-enter-to</code>: <strong>2.1.8版及以上</strong> 定义进入过渡的结束状态。在元素被插入之后下一帧生效 (与此同时 <code>v-enter</code> 被移除)，在过渡/动画完成之后移除。</li>
+<li><code>v-leave</code>: 定义离开过渡的开始状态。在离开过渡被触发时立刻生效，下一帧被移除。</li>
+<li><code>v-leave-active</code>：定义离开过渡生效时的状态。在整个离开过渡的阶段中应用，在离开过渡被触发时立刻生效，在过渡/动画完成之后移除。这个类可以被用来定义离开过渡的过程时间，延迟和曲线函数。</li>
+<li><code>v-leave-to</code>: <strong>2.1.8版及以上</strong> 定义离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 <code>v-leave</code> 被删除)，在过渡/动画完成之后移除。</li>
+</ol>
+<p><img src="https://cn.vuejs.org/images/transition.png" alt="Transition Diagram"></p>
+<p>对于这些在过渡中切换的类名来说，如果你使用一个没有名字的 <code>，则 `v-` 是这些类名的默认前缀。如果你使用了 </code>，那么 <code>v-enter</code> 会替换为 <code>my-transition-enter</code>。</p>
+<p><code>v-enter-active</code> 和 <code>v-leave-active</code> 可以控制进入/离开过渡的不同的缓和曲线，在下面章节会有个示例说明。</p>
+<h3 id="初始化渲染页面时过渡"><a href="#初始化渲染页面时过渡" class="headerlink" title="初始化渲染页面时过渡"></a>初始化渲染页面时过渡</h3><p>需要利用apper属性</p>
+<pre><code class="html">&lt;transition name=&#39;retr0&#39; appear&gt;
+    &lt;div v-if=&#39;isshow&#39; style=&#39;background:red;&#39;&gt;
+        show
+    &lt;/div&gt;
+&lt;/transition&gt;
+</code></pre>
+<h3 id="自定义过渡类名"><a href="#自定义过渡类名" class="headerlink" title="自定义过渡类名"></a>自定义过渡类名</h3><p>我们可以通过以下 attribute 来自定义过渡类名：</p>
+<ul>
+<li><code>enter-class</code></li>
+<li><code>enter-active-class</code></li>
+<li><code>enter-to-class</code> (2.1.8+)</li>
+<li><code>leave-class</code></li>
+<li><code>leave-active-class</code></li>
+<li><code>leave-to-class</code> (2.1.8+)</li>
+</ul>
+<pre><code class="html">&lt;transition enter-active-class=&#39;animated bounceInRight&#39; leave-active-class=&#39;animated bounceOutRight&#39; appear&gt;
+    &lt;div v-if=&#39;isshow&#39;&gt;动画&lt;/div&gt;
+&lt;/transition&gt;
+</code></pre>
+<h3 id="过渡模式"><a href="#过渡模式" class="headerlink" title="过渡模式"></a>过渡模式</h3><ul>
+<li><code>in-out</code>：新元素先进行过渡，完成之后当前元素过渡离开。</li>
+<li><code>out-in</code>：当前元素先进行过渡，完成之后新元素过渡进入。</li>
+</ul>
+<pre><code class="html">&lt;transition enter-active-class=&#39;animated bounceInRight&#39; leave-active-class=&#39;animated bounceOutRight&#39; appear mode-&#39;out-in&#39;&gt;
+    &lt;div v-if=&#39;isshow&#39;&gt;动画一&lt;/div&gt;
+    &lt;div v-else&gt;动画一&lt;/div&gt;
+&lt;/transition&gt;
+</code></pre>
+<h2 id="多个组件的过渡"><a href="#多个组件的过渡" class="headerlink" title="多个组件的过渡"></a>多个组件的过渡</h2><p>多个组件的过渡简单很多 - 我们不需要使用 <code>key</code> attribute。相反，我们只需要使用<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/components.html#%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6">动态组件</a>：</p>
+<pre><code class="html">&lt;transition name=&quot;component-fade&quot; mode=&quot;out-in&quot;&gt;
+  &lt;component v-bind:is=&quot;view&quot;&gt;&lt;/component&gt;
+&lt;/transition&gt;
+</code></pre>
+<pre><code class="css">.component-fade-enter-active, .component-fade-leave-active &#123;
+  transition: opacity .3s ease;
+&#125;
+.component-fade-enter, .component-fade-leave-to
+/* .component-fade-leave-active for below version 2.1.8 */ &#123;
+  opacity: 0;
+&#125;
+</code></pre>
+<pre><code class="js">
+new Vue(&#123;
+  el: &#39;#transition-components-demo&#39;,
+  data: &#123;
+    view: &#39;v-a&#39;
+  &#125;,
+  components: &#123;
+    &#39;v-a&#39;: &#123;
+      template: &#39;&lt;div&gt;Component A&lt;/div&gt;&#39;
+    &#125;,
+    &#39;v-b&#39;: &#123;
+      template: &#39;&lt;div&gt;Component B&lt;/div&gt;&#39;
+    &#125;
+  &#125;
+&#125;)
+</code></pre>
+<h2 id="列表过渡"><a href="#列表过渡" class="headerlink" title="列表过渡"></a>列表过渡</h2><p>目前为止，关于过渡我们已经讲到：</p>
+<ul>
+<li>单个节点</li>
+<li>同一时间渲染多个节点中的一个</li>
+</ul>
+<p>那么怎么同时渲染整个列表，比如使用 <code>v-for</code> ？在这种场景中，使用 `` 组件。在我们深入例子之前，先了解关于这个组件的几个特点：</p>
+<ul>
+<li>不同于 <code>，它会以一个真实元素呈现：默认为一个 </code>。你也可以通过 <code>tag</code> attribute 更换为其他元素。</li>
+<li><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/transitions.html#%E8%BF%87%E6%B8%A1%E6%A8%A1%E5%BC%8F">过渡模式</a>不可用，因为我们不再相互切换特有的元素。</li>
+<li>内部元素 <strong>总是需要</strong> 提供唯一的 <code>key</code> 属性值。</li>
+<li>CSS 过渡的类将会应用在内部的元素中，而不是这个组/容器本身。</li>
+</ul>
+<h3 id="列表的进入-离开过渡"><a href="#列表的进入-离开过渡" class="headerlink" title="列表的进入/离开过渡"></a>列表的进入/离开过渡</h3><p>现在让我们由一个简单的例子深入，进入和离开的过渡使用之前一样的 CSS 类名。</p>
+<pre><code class="html">&lt;div id=&quot;list-demo&quot; class=&quot;demo&quot;&gt;
+    &lt;button v-on:click=&quot;add&quot;&gt;Add&lt;/button&gt;
+    &lt;button v-on:click=&quot;remove&quot;&gt;Remove&lt;/button&gt;
+    &lt;transition-group name=&quot;list&quot; tag=&quot;p&quot;&gt;
+        &lt;span v-for=&quot;item in items&quot; v-bind:key=&quot;item&quot; class=&quot;list-item&quot;&gt;
+            &#123;&#123; item &#125;&#125;
+        &lt;/span&gt;
+    &lt;/transition-group&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="js">new Vue(&#123;
+    el: &#39;#list-demo&#39;,
+    data: &#123;
+        items: [1,2,3,4,5,6,7,8,9],
+        nextNum: 10
+    &#125;,
+    methods: &#123;
+        randomIndex: function () &#123;
+            return Math.floor(Math.random() * this.items.length)
+        &#125;,
+        add: function () &#123;
+            this.items.splice(this.randomIndex(), 0, this.nextNum++)
+        &#125;,
+        remove: function () &#123;
+            this.items.splice(this.randomIndex(), 1)
+        &#125;,
+    &#125;
+&#125;)
+</code></pre>
+<h2 id="可复用的过渡"><a href="#可复用的过渡" class="headerlink" title="可复用的过渡"></a>可复用的过渡</h2><p>过渡可以通过 Vue 的组件系统实现复用。要创建一个可复用过渡组件，你需要做的就是将 <code>或者</code> 作为根组件，然后将任何子组件放置在其中就可以了。</p>
+<p>使用 template 的简单例子：</p>
+<pre><code class="js">Vue.component(&#39;my-special-transition&#39;, &#123;
+  template: &#39;\
+    &lt;transition\
+      name=&quot;very-special-transition&quot;\
+      mode=&quot;out-in&quot;\
+      v-on:before-enter=&quot;beforeEnter&quot;\
+      v-on:after-enter=&quot;afterEnter&quot;\
+    &gt;\
+      &lt;slot&gt;&lt;/slot&gt;\
+    &lt;/transition&gt;\
+  &#39;,
+  methods: &#123;
+    beforeEnter: function (el) &#123;
+      // ...
+    &#125;,
+    afterEnter: function (el) &#123;
+      // ...
+    &#125;
+  &#125;
+&#125;)
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/render-function.html#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6">函数式组件</a>更适合完成这个任务：</p>
+<pre><code class="js">Vue.component(&#39;my-special-transition&#39;, &#123;
+  functional: true,
+  render: function (createElement, context) &#123;
+    var data = &#123;
+      props: &#123;
+        name: &#39;very-special-transition&#39;,
+        mode: &#39;out-in&#39;
+      &#125;,
+      on: &#123;
+        beforeEnter: function (el) &#123;
+          // ...
+        &#125;,
+        afterEnter: function (el) &#123;
+          // ...
+        &#125;
+      &#125;
+    &#125;
+    return createElement(&#39;transition&#39;, data, context.children)
+  &#125;
+&#125;)
+</code></pre>
+<p>第三方过渡动画库</p>
+<pre><code class="shell">npm istall animate.css --save 下载依赖包
+</code></pre>
+<pre><code class="js">import &#39;animate.css&#39;; 引入
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://animate.style/">https://animate.style/</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-22 react hooks" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1793,106 +2053,9 @@ ReactDOM.render(
 
 
   
-    <article id="post-14 纯函数" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2022/08/25/14%20%E7%BA%AF%E5%87%BD%E6%95%B0/" class="article-date">
-  	<time datetime="2022-08-25T03:08:26.000Z" itemprop="datePublished">2022-08-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/25/14%20%E7%BA%AF%E5%87%BD%E6%95%B0/">
-        React-纯函数
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="纯函数"><a href="#纯函数" class="headerlink" title="纯函数"></a>纯函数</h1><p>当我第一次听到 “纯函数 (Pure Function)” 这个术语的时候我很疑惑。常规的函数做错了什么？为什么要变纯？ 为什么我需要纯的函数？</p>
-<p>除非你已经知道什么是纯函数，否则你可能会问同样的疑惑。不过这个概念其实很简单。我们可以花个 5 分钟一起来看以下。</p>
-<h3 id="什么函数是纯的？"><a href="#什么函数是纯的？" class="headerlink" title="什么函数是纯的？"></a>什么函数是纯的？</h3><p>纯函数的定义是：</p>
-<ol>
-<li>如果函数的调用参数相同，则永远返回相同的结果。它不依赖于程序执行期间函数外部任何状态或数据的变化，必须只依赖于其输入参数。</li>
-<li>该函数不会产生任何可观察的副作用，例如网络请求，输入和输出设备或数据突变（mutation）。</li>
-</ol>
-<p>这就是纯的函数。 如果一个函数符合上述 2 个要求，它就是纯函数。 你可能在过去甚至无意地情况下编写过纯函数。</p>
-<p>在我们研究一个函数一个纯或不纯之前，让我们先讨论一下可怕的“副作用”。</p>
-<h3 id="什么是可观察的副作用？"><a href="#什么是可观察的副作用？" class="headerlink" title="什么是可观察的副作用？"></a>什么是可观察的副作用？</h3><p>一个可以被观察的副作用是在函数内部与其外部的<strong>任意</strong>交互。这可能是在函数内修改外部的变量，或者在函数里调用另外一个函数等。</p>
-<p><strong>注:</strong> 如果纯函数调用纯函数，则不产生副作用依旧是纯函数。</p>
-<p>副作用来自，但不限于：</p>
-<ul>
-<li>进行一个 HTTP 请求</li>
-<li>Mutating data</li>
-<li>输出数据到屏幕或者控制台</li>
-<li>DOM 查询/操作</li>
-<li>Math.random()</li>
-<li>获取的当前时间</li>
-</ul>
-<p>副作用本身并不是毒药，某些时候往往是必需的。 但是，对于要保持纯粹的函数，它不能包含任何副作用。当然，并非所有函数都需要是纯函数。 我将在稍后讨论这个情况。</p>
-<p>不过首先，让我们来看一些纯的和不纯的函数对比的例子……</p>
-<h3 id="纯函数的例子"><a href="#纯函数的例子" class="headerlink" title="纯函数的例子"></a><strong>纯函数的例子</strong></h3><p>以下是一个计算产品税后价格（英国税率是20%）的纯函数的例子：</p>
-<pre><code class="js">function priceAfterTax(productPrice) &#123; return (productPrice * 0.20) + productPrice;&#125;
-</code></pre>
-<p>它符合我们所说的两条纯函数的定义。不依赖于任何外部输入，不改变任何外部数据、没有副作用。</p>
-<p>即使你用同样的输入运行运行这个函数 100,000,000 次它<strong>依旧产生同样的结果</strong>。</p>
-<h3 id="非纯函数"><a href="#非纯函数" class="headerlink" title="非纯函数"></a><strong>非纯函数</strong></h3><p>我们已经看了纯函数的例子，现在一起来看一个非纯函数（Impure function）的 JavaScript 例子:</p>
-<pre><code class="js">var tax = 20;
-function calculateTax(productPrice) &#123;
-    return (productPrice * (tax/100)) + productPrice;
-&#125;
-</code></pre>
-<p>暂停片刻，看看你是否能看出为什么这个函数不纯。</p>
-<p>其中函数的计算结果取决于外部 tax 变量，而纯函数不能依赖外部变量。它没有满足定义中的第一个要求，因此这个函数是不纯的。</p>
-<h3 id="为什么说纯函数在-JavaScript-很重要？"><a href="#为什么说纯函数在-JavaScript-很重要？" class="headerlink" title="为什么说纯函数在 JavaScript 很重要？"></a>为什么说纯函数在 JavaScript 很重要？</h3><p>纯函数在函数式编程中被大量使用。而且诸如 <a target="_blank" rel="noopener" href="https://facebook.github.io/react/docs/components-and-props.html">ReactJS</a> 和 <a target="_blank" rel="noopener" href="http://redux.js.org/docs/introduction/ThreePrinciples.html">Redux</a> 等优质的库都需要使用纯函数。</p>
-<p>不过，纯函数也可以用在平常的 JavaScript 开发中使用，不一定要限死在某个编程范例中。 你可以混合纯的和不纯的函数，这完全没问题。</p>
-<p>并非所有函数都需要是纯的。 例如，操作 DOM 的按钮按下的事件处理程序就不适合纯函数。 不过，这种事件处理函数可以调用其他纯函数来处理，以此减少项目中不纯函数的数量。</p>
-<h4 id="可测试性和重构"><a href="#可测试性和重构" class="headerlink" title="可测试性和重构"></a>可测试性和重构</h4><p>另一个使用纯函数的原因是测试以及重构。</p>
-<p>使用纯函数的一个主要好处是它们可以直接测。 如果传入相同的参数，它们将始终产生相同的结果。</p>
-<p>同时纯函数还使得维护和重构代码变得更加容易。你可以放心地重构一个纯函数，不必操心没注意到的副作用搞乱了整个应用而导致终调试地狱。（译注：如果项目中充斥着副作用，那么函数/模块之间的逻辑可能互相交织耦合，在后期新增逻辑时可能由于依赖复杂而难以重构，更常见的是开发为了应付需求而不断的引入新的副作用到原本的逻辑上从而导致代码变得越来越糟糕。）</p>
-<p>正确地使用纯函数可以产生更加高质量的代码。并且也是一种更加干净的编码方式。</p>
-<p>此外，纯函数不不是 JavaScript 的专利。想要了解更多内容可以参见 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Pure_function">Wiki</a>。同时也推荐阅读 <a target="_blank" rel="noopener" href="https://drboolean.gitbooks.io/mostly-adequate-guide/ch3.html">开发建议手册</a> 以及 <a target="_blank" rel="noopener" href="https://toddmotto.com/pure-versus-impure-functions">纯函数 vs. 非纯函数</a>.</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
     </nav>
   
 </div>

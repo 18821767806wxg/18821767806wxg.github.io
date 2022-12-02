@@ -217,6 +217,63 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-vue项目配置服务器的环境变量" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/08/29/vue%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="article-date">
+  	<time datetime="2022-08-29T07:36:16.000Z" itemprop="datePublished">2022-08-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/29/vue%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">
+        Vue-Vue项目配置服务器的环境变量
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>vue项目配置服务器的环境变量.md</p>
+<p>1.配置vue项目开发环境跟生产环境的全局环境变量<br> 在vue根目录新建.env.development和.env.production两个文件，然后配置变量<br> .env.development文件放：<br> VUE_APP_ENV=’development’<br> VUE_APP_URL=’<a target="_blank" rel="noopener" href="http://www.baidu.com/api&#39;">www.baidu.com/api&#39;</a><br> .env.production文件放：<br> VUE_APP_ENV=’production’<br> VUE_APP_URL=’<a target="_blank" rel="noopener" href="http://www.baidu.com/api&#39;">www.baidu.com/api&#39;</a></p>
+<p> 如何获取配置的全局变量：process.env.VUE_APP_ENV   / process.env.VUE_APP_URL</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-vue从入门到进阶：组件Component详解" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -2182,187 +2239,9 @@ Vue.prototype.decrypt = function(msg)&#123;
 
 
   
-    <article id="post-34vue检测数据的原理" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2022/08/29/34vue%E6%A3%80%E6%B5%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8E%9F%E7%90%86/" class="article-date">
-  	<time datetime="2022-08-29T07:32:18.000Z" itemprop="datePublished">2022-08-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/29/34vue%E6%A3%80%E6%B5%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8E%9F%E7%90%86/">
-        Vue-Vue监视数据的原理
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.&lt;!–</p>
-<p>​      Vue监视数据的原理：</p>
-<p>​        \1. vue会监视data中所有层次的数据。</p>
-<p>​        \2. 如何监测对象中的数据？</p>
-<p>​                通过setter实现监视，且要在new Vue时就传入要监测的数据。</p>
-<p>​                  (1).对象中后追加的属性，Vue默认不做响应式处理</p>
-<p>​                  (2).如需给后添加的属性做响应式，请使用如下API：</p>
-<p>​                          Vue.set(target，propertyName/index，value) 或 </p>
-<p>​                          vm.$set(target，propertyName/index，value)</p>
-<p>​        \3. 如何监测数组中的数据？</p>
-<p>​                  通过包裹数组更新元素的方法实现，本质就是做了两件事：</p>
-<p>​                    (1).调用原生对应的方法对数组进行更新。</p>
-<p>​                    (2).重新解析模板，进而更新页面。</p>
-<p>​        4.在Vue修改数组中的某个元素一定要用如下方法：</p>
-<p>​              1.使用这些API:push()、pop()、shift()、unshift()、splice()、sort()、reverse()</p>
-<p>​              2.Vue.set() 或 vm.$set()</p>
-<p>​        特别注意：Vue.set() 和 vm.$set() 不能给vm 或 vm的根数据对象 添加属性！！！</p>
-<p>​    –&gt;</p>
-<ol start="2">
-<li><pre><code class="javascript">2.  &lt;!-- 准备好一个容器--&gt;
-
-        &lt;div id=&quot;root&quot;&gt;
-
-​      &lt;h1&gt;学生信息&lt;/h1&gt;
-
-​      &lt;button @click=&quot;student.age++&quot;&gt;年龄+1岁&lt;/button&gt; &lt;br/&gt;
-
-​      &lt;button @click=&quot;addSex&quot;&gt;添加性别属性，默认值：男&lt;/button&gt; &lt;br/&gt;
-
-​      &lt;button @click=&quot;student.sex = &#39;未知&#39; &quot;&gt;修改性别&lt;/button&gt; &lt;br/&gt;
-
-​      &lt;button @click=&quot;addFriend&quot;&gt;在列表首位添加一个朋友&lt;/button&gt; &lt;br/&gt;
-
-​      &lt;button @click=&quot;updateFirstFriendName&quot;&gt;修改第一个朋友的名字为：张三&lt;/button&gt; &lt;br/&gt;
-
-​      &lt;button @click=&quot;addHobby&quot;&gt;添加一个爱好&lt;/button&gt; &lt;br/&gt;
-
-​      &lt;button @click=&quot;updateHobby&quot;&gt;修改第一个爱好为：开车&lt;/button&gt; &lt;br/&gt;
-
-​      &lt;button @click=&quot;removeSmoke&quot;&gt;过滤掉爱好中的抽烟&lt;/button&gt; &lt;br/&gt;
-
-​      &lt;h3&gt;姓名：&#123;&#123;student.name&#125;&#125;&lt;/h3&gt;
-
-​      &lt;h3&gt;年龄：&#123;&#123;student.age&#125;&#125;&lt;/h3&gt;
-
-​      &lt;h3 v-if=&quot;student.sex&quot;&gt;性别：&#123;&#123;student.sex&#125;&#125;&lt;/h3&gt;
-
-​      &lt;h3&gt;爱好：&lt;/h3&gt;
-
-​      &lt;ul&gt;
-
-​        &lt;li v-for=&quot;(h,index) in student.hobby&quot; :key=&quot;index&quot;&gt;
-
-​          &#123;&#123;h&#125;&#125;
-
-​        &lt;/li&gt;
-
-​      &lt;/ul&gt;
-
-​      &lt;h3&gt;朋友们：&lt;/h3&gt;
-
-​      &lt;ul&gt;
-
-​        &lt;li v-for=&quot;(f,index) in student.friends&quot; :key=&quot;index&quot;&gt;
-
-​          &#123;&#123;f.name&#125;&#125;--&#123;&#123;f.age&#125;&#125;
-
-​        &lt;/li&gt;
-
-​      &lt;/ul&gt;
-
-​    &lt;/div&gt;
-</code></pre>
-</li>
-</ol>
-<p>3.</p>
-<pre><code class="js">
-
-&lt;script type=&quot;text/javascript&quot;&gt;
-        Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
-
-
-
-        const vm = new Vue(&#123;
-            el:&#39;#root&#39;,
-            data:&#123;
-                student:&#123;
-                    name:&#39;tom&#39;,
-                    age:18,
-                    hobby:[&#39;抽烟&#39;,&#39;喝酒&#39;,&#39;烫头&#39;],
-                    friends:[
-                        &#123;name:&#39;jerry&#39;,age:35&#125;,
-                        &#123;name:&#39;tony&#39;,age:36&#125;
-                    ]
-                &#125;
-            &#125;,
-            methods: &#123;
-                addSex()&#123;
-                    // Vue.set(this.student,&#39;sex&#39;,&#39;男&#39;)
-                    this.$set(this.student,&#39;sex&#39;,&#39;男&#39;)
-                &#125;,
-                addFriend()&#123;
-                    this.student.friends.unshift(&#123;name:&#39;jack&#39;,age:70&#125;)
-                &#125;,
-                updateFirstFriendName()&#123;
-                    this.student.friends[0].name = &#39;张三&#39;
-                &#125;,
-                addHobby()&#123;
-                    this.student.hobby.push(&#39;学习&#39;)
-                &#125;,
-                updateHobby()&#123;
-                    // this.student.hobby.splice(0,1,&#39;开车&#39;)
-                    // Vue.set(this.student.hobby,0,&#39;开车&#39;)
-                    this.$set(this.student.hobby,0,&#39;开车&#39;)
-                &#125;,
-                removeSmoke()&#123;
-                    this.student.hobby = this.student.hobby.filter((h)=&gt;&#123;
-                        return h !== &#39;抽烟&#39;
-                    &#125;)
-                &#125;
-            &#125;
-        &#125;)
-    &lt;/script&gt;
-</code></pre>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
     </nav>
   
 </div>

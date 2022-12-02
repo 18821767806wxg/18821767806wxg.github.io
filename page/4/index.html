@@ -217,6 +217,61 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-判断数组的几种方式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/09/15/%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="article-date">
+  	<time datetime="2022-09-15T08:23:24.254Z" itemprop="datePublished">2022-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/15/%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/">
+        js原生-判断数组的几种方式
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1./通过原型链做判断<br>obj.<strong>proto</strong> === Array.prototype;<br>2./通过 ES6 的 Array.isArray()做判断<br>Array.isArrray(obj);<br>3./通过 instanceof 做判断<br>obj instanceof Array;<br>4.通过 Array.prototype.isPrototypeOf<br>Array.prototype.isPrototypeOf(obj);<br>5./通过 Object.prototype.toString.call()做判断<br>Object.prototype.toString.call(obj).slice(8, -1) === “Array”;</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-兼容性写法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -2657,69 +2712,9 @@ justify-content:space-around;box-sizing:border-box;&#125;
 
 
   
-    <article id="post-css-清除浮动" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2022/09/05/css-%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/" class="article-date">
-  	<time datetime="2022-09-05T03:09:34.605Z" itemprop="datePublished">2022-09-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/05/css-%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/">
-        Css-清除浮动
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code class="css">.clearfix::after &#123;
-  content: &quot;&quot;;
-  clear: both;
-  display: table;
-&#125;
-</code></pre>
-<h4 id="1-上面伪类清除法"><a href="#1-上面伪类清除法" class="headerlink" title="1.上面伪类清除法"></a>1.上面伪类清除法</h4>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
     </nav>
   
 </div>
