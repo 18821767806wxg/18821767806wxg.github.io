@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>js-BOM | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="BOM 浏览器对象模型  浏览器对象  window对象不但充当全局作用域，而且表示浏览器窗口。    window对象有innerWidth和innerHeight属性，可以获取浏览器窗口的内部宽度和高度。内部宽高是指除去菜单栏、工具栏、边框等占位元素后，用于显示网页的净宽高。  console.log(&#39;window inner size: &#39; + window.innerWi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="js-BOM">
+<meta property="og:url" content="https://18821767806wxg.github.io/%E7%AC%94%E8%AE%B0.assets/08%20BOM%E7%9A%84%E5%89%AF%E6%9C%AC.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="BOM 浏览器对象模型  浏览器对象  window对象不但充当全局作用域，而且表示浏览器窗口。    window对象有innerWidth和innerHeight属性，可以获取浏览器窗口的内部宽度和高度。内部宽高是指除去菜单栏、工具栏、边框等占位元素后，用于显示网页的净宽高。  console.log(&#39;window inner size: &#39; + window.innerWi">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-12-04T08:02:51.546Z">
+<meta property="article:modified_time" content="2022-09-15T08:33:30.848Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=30612793&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.css-js.com/tools/base64.html">在线转译base64图片工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference">MDN-javascript文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.yuque.com/cuggz/interview/vgbphi">前端面试题汇总</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/6/">React博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/25/11-1%E9%AB%98%E9%A2%91%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E4%B9%8BVue%E7%AF%87/">Vue-面试题汇总之Vue篇</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/5/">Vue-vuex</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/8/">vue博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点,------道阻且长...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/%E7%AC%94%E8%AE%B0.assets/08%20BOM%E7%9A%84%E5%89%AF%E6%9C%AC.html" class="article-date">
+  	<time datetime="2023-12-04T08:02:51.546Z" itemprop="datePublished">2023-12-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js-BOM
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><blockquote>
+<p>浏览器对象模型</p>
+</blockquote>
+<h3 id="浏览器对象"><a href="#浏览器对象" class="headerlink" title="浏览器对象"></a>浏览器对象</h3><blockquote>
+<p> <code>window</code>对象不但充当全局作用域，而且表示浏览器窗口。 </p>
+</blockquote>
+<p> <code>window</code>对象有<code>innerWidth</code>和<code>innerHeight</code>属性，可以获取浏览器窗口的内部宽度和高度。内部宽高是指除去菜单栏、工具栏、边框等占位元素后，用于<code>显示网页的净宽高</code>。 </p>
+<pre><code class="js">console.log(&#39;window inner size: &#39; + window.innerWidth + &#39; x &#39; + window.innerHeight);
+</code></pre>
+<p> //<strong>window inner size: 1280 x 613</strong> </p>
+<p> 对应的，还有一个<code>outerWidth</code>和<code>outerHeight</code>属性，可以<code>获取浏览器窗口的整个宽高</code>。</p>
+<h4 id="navigator"><a href="#navigator" class="headerlink" title="navigator"></a>navigator</h4><blockquote>
+<p><code>navigator</code>对象表示浏览器的信息</p>
+</blockquote>
+<p>最常用的属性包括：</p>
+<h5 id="navigator-appName"><a href="#navigator-appName" class="headerlink" title="navigator.appName"></a>navigator.appName</h5><p>​    浏览器名称</p>
+<h5 id="navigator-appVersion"><a href="#navigator-appVersion" class="headerlink" title="navigator.appVersion"></a>navigator.appVersion</h5><p>​    浏览器版本</p>
+<h5 id="navigator-language"><a href="#navigator-language" class="headerlink" title="navigator.language"></a>navigator.language</h5><p>​    浏览器设置的语言</p>
+<h5 id="navigator-platform"><a href="#navigator-platform" class="headerlink" title="navigator.platform"></a>navigator.platform</h5><p>​    操作系统类型</p>
+<h5 id="navigator-userAgent"><a href="#navigator-userAgent" class="headerlink" title="navigator.userAgent"></a>navigator.userAgent</h5><p>​    浏览器设定的<code>User-Agent</code>字符串</p>
+<p>请注意，以上属性返回的均为<strong>字符串</strong>`</p>
+<p><em>请注意</em>，<code>navigator</code>的信息可以很容易地被用户修改，所以JavaScript读取的值不一定是正确的。很多初学者为了针对不同浏览器编写不同的代码，喜欢用<code>if</code>判断浏览器版本，例如：</p>
+<pre><code class="js">var width;
+if (getIEVersion(navigator.userAgent) &lt; 9) &#123;
+    width = document.body.clientWidth;
+&#125; else &#123;
+    width = window.innerWidth;
+&#125;
+</code></pre>
+<p>但这样既可能判断不准确，也很难维护代码。正确的方法是充分利用JavaScript对不存在属性返回<code>undefined</code>的特性，直接用短路运算符<code>||</code>计算：</p>
+<pre><code class="js">var width = window.innerWidth || document.body.clientWidth;
+</code></pre>
+<h4 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h4><blockquote>
+<p><code>screen</code>对象表示屏幕的信息</p>
+</blockquote>
+<p>常用的属性有：</p>
+<ul>
+<li>screen.width：屏幕宽度，以像素为单位；</li>
+<li>screen.height：屏幕高度，以像素为单位；</li>
+<li>screen.colorDepth：返回颜色位数，如8、16、24。</li>
+</ul>
+<pre><code class="js">console.log(&#39;Screen size = &#39; + screen.width + &#39; x &#39; + screen.height);
+</code></pre>
+<p>// <strong>Screen size = 1920 x 1080</strong> </p>
+<h4 id="history-不推荐使用"><a href="#history-不推荐使用" class="headerlink" title="history//不推荐使用"></a>history//不推荐使用</h4><blockquote>
+<p><code>history</code>对象保存了浏览器的历史记录</p>
+</blockquote>
+<p>JavaScript可以调用<code>history</code>对象的<code>back()</code>或<code>forward ()</code>，相当于用户点击了浏览器的“后退”或“前进”按钮。</p>
+<p>这个对象属于历史遗留对象，对于现代Web页面来说，由于大量使用AJAX和页面交互，简单粗暴地调用<code>history.back()</code>可能会让用户感到非常愤怒。</p>
+<p>新手开始设计Web页面时喜欢在登录页登录成功时调用<code>history.back()</code>，试图回到登录前的页面。这是一种错误的方法。</p>
+<p>任何情况，你都不应该使用<code>history</code>这个对象了。</p>
+<h5 id="length"><a href="#length" class="headerlink" title="length"></a>length</h5><blockquote>
+<p>历史记录的个数</p>
+</blockquote>
+<h5 id="back"><a href="#back" class="headerlink" title="back()"></a>back()</h5><blockquote>
+<p>back() 方法可加载历史列表中的前一个 URL（如果存在）。</p>
+<p>调用该方法的效果等价于点击后退按钮或调用 history.go(-1)。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">history.back()
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">history.back();//回退上一个页面
+</code></pre>
+</li>
+</ul>
+<h5 id="forward"><a href="#forward" class="headerlink" title="forward()"></a>forward()</h5><blockquote>
+<p>forward() 方法可加载历史列表中的下一个 URL。</p>
+<p>调用该方法的效果等价于点击前进按钮或调用 history.go(1)。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">history.forward();
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">history.forward();//前进一个页面
+</code></pre>
+</li>
+</ul>
+<h5 id="go"><a href="#go" class="headerlink" title="go()"></a>go()</h5><blockquote>
+<p> go() 方法可加载历史列表中的某个具体的页面。 跳转指定的步数，负为退，正为进，0为刷新</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">history.go(number|URL)
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">window.history.go(-1);//回退上一个页面
+window.history.go(5);//前进5个页面
+</code></pre>
+</li>
+</ul>
+<h4 id="location"><a href="#location" class="headerlink" title="location"></a>location</h4><blockquote>
+<p> <code>location</code>对象表示当前页面的URL信息 </p>
+</blockquote>
+<p>例如一个完整的URL：<a target="_blank" rel="noopener" href="http://www.example.com:8080/path/index.html?a=1&amp;b=2#TOP">http://www.example.com:8080/path/index.html?a=1&amp;b=2#TOP</a></p>
+<p>可以用<code>location.href</code>获取。要获得URL各个部分的值，可以这么写：</p>
+<pre><code class="js">location.protocol; // &#39;http&#39;
+location.host; // &#39;www.example.com&#39;
+location.port; // &#39;8080&#39;
+location.pathname; // &#39;/path/index.html&#39;
+location.search; // &#39;?a=1&amp;b=2&#39;
+location.hash; // &#39;TOP&#39;
+</code></pre>
+<p>要加载一个新页面，可以调用<code>location.assign()</code>。如果要重新加载当前页面，调用<code>location.reload()</code>方法非常方便。</p>
+<pre><code class="js">if (confirm(&#39;重新加载当前页&#39; + location.href + &#39;?&#39;)) &#123;
+    location.reload();
+&#125; else &#123;
+    location.assign(&#39;/&#39;); // 设置一个新的URL地址
+&#125;
+</code></pre>
+<h5 id="href"><a href="#href" class="headerlink" title="href"></a>href</h5><blockquote>
+<p> href 属性是一个可读可写的字符串，可设置或返回当前显示的文档的完整 URL。</p>
+<p> 因此，我们可以通过为该属性设置新的 URL，使浏览器读取并显示新的 URL 的内容。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">location.href = URL
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">console.log(location.href);//当前页面完整的URL
+</code></pre>
+</li>
+</ul>
+<h5 id="search"><a href="#search" class="headerlink" title="search"></a>search</h5><blockquote>
+<p>  search 属性是一个可读可写的字符串，可设置或返回当前 URL 的查询部分（问号 ? 之后的部分）。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">location.search = path_from_questionmark
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">console.log(location.href);//返回当前 URL 的查询部分（问号 ? 之后的部分）
+</code></pre>
+</li>
+</ul>
+<h5 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h5><blockquote>
+<p>  hash 属性是一个可读可写的字符串，该字符串是 URL 的锚部分（从 # 号开始的部分） </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">location.hash = anchorname
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">console.log(location.hash);// URL 的锚部分（从 # 号开始的部分）
+location.hash = &quot;#3_2&quot;//改变锚点#ID,可以到达指定位置
+</code></pre>
+</li>
+</ul>
+<h5 id="reload"><a href="#reload" class="headerlink" title="reload()"></a>reload()</h5><blockquote>
+<p>  reload() 方法用于重新加载当前文档。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">location.reload(force)
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">window.location.reload()//刷新页面
+</code></pre>
+</li>
+</ul>
+<h5 id="assign"><a href="#assign" class="headerlink" title="assign()"></a>assign()</h5><blockquote>
+<p>  assign() 方法可加载一个新的文档。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">location.assign(URL)
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js"> window.location.assign(&quot;http://www.w3school.com.cn&quot;)//重新加载新的网页
+ window.location.assign(&quot;&quot;)//刷新页面
+</code></pre>
+</li>
+</ul>
+<h4 id="document"><a href="#document" class="headerlink" title="document"></a>document</h4><blockquote>
+<p><code>document</code>对象表示当前页面。由于HTML在浏览器中以DOM形式表示为树形结构，<code>document</code>对象就是整个DOM树的根节点。</p>
+</blockquote>
+<p><code>document</code>的<code>title</code>属性是从HTML文档中的<code>xxx</code>读取的，但是可以动态改变：</p>
+<pre><code class="js">document.title = &#39;努力学习JavaScript!&#39;;
+</code></pre>
+<h5 id="getElementById"><a href="#getElementById" class="headerlink" title="getElementById()"></a>getElementById()</h5><blockquote>
+<p> 按ID获得一个DOM节点 </p>
+</blockquote>
+<h5 id="getElementsByTagName"><a href="#getElementsByTagName" class="headerlink" title="getElementsByTagName()"></a>getElementsByTagName()</h5><blockquote>
+<p> 按Tag名称获得一组DOM节点 </p>
+</blockquote>
+<h5 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h5><blockquote>
+<p> 可以获取当前页面的Cookie</p>
+</blockquote>
+<p>Cookie是由服务器发送的key-value标示符。因为HTTP协议是无状态的，但是服务器要区分到底是哪个用户发过来的请求，就可以用Cookie来区分。当一个用户成功登录后，服务器发送一个Cookie给浏览器，例如<code>user=ABC123XYZ(加密的字符串)...</code>，此后，浏览器访问该网站时，会在请求头附上这个Cookie，服务器根据Cookie即可区分出用户。</p>
+<p>Cookie还可以存储网站的一些设置，例如，页面显示的语言等等。</p>
+<p>JavaScript可以通过<code>document.cookie</code>读取到当前页面的Cookie：</p>
+<pre><code class="js">document.cookie; // &#39;v=123; remember=true; prefer=zh&#39;
+</code></pre>
+<p>由于JavaScript能读取到页面的Cookie，而用户的登录信息通常也存在Cookie中，这就造成了巨大的安全隐患，这是因为在HTML页面中引入第三方的JavaScript代码是允许的：</p>
+<pre><code class="js">&lt;!-- 当前页面在wwwexample.com --&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;script src=&quot;http://www.foo.com/jquery.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    ...
+&lt;/html&gt;
+</code></pre>
+<p>如果引入的第三方的JavaScript中存在恶意代码，则<code>www.foo.com</code>网站将直接获取到<code>www.example.com</code>网站的用户登录信息。</p>
+<p>为了解决这个问题，服务器在设置Cookie时可以使用<code>httpOnly</code>，设定了<code>httpOnly</code>的Cookie将不能被JavaScript读取。这个行为由浏览器实现，主流浏览器均支持<code>httpOnly</code>选项，IE从IE6 SP1开始支持。</p>
+<p>为了确保安全，服务器端在设置Cookie时，应该始终坚持使用<code>httpOnly</code>。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2024 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>tags | 我的博客</title>
+  <title>Vue-class与style | 我的博客</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将更新html5、css3知识点">
+  <meta name="description" content="class与style绑定HTML Class对象语法&lt;div id&#x3D;&#39;box&#39;&gt;     &lt;div :class&#x3D;&#39;classObj&#39;&gt;动态绑定ClassName&lt;&#x2F;div&gt; &lt;&#x2F;div&gt;  new Vue(&amp;#123;     el:&#39;#box&#39;,     data:&amp;#123;         c">
 <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://18821767806wxg.github.io/tags/index.html">
+<meta property="og:title" content="Vue-class与style">
+<meta property="og:url" content="https://18821767806wxg.github.io/%E7%AC%94%E8%AE%B0.assets/04%20class%E4%B8%8Estyle.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将更新html5、css3知识点">
+<meta property="og:description" content="class与style绑定HTML Class对象语法&lt;div id&#x3D;&#39;box&#39;&gt;     &lt;div :class&#x3D;&#39;classObj&#39;&gt;动态绑定ClassName&lt;&#x2F;div&gt; &lt;&#x2F;div&gt;  new Vue(&amp;#123;     el:&#39;#box&#39;,     data:&amp;#123;         c">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-09-19T08:19:22.000Z">
-<meta property="article:modified_time" content="2022-08-24T08:38:56.000Z">
+<meta property="article:published_time" content="2024-05-13T02:44:22.780Z">
+<meta property="article:modified_time" content="2022-08-25T02:54:30.000Z">
 <meta property="article:author" content="王小刚">
 <meta name="twitter:card" content="summary">
   
@@ -217,11 +217,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="tags-" class="article article-type-tags" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-  	<time datetime="2020-09-19T08:19:22.000Z" itemprop="datePublished">2020-09-19</time>
+      <a href="/%E7%AC%94%E8%AE%B0.assets/04%20class%E4%B8%8Estyle.html" class="article-date">
+  	<time datetime="2024-05-13T02:44:22.780Z" itemprop="datePublished">2024-05-13</time>
 </a>
     </div>
   
@@ -234,7 +234,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tags
+      Vue-class与style
       
     </h1>
   
@@ -252,7 +252,116 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="class与style"><a href="#class与style" class="headerlink" title="class与style"></a>class与style</h1><h2 id="绑定HTML-Class"><a href="#绑定HTML-Class" class="headerlink" title="绑定HTML Class"></a>绑定HTML Class</h2><h3 id="对象语法"><a href="#对象语法" class="headerlink" title="对象语法"></a>对象语法</h3><pre><code class="html">&lt;div id=&#39;box&#39;&gt;
+    &lt;div :class=&#39;classObj&#39;&gt;动态绑定ClassName&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="js">new Vue(&#123;
+    el:&#39;#box&#39;,
+    data:&#123;
+        classObj:&#123;
+            aa:1,//true则显示该class名，false则不会
+               bb:0,
+            cc:1
+        &#125;
+    &#125;
+&#125;)
+</code></pre>
+<h3 id="数组语法"><a href="#数组语法" class="headerlink" title="数组语法"></a>数组语法</h3><pre><code class="html">&lt;div id=&#39;box&#39;&gt;
+    &lt;div :class=&#39;classArr&#39;&gt;动态绑定ClassName&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="js">new Vue(&#123;
+    el:&#39;#box&#39;,
+    data:&#123;
+        classArr:[&#39;aa&#39;,&#39;cc&#39;]//数组里有的都会显示为className
+    &#125;
+&#125;)
+</code></pre>
+<h2 id="绑定内联样式"><a href="#绑定内联样式" class="headerlink" title="绑定内联样式"></a>绑定内联样式</h2><h3 id="对象语法-1"><a href="#对象语法-1" class="headerlink" title="对象语法"></a>对象语法</h3><pre><code class="html">&lt;div id=&#39;box&#39;&gt;
+    &lt;div :style=&#39;styleObj&#39;&gt;动态修改样式&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="js">new Vue(&#123;
+    el:&#39;#box&#39;,
+    data:&#123;
+        styleObj:&#123;
+            backgroundColor:&#39;#14c145&#39;
+        &#125;
+        //注意，直接用this.styleObj.属性=val，是无法渲染页面的，必须要使用
+        // Vue.set(this.styleObj,属性,val)才可以渲染页面
+    &#125;
+&#125;)
+</code></pre>
+<h3 id="数组语法-1"><a href="#数组语法-1" class="headerlink" title="数组语法"></a>数组语法</h3><pre><code class="html">&lt;div id=&#39;box&#39;&gt;
+    &lt;div :class=&#39;styleArr&#39;&gt;动态修 改样式&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="js">new Vue(&#123;
+    el:&#39;#box&#39;,
+    data:&#123;
+        styleArr:[&#123;
+            backgroundColor:&quot;#14c145&quot;,
+            fontSize:&#39;12px&#39;
+        &#125;]//注意，往数组中push对象，可以渲染页面
+        //this.styleArr.push(&#123;color:&#39;red&#39;&#125;)
+    &#125;
+&#125;)
+</code></pre>
+<p>#####对象方法<br>-最简单的绑定（这里的active加不加单引号都可以，以下也一样都能渲染）</p>
+<pre><code>:class=&quot;&#123; &#39;active&#39;: isActive &#125;&quot;
+</code></pre>
+<p>1<br>判断是否绑定一个active</p>
+<pre><code>:class=&quot;&#123;&#39;active&#39;:isActive===-1&#125;&quot;  
+或者
+:class=&quot;&#123;&#39;active&#39;:isActive===index&#125;&quot;
+</code></pre>
+<p>绑定并判断多个</p>
+<pre><code>第一种（用逗号隔开）
+:class=&quot;&#123; &#39;active&#39;: isActive, &#39;sort&#39;: isSort &#125;&quot;
+第二种（放在data里面）
+//也可以把后面绑定的对象写在一个变量放在data里面，可以变成下面这样
+:class=&quot;classObject&quot;
+data() &#123;
+  return &#123;
+    classObject:&#123; active: true, sort:false &#125;
+  &#125;
+&#125;
+第三种（使用computed属性）
+:class=&quot;classObject&quot;
+data() &#123;
+  return &#123;
+    isActive: true,
+    isSort: false
+  &#125;
+&#125;,
+computed: &#123;
+  classObject: function () &#123;
+    return &#123;
+      active: this.isActive,
+      sort:this.isSort
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<p>#####数组方法</p>
+<pre><code>单纯数组
+:class=&quot;[isActive,isSort]&quot;
+data() &#123;
+  return&#123;
+    isActive:&#39;active&#39;,
+    isSort:&#39;sort&#39;
+ &#125;
+&#125;
+</code></pre>
+<p>数组与三元运算符结合判断选择需要的class<br>$$<br>（注意：三元运算符后面的“：”两边的class需要加上单引号，否则不能正确渲染）<br>:class=”[isActive?’active’:’’]”<br>或者<br>:class=”[isActive==1?’active’:’’]”<br>或者<br>:class=”[isActive==index?’active’:’’]”<br>或者<br>:class=”[isActive==index?’active’:’otherActiveClass’]”<br>$$<br>数组对象结合动态判断<br>//前面这个active在对象里面可以不加单引号，后面这个sort要加单引号</p>
+<pre><code>:class=&quot;[&#123; active: isActive &#125;, &#39;sort&#39;]&quot;
+或者
+:class=&quot;[&#123; active: isActive===1 &#125;, &#39;sort&#39;]&quot;
+或者
+:class=&quot;[&#123; active: isActive===index &#125;, &#39;sort&#39;]&quot;
+</code></pre>
+
       
     </div>
     

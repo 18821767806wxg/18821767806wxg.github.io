@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>tags | 我的博客</title>
+  <title>Vue-v-model通信 | 我的博客</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将更新html5、css3知识点">
+  <meta name="description" content="v-model通信&lt;div id&#x3D;&quot;box&quot;&gt;     &lt;input type&#x3D;&quot;text&quot; v-model&#x3D;&#39;mytxt&#39;&gt;     &lt;child :text&#x3D;&#39;mytxt&#39;&gt;&lt;&#x2F;child&gt;     &lt;childmodel v-model&#x3D;&#39;mytxt&#39;">
 <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://18821767806wxg.github.io/tags/index.html">
+<meta property="og:title" content="Vue-v-model通信">
+<meta property="og:url" content="https://18821767806wxg.github.io/%E7%AC%94%E8%AE%B0.assets/20%20v-model%E9%80%9A%E4%BF%A1.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将更新html5、css3知识点">
+<meta property="og:description" content="v-model通信&lt;div id&#x3D;&quot;box&quot;&gt;     &lt;input type&#x3D;&quot;text&quot; v-model&#x3D;&#39;mytxt&#39;&gt;     &lt;child :text&#x3D;&#39;mytxt&#39;&gt;&lt;&#x2F;child&gt;     &lt;childmodel v-model&#x3D;&#39;mytxt&#39;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-09-19T08:19:22.000Z">
-<meta property="article:modified_time" content="2022-08-24T08:38:56.000Z">
+<meta property="article:published_time" content="2024-05-13T02:44:22.821Z">
+<meta property="article:modified_time" content="2022-08-25T02:58:48.000Z">
 <meta property="article:author" content="王小刚">
 <meta name="twitter:card" content="summary">
   
@@ -217,11 +217,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="tags-" class="article article-type-tags" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-  	<time datetime="2020-09-19T08:19:22.000Z" itemprop="datePublished">2020-09-19</time>
+      <a href="/%E7%AC%94%E8%AE%B0.assets/20%20v-model%E9%80%9A%E4%BF%A1.html" class="article-date">
+  	<time datetime="2024-05-13T02:44:22.821Z" itemprop="datePublished">2024-05-13</time>
 </a>
     </div>
   
@@ -234,7 +234,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tags
+      Vue-v-model通信
       
     </h1>
   
@@ -252,7 +252,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="v-model通信"><a href="#v-model通信" class="headerlink" title="v-model通信"></a>v-model通信</h1><pre><code class="html">&lt;div id=&quot;box&quot;&gt;
+    &lt;input type=&quot;text&quot; v-model=&#39;mytxt&#39;&gt;
+    &lt;child :text=&#39;mytxt&#39;&gt;&lt;/child&gt;
+    &lt;childmodel v-model=&#39;mytxt&#39;&gt;&lt;/childmodel&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="JS">Vue.component(&quot;childmodel&quot;, &#123;
+    template: `
+            &lt;div&gt;
+                childmodel -- &#123;&#123;value&#125;&#125;
+                &lt;qbutton&gt;click&lt;/qbutton&gt;
+            &lt;/div&gt;
+`,
+   props:[&#39;value&#39;]
+&#125;)
+Vue.component(&quot;child&quot;, &#123;
+    template: `
+            &lt;div&gt;
+                child -- &#123;&#123;text&#125;&#125;
+                &lt;button&gt;click&lt;/button&gt;
+            &lt;/div&gt;
+`,
+    props: [&#39;text&#39;]
+&#125;)
+new Vue(&#123;
+    el: &#39;#box&#39;,
+    data: &#123;
+        mytxt: &quot;&quot;
+    &#125;
+&#125;)
+</code></pre>
+
       
     </div>
     

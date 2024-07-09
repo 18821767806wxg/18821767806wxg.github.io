@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>React- React Hooks | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="React Hooks使用hooks的理由 高阶组件为了复用，导致代码层级复杂 生命周期的复杂 写成functional组件,无状态组件 ，因为需要状态，又改成了class,成本高  useStateimport React , &amp;#123;useState&amp;#125; from &#39;react&#39;  export default function App () &amp;#123;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="React- React Hooks">
+<meta property="og:url" content="https://18821767806wxg.github.io/%E7%AC%94%E8%AE%B0.assets/22%20react%20hooks.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="React Hooks使用hooks的理由 高阶组件为了复用，导致代码层级复杂 生命周期的复杂 写成functional组件,无状态组件 ，因为需要状态，又改成了class,成本高  useStateimport React , &amp;#123;useState&amp;#125; from &#39;react&#39;  export default function App () &amp;#123;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-05-13T02:44:22.741Z">
+<meta property="article:modified_time" content="2022-08-25T03:11:50.000Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=30612793&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.css-js.com/tools/base64.html">在线转译base64图片工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference">MDN-javascript文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.yuque.com/cuggz/interview/vgbphi">前端面试题汇总</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/6/">React博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/25/11-1%E9%AB%98%E9%A2%91%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E4%B9%8BVue%E7%AF%87/">Vue-面试题汇总之Vue篇</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/5/">Vue-vuex</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/8/">vue博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点,------道阻且长...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/%E7%AC%94%E8%AE%B0.assets/22%20react%20hooks.html" class="article-date">
+  	<time datetime="2024-05-13T02:44:22.741Z" itemprop="datePublished">2024-05-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React- React Hooks
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="React-Hooks"><a href="#React-Hooks" class="headerlink" title="React Hooks"></a>React Hooks</h1><h2 id="使用hooks的理由"><a href="#使用hooks的理由" class="headerlink" title="使用hooks的理由"></a>使用hooks的理由</h2><ol>
+<li>高阶组件为了复用，导致代码层级复杂</li>
+<li>生命周期的复杂</li>
+<li>写成functional组件,无状态组件 ，因为需要状态，又改成了class,成本高</li>
+</ol>
+<h2 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h2><pre><code class="js">import React , &#123;useState&#125; from &#39;react&#39;
+</code></pre>
+<pre><code class="jsx">export default function App () &#123;
+    const [name,setname] = useState(&#39;xiaoming&#39;)
+    const changeName = ()=&gt;&#123;
+        setname(&#39;retr0&#39;)
+    &#125;
+    return (
+        &lt;div&gt;
+            &#123;name&#125;
+            &lt;button onClick=&#123;changeName&#125;&gt;&lt;/button&gt;
+        &lt;/div&gt;
+    )
+&#125;
+</code></pre>
+<h2 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h2><pre><code class="js">import React, &#123;useRef&#125; from &#39;react&#39;
+</code></pre>
+<pre><code class="jsx">export default function App () &#123;
+    const ref = useRef(null)
+    return (
+        &lt;div&gt;
+            &lt;input type=&#39;text&#39; ref=&#123;ref&#125;/&gt;
+             &lt;button onClick=&#123;()=&gt;&#123;
+                       console.log(ref.current)
+                &#125;&#125;&gt;&lt;/button&gt;
+        &lt;/div&gt;
+    )
+&#125;
+</code></pre>
+<h2 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h2><blockquote>
+<p>Function Component 不存在生命周期，所以不要把 Class Component 的生命周期概念搬过来试图对号入座。</p>
+<p>useEffect(处理函数，[依赖]) 副作用方法:每次依赖改变都会执行一次，如果没有依赖只有一个空数组，那么只会执行一次（有点像componentDidmount）</p>
+</blockquote>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ol>
+<li>回调函数</li>
+<li>数组<ul>
+<li>不传数组：无法起到只渲染一次的作用</li>
+<li>空数组：一次生命周期中只调用一次回调函数</li>
+<li>[text,name]：如果text状态或者name状态变化，就会调用该回调函数</li>
+</ul>
+</li>
+</ol>
+<pre><code class="js">import React , &#123;useState,useEffect&#125; from &#39;react&#39;
+</code></pre>
+<pre><code class="jsx">export default function App () &#123;
+    const [name,setname] = useState(&#39;xiaoming&#39;)
+    useEffect(()=&gt;&#123;
+        let index =1
+        let t = setInterval(()=&gt;&#123;
+            console.log(++index)
+        &#125;,500)
+        return ()=&gt;&#123;
+            console.log(&#39;销毁&#39;)
+            clearInterval(t)
+        &#125;
+    &#125;,[])
+    return (
+        &lt;div&gt;&lt;/div&gt;
+    )
+&#125;
+</code></pre>
+<p>不要对 Dependencies 撒谎, 如果你明明使用了某个变量，却没有申明在依赖中，你等于向 React撒了谎，后果就是，当依赖的变量改变时，useEffect 也不会再次执行, eslint会报警告</p>
+<p>Preview页面改造成函数式组件，在路径上从id=1切换到id=2也会自动重新加载，比class组件方便,class组件需要通过componentWillMout和</p>
+<pre><code class="jsx">useEffect(()=&gt;&#123;
+    axios.get(`/articles/$&#123;props.match.params.id&#125;`)
+    .then(res =&gt; &#123;
+        settitle(res.data.title)
+        setcontent(res.data.content)
+        setcategory(res.data.category)
+    &#125;)&#125;,[props])
+</code></pre>
+<h2 id="useCallback"><a href="#useCallback" class="headerlink" title="useCallback"></a>useCallback</h2><blockquote>
+<p>防止因为组件重新渲染，导致方法被重新创建，起到缓存作用; 只有第二个参数变化了，才重新声明一次</p>
+</blockquote>
+<pre><code class="js">import React , &#123;useState,useCallback&#125; from &#39;react&#39;
+</code></pre>
+<pre><code class="jsx">export default function App () &#123;
+    const [text,settext] = useState(&#39;xxx&#39;)
+    useCallback(()=&gt;&#123;
+        console.log(text)
+    &#125;,[text])
+    return (
+        &lt;div&gt;
+            &#123;text&#125;
+            &lt;button onClick=&#123;()=&gt;&#123;
+                    settext(&#39;retr0&#39;)
+                &#125;&#125;&gt;&lt;/button&gt;
+        &lt;/div&gt;
+    )
+&#125;
+</code></pre>
+<h2 id="useReducer和useContext"><a href="#useReducer和useContext" class="headerlink" title="useReducer和useContext"></a>useReducer和useContext</h2><blockquote>
+<p>redux-react-hook 无缝使用原来的 redux,和中间件 promise,thunk,saga</p>
+</blockquote>
+<pre><code class="js">import React, &#123;useReducer,useContext&#125; from &#39;react&#39;
+import reducer from &#39;./reducer&#39;
+const GlobalContext = React.createContext()
+</code></pre>
+<h3 id="reducer-js"><a href="#reducer-js" class="headerlink" title="reducer.js"></a>reducer.js</h3><pre><code class="js">// 纯函数设计 reudx中的reducer一个概念
+const reducer = (prevState,action)=&gt;&#123;
+  let &#123;type,payload&#125; = action
+  switch(type)&#123;
+    case &quot;isShow&quot;:
+      //深复制老状态，返回新状态
+    return &#123;
+      ...prevState,
+      isShow:payload
+    &#125; // immutable
+    case &quot;list&quot;:
+      //深复制老状态，返回新状态
+    return &#123;
+      ...prevState,
+      list:payload
+    &#125;
+  &#125;
+&#125;
+export default reducer
+</code></pre>
+<h3 id="App-js"><a href="#App-js" class="headerlink" title="App.js"></a>App.js</h3><pre><code class="jsx">const Child1 = ()=&gt;&#123;
+    const &#123;state,dispatch&#125; = useContext(GlobalContext)
+       return (
+        &lt;div&gt;
+            &lt;button onClick=&#123;()=&gt;&#123;
+                    dispatch(&#123;
+                        type:&#39;isShow&#39;,
+                        payload:!state.isShow
+                    &#125;)
+                &#125;&#125;&gt;&lt;/button&gt;
+        &lt;/div&gt;
+    )
+&#125;
+const Child2 = ()=&gt;&#123;
+    
+&#125;
+export default function App () &#123;
+    let [state,dispatch] = useReducer(reducer,&#123;
+        isShow:false,
+        list:[]
+    &#125;)
+    return (
+        &lt;GlobalContext.Provider value=&#123;&#123;
+                state,
+                dispatch
+            &#125;&#125;&gt;
+            &lt;Child1/&gt;
+            &#123;
+                state.isShow?&lt;Child2/&gt;:null
+            &#125;
+        &lt;/GlobalContext.Provider&gt;
+    )
+&#125;
+</code></pre>
+<h2 id="自定义hooks"><a href="#自定义hooks" class="headerlink" title="自定义hooks"></a>自定义hooks</h2><blockquote>
+<p>当我们想在两个函数之间共享逻辑时，我们会把它提取到第三个函数中。必须以“use”开头吗？必须如此。这个约定非常重要。不遵循的话，由于无法判断某个函数是否包含对其内部 Hook 的调用，React 将无法自动检查你的 Hook 是否违反了 Hook 的规则</p>
+</blockquote>
+<pre><code class="jsx">import React, &#123; useState, useEffect &#125; from &#39;react&#39;
+import axios from &#39;axios&#39;
+import &#123; PageHeader &#125; from &#39;antd&#39;;
+import store from &#39;../../mobx/store&#39;
+//为preview提供数据
+const usePreviewData = (props)=&gt;&#123;
+  const [title, setTitle] = useState(&#39;&#39;)
+  const [category, setCategory] = useState(&#39;&#39;)
+  const [content, setContent] = useState(&#39;&#39;)
+  useEffect(() =&gt; &#123;
+    store.set(&#39;isShow&#39;, false)
+    axios.get(`http://localhost:12138/articles/$&#123;props.match.params.myid&#125;`).then(res =&gt; &#123;
+      let &#123; title, category, content &#125; = res.data
+      setTitle(title)
+      setCategory(category)
+      setContent(content)
+    &#125;)
+  &#125;, [props.match.params.myid])
+  return &#123;
+    title,
+    category,
+    content
+  &#125;
+&#125;
+export default function HookPreview(props) &#123;
+   // console.log(this.props);//函数式组件从函数的形参中就能拿到属性
+  let &#123;title,category,content&#125; = usePreviewData(props)
+  return (
+    &lt;div&gt;
+      &lt;PageHeader
+        className=&quot;site-page-header&quot;
+        onBack=&#123;() =&gt; &#123;
+          props.history.goBack()
+        &#125;&#125;
+        title=&#123;title&#125;
+        subTitle=&#123;category ? category.join(&#39;/&#39;) : null&#125;
+      /&gt;
+      &lt;div style=&#123;&#123; padding: '24px' &#125;&#125; dangerouslySetInnerHTML=&#123;&#123;
+        __html: content
+      &#125;&#125;&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  )
+&#125;
+</code></pre>
+
+      
+    </div>
+    
+  </div>
+  
+    
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2024 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Es6-运算符的扩展 | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="运算符的扩展 指数运算符 链判断运算符 [Null 判断运算符](https:&#x2F;&#x2F;es6.ruanyifeng.com&#x2F;#docs&#x2F;operator#Null 判断运算符) 逻辑赋值运算符  本章介绍 ES6 后续标准添加的一些运算符。 指数运算符ES2016 新增了一个指数运算符（**）。 2 ** 2 &#x2F;&#x2F; 4 2 ** 3 &#x2F;&#x2F; 8  这个运算符的一个特点是右结合，而不是常见的左结合。多个指">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Es6-运算符的扩展">
+<meta property="og:url" content="https://18821767806wxg.github.io/%E7%AC%94%E8%AE%B0.assets/6%E8%BF%90%E7%AE%97%E7%AC%A6.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="运算符的扩展 指数运算符 链判断运算符 [Null 判断运算符](https:&#x2F;&#x2F;es6.ruanyifeng.com&#x2F;#docs&#x2F;operator#Null 判断运算符) 逻辑赋值运算符  本章介绍 ES6 后续标准添加的一些运算符。 指数运算符ES2016 新增了一个指数运算符（**）。 2 ** 2 &#x2F;&#x2F; 4 2 ** 3 &#x2F;&#x2F; 8  这个运算符的一个特点是右结合，而不是常见的左结合。多个指">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-12-04T08:02:51.552Z">
+<meta property="article:modified_time" content="2022-09-05T02:49:14.728Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=30612793&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.css-js.com/tools/base64.html">在线转译base64图片工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference">MDN-javascript文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.yuque.com/cuggz/interview/vgbphi">前端面试题汇总</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/6/">React博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/25/11-1%E9%AB%98%E9%A2%91%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E4%B9%8BVue%E7%AF%87/">Vue-面试题汇总之Vue篇</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/5/">Vue-vuex</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/8/">vue博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点,------道阻且长...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/%E7%AC%94%E8%AE%B0.assets/6%E8%BF%90%E7%AE%97%E7%AC%A6.html" class="article-date">
+  	<time datetime="2023-12-04T08:02:51.552Z" itemprop="datePublished">2023-12-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Es6-运算符的扩展
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="运算符的扩展"><a href="#运算符的扩展" class="headerlink" title="运算符的扩展"></a>运算符的扩展</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/operator#%E6%8C%87%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6">指数运算符</a></li>
+<li><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/operator#%E9%93%BE%E5%88%A4%E6%96%AD%E8%BF%90%E7%AE%97%E7%AC%A6">链判断运算符</a></li>
+<li>[Null 判断运算符](<a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/operator#Null">https://es6.ruanyifeng.com/#docs/operator#Null</a> 判断运算符)</li>
+<li><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/operator#%E9%80%BB%E8%BE%91%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6">逻辑赋值运算符</a></li>
+</ol>
+<p>本章介绍 ES6 后续标准添加的一些运算符。</p>
+<h2 id="指数运算符"><a href="#指数运算符" class="headerlink" title="指数运算符"></a>指数运算符</h2><p>ES2016 新增了一个指数运算符（<code>**</code>）。</p>
+<pre><code class="javascript">2 ** 2 // 4
+2 ** 3 // 8
+</code></pre>
+<p>这个运算符的一个特点是右结合，而不是常见的左结合。多个指数运算符连用时，是从最右边开始计算的。</p>
+<pre><code class="javascript">// 相当于 2 ** (3 ** 2)
+2 ** 3 ** 2
+// 512
+</code></pre>
+<p>上面代码中，首先计算的是第二个指数运算符，而不是第一个。</p>
+<p>指数运算符可以与等号结合，形成一个新的赋值运算符（<code>**=</code>）。</p>
+<pre><code class="javascript">let a = 1.5;
+a **= 2;
+// 等同于 a = a * a;
+
+let b = 4;
+b **= 3;
+// 等同于 b = b * b * b;
+</code></pre>
+<h2 id="链判断运算符"><a href="#链判断运算符" class="headerlink" title="链判断运算符"></a>链判断运算符</h2><p>编程实务中，如果读取对象内部的某个属性，往往需要判断一下，属性的上层对象是否存在。比如，读取<code>message.body.user.firstName</code>这个属性，安全的写法是写成下面这样。</p>
+<pre><code class="javascript">// 错误的写法
+const  firstName = message.body.user.firstName || &#39;default&#39;;
+
+// 正确的写法
+const firstName = (message
+  &amp;&amp; message.body
+  &amp;&amp; message.body.user
+  &amp;&amp; message.body.user.firstName) || &#39;default&#39;;
+</code></pre>
+<p>上面例子中，<code>firstName</code>属性在对象的第四层，所以需要判断四次，每一层是否有值。</p>
+<p>三元运算符<code>?:</code>也常用于判断对象是否存在。</p>
+<pre><code class="javascript">const fooInput = myForm.querySelector(&#39;input[name=foo]&#39;)
+const fooValue = fooInput ? fooInput.value : undefined
+</code></pre>
+<p>上面例子中，必须先判断<code>fooInput</code>是否存在，才能读取<code>fooInput.value</code>。</p>
+<p>这样的层层判断非常麻烦，因此 <a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-optional-chaining">ES2020</a> 引入了“链判断运算符”（optional chaining operator）<code>?.</code>，简化上面的写法。</p>
+<pre><code class="javascript">const firstName = message?.body?.user?.firstName || &#39;default&#39;;
+const fooValue = myForm.querySelector(&#39;input[name=foo]&#39;)?.value
+</code></pre>
+<p>上面代码使用了<code>?.</code>运算符，直接在链式调用的时候判断，左侧的对象是否为<code>null</code>或<code>undefined</code>。如果是的，就不再往下运算，而是返回<code>undefined</code>。</p>
+<p>下面是判断对象方法是否存在，如果存在就立即执行的例子。</p>
+<pre><code class="javascript">iterator.return?.()
+</code></pre>
+<p>上面代码中，<code>iterator.return</code>如果有定义，就会调用该方法，否则<code>iterator.return</code>直接返回<code>undefined</code>，不再执行<code>?.</code>后面的部分。</p>
+<p>对于那些可能没有实现的方法，这个运算符尤其有用。</p>
+<pre><code class="javascript">if (myForm.checkValidity?.() === false) &#123;
+  // 表单校验失败
+  return;
+&#125;
+</code></pre>
+<p>上面代码中，老式浏览器的表单对象可能没有<code>checkValidity()</code>这个方法，这时<code>?.</code>运算符就会返回<code>undefined</code>，判断语句就变成了<code>undefined === false</code>，所以就会跳过下面的代码。</p>
+<p>链判断运算符<code>?.</code>有三种写法。</p>
+<ul>
+<li><code>obj?.prop</code> // 对象属性是否存在</li>
+<li><code>obj?.[expr]</code> // 同上</li>
+<li><code>func?.(...args)</code> // 函数或对象方法是否存在</li>
+</ul>
+<p>下面是<code>obj?.[expr]</code>用法的一个例子。</p>
+<pre><code class="bash">let hex = &quot;#C0FFEE&quot;.match(/#([A-Z]+)/i)?.[1];
+</code></pre>
+<p>上面例子中，字符串的<code>match()</code>方法，如果没有发现匹配会返回<code>null</code>，如果发现匹配会返回一个数组，<code>?.</code>运算符起到了判断作用。</p>
+<p>下面是<code>?.</code>运算符常见形式，以及不使用该运算符时的等价形式。</p>
+<pre><code class="javascript">a?.b
+// 等同于
+a == null ? undefined : a.b
+
+a?.[x]
+// 等同于
+a == null ? undefined : a[x]
+
+a?.b()
+// 等同于
+a == null ? undefined : a.b()
+
+a?.()
+// 等同于
+a == null ? undefined : a()
+</code></pre>
+<p>上面代码中，特别注意后两种形式，如果<code>a?.b()</code>和<code>a?.()</code>。如果<code>a?.b()</code>里面的<code>a.b</code>有值，但不是函数，不可调用，那么<code>a?.b()</code>是会报错的。<code>a?.()</code>也是如此，如果<code>a</code>不是<code>null</code>或<code>undefined</code>，但也不是函数，那么<code>a?.()</code>会报错。</p>
+<p>使用这个运算符，有几个注意点。</p>
+<p>（1）短路机制</p>
+<p>本质上，<code>?.</code>运算符相当于一种短路机制，只要不满足条件，就不再往下执行。</p>
+<pre><code class="javascript">a?.[++x]
+// 等同于
+a == null ? undefined : a[++x]
+</code></pre>
+<p>上面代码中，如果<code>a</code>是<code>undefined</code>或<code>null</code>，那么<code>x</code>不会进行递增运算。也就是说，链判断运算符一旦为真，右侧的表达式就不再求值。</p>
+<p>（2）括号的影响</p>
+<p>如果属性链有圆括号，链判断运算符对圆括号外部没有影响，只对圆括号内部有影响。</p>
+<pre><code class="javascript">(a?.b).c
+// 等价于
+(a == null ? undefined : a.b).c
+</code></pre>
+<p>上面代码中，<code>?.</code>对圆括号外部没有影响，不管<code>a</code>对象是否存在，圆括号后面的<code>.c</code>总是会执行。</p>
+<p>一般来说，使用<code>?.</code>运算符的场合，不应该使用圆括号。</p>
+<p>（3）报错场合</p>
+<p>以下写法是禁止的，会报错。</p>
+<pre><code class="javascript">// 构造函数
+new a?.()
+new a?.b()
+
+// 链判断运算符的右侧有模板字符串
+a?.`&#123;b&#125;`
+a?.b`&#123;c&#125;`
+
+// 链判断运算符的左侧是 super
+super?.()
+super?.foo
+
+// 链运算符用于赋值运算符左侧
+a?.b = c
+</code></pre>
+<p>（4）右侧不得为十进制数值</p>
+<p>为了保证兼容以前的代码，允许<code>foo?.3:0</code>被解析成<code>foo ? .3 : 0</code>，因此规定如果<code>?.</code>后面紧跟一个十进制数字，那么<code>?.</code>不再被看成是一个完整的运算符，而会按照三元运算符进行处理，也就是说，那个小数点会归属于后面的十进制数字，形成一个小数。</p>
+<h2 id="Null-判断运算符"><a href="#Null-判断运算符" class="headerlink" title="Null 判断运算符"></a>Null 判断运算符</h2><p>读取对象属性的时候，如果某个属性的值是<code>null</code>或<code>undefined</code>，有时候需要为它们指定默认值。常见做法是通过<code>||</code>运算符指定默认值。</p>
+<pre><code class="javascript">const headerText = response.settings.headerText || &#39;Hello, world!&#39;;
+const animationDuration = response.settings.animationDuration || 300;
+const showSplashScreen = response.settings.showSplashScreen || true;
+</code></pre>
+<p>上面的三行代码都通过<code>||</code>运算符指定默认值，但是这样写是错的。开发者的原意是，只要属性的值为<code>null</code>或<code>undefined</code>，默认值就会生效，但是属性的值如果为空字符串或<code>false</code>或<code>0</code>，默认值也会生效。</p>
+<p>为了避免这种情况，<a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-nullish-coalescing">ES2020</a> 引入了一个新的 Null 判断运算符<code>??</code>。它的行为类似<code>||</code>，但是只有运算符左侧的值为<code>null</code>或<code>undefined</code>时，才会返回右侧的值。</p>
+<pre><code class="javascript">const headerText = response.settings.headerText ?? &#39;Hello, world!&#39;;
+const animationDuration = response.settings.animationDuration ?? 300;
+const showSplashScreen = response.settings.showSplashScreen ?? true;
+</code></pre>
+<p>上面代码中，默认值只有在左侧属性值为<code>null</code>或<code>undefined</code>时，才会生效。</p>
+<p>这个运算符的一个目的，就是跟链判断运算符<code>?.</code>配合使用，为<code>null</code>或<code>undefined</code>的值设置默认值。</p>
+<pre><code class="javascript">const animationDuration = response.settings?.animationDuration ?? 300;
+</code></pre>
+<p>上面代码中，如果<code>response.settings</code>是<code>null</code>或<code>undefined</code>，或者<code>response.settings.animationDuration</code>是<code>null</code>或<code>undefined</code>，就会返回默认值300。也就是说，这一行代码包括了两级属性的判断。</p>
+<p>这个运算符很适合判断函数参数是否赋值。</p>
+<pre><code class="javascript">function Component(props) &#123;
+  const enable = props.enabled ?? true;
+  // …
+&#125;
+</code></pre>
+<p>上面代码判断<code>props</code>参数的<code>enabled</code>属性是否赋值，基本等同于下面的写法。</p>
+<pre><code class="javascript">function Component(props) &#123;
+  const &#123;
+    enabled: enable = true,
+  &#125; = props;
+  // …
+&#125;
+</code></pre>
+<p><code>??</code>本质上是逻辑运算，它与其他两个逻辑运算符<code>&amp;&amp;</code>和<code>||</code>有一个优先级问题，它们之间的优先级到底孰高孰低。优先级的不同，往往会导致逻辑运算的结果不同。</p>
+<p>现在的规则是，如果多个逻辑运算符一起使用，必须用括号表明优先级，否则会报错。</p>
+<pre><code class="javascript">// 报错
+lhs &amp;&amp; middle ?? rhs
+lhs ?? middle &amp;&amp; rhs
+lhs || middle ?? rhs
+lhs ?? middle || rhs
+</code></pre>
+<p>上面四个表达式都会报错，必须加入表明优先级的括号。</p>
+<pre><code class="javascript">(lhs &amp;&amp; middle) ?? rhs;
+lhs &amp;&amp; (middle ?? rhs);
+
+(lhs ?? middle) &amp;&amp; rhs;
+lhs ?? (middle &amp;&amp; rhs);
+
+(lhs || middle) ?? rhs;
+lhs || (middle ?? rhs);
+
+(lhs ?? middle) || rhs;
+lhs ?? (middle || rhs);
+</code></pre>
+<h2 id="逻辑赋值运算符"><a href="#逻辑赋值运算符" class="headerlink" title="逻辑赋值运算符"></a>逻辑赋值运算符</h2><p>ES2021 引入了三个新的<a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-logical-assignment">逻辑赋值运算符</a>（logical assignment operators），将逻辑运算符与赋值运算符进行结合。</p>
+<pre><code class="javascript">// 或赋值运算符
+x ||= y
+// 等同于
+x || (x = y)
+
+// 与赋值运算符
+x &amp;&amp;= y
+// 等同于
+x &amp;&amp; (x = y)
+
+// Null 赋值运算符
+x ??= y
+// 等同于
+x ?? (x = y)
+</code></pre>
+<p>这三个运算符<code>||=</code>、<code>&amp;&amp;=</code>、<code>??=</code>相当于先进行逻辑运算，然后根据运算结果，再视情况进行赋值运算。</p>
+<p>它们的一个用途是，为变量或属性设置默认值。</p>
+<pre><code class="javascript">// 老的写法
+user.id = user.id || 1;
+
+// 新的写法
+user.id ||= 1;
+</code></pre>
+<p>上面示例中，<code>user.id</code>属性如果不存在，则设为<code>1</code>，新的写法比老的写法更紧凑一些。</p>
+<p>下面是另一个例子。</p>
+<pre><code class="javascript">function example(opts) &#123;
+  opts.foo = opts.foo ?? &#39;bar&#39;;
+  opts.baz ?? (opts.baz = &#39;qux&#39;);
+&#125;
+</code></pre>
+<p>上面示例中，参数对象<code>opts</code>如果不存在属性<code>foo</code>和属性<code>baz</code>，则为这两个属性设置默认值。有了“Null 赋值运算符”以后，就可以统一写成下面这样。</p>
+<pre><code class="javascript">function example(opts) &#123;
+  opts.foo ??= &#39;bar&#39;;
+  opts.baz ??= &#39;qux&#39;;
+&#125;
+</code></pre>
+
+      
+    </div>
+    
+  </div>
+  
+    
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2024 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

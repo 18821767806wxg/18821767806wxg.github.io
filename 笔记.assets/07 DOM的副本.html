@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>js-DOM | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="DOM元素选择器getElementById()  getElementById() 方法可返回对拥有指定 ID 的第一个对象的引用。    语法 document.getElementById(id)   实例 var c &#x3D; document.body.children;    getElementsByClassName()  getElementsByClassName() 方法可返回带有">
+<meta property="og:type" content="website">
+<meta property="og:title" content="js-DOM">
+<meta property="og:url" content="https://18821767806wxg.github.io/%E7%AC%94%E8%AE%B0.assets/07%20DOM%E7%9A%84%E5%89%AF%E6%9C%AC.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="DOM元素选择器getElementById()  getElementById() 方法可返回对拥有指定 ID 的第一个对象的引用。    语法 document.getElementById(id)   实例 var c &#x3D; document.body.children;    getElementsByClassName()  getElementsByClassName() 方法可返回带有">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://developer.mozilla.org/@api/deki/files/186/=Dimensions-offset.png">
+<meta property="og:image" content="https://developer.mozilla.org/@api/deki/files/186/=Dimensions-offset.png">
+<meta property="og:image" content="https://developer.mozilla.org/@api/deki/files/185/=Dimensions-client.png">
+<meta property="og:image" content="https://developer.mozilla.org/@api/deki/files/185/=Dimensions-client.png">
+<meta property="og:image" content="https://developer.mozilla.org/@api/deki/files/842/=ScrollTop.png">
+<meta property="og:image" content="https://developer.mozilla.org/@api/deki/files/185/=Dimensions-client.png">
+<meta property="article:published_time" content="2023-12-04T08:02:51.545Z">
+<meta property="article:modified_time" content="2022-09-15T08:33:12.311Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://developer.mozilla.org/@api/deki/files/186/=Dimensions-offset.png">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=30612793&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.css-js.com/tools/base64.html">在线转译base64图片工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference">MDN-javascript文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.yuque.com/cuggz/interview/vgbphi">前端面试题汇总</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/6/">React博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/25/11-1%E9%AB%98%E9%A2%91%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E4%B9%8BVue%E7%AF%87/">Vue-面试题汇总之Vue篇</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/5/">Vue-vuex</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/8/">vue博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点,------道阻且长...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/%E7%AC%94%E8%AE%B0.assets/07%20DOM%E7%9A%84%E5%89%AF%E6%9C%AC.html" class="article-date">
+  	<time datetime="2023-12-04T08:02:51.545Z" itemprop="datePublished">2023-12-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js-DOM
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><h3 id="元素选择器"><a href="#元素选择器" class="headerlink" title="元素选择器"></a>元素选择器</h3><h4 id="getElementById"><a href="#getElementById" class="headerlink" title="getElementById()"></a>getElementById()</h4><blockquote>
+<p> getElementById() 方法可返回对拥有指定 ID 的第一个对象的引用。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">document.getElementById(id)
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var c = document.body.children;
+</code></pre>
+</li>
+</ul>
+<h4 id="getElementsByClassName"><a href="#getElementsByClassName" class="headerlink" title="getElementsByClassName()"></a>getElementsByClassName()</h4><blockquote>
+<p> getElementsByClassName() 方法可返回带有指定标签名的对象的<strong>集合</strong>。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">document.getElementsByTagName(classname)
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var aCont = document.getElementsByClassName(&quot;cont&quot;);//返回的是一个集合
+</code></pre>
+</li>
+</ul>
+<h4 id="getElementsByTagName"><a href="#getElementsByTagName" class="headerlink" title="getElementsByTagName()"></a>getElementsByTagName()</h4><blockquote>
+<p> getElementsByTagName() 方法可返回带有指定标签名的对象的<strong>集合</strong>。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">document.getElementsByTagName(tagname)
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var aSpan = document.getElementsByTagName(&quot;span&quot;);//返回的是一个集合
+</code></pre>
+</li>
+</ul>
+<h4 id="getElementsByName"><a href="#getElementsByName" class="headerlink" title="getElementsByName()"></a>getElementsByName()</h4><blockquote>
+<p> getElementsByName() 方法可返回带有指定名称的对象的<strong>集合</strong>。  </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">document.getElementsByName(name)
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var x=document.getElementsByName(&quot;myInput&quot;);//返回的是一个集合
+</code></pre>
+</li>
+</ul>
+<h4 id="querySelector"><a href="#querySelector" class="headerlink" title="querySelector()"></a>querySelector()</h4><blockquote>
+<p> querySelector() 方法返回文档中匹配指定 CSS 选择器的<strong>一个元素</strong>。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">elementList = document.querySelectorAll(selector);
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var ele = document.querySelector(&quot;#box&quot;);
+var ele = document.querySelector(&quot;.cont&quot;);
+var ele = document.querySelector(&quot;span&quot;);
+var ele = document.querySelector(&quot;.msg h2&quot;);
+var ele = document.querySelector(&quot;.msg&gt;h2&quot;);
+var ele = document.querySelector(&quot;input[name=pass]&quot;);
+</code></pre>
+</li>
+</ul>
+<h4 id="querySelectorAll"><a href="#querySelectorAll" class="headerlink" title="querySelectorAll()"></a>querySelectorAll()</h4><blockquote>
+<p> querySelectorAll() 方法返回文档中匹配指定 CSS 选择器的<strong>所有元素</strong>，返回NodeList对象。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">elementList = document.querySelectorAll(selectors);
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var ele = document.querySelectorAll(&quot;#box&quot;);
+var ele = document.querySelectorAll(&quot;.cont&quot;);
+var ele = document.querySelectorAll(&quot;span&quot;);
+var ele = document.querySelectorAll(&quot;.msg h2&quot;);
+var ele = document.querySelectorAll(&quot;.msg&gt;h2&quot;);
+var ele = document.querySelectorAll(&quot;input[name=pass]&quot;);
+var ele = document.querySelectorAll(&quot;span,p,input,div,#box,.cont&quot;)
+</code></pre>
+</li>
+</ul>
+<h3 id="关系选择器"><a href="#关系选择器" class="headerlink" title="关系选择器"></a>关系选择器</h3><h4 id="children"><a href="#children" class="headerlink" title=".children"></a>.children</h4><blockquote>
+<p>children 属性返回元素的子元素的集合，是一个 HTMLCollection 对象。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">element.children
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var c = document.body.children;
+</code></pre>
+</li>
+</ul>
+<h4 id="parentNode"><a href="#parentNode" class="headerlink" title=".parentNode"></a>.parentNode</h4><blockquote>
+<p>parentNode 属性以 Node 对象的形式返回指定节点的父节点。</p>
+<p>如果指定节点没有父节点，则返回 null。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">node.parentNode
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">document.getElementById(&quot;item1&quot;).parentNode;
+</code></pre>
+</li>
+</ul>
+<h4 id="firstElementChild"><a href="#firstElementChild" class="headerlink" title=".firstElementChild"></a>.firstElementChild</h4><blockquote>
+<p>firstElementChild 返回指定节点的第一个子元素节点</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var last = oXbox.lastElementChild;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var last = oXbox.lastElementChild;
+</code></pre>
+</li>
+</ul>
+<h4 id="lastElementChild"><a href="#lastElementChild" class="headerlink" title=".lastElementChild"></a>.lastElementChild</h4><blockquote>
+<p>lastElementChild 返回指定节点的最后一个子元素节点</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var last = oXbox.lastElementChild;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var last = oXbox.lastElementChild;
+</code></pre>
+</li>
+</ul>
+<h4 id="previousElementSibling"><a href="#previousElementSibling" class="headerlink" title=".previousElementSibling"></a>.previousElementSibling</h4><blockquote>
+<p> previousElementSibling 属性返回指定元素的前一个兄弟元素（相同节点树层中的前一个元素节点）。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">node.previousElementSibling
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var x = document.getElementById(&quot;item2&quot;).previousElementSibling.innerHTML;
+</code></pre>
+</li>
+</ul>
+<h4 id="nextElementSibling"><a href="#nextElementSibling" class="headerlink" title=".nextElementSibling"></a>.nextElementSibling</h4><blockquote>
+<p> nextElementSibling 属性返回指定元素之后的下一个兄弟元素（相同节点树层中的下一个元素节点）</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">node.nextElementSibling
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var x = document.getElementById(&quot;item1&quot;).nextElementSibling.innerHTML;
+</code></pre>
+</li>
+</ul>
+<h3 id="其他节点选择器"><a href="#其他节点选择器" class="headerlink" title="其他节点选择器"></a>其他节点选择器</h3><h4 id="childNodes"><a href="#childNodes" class="headerlink" title=".childNodes"></a>.childNodes</h4><blockquote>
+<p>  <strong>Node.childNodes</strong> 返回包含指定节点的子节点的集合，该集合为即时更新的集合（live collection）</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var ndList = elementNodeReference.childNodes; 
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var child = oxbox.childNodes;
+console.log(child);
+console.log(child[0]);
+console.log(child[1]);
+console.log(child[2]);
+console.log(child[3]);
+</code></pre>
+</li>
+</ul>
+<h4 id="firstChild"><a href="#firstChild" class="headerlink" title=".firstChild"></a>.firstChild</h4><blockquote>
+<p> firstChild 属性返回指定节点的首个子节点，以 Node 对象。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var childNode = node.firstChild;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">document.firstChild;//&lt;!DOCTYPE html&gt;(是一个对象)
+</code></pre>
+</li>
+</ul>
+<h4 id="lastChild"><a href="#lastChild" class="headerlink" title=".lastChild"></a>.lastChild</h4><blockquote>
+<p> lastChild 属性返回指定节点的最后一个子节点，以 Node 对象。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">node.lastChild;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">document.firstChild;//&lt;html&gt;&lt;/html&gt;
+</code></pre>
+</li>
+</ul>
+<h4 id="previousSibling"><a href="#previousSibling" class="headerlink" title=".previousSibling"></a>.previousSibling</h4><blockquote>
+<p>  返回当前节点的前一个兄弟节点,没有则返回<code>null.</code> </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">previousNode = node.previousSibling
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">// &lt;a&gt;&lt;b1 id=&quot;b1&quot;/&gt;&lt;b2 id=&quot;b2&quot;/&gt;&lt;/a&gt;
+alert(document.getElementById(&quot;b1&quot;).previousSibling); // null
+alert(document.getElementById(&quot;b2&quot;).previousSibling.id); // &quot;b1&quot;
+</code></pre>
+</li>
+</ul>
+<h4 id="nextSibling"><a href="#nextSibling" class="headerlink" title=".nextSibling"></a>.nextSibling</h4><blockquote>
+<p>  Node.nextSibling 是一个只读属性，返回其父节点的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/childNodes"><code>childNodes</code></a> 列表中紧跟在其后面的节点，如果指定的节点为最后一个节点，则返回 <code>null</code>。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">nextNode = node.nextSibling
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">// &lt;a&gt;&lt;b1 id=&quot;b1&quot;/&gt;&lt;b2 id=&quot;b2&quot;/&gt;&lt;/a&gt;
+alert(document.getElementById(&quot;b1&quot;).nextSibling.id); // &quot;b2&quot;
+alert(document.getElementById(&quot;b2&quot;).nextSibling); // null
+</code></pre>
+</li>
+</ul>
+<h4 id="attributes"><a href="#attributes" class="headerlink" title=".attributes"></a>.attributes</h4><blockquote>
+<p> <code>Element.attributes</code> 属性返回该元素所有属性节点的一个实时集合。该集合是一个 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/NamedNodeMap"><code>NamedNodeMap</code></a> 对象，不是一个数组，所以它没有 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Array"><code>数组</code></a> 的方法，其包含的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Attr"><code>属性</code></a> 节点的索引顺序随浏览器不同而不同。更确切地说，<code>attributes</code> 是字符串形式的名/值对，每一对名/值对对应一个属性节点。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var attr = element.attributes;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var obox = document.querySelector(&quot;.box&quot;);
+console.log(obox.attributes);
+console.log(obox.attributes[0]);
+console.log(obox.attributes[1]);
+console.log(obox.attributes[2]);
+console.log(obox.attributes[3]);
+console.log(obox.attributes[3].abc);
+console.log(obox.attributes[4]);
+</code></pre>
+</li>
+</ul>
+<h3 id="元素的操作"><a href="#元素的操作" class="headerlink" title="元素的操作"></a>元素的操作</h3><h4 id="document-createElement"><a href="#document-createElement" class="headerlink" title="document.createElement()"></a>document.createElement()</h4><blockquote>
+<p><strong><code>Document.createElement() </code><strong>方法创建由</strong>tagName</strong> 指定的HTML元素，或一个<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLUnknownElement"><code>HTMLUnknownElement</code></a>，如果tagName不被识别。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">let element = document.createElement(tagName[, options]);
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">新的元素[Element]
+</code></pre>
+<ul>
+<li>element 是创建的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element"><code>Element</code></a>对象。</li>
+<li>tagName 指定将要创建的元素类型的字符串。创建的element的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeName"><code>nodeName</code></a>会被初始化为tagName的值。该方法不接受带条件的元素名字(例如: html:a)。</li>
+<li>options 是一个可选的 ElementCreationOptions 对象. 如果这个对象被定义并赋予了一个 is 特性，则创建的element的 is 属性会被初始化为这个特性的值. 如果这个对象没有 is 特性，则值为空.</li>
+</ul>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var mydiv = document.createElement(&quot;div&quot;);//创建了一个div元素节点
+</code></pre>
+</li>
+</ul>
+<h4 id="childNode-remove"><a href="#childNode-remove" class="headerlink" title="childNode.remove()"></a>childNode.remove()</h4><blockquote>
+<p><code>ChildNode.remove()</code> 方法，把对象从它所属的 DOM 树中删除。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">node.remove();
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var el = document.getElementById(&#39;div-02&#39;);
+el.remove();//&quot;id为&#39;div-02&quot;的元素被删掉了
+</code></pre>
+<p>当你遍历一个父节点的子节点并进行删除操作时，要注意，<code>children</code>属性是一个只读属性，并且它在子节点变化时会实时更新。删除多个节点时，要注意<code>children</code>属性时刻都在变化。</p>
+</li>
+</ul>
+<h4 id="node-removeChild"><a href="#node-removeChild" class="headerlink" title="node.removeChild()"></a>node.removeChild()</h4><blockquote>
+<p><strong>Node.removeChild()</strong> 方法从DOM中删除一个子节点。返回删除的节点。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">let oldChild = node.removeChild(child);
+//OR
+element.removeChild(child);
+</code></pre>
+</li>
+<li><p>返回值</p>
+<p>注意到删除后的节点虽然不在文档树中了，但其实它还在内存中，可以随时再次被添加到别的位置。<br>因此,你还可以把这个节点重新添加回文档中,当然,实现要用另外一个变量取得它的返回值。</p>
+</li>
+<li><p>实例</p>
+<pre><code class="js">// 拿到待删除节点:
+var self = document.getElementById(&#39;to-be-removed&#39;);
+// 拿到父节点:
+var parent = self.parentElement;
+// 删除:
+var removed = parent.removeChild(self);
+console.log(removed === self )// true
+</code></pre>
+</li>
+</ul>
+<h3 id="属性的操作"><a href="#属性的操作" class="headerlink" title="属性的操作"></a>属性的操作</h3><h4 id="setAttribute"><a href="#setAttribute" class="headerlink" title="setAttribute()"></a>setAttribute()</h4><blockquote>
+<p>  setAttribute() 方法添加指定的属性，并为其赋指定的值。</p>
+<p>  如果这个指定的属性已存在，则仅设置/更改值。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">element.setAttribute(attributename,attributevalue)
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">document.getElementsByTagName(&quot;INPUT&quot;)[0].setAttribute(&quot;type&quot;,&quot;button&quot;);
+</code></pre>
+</li>
+</ul>
+<h4 id="getAttribute"><a href="#getAttribute" class="headerlink" title="getAttribute()"></a>getAttribute()</h4><blockquote>
+<p>   getAttribute() 方法返回指定属性名的属性值。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">element.getAttribute(attributename)
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">document.getElementsByTagName(&quot;a&quot;)[0].getAttribute(&quot;target&quot;);//_blank
+</code></pre>
+</li>
+</ul>
+<h4 id="removeAttribute"><a href="#removeAttribute" class="headerlink" title="removeAttribute()"></a>removeAttribute()</h4><blockquote>
+<p>  removeAttribute() 方法删除指定的属性。</p>
+<p>  此方法与 removeAttributeNode() 方法的差异是：removeAttributeNode() 方法删除指定的 Attr 对象，而此方法删除具有指定名称的属性。结果是相同的。同时此方法不返回值，而 removeAttributeNode() 方法返回被删除的属性，以 Attr 对象的形式</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">element.getAttribute(attributename)
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">document.getElementsByTagName(&quot;H1&quot;)[0].removeAttribute(&quot;style&quot;);
+</code></pre>
+</li>
+</ul>
+<h4 id="内置属性"><a href="#内置属性" class="headerlink" title="内置属性"></a>内置属性</h4><p>可见</p>
+<ul>
+<li><p>作为对象操作（点语法,中括号语法）</p>
+<pre><code class="js">var obox = document.getElementsByClassName(&quot;box&quot;)[0];
+var a = document.getElementsByTagName(&quot;a&quot;)[0];
+var img = document.getElementsByTagName(&quot;img&quot;)[0];
+obox.className;
+obox[&quot;title&quot;];
+obox.id;
+a.href;
+img.src;
+img[&quot;alt&quot;];
+</code></pre>
+</li>
+<li><p>Attribute系列：set，get，remove</p>
+<pre><code class="js">console.log(obox.getAttribute(&quot;title&quot;))//可获得内置可见属性
+obox.setAttribute(&quot;title&quot;,&quot;123123132&quot;)//可设置内置可见属性
+obox.removeAttribute(&quot;title&quot;)//可删除内置可见属性
+</code></pre>
+</li>
+</ul>
+<p>不可见</p>
+<ul>
+<li><p>作为对象操作（点语法,中括号语法）</p>
+<pre><code class="js">innerHTML,innerText,tagName
+console.log(obox.innerHTML)
+console.log(obox.innerText)
+console.log(obox.tagName)
+obox.tagName = &quot;SPAN&quot;;//不可更改
+</code></pre>
+</li>
+</ul>
+<h4 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h4><p>可见</p>
+<ul>
+<li><p>Attribute系列：set，get，remove</p>
+<pre><code class="js">console.log(obox.abc)
+console.log(obox.href)
+console.log(obox.getAttribute(&quot;abc&quot;))//可以获得自定义可见属性的值
+console.log(obox.getAttribute(&quot;href&quot;))
+obox.setAttribute(&quot;qwe&quot;,&quot;hahahahah&quot;)//可以设置或修改自定义可见属性的值
+obox.setAttribute(&quot;abc&quot;,&quot;world&quot;)
+obox.removeAttribute(&quot;abc&quot;)//可以删除自定义可见属性的值
+obox.removeAttribute(&quot;href&quot;)
+</code></pre>
+</li>
+</ul>
+<p>不可见</p>
+<ul>
+<li><p>作为对象操作（点语法,中括号语法）</p>
+<pre><code class="js">obox.aaa = &quot;bbb&quot;
+console.log(obox.aaa);//bbb
+</code></pre>
+</li>
+</ul>
+<h3 id="样式的操作"><a href="#样式的操作" class="headerlink" title="样式的操作"></a>样式的操作</h3><h4 id="element-style"><a href="#element-style" class="headerlink" title="element.style"></a>element.style</h4><blockquote>
+<p>由.style设置的所有样式都会以行内样式的形式体现</p>
+<p><strong>获取的也是行内样式</strong></p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">element.style.attribute =  &quot;&quot;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">obox.style.width = 20 + &quot;px&quot;;
+</code></pre>
+</li>
+</ul>
+<h4 id="getComputedStyle"><a href="#getComputedStyle" class="headerlink" title="getComputedStyle()"></a>getComputedStyle()</h4><blockquote>
+<p> <code>Window.getComputedStyle()</code>方法返回一个对象，该对象在应用活动样式表并解析这些值可能包含的任何基本计算后报告元素的所有CSS属性的值。 私有的CSS属性值可以通过对象提供的API或通过简单地使用CSS属性名称进行索引来访问。 </p>
+<p><strong>注意：该属性只能获取属性不能设置属性</strong></p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">let style = window.getComputedStyle(element, [pseudoElt]);//第二个参数是fasle,为true的情况下查看的是元素的伪类或者伪元素
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">返回的style是一个实时的CSSStyleDeclaration对象，当元素的样式更改时，它会自动更新本身。
+</code></pre>
+</li>
+<li><p>实例</p>
+</li>
+</ul>
+<h4 id="element-currentStyle"><a href="#element-currentStyle" class="headerlink" title="element.currentStyle"></a>element.currentStyle</h4><blockquote>
+<p> <strong><code>Element.currentStyle</code></strong> 是一个与 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/getComputedStyle"><code>window.getComputedStyle</code></a>方法功能相同的属性。这个属性实现在旧版本的IE浏览器（IE8及以下）中。</p>
+<p><strong>注意：该属性只能获取属性不能设置属性</strong></p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">element.currentStyle.attribute
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">obox.currentStyle.width;
+</code></pre>
+</li>
+</ul>
+<h4 id="兼容性获取样式方法"><a href="#兼容性获取样式方法" class="headerlink" title="兼容性获取样式方法"></a>兼容性获取样式方法</h4><pre><code class="js">function getStyle(ele,attr)&#123;
+    if(ele.currentStyle)&#123;//判断获取到的是不是true，那么就执行IE的currentStyle，如果是undefined那么就是false，那就执行getComputedStyle()
+        return ele.currentStyle[attr];//IE8及以下支持
+    &#125;else&#123;
+        return getComputedStyle(ele,false)[attr];//其他正常浏览器支持
+    &#125;
+&#125;
+</code></pre>
+<h3 id="尺寸类样式的获取"><a href="#尺寸类样式的获取" class="headerlink" title="尺寸类样式的获取"></a>尺寸类样式的获取</h3><h4 id="offsetWidth"><a href="#offsetWidth" class="headerlink" title="offsetWidth"></a>offsetWidth</h4><blockquote>
+<p> <strong>HTMLElement.offsetWidth</strong> 是一个只读属性，返回一个元素的布局宽度。一个典型的（译者注：各浏览器的offsetWidth可能有所不同）offsetWidth是测量包含元素的边框(border)、水平线上的内边距(padding)、竖直方向滚动条(scrollbar)（如果存在的话）、以及CSS设置的宽度(width)的值。 </p>
+<p> <strong>content+padding+border</strong></p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var offsetWidth =element.offsetWidth;
+</code></pre>
+<p>这个属性将会 round(四舍五入)为一个整数。如果你想要一个fractional(小数)值,请使用<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect"><code>element.getBoundingClientRect()</code></a></p>
+</li>
+<li><p>分类</p>
+<ol>
+<li><p>假如元素无padding无滚动无border </p>
+<pre><code>offsetWidth = clientWidth = style.width
+</code></pre>
+</li>
+<li><p>假如元素有padding无滚动有border</p>
+<pre><code>offsetWidth = style.width + style.padding*2 + border宽度*2
+offsetWidth = clientWidth + border宽度*2
+</code></pre>
+</li>
+<li><p>假如元素有padding有滚动，有border，且滚动是显示的 </p>
+<pre><code>offsetWidth = style.width + style.padding*2 + (border-width)*2
+offsetWidth = clientWidth + 滚轴宽度 + border宽度*2
+</code></pre>
+<p> <strong>offsetHeight同理</strong> </p>
+</li>
+</ol>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var wid = obox.offsetWidth;//返回一个整数数值
+</code></pre>
+<p> <img src="https://developer.mozilla.org/@api/deki/files/186/=Dimensions-offset.png" alt="Image:Dimensions-offset.png"> </p>
+</li>
+</ul>
+<h4 id="offsetHeight"><a href="#offsetHeight" class="headerlink" title="offsetHeight"></a>offsetHeight</h4><blockquote>
+<p> <strong><code>HTMLElement.offsetHeight</code></strong> 是一个只读属性，它返回该元素的像素高度，高度包含该元素的垂直内边距和边框，且是一个整数。**(content+padding+border)**</p>
+<p>通常，元素的offsetHeight是一种元素CSS高度的衡量标准，包括元素的边框、内边距和元素的水平滚动条（如果存在且渲染的话），不包含:before或:after等伪类元素的高度。</p>
+<p>对于文档的body对象，它包括代替元素的CSS高度线性总含量高。浮动元素的向下延伸内容高度是被忽略的。 </p>
+<p>如果元素被隐藏（例如 元素或者元素的祖先之一的元素的style.display被设置为none），则返回0</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var intElemOffsetHeight = document.getElementById(id_attribute_value).offsetHeight;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var hei = obox.offsetHeight;//返回一个整数数值
+</code></pre>
+<p> <img src="https://developer.mozilla.org/@api/deki/files/186/=Dimensions-offset.png" alt="Image:Dimensions-offset.png"></p>
+<p> 上面的图片中显示了scollbar和窗口高度的offsetHeight.但是不能滚动的元素可能会有一个很大的高度值，大于可以看见的内容。这些元素原则上是被包含在滚动元素之中的。所以，这些不能滚动的元素可能会因为scrollTop的值会被完全隐藏或者部分隐藏； </p>
+</li>
+</ul>
+<h4 id="clientWidth"><a href="#clientWidth" class="headerlink" title="clientWidth"></a>clientWidth</h4><blockquote>
+<p>clientWeight是一个只读属性。尺寸范围为：<strong>padding+content</strong></p>
+<p>内联元素以及没有 CSS 样式的元素的 <code>**clientWidth**</code> 属性值为 0。<code>**Element.clientWidth**</code> 属性表示元素的内部宽度，以像素计。该属性包括内边距，但不包括垂直滚动条（如果有）、边框和外边距。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var intElemClientWidth = element.clientWidth;
+//intElemClientWidth 是一个整数，表示元素的 clientWidth。
+</code></pre>
+</li>
+<li><p>分类</p>
+<ol>
+<li><p>假如元素无padding无滚动</p>
+<pre><code>clientWidth = style.width
+</code></pre>
+</li>
+<li><p>假如元素有padding无滚动</p>
+<pre><code>clientWidth = style.width + style.padding*2
+</code></pre>
+</li>
+<li><p>假如元素有padding有滚动，且滚动是显示的</p>
+<pre><code>clientWidth = style.width + style.padding*2 - 滚动轴宽度
+</code></pre>
+<p><strong>clientHeight同理</strong></p>
+</li>
+</ol>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var cw = obox.clientWidth;//返回一个整数数值
+</code></pre>
+<p> <img src="https://developer.mozilla.org/@api/deki/files/185/=Dimensions-client.png" alt="Image:Dimensions-client.png"> </p>
+</li>
+</ul>
+<h4 id="clientHeight"><a href="#clientHeight" class="headerlink" title="clientHeight"></a>clientHeight</h4><blockquote>
+<p>clientHeight是一个只读属性。尺寸范围为：<strong>padding+content</strong></p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var intElemClientHeight = element.clientHeight;
+//intElemClientHeight 是一个整数，表示元素的 clientHeight。
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var ch = obox.clientHeight;//返回一个整数数值
+</code></pre>
+<p> <img src="https://developer.mozilla.org/@api/deki/files/185/=Dimensions-client.png" alt="Image:Dimensions-client.png"> </p>
+</li>
+</ul>
+<h4 id="offsetTop"><a href="#offsetTop" class="headerlink" title="offsetTop"></a>offsetTop</h4><blockquote>
+<p> <strong>HTMLElement.offsetTop</strong> 为只读属性，它返回当前元素相对于其 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetParent"><code>offsetParent</code></a> 元素的顶部内边距的距离。 </p>
+<p>相对于页面或包含块偏移的位置</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">topPos = element.offsetTop;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var d = document.getElementById(&quot;div1&quot;);
+var topPos = d.offsetTop;
+ 
+if (topPos &gt; 10) &#123;
+  // div1 距离它的 offsetParent 元素的顶部的距离大于 10 px
+&#125;
+</code></pre>
+</li>
+</ul>
+<h4 id="offsetLeft"><a href="#offsetLeft" class="headerlink" title="offsetLeft"></a>offsetLeft</h4><blockquote>
+<p> <strong>HTMLElement.offsetLeft</strong> 为只读属性，它返回当前元素相对于其 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetParent"><code>offsetParent</code></a> 元素的左边内边距的距离。 </p>
+<p>相对于页面或包含块偏移的位置</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">leftPos = element.offsetLeft;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var d = document.getElementById(&quot;div1&quot;);
+var topLeft = d.offsetLeft;
+ 
+if (topLeft &gt; 10) &#123;
+  // div1 距离它的 offsetParent 元素的顶部的距离大于 10 px
+&#125;
+</code></pre>
+</li>
+</ul>
+<h4 id="以上属性只能获取不能设置"><a href="#以上属性只能获取不能设置" class="headerlink" title="以上属性只能获取不能设置"></a>以上属性只能获取不能设置</h4><h4 id="scrollTop"><a href="#scrollTop" class="headerlink" title="scrollTop"></a>scrollTop</h4><blockquote>
+<p><code>Element.scrollTop</code> 属性可以获取或设置一个元素的内容垂直滚动的像素数。</p>
+<p>一个元素的 <code>scrollTop</code> 值是这个元素的顶部到视口可见内容（的顶部）的距离的度量。当一个元素的内容没有产生垂直方向的滚动条，那么它的 <code>scrollTop 值为0。</code></p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">// 获得滚动的像素数
+var  intElemScrollTop = someElement.scrollTop;
+
+// 设置滚动的距离
+element.scrollTop = intValue;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">document.onclick = function()&#123;
+    // console.log(obox.scrollTop);
+    obox.scrollTop = 666;
+&#125;
+</code></pre>
+<p>​                                 <img src="https://developer.mozilla.org/@api/deki/files/842/=ScrollTop.png" alt="Image:scrollTop.png"></p>
+</li>
+</ul>
+<h4 id="scrolLeft"><a href="#scrolLeft" class="headerlink" title="scrolLeft"></a>scrolLeft</h4><blockquote>
+<p><strong><code>Element.scrollLeft</code></strong> 属性可以读取或设置元素滚动条到元素左边的距离。</p>
+<p>注意如果这个元素的内容排列方向（<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/direction"><code>direction</code></a>） 是<code>rtl</code> (right-to-left) ，那么滚动条会位于最右侧（内容开始处），并且scrollLeft值为0。此时，当你从右到左拖动滚动条时，scrollLeft会从0变为负数（这个特性在chrome浏览器中不存在）。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">//获取滚动条到元素左边的距离
+var sLeft = element.scrollLeft;
+
+//设置滚动条滚动了多少像素
+element.scrollLeft = 10;
+</code></pre>
+<p><code>scrollLeft</code> 可以是任意整数，然而：</p>
+<ul>
+<li>如果元素不能滚动（比如：元素没有溢出），那么<code>scrollLeft</code> 的值是0。</li>
+<li>如果给<code>scrollLeft</code> 设置的值小于0，那么<code>scrollLeft</code> 的值将变为0。</li>
+<li>如果给<code>scrollLeft</code> 设置的值大于元素内容最大宽度，那么<code>scrollLeft</code> 的值将被设为元素最大宽度。</li>
+</ul>
+</li>
+<li><p>实例</p>
+<pre><code class="js">document.onclick = function()&#123;
+    // console.log(obox.scrollLeft);
+    obox.scrollLeft = 666;
+&#125;
+</code></pre>
+<p> <img src="https://developer.mozilla.org/@api/deki/files/185/=Dimensions-client.png" alt="Image:Dimensions-client.png"> </p>
+</li>
+</ul>
+<h3 id="Node类型的操作"><a href="#Node类型的操作" class="headerlink" title="Node类型的操作"></a>Node类型的操作</h3><blockquote>
+<p> DOM将任何HTML和XML文档描绘成一个由多层节点构成的结构。有几个不同类型的节点，节点又有各自的特点、数据和方法，同时节点之间存在着某种关系，这些关系构成层次。 </p>
+</blockquote>
+<p>DOM内的节点分为四种：元素，文本，注释和属性</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>除 IE 之外，在其他所有浏览器中都可以访问到Node类型。<br>JavaScript 中的所有节点类型都继承 Node 类型，因此所有节点类型都共享着相同的基本属性和方法。</p>
+<h4 id="12种节点类型"><a href="#12种节点类型" class="headerlink" title="12种节点类型"></a>12种节点类型</h4><blockquote>
+<p><strong>Node.ELEMENT_NODE(1);（常用）            //元素节点</strong><br><strong>Node.ATTRIBUTE_NODE(2);                        //属性节点</strong><br><strong>Node.TEXT_NODE(3);（常用）                    //文本节点</strong><br>Node.CDATA_SECTION_NODE(4);<br>Node.ENTITY_REFERENCE_NODE(5)<br>Node.ENTITY_NODE(6) ;<br>Node.PROCESSING_INSTRUCTION_NODE(7);<br><strong>Node.COMMENT_NODE(8)                            //注释节点</strong><br>Node.DOCUMENT_NODE(9);<br>Node.DOCUMENT_TYPE_NODE(10);<br>Node.DOCUMEN_FRAGME_NODE(11);<br>Node.NOTATION_NODE(12)</p>
+</blockquote>
+<h4 id="nodeType-属性"><a href="#nodeType-属性" class="headerlink" title="nodeType 属性"></a>nodeType 属性</h4><blockquote>
+<p>nodeType 属性返回以数字值返回指定节点的节点类型。</p>
+<p>如果节点是元素节点，则 nodeType 属性将返回 1。</p>
+<p>如果节点是属性节点，则 nodeType 属性将返回 2。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">node.nodeName
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">document.body.nodeType;//1
+</code></pre>
+</li>
+</ul>
+<h4 id="nodeName属性"><a href="#nodeName属性" class="headerlink" title="nodeName属性"></a>nodeName属性</h4><blockquote>
+<p>nodeName 属性指定节点的节点名称。</p>
+<p>如果节点是元素节点，则 nodeName 属性返回标签名。</p>
+<p>如果节点是属性节点，则 nodeName 属性返回属性的名称。</p>
+<p>对于其他节点类型，nodeName 属性返回不同节点类型的不同名称。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">node.nodeName
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">document.body.nodeName;//BODY
+</code></pre>
+</li>
+</ul>
+<h4 id="nodeValue属性"><a href="#nodeValue属性" class="headerlink" title="nodeValue属性"></a>nodeValue属性</h4><blockquote>
+<p>nodeValue 属性设置或返回指定节点的节点值。</p>
+<p><strong>注释：</strong>如果您希望返回元素的文本，<strong>请记住文本始终位于文本节点中</strong>，并且您必须返回文本节点的值（element.childNodes[0].nodeValue）。</p>
+<p><strong>提示：</strong>nodeValue 属性的替代选择是 textContent 属性。</p>
+<p><strong>更改文本节点的nodeValue属性值即可改变文本节点的内容</strong></p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">node.nodeValue = value;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var txt = document.createTextNode(&quot;123&quot;);
+txt.nodeValue = &quot;456&quot;;
+console.log(txt)//内容变成了456；
+</code></pre>
+<p>```</p>
+</li>
+</ul>
+<h3 id="操作DOM"><a href="#操作DOM" class="headerlink" title="操作DOM"></a>操作DOM</h3><p>由于HTML文档被浏览器解析后就是一棵DOM树，要改变HTML的结构，就需要通过JavaScript来操作DOM。</p>
+<p>始终记住DOM是一个树形结构。操作一个DOM节点实际上就是这么几个操作：</p>
+<ul>
+<li>更新：更新该DOM节点的内容，相当于更新了该DOM节点表示的HTML的内容；</li>
+<li>遍历：遍历该DOM节点下的子节点，以便进行进一步操作；</li>
+<li>添加：在该DOM节点下新增一个子节点，相当于动态增加了一个HTML节点；</li>
+<li>删除：将该节点从HTML中删除，相当于删掉了该DOM节点的内容以及它包含的所有子节点。</li>
+</ul>
+<p>在操作一个DOM节点前，我们需要通过各种方式<code>先拿到这个DOM节点</code>。</p>
+<p><strong>第一种方法</strong>或者<strong>最常用的方法</strong>是：</p>
+<ul>
+<li><p><strong>document.getElementById()</strong></p>
+</li>
+<li><p><strong>document.getElementsByTagName()</strong></p>
+</li>
+<li><p><strong>CSS选择器document.getElementsByClassName()</strong></p>
+</li>
+</ul>
+<p>由于ID在HTML文档中是唯一的，所以<code>document.getElementById()</code>可以直接定位唯一的一个DOM节点。<code>document.getElementsByTagName()</code>和<code>document.getElementsByClassName()</code>总是返回一组DOM节点。要精确地选择DOM，可以先定位父节点，再从父节点开始选择，以缩小范围。</p>
+<p>​```js<br>// 返回ID为’test’的节点：<br>var test = document.getElementById(‘test’);</p>
+<p>// 先定位ID为’test-table’的节点，再返回其内部所有tr节点：<br>var trs = document.getElementById(‘test-table’).getElementsByTagName(‘tr’);</p>
+<p>// 先定位ID为’test-div’的节点，再返回其内部所有class包含red的节点：<br>var reds = document.getElementById(‘test-div’).getElementsByClassName(‘red’);</p>
+<p>// 获取节点test下的所有直属子节点:<br>var cs = test.children;</p>
+<p>// 获取节点test下第一个、最后一个子节点：<br>var first = test.firstElementChild;<br>var last = test.lastElementChild;</p>
+<pre><code>
+
+
+**第二种方法**是使用`querySelector()`和`querySelectorAll()`，需要了解selector语法，然后使用条件来获取节点，更加方便：
+</code></pre>
+<p>// 通过querySelector获取ID为q1的节点：<br>var q1 = document.querySelector(‘#q1’);</p>
+<p>// 通过querySelectorAll获取q1节点内的符合条件的所有节点：<br>var ps = q1.querySelectorAll(‘div.highlighted &gt; p’);</p>
+<pre><code>
+注意：低版本的IE&lt;8不支持`querySelector`和`querySelectorAll`。IE8仅有限支持。
+
+严格地讲，我们这里的DOM节点是指`Element`，但是DOM节点实际上是`Node`，在HTML中，`Node`包括`Element`、`Comment`、`CDATA_SECTION`等很多种，以及根节点`Document`类型，但是，绝大多数时候我们只关心`Element`，也就是实际控制页面结构的`Node`，其他类型的`Node`忽略即可。根节点`Document`已经自动绑定为全局变量`document`。
+
+#### 更新DOM
+
+#####  innerHTML 
+
+&gt;  可以修改一个DOM节点的文本内容，还可以直接通过HTML片段修改DOM节点内部的子树 
+
+```js
+// 获取&lt;p id=&quot;p-id&quot;&gt;...&lt;/p&gt;
+var p = document.getElementById(&#39;p-id&#39;);
+// 设置文本为abc:
+p.innerHTML = &#39;ABC&#39;; // &lt;p id=&quot;p-id&quot;&gt;ABC&lt;/p&gt;
+// 设置HTML:
+p.innerHTML = &#39;ABC &lt;span style=&quot;color:red&quot;&gt;RED&lt;/span&gt; XYZ&#39;;
+// &lt;p&gt;...&lt;/p&gt;的内部结构已修改
+</code></pre>
+<p> 用<code>innerHTML</code>时要注意，是否需要写入HTML。如果写入的字符串是通过网络拿到了，要注意对字符编码来避免XSS攻击。 </p>
+<p>通过<strong>innerHTML</strong>和<strong>数组遍历</strong>实现多行多列的商品列表： <a href="..%5C%E4%BD%9C%E4%B8%9A%5Cday08%5C%E5%95%86%E5%93%81%E5%88%97%E8%A1%A8.html">商品列表.html</a> </p>
+<h5 id="innerText-textContent"><a href="#innerText-textContent" class="headerlink" title="innerText || textContent"></a>innerText || textContent</h5><blockquote>
+<p> 可以自动对字符串进行HTML编码，保证无法设置任何HTML标签 </p>
+</blockquote>
+<pre><code class="js">// 获取&lt;p id=&quot;p-id&quot;&gt;...&lt;/p&gt;
+var p = document.getElementById(&#39;p-id&#39;);
+// 设置文本:
+p.innerText = &#39;&lt;script&gt;alert(&quot;Hi&quot;)&lt;/script&gt;&#39;;
+// HTML被自动编码，无法设置一个&lt;script&gt;节点:
+// &lt;p id=&quot;p-id&quot;&gt;&amp;lt;script&amp;gt;alert(&quot;Hi&quot;)&amp;lt;/script&amp;gt;&lt;/p&gt;
+</code></pre>
+<p> 两者的区别在于读取属性时，<code>innerText</code>不返回隐藏元素的文本，而<code>textContent</code>返回所有文本。另外注意IE&lt;9不支持<code>textContent</code>。 </p>
+<h5 id="修改CSS"><a href="#修改CSS" class="headerlink" title="修改CSS"></a>修改CSS</h5><blockquote>
+<p> DOM节点的<code>style</code>属性对应所有的CSS，可以直接获取或设置 </p>
+</blockquote>
+<p> 因为CSS允许<code>font-size</code>这样的名称，但它并非JavaScript有效的属性名，所以需要在JavaScript中改写为<strong>驼峰式命名</strong><code>fontSize</code> ：</p>
+<pre><code class="js">// 获取&lt;p id=&quot;p-id&quot;&gt;...&lt;/p&gt;
+var p = document.getElementById(&#39;p-id&#39;);
+// 设置CSS:
+p.style.color = &#39;#ff0000&#39;;
+p.style.fontSize = &#39;20px&#39;;
+p.style.paddingTop = &#39;2em&#39;;
+</code></pre>
+<h4 id="插入DOM"><a href="#插入DOM" class="headerlink" title="插入DOM"></a>插入DOM</h4><h5 id="appendChild"><a href="#appendChild" class="headerlink" title="appendChild()"></a>appendChild()</h5><blockquote>
+<p> 把一个子节点添加到父节点的最后一个子节点 </p>
+</blockquote>
+<pre><code class="js">&lt;!-- HTML结构 --&gt;
+&lt;p id=&quot;js&quot;&gt;JavaScript&lt;/p&gt;
+&lt;div id=&quot;list&quot;&gt;
+    &lt;p id=&quot;java&quot;&gt;Java&lt;/p&gt;
+    &lt;p id=&quot;python&quot;&gt;Python&lt;/p&gt;
+    &lt;p id=&quot;scheme&quot;&gt;Scheme&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="js">var
+    js = document.getElementById(&#39;js&#39;),
+    list = document.getElementById(&#39;list&#39;);
+list.appendChild(js);
+</code></pre>
+<p>现在，HTML结构变成了这样：</p>
+<pre><code class="js">&lt;!-- HTML结构 --&gt;
+&lt;div id=&quot;list&quot;&gt;
+    &lt;p id=&quot;java&quot;&gt;Java&lt;/p&gt;
+    &lt;p id=&quot;python&quot;&gt;Python&lt;/p&gt;
+    &lt;p id=&quot;scheme&quot;&gt;Scheme&lt;/p&gt;
+    &lt;p id=&quot;js&quot;&gt;JavaScript&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<p> 因为我们插入的<code>js</code>节点已经存在于当前的文档树，因此这个节点首先会从原先的位置删除，再插入到新的位置。 </p>
+<h5 id="insertBefore"><a href="#insertBefore" class="headerlink" title="insertBefore()"></a>insertBefore()</h5><blockquote>
+<p> 把子节点插入到指定的位置 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">document.getElementById(&quot;myList&quot;).insertBefore(newItem,existingItem);
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var
+    list = document.getElementById(&#39;list&#39;),
+    ref = document.getElementById(&#39;python&#39;),
+    haskell = document.createElement(&#39;p&#39;);
+haskell.id = &#39;haskell&#39;;
+haskell.innerText = &#39;Haskell&#39;;
+list.insertBefore(haskell, ref);//把haskell节点 放在ref节点之前
+</code></pre>
+</li>
+</ul>
+<ul>
+<li>。</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2024 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

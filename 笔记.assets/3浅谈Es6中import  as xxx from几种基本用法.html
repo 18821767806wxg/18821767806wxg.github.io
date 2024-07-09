@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>tags | 我的博客</title>
+  <title>Es6-Es6中import  as xxx from几种基本用法 | 我的博客</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将更新html5、css3知识点">
+  <meta name="description" content="以为ES6，javascript第一次支持了module。ES6的模块化分为导出（export）与导入（import）两个模块，其中在项目中，我们会经常看到一种用法import * as obj from，这种写法是把所有的输出包裹到obj对象里。 示例一&#x2F;&#x2F; index.js    export function fn1(data)&amp;#123;      console.log(1)    &amp;#">
 <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://18821767806wxg.github.io/tags/index.html">
+<meta property="og:title" content="Es6-Es6中import  as xxx from几种基本用法">
+<meta property="og:url" content="https://18821767806wxg.github.io/%E7%AC%94%E8%AE%B0.assets/3%E6%B5%85%E8%B0%88Es6%E4%B8%ADimport%20%20as%20xxx%20from%E5%87%A0%E7%A7%8D%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将更新html5、css3知识点">
+<meta property="og:description" content="以为ES6，javascript第一次支持了module。ES6的模块化分为导出（export）与导入（import）两个模块，其中在项目中，我们会经常看到一种用法import * as obj from，这种写法是把所有的输出包裹到obj对象里。 示例一&#x2F;&#x2F; index.js    export function fn1(data)&amp;#123;      console.log(1)    &amp;#">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-09-19T08:19:22.000Z">
-<meta property="article:modified_time" content="2022-08-24T08:38:56.000Z">
+<meta property="article:published_time" content="2023-12-04T08:02:51.546Z">
+<meta property="article:modified_time" content="2022-09-05T01:54:16.621Z">
 <meta property="article:author" content="王小刚">
 <meta name="twitter:card" content="summary">
   
@@ -217,11 +217,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="tags-" class="article article-type-tags" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-  	<time datetime="2020-09-19T08:19:22.000Z" itemprop="datePublished">2020-09-19</time>
+      <a href="/%E7%AC%94%E8%AE%B0.assets/3%E6%B5%85%E8%B0%88Es6%E4%B8%ADimport%20%20as%20xxx%20from%E5%87%A0%E7%A7%8D%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95.html" class="article-date">
+  	<time datetime="2023-12-04T08:02:51.546Z" itemprop="datePublished">2023-12-04</time>
 </a>
     </div>
   
@@ -234,7 +234,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tags
+      Es6-Es6中import  as xxx from几种基本用法
       
     </h1>
   
@@ -252,7 +252,148 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>以为<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=ES6&spm=1001.2101.3001.7020">ES6</a>，javascript第一次支持了module。ES6的模块化分为导出（export）与导入（import）两个模块，其中在项目中，我们会经常看到一种用法import * as obj from，这种写法是把所有的输出包裹到obj对象里。</p>
+<h2 id="示例一"><a href="#示例一" class="headerlink" title="示例一"></a>示例一</h2><pre><code class="javascript">// index.js
+
+
+
+export function fn1(data)&#123;
+
+
+
+  console.log(1)
+
+
+
+&#125;
+
+
+
+export function fn2(data)&#123;
+
+
+
+  console.log(2)
+
+
+
+&#125;
+import * as Fn from &#39;./index.js&#39;
+
+
+
+Fn.fn1()  // 1
+
+
+
+Fn.fn2()  // 2
+</code></pre>
+<h2 id="示例二"><a href="#示例二" class="headerlink" title="示例二"></a>示例二</h2><pre><code class="javascript">let myName = &quot;Jon&quot;;
+
+
+
+let myAge = 18;
+
+
+
+let myfn = function()&#123;
+
+
+
+    return &quot;我是&quot;+myName+&quot;！今年&quot;+myAge+&quot;岁了&quot;
+
+
+
+&#125;
+
+
+
+export &#123;
+
+
+
+    myName as name,
+
+
+
+    myAge as age,
+
+
+
+    myfn as fn
+
+
+
+&#125;
+</code></pre>
+<h3 id="接收的代码"><a href="#接收的代码" class="headerlink" title="接收的代码"></a>接收的代码</h3><pre><code class="javascript">import &#123;fn,age,name&#125; from &quot;./test.js&quot;;
+
+
+
+console.log(fn()); //我是Jon！今年19岁了
+
+
+
+console.log(age); //19
+
+
+
+console.log(name); //Jon
+</code></pre>
+<h3 id="或者写成"><a href="#或者写成" class="headerlink" title="或者写成"></a>或者写成</h3><pre><code class="javascript">import * as info from &quot;./test.js&quot;; //通过*来批量接收，as 来指定接收的名字
+
+
+
+console.log(info.fn()); //我是Jon！今年18岁了
+
+
+
+console.log(info.age); //18
+
+
+
+console.log(info.name); //Jon
+</code></pre>
+<h2 id="示例三"><a href="#示例三" class="headerlink" title="示例三"></a>示例三</h2><p>重命名export和import，如果导入的多个文件中，变量名字相同，即会产生命名冲突的问题，为了解决该问题，ES6为提供了重命名的方法，当你在导入名称时可以这样做。</p>
+<pre><code class="javascript">/*************test1.js*****************/
+
+
+
+export let myName = &quot;我来自test1.js&quot;;
+
+
+
+/*************test2.js*****************/
+
+
+
+export let myName = &quot;我来自test2.js&quot;;
+
+
+
+ 
+
+
+
+/*************index.js****************/
+
+
+
+import &#123;myName as name1&#125; from &quot;./test1.js&quot;;
+
+
+
+import &#123;myName as name2&#125; from &quot;./test2.js&quot;;
+
+
+
+console.log(name1); //我来自test1.js
+
+
+
+console.log(name2); //我来自test2.js
+</code></pre>
+
       
     </div>
     

@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>tags | 我的博客</title>
+  <title>mac安装nvm-自动切换node版本 | 我的博客</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将更新html5、css3知识点">
+  <meta name="description" content="nvm介绍node的版本管理器，可以方便地安装&amp;切换不同版本的node。随着大前端的快速发展，node版本更新很快，我们在工作中，可能会有老版本的node的项目需要维护，也有新版本的node的项目需要开发，如果我们只有一个node版本的话将会很麻烦，nvm可以解决我们的难点。 1、打开终端输入 cd ~&#x2F;紧接着输入 git clone https:&#x2F;&#x2F;github.com&#x2F;nvm-sh&#x2F;n">
 <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://18821767806wxg.github.io/tags/index.html">
+<meta property="og:title" content="mac安装nvm-自动切换node版本">
+<meta property="og:url" content="https://18821767806wxg.github.io/%E7%AC%94%E8%AE%B0.assets/nvm%E7%9A%84%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将更新html5、css3知识点">
+<meta property="og:description" content="nvm介绍node的版本管理器，可以方便地安装&amp;切换不同版本的node。随着大前端的快速发展，node版本更新很快，我们在工作中，可能会有老版本的node的项目需要维护，也有新版本的node的项目需要开发，如果我们只有一个node版本的话将会很麻烦，nvm可以解决我们的难点。 1、打开终端输入 cd ~&#x2F;紧接着输入 git clone https:&#x2F;&#x2F;github.com&#x2F;nvm-sh&#x2F;n">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-09-19T08:19:22.000Z">
-<meta property="article:modified_time" content="2022-08-24T08:38:56.000Z">
+<meta property="article:published_time" content="2023-12-04T08:02:51.545Z">
+<meta property="article:modified_time" content="2022-10-13T01:13:45.507Z">
 <meta property="article:author" content="王小刚">
 <meta name="twitter:card" content="summary">
   
@@ -217,11 +217,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="tags-" class="article article-type-tags" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-  	<time datetime="2020-09-19T08:19:22.000Z" itemprop="datePublished">2020-09-19</time>
+      <a href="/%E7%AC%94%E8%AE%B0.assets/nvm%E7%9A%84%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B.html" class="article-date">
+  	<time datetime="2023-12-04T08:02:51.545Z" itemprop="datePublished">2023-12-04</time>
 </a>
     </div>
   
@@ -234,7 +234,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tags
+      mac安装nvm-自动切换node版本
       
     </h1>
   
@@ -252,7 +252,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p><strong>nvm介绍</strong><br>node的版本管理器，可以方便地安装&amp;切换不同版本的node。<br>随着大前端的快速发展，node版本更新很快，我们在工作中，可能会有老版本的node的项目需要维护，也有新版本的node的项目需要开发，如果我们只有一个node版本的话将会很麻烦，nvm可以解决我们的难点。</p>
+<p>1、打开终端输入 cd ~/<br>紧接着输入 git clone <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/nvm-sh/nvm.git">https://github.com/nvm-sh/nvm.git</a> （这里从github下载nvm）</p>
+<p>2、进入 nvm目录中执行install.sh 等待执行完成<br>cd nvm （进入nvm目录）</p>
+<pre><code>./install.sh 
+</code></pre>
+<p>（等待执行成功）</p>
+<p>3、配置nvm环境变量将下述代码复制到 ~/.bash_profile</p>
+<blockquote>
+<pre><code>vi ~/.bash_profile
+</code></pre>
+</blockquote>
+<p>shift+:键盘，i键，qw保存文件并且退出</p>
+<p>在~/.bash_profile添加</p>
+<blockquote>
+<pre><code>&gt; export NVM_DIR=&quot;$HOME/.nvm&quot;
+&gt;
+&gt; [ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot; # This loads nvm
+&gt;
+&gt; [ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \. &quot;$NVM_DIR/bash_completion&quot; # This loads nvm bash_completion
+
+&gt; source ~/.bash_profile
+</code></pre>
+</blockquote>
+<p>在终端运行<br><strong>zsh报错</strong><br>但是再zsh中使用nvm依旧提示<br><strong>解决方法</strong><br>编辑~/.zshrc<br>添加</p>
+<blockquote>
+<pre><code>source ~/.bash_profile
+</code></pre>
+</blockquote>
+<p>source ~/.zshrc</p>
+<p>4、重新打开终端，执行</p>
+<pre><code class="js">nvm --version
+</code></pre>
+<p>检测是否安装成功</p>
+<h6 id="5、nvm的使用"><a href="#5、nvm的使用" class="headerlink" title="5、nvm的使用"></a>5、nvm的使用</h6><pre><code>1.nvm ls # 列出当前安装的所有node版本
+2.nvm ls-remote # 列出所有node版本
+
+3.nvm install 版本号 # 安装指定版本的node 版本号取nvm ls-remote列出的 例如：nvm install 16.1.0
+
+4.nvm uninstall 版本号  # 卸载指定版本号 例如：nvm uninstall 16.1.0
+
+5.nvm use 版本号 # 切换到指定node版本 例如：nvm use 16.1.0
+</code></pre>
+
       
     </div>
     

@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>js-Event 对象 | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Event 对象 ​    Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。 ​    事件通常与函数结合使用，函数不会在事件发生前被执行！ ​    注意，所有事件的语法都是一样的，行为的触发方式有区别  只有在事件发生的时候，才会产生事件对象，无法手动创建，并且事件对象只能在处理函数内部访问，处理函数允许结束后该对象自动销毁 绑定方式：赋值">
+<meta property="og:type" content="website">
+<meta property="og:title" content="js-Event 对象">
+<meta property="og:url" content="https://18821767806wxg.github.io/%E7%AC%94%E8%AE%B0.assets/14%20Event%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%89%AF%E6%9C%AC.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="Event 对象 ​    Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。 ​    事件通常与函数结合使用，函数不会在事件发生前被执行！ ​    注意，所有事件的语法都是一样的，行为的触发方式有区别  只有在事件发生的时候，才会产生事件对象，无法手动创建，并且事件对象只能在处理函数内部访问，处理函数允许结束后该对象自动销毁 绑定方式：赋值">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="file:///D:/APP/feiq/Recv%20Files/JavaScript/%E8%AF%BE%E4%BB%B6/day11/%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1-%E4%B8%8A_files/Image%20[3].png">
+<meta property="og:image" content="file:///D:/APP/feiq/Recv%20Files/JavaScript/%E8%AF%BE%E4%BB%B6/day12/%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1-%E4%B8%8B_files/Image.jpg">
+<meta property="article:published_time" content="2023-12-04T08:02:51.546Z">
+<meta property="article:modified_time" content="2022-09-15T08:34:45.022Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="file:///D:/APP/feiq/Recv%20Files/JavaScript/%E8%AF%BE%E4%BB%B6/day11/%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1-%E4%B8%8A_files/Image%20[3].png">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=30612793&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.css-js.com/tools/base64.html">在线转译base64图片工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference">MDN-javascript文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.yuque.com/cuggz/interview/vgbphi">前端面试题汇总</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/6/">React博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/25/11-1%E9%AB%98%E9%A2%91%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E4%B9%8BVue%E7%AF%87/">Vue-面试题汇总之Vue篇</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/5/">Vue-vuex</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/8/">vue博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点,------道阻且长...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/%E7%AC%94%E8%AE%B0.assets/14%20Event%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%89%AF%E6%9C%AC.html" class="article-date">
+  	<time datetime="2023-12-04T08:02:51.546Z" itemprop="datePublished">2023-12-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js-Event 对象
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Event-对象"><a href="#Event-对象" class="headerlink" title="Event 对象"></a>Event 对象</h3><blockquote>
+<p>​    Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。</p>
+<p>​    事件通常与函数结合使用，函数不会在事件发生前被执行！</p>
+<p>​    注意，所有事件的语法都是一样的，行为的触发方式有区别</p>
+</blockquote>
+<p><strong>只有在事件发生的时候，才会产生事件对象，无法手动创建，并且事件对象只能在处理函数内部访问，处理函数允许结束后该对象自动销毁</strong></p>
+<p>绑定方式：赋值式</p>
+<pre><code class="js">元素.事件名 = function()&#123;&#125;;
+</code></pre>
+<ul>
+<li>事件源：元素，绑定事件的元素</li>
+<li>事件类型：onclick：触发事件的行为</li>
+<li>事件处理函数：function：触发这个事件时要做的事情</li>
+</ul>
+<h4 id="获取事件对象"><a href="#获取事件对象" class="headerlink" title="获取事件对象"></a>获取事件对象</h4><p>事件处理函数的第一个参数：正常浏览器</p>
+<pre><code class="js">var obox = document.querySelector(&quot;.box&quot;);
+obox.onclick = function(eve)&#123;
+    console.log(eve);
+&#125;
+</code></pre>
+<p>通过window找event属性：IE浏览器</p>
+<pre><code class="js">var obox = document.querySelector(&quot;.box&quot;);
+obox.onclick = function(eve)&#123;
+    console.log(window.event);
+&#125;
+</code></pre>
+<h5 id="兼容性写法"><a href="#兼容性写法" class="headerlink" title="兼容性写法"></a>兼容性写法</h5><pre><code class="js">var obox = document.querySelector(&quot;.box&quot;);
+obox.onclick = function(eve)&#123;
+    var e = eve || window.event;
+&#125;
+</code></pre>
+<h5 id="type"><a href="#type" class="headerlink" title="type"></a>type</h5><p>事件类型</p>
+<pre><code class="js">var obox = document.querySelector(&quot;.box&quot;);
+obox.onclick = function(eve)&#123;
+    var e = eve || window.event;
+    console.log(e.type)//click，这里显示触发事件的类型
+&#125;
+</code></pre>
+<h5 id="target"><a href="#target" class="headerlink" title="target"></a>target</h5><blockquote>
+<p>触发事件的对象 (某个DOM元素) 的引用。当事件处理程序在事件的冒泡或捕获阶段被调用时，它与<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event/currentTarget"><code>event.currentTarget</code></a>不同。</p>
+</blockquote>
+<pre><code class="js">var obox = document.querySelector(&quot;.box&quot;);
+obox.onclick = function(eve)&#123;
+    var e = eve || window.event;
+    console.log(e.target)//&lt;div class=&quot;box&gt;&lt;/div&gt;&quot;，这里显示触发事件的对象
+&#125;
+</code></pre>
+<h5 id="button"><a href="#button" class="headerlink" title="button"></a>button</h5><blockquote>
+<p>**<code>mouseEvent.button</code>**是只读属性，它返回一个值，代表用户按下并触发了事件的鼠标按键。</p>
+<p>这个属性只能够表明在触发事件的单个或多个按键按下或释放过程中哪些按键被按下了。因此，它对判断<code>mouseenter</code>, <code>mouseleave</code>, <code>mouseover</code>, <code>mouseout</code> or <code>mousemove</code>这些事件并不可靠。</p>
+<p>用户可能会改变鼠标按键的配置，因此当一个事件的**<code>MouseEvent.button</code>**值为0时，它可能不是由物理上设备最左边的按键触发的。但是对于标准按键布局的鼠标设备来说，这个值应该是能正确使用的。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var buttonPressed = instanceOfMouseEvent.button
+</code></pre>
+</li>
+<li><p>返回值</p>
+<p>一个数值，代表按下的鼠标按键：</p>
+<p>0：主按键被按下，通常指鼠标左键 or the un-initialized state<br>1：辅助按键被按下，通常指鼠标滚轮 or the middle button (if present)<br>2：次按键被按下，通常指鼠标右键<br>3：第四个按钮被按下，通常指浏览器后退按钮<br>4：第五个按钮被按下，通常指浏览器的前进按钮<br>对于配置为左手使用的鼠标，按键操作将正好相反。此种情况下，从右至左读取值。</p>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var whichButton = function (e) &#123;
+    // Handle different event models
+    var e = e || window.event;
+    var btnCode;
+
+    if (&#39;object&#39; === typeof e) &#123;
+        btnCode = e.button;
+
+        switch (btnCode) &#123;
+            case 0:
+                console.log(&#39;Left button clicked.&#39;);
+            break;
+
+            case 1:
+                console.log(&#39;Middle button clicked.&#39;);
+            break;
+
+            case 2:
+                console.log(&#39;Right button clicked.&#39;);
+            break;
+
+            default:
+                console.log(&#39;Unexpected code: &#39; + btnCode);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="buttons"><a href="#buttons" class="headerlink" title="buttons"></a>buttons</h5><p>返回对应的鼠标按键</p>
+<h4 id="MouseEvent"><a href="#MouseEvent" class="headerlink" title="MouseEvent."></a>MouseEvent.</h4><p><img src="file:///D:/APP/feiq/Recv%20Files/JavaScript/%E8%AF%BE%E4%BB%B6/day11/%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1-%E4%B8%8A_files/Image%20[3].png" alt="img"></p>
+<p>鼠标相对于事件源的坐标</p>
+<h5 id="offsetX"><a href="#offsetX" class="headerlink" title="offsetX"></a>offsetX</h5><blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a> 接口的只读属性 <strong>offsetX</strong> 规定了事件对象与目标节点的内填充边（padding edge）在 X 轴方向上的偏移量。</p>
+<p>鼠标相对于事件源的坐标</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var xOffset = instanceOfMouseEvent.offsetX;
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">一个双精度浮点值。早期的规范将其规定为整数值。详见浏览器兼容性部分。
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var box = document.querySelector(&quot;.box&quot;);
+box.onclick = (eve)=&gt;&#123;
+var e = eve || window.event;
+console.log(e.offsetX,e.offsetY)
+console.log(e.clientX,e.clientY)
+console.log(e.pageX,e.pageY)
+console.log(e.screenX,e.screenY)
+
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="offsetY"><a href="#offsetY" class="headerlink" title="offsetY"></a>offsetY</h5><blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a> 接口的只读属性 <strong>offsetX</strong> 规定了事件对象与目标节点的内填充边（padding edge）在 X 轴方向上的偏移量。</p>
+<p>鼠标相对于事件源的坐标</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var xOffset = instanceOfMouseEvent.offsetX;
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">一个双精度浮点值。早期的规范将其规定为整数值。详见浏览器兼容性部分。
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var box = document.querySelector(&quot;.box&quot;);
+box.onclick = (eve)=&gt;&#123;
+var e = eve || window.event;
+console.log(e.offsetX,e.offsetY)
+console.log(e.clientX,e.clientY)
+console.log(e.pageX,e.pageY)
+console.log(e.screenX,e.screenY)
+
+&#125;
+</code></pre>
+</li>
+</ul>
+<p>鼠标相对于页面可视区域的坐标</p>
+<h5 id="clientX"><a href="#clientX" class="headerlink" title="clientX"></a>clientX</h5><blockquote>
+<p><strong><code>MouseEvent.clientX</code></strong> 是只读属性， 它提供事件发生时的应用客户端区域的水平坐标 (与页面坐标不同)。例如，不论页面是否有水平滚动，当你点击客户端区域的左上角时，鼠标事件的 <code>clientX</code> 值都将为 0 。最初这个属性被定义为长整型（long integer），如今 <strong>CSSOM</strong> 视图模块将其重新定义为双精度浮点数（double float）。</p>
+<p>鼠标相对于页面可视区域的坐标</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var x = instanceOfMouseEvent.clientX
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">被 CSSOM View Module 重新定义为一个 double 类型的浮点值. 原来这个属性是被定义为一个 long 整数. 可以在 &quot;浏览器兼容性&quot; 那里查看详细内容.
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var box = document.querySelector(&quot;.box&quot;);
+box.onclick = (eve)=&gt;&#123;
+var e = eve || window.event;
+console.log(e.offsetX,e.offsetY)
+console.log(e.clientX,e.clientY)
+console.log(e.pageX,e.pageY)
+console.log(e.screenX,e.screenY)
+
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="clientY"><a href="#clientY" class="headerlink" title="clientY"></a>clientY</h5><blockquote>
+<p><strong><code>MouseEvent.clientX</code></strong> 是只读属性， 它提供事件发生时的应用客户端区域的Y坐标 (与页面坐标不同)。例如，不论页面是否有水平滚动，当你点击客户端区域的左上角时，鼠标事件的 <code>clientX</code> 值都将为 0 。最初这个属性被定义为长整型（long integer），如今 <strong>CSSOM</strong> 视图模块将其重新定义为双精度浮点数（double float）。</p>
+<p>鼠标相对于页面可视区域的坐标</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var x = instanceOfMouseEvent.clientY
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">被 CSSOM View Module 重新定义为一个 double 类型的浮点值. 原来这个属性是被定义为一个 long 整数. 可以在 &quot;浏览器兼容性&quot; 那里查看详细内容.
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var box = document.querySelector(&quot;.box&quot;);
+box.onclick = (eve)=&gt;&#123;
+var e = eve || window.event;
+console.log(e.offsetX,e.offsetY)
+console.log(e.clientX,e.clientY)
+console.log(e.pageX,e.pageY)
+console.log(e.screenX,e.screenY)
+
+&#125;
+</code></pre>
+</li>
+</ul>
+<p>鼠标相对于页面的坐标</p>
+<h5 id="pageX"><a href="#pageX" class="headerlink" title="pageX"></a>pageX</h5><blockquote>
+<p><code>pageX</code> 是一个由<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent"><code>MouseEvent</code></a>接口返回的相对于整个文档的x（水平）坐标以像素为单位的只读属性。</p>
+<p>这个属性将基于文档的边缘，考虑任何页面的水平方向上的滚动。举个例子，如果页面向右滚动 200px 并出现了滚动条，这部分在窗口之外，然后鼠标点击距离窗口左边 100px 的位置，pageX 所返回的值将是 300。</p>
+<p>起初这个属性被定义为长整型。 CSSOM 视图模块将它重新定位为双浮点数类型。请参阅浏览器兼容性部分了解详情。</p>
+<p>鼠标相对于页面的坐标</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var pos = event.pageX
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var box = document.querySelector(&quot;.box&quot;);
+box.onclick = (eve)=&gt;&#123;
+var e = eve || window.event;
+console.log(e.offsetX,e.offsetY)
+console.log(e.clientX,e.clientY)
+console.log(e.pageX,e.pageY)
+console.log(e.screenX,e.screenY)
+
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="pageY"><a href="#pageY" class="headerlink" title="pageY"></a>pageY</h5><blockquote>
+<p>pageY<code> 是一个由[</code>MouseEvent`](<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent)%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E7%9A%84%E7%9B%B8%E5%AF%B9%E4%BA%8E%E6%95%B4%E4%B8%AA%E6%96%87%E6%A1%A3%E7%9A%84Y%EF%BC%88%E6%B0%B4%E5%B9%B3%EF%BC%89%E5%9D%90%E6%A0%87%E4%BB%A5%E5%83%8F%E7%B4%A0%E4%B8%BA%E5%8D%95%E4%BD%8D%E7%9A%84%E5%8F%AA%E8%AF%BB%E5%B1%9E%E6%80%A7%E3%80%82">https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent)接口返回的相对于整个文档的Y（水平）坐标以像素为单位的只读属性。</a></p>
+<p>鼠标相对于页面的坐标</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var pos = event.pageY
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var box = document.querySelector(&quot;.box&quot;);
+box.onclick = (eve)=&gt;&#123;
+var e = eve || window.event;
+console.log(e.offsetX,e.offsetY)
+console.log(e.clientX,e.clientY)
+console.log(e.pageX,e.pageY)
+console.log(e.screenX,e.screenY)
+&#125;
+</code></pre>
+</li>
+</ul>
+<p>鼠标相对于屏幕的坐标</p>
+<h5 id="screenX"><a href="#screenX" class="headerlink" title="screenX"></a>screenX</h5><blockquote>
+<p><strong><code>screenX</code></strong> 是只读属性，他提供了鼠标相对于屏幕坐标系的水平偏移量。</p>
+<p>鼠标相对于屏幕的坐标</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var pixelNumber = instanceOfMouseEvent.screenX
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">一个双浮点值。早期版本的规格定义这是一个 整数指的像素数。有关详细信息，请参见浏览器兼容性部分。
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var box = document.querySelector(&quot;.box&quot;);
+box.onclick = (eve)=&gt;&#123;
+    var e = eve || window.event;
+    console.log(e.offsetX,e.offsetY)
+    console.log(e.clientX,e.clientY)
+    console.log(e.pageX,e.pageY)
+    console.log(e.screenX,e.screenY)
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="screenY"><a href="#screenY" class="headerlink" title="screenY"></a>screenY</h5><blockquote>
+<p><strong><code>screenY</code></strong> 是只读属性，他提供了鼠标相对于屏幕坐标系的垂直偏移量。</p>
+<p>鼠标相对于屏幕的坐标</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var pixelNumber = instanceOfMouseEvent.screenY
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">一个双浮点值。早期版本的规格定义这是一个 整数指的像素数。有关详细信息，请参见浏览器兼容性部分。
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var box = document.querySelector(&quot;.box&quot;);
+box.onclick = (eve)=&gt;&#123;
+var e = eve || window.event;
+console.log(e.offsetX,e.offsetY)
+console.log(e.clientX,e.clientY)
+console.log(e.pageX,e.pageY)
+console.log(e.screenX,e.screenY)
+
+&#125;
+</code></pre>
+</li>
+</ul>
+<h4 id="KeyboardEvent"><a href="#KeyboardEvent" class="headerlink" title="KeyboardEvent."></a>KeyboardEvent.</h4><blockquote>
+<p><code>KeyboardEvent </code>对象描述了键盘的交互方式。 每个事件都描述了一个按键（Each event describes a key）；事件类型<code>keydown</code>， <code>keypress</code> 与 <code>keyup</code> 可以确定是哪种事件在活动。</p>
+</blockquote>
+<h5 id="keyCode"><a href="#keyCode" class="headerlink" title="keyCode"></a>keyCode</h5><blockquote>
+<p>返回当前按键的ASCII码</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ASCII码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>空格</td>
+<td>32</td>
+</tr>
+<tr>
+<td>回车</td>
+<td>13</td>
+</tr>
+<tr>
+<td>左</td>
+<td>37</td>
+</tr>
+<tr>
+<td>上</td>
+<td>38</td>
+</tr>
+<tr>
+<td>右</td>
+<td>39</td>
+</tr>
+<tr>
+<td>下</td>
+<td>40</td>
+</tr>
+</tbody></table>
+<h5 id="which"><a href="#which" class="headerlink" title="which"></a>which</h5><h5 id="兼容性写法-1"><a href="#兼容性写法-1" class="headerlink" title="兼容性写法"></a>兼容性写法</h5><pre><code class="js">document.onkeydown = function(eve)&#123;
+        var e = eve || window.event;
+        var code = e.keyCode || e.which;
+    &#125;
+</code></pre>
+<h5 id="ctrlKey"><a href="#ctrlKey" class="headerlink" title="ctrlKey"></a>ctrlKey</h5><blockquote>
+<p>鼠标事件<strong>ctrlKey是只读属性，可返回一个布尔值，当ctrl键被按下，返回true，否则返回false</strong></p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var ctrlKeyPressed = instanceOfMouseEvent.ctrlKey
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">A boolean
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code>document.onkeypress = ()=&gt;&#123;
+    console.log(e.ctrlKey);/如果按下了ctrl就为true,没按下ctrl就为false
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="altKey"><a href="#altKey" class="headerlink" title="altKey"></a>altKey</h5><blockquote>
+<p>鼠标事件<strong>altKey是只读属性，可返回一个布尔值，当alt键被按下，返回true，否则返回false</strong></p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var altKeyPressed = instanceOfMouseEvent.altKey
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">A boolean
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">document.onkeypress = ()=&gt;&#123;
+    console.log(e.altKey);/如果按下了alt就为true,没按下alt就为false
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="shiftKey"><a href="#shiftKey" class="headerlink" title="shiftKey"></a>shiftKey</h5><blockquote>
+<p>鼠标事件<strong>shiftKey是只读属性，可返回一个布尔值，当shift键被按下，返回true，否则返回false</strong></p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">var shiftKeyPressed = instanceOfMouseEvent.shiftKey
+</code></pre>
+</li>
+<li><p>返回值</p>
+<pre><code class="js">A boolean
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code>document.onkeypress = ()=&gt;&#123;
+    console.log(e.shiftKey);/如果按下了shift就为true,没按下shift就为false
+&#125;
+</code></pre>
+</li>
+</ul>
+<h4 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h4><blockquote>
+<p>当内层元素的事件被触发时，会依次向上触发所有父级的相同事件，即便父级没有事件处理函数，但父级有事件，因此依然会往上冒泡</p>
+</blockquote>
+<h5 id="event-stopPropagation"><a href="#event-stopPropagation" class="headerlink" title="event.stopPropagation"></a>event.stopPropagation</h5><blockquote>
+<p>阻止捕获和冒泡阶段中当前事件的进一步传播。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">event.stopPropagation(); 
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">function stopBubble(e) &#123;
+    if (e.stopPropagation) &#123;
+        e.stopPropagation();
+    &#125; else &#123;
+        e.cancelBubble = true;
+    &#125;
+&#125;
+</code></pre>
+</li>
+</ul>
+<h5 id="event-cancelBubble"><a href="#event-cancelBubble" class="headerlink" title="event.cancelBubble"></a>event.cancelBubble</h5><blockquote>
+<p>获取或设置一个布尔值,表明当前事件是否要取消冒泡.</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">event.cancelBubble = bool;
+var bool = event.cancelBubble;
+</code></pre>
+<p>如果一个事件是可冒泡的,则它的cancelBubble<code>属性的默认值为 </code>false<code>,代表允许该事件向上冒泡. 将</code>cancelBubble<code>属性设置为</code>true以后,可以阻止该事件的进一步冒泡行为.</p>
+</li>
+<li><p>实例</p>
+<pre><code class="js">function stopBubble(e) &#123;
+    if (e.stopPropagation) &#123;
+        e.stopPropagation();
+    &#125; else &#123;
+        e.cancelBubble = true;
+    &#125;
+&#125;
+</code></pre>
+</li>
+</ul>
+<h4 id="阻止浏览器默认行为"><a href="#阻止浏览器默认行为" class="headerlink" title="阻止浏览器默认行为"></a>阻止浏览器默认行为</h4><h5 id="Event-returnValue"><a href="#Event-returnValue" class="headerlink" title="Event.returnValue"></a>Event.returnValue</h5><blockquote>
+<p> <code>Event.returnValue</code> 属性表示该事件的默认操作是否已被阻止。默认情况下，它被设置为true，允许发生默认操作。将该属性设置为false，可以防止默认操作。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">event.returnValue = bool;
+var bool = event.returnValue;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">e.returnValue = false;
+</code></pre>
+</li>
+</ul>
+<h5 id="Event-preventDefault"><a href="#Event-preventDefault" class="headerlink" title="Event.preventDefault"></a>Event.preventDefault</h5><blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event"><code>Event</code></a> 接口的 <code>preventDefault()</code>方法，告诉<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Glossary/user_agent">user agent</a>：如果此事件没有被显式处理，那么它默认的动作也不要做（因为默认是要做的）。此事件还是继续传播，除非碰到事件侦听器调用<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event/stopPropagation"><code>stopPropagation()</code></a> 或<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event/stopImmediatePropagation"><code>stopImmediatePropagation()</code></a>，才停止传播。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">event.preventDefault();
+</code></pre>
+</li>
+<li><p>返回值</p>
+<p><strong>undefined</strong></p>
+</li>
+<li><p>实例</p>
+<pre><code class="js">e.preventDefault()
+</code></pre>
+</li>
+</ul>
+<h5 id="兼容性写法-2"><a href="#兼容性写法-2" class="headerlink" title="兼容性写法"></a>兼容性写法</h5><pre><code class="js">function stopDefault(e)&#123;
+    if(e.preventDefault)    e.preventDefault();//兼容其他浏览器
+    else    e.returnValue = false;//兼容IE
+&#125;
+</code></pre>
+<h5 id="return-false"><a href="#return-false" class="headerlink" title="return false"></a>return false</h5><p>在某一事件类型的事件处理函数结尾加上<code>return false</code>会阻止该事件类型的默认行为</p>
+<h4 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h4><blockquote>
+<p> 事件触发阶段主要由于事件流：DOM0级事件处理阶段和DOM2级事件处理</p>
+</blockquote>
+<h5 id="DOM0级事件"><a href="#DOM0级事件" class="headerlink" title="DOM0级事件"></a>DOM0级事件</h5><p>​        通过一种赋值方式，是被所有浏览器所支持的，简单易懂容易操作：元素.onclick = function(){}</p>
+<h5 id="DOM2级事件"><a href="#DOM2级事件" class="headerlink" title="DOM2级事件"></a>DOM2级事件</h5><p>​        通过所有DOM节点中的方法，可以重复绑定，但是浏览器兼容存在问题</p>
+<h5 id="触发顺序"><a href="#触发顺序" class="headerlink" title="触发顺序"></a>触发顺序</h5><ul>
+<li>事件冒泡：从里向外</li>
+<li>事件捕获：从外向内</li>
+<li>目标阶段：当前元素的当前事件</li>
+</ul>
+<p><img src="file:///D:/APP/feiq/Recv%20Files/JavaScript/%E8%AF%BE%E4%BB%B6/day12/%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1-%E4%B8%8B_files/Image.jpg" alt="img"></p>
+<h4 id="事件监听器"><a href="#事件监听器" class="headerlink" title="事件监听器"></a>事件监听器</h4><h5 id="addEventListener"><a href="#addEventListener" class="headerlink" title="addEventListener()"></a>addEventListener()</h5><blockquote>
+<p><strong>EventTarget.addEventListener()</strong> 方法将指定的监听器注册到 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget"><code>EventTarget</code></a> 上，当该对象触发指定的事件时，指定的回调函数就会被执行。 事件目标可以是一个文档上的元素 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element"><code>Element</code></a>,<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document"><code>Document</code></a>和<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window"><code>Window</code></a>或者任何其他支持事件的对象 (比如 <code>XMLHttpRequest</code>)<code>。</code></p>
+<p><code>addEventListener()</code>的工作原理是将实现<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventListener"><code>EventListener</code></a>的函数或对象添加到调用它的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget"><code>EventTarget</code></a>上的指定事件类型的事件侦听器列表中。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">target.addEventListener(type, listener[, options]);
+target.addEventListener(type, listener[, useCapture]);
+target.addEventListener(type, listener[, useCapture, wantsUntrusted  ]);  // Gecko/Mozilla only
+</code></pre>
+</li>
+<li><p>返回值</p>
+<p><strong>undefined</strong></p>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var obox = document.querySelector(&quot;.box&quot;);
+obox.addEventListener(&quot;click&quot;,function()&#123;
+    console.log(1);
+&#125;)
+</code></pre>
+</li>
+</ul>
+<h5 id="add兼容性写法"><a href="#add兼容性写法" class="headerlink" title="add兼容性写法"></a>add兼容性写法</h5><pre><code class="js">function addEvent(ele,type,callback)&#123;
+    if(ele.attachEvent)    ele.attachEvent(&quot;on&quot;+type,callback);//兼容IE
+    else    ele.addEventListener(type,callback);
+&#125;
+</code></pre>
+<h5 id="removeEventListener"><a href="#removeEventListener" class="headerlink" title="removeEventListener()"></a>removeEventListener()</h5><blockquote>
+<p>删除使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener"><code>EventTarget.addEventListener()</code></a> 方法添加的事件。使用事件类型，事件侦听器函数本身，以及可能影响匹配过程的各种可选择的选项的组合来标识要删除的事件侦听器。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">target.removeEventListener(type, listener[, options]);
+target.removeEventListener(type, listener[, useCapture]);
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">var obox = document.querySelector(&quot;.box&quot;);
+function fn1()&#123;
+    console.log(1);
+&#125;
+obox.addEventListener(&quot;click&quot;,fn1)
+obox.removeEventListener(&quot;click&quot;,fn1)
+</code></pre>
+</li>
+</ul>
+<h5 id="remove兼容性写法"><a href="#remove兼容性写法" class="headerlink" title="remove兼容性写法"></a>remove兼容性写法</h5><pre><code class="js">function removeEvent(ele,type,callback)&#123;
+    if(ele.detachEvent)    ele.detachEvent(&quot;on&quot;+type,callback);//兼容IE
+    else    ele.removeEventListener(type,callback);
+&#125;
+</code></pre>
+<h4 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h4><blockquote>
+<p>将多个子元素的相同事件，加给共同的现有的父元素，实现节省事件的目的</p>
+</blockquote>
+<h5 id="事件委托的好处4"><a href="#事件委托的好处4" class="headerlink" title="事件委托的好处4"></a>事件委托的好处4</h5><ul>
+<li>节省性能</li>
+<li>可以给页面上暂时不存在的元素绑定事件</li>
+</ul>
+<h5 id="event-target"><a href="#event-target" class="headerlink" title="event.target"></a>event.target</h5><blockquote>
+<p>触发事件的对象 (某个DOM元素) 的引用。当事件处理程序在事件的冒泡或捕获阶段被调用时，它与<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Event/currentTarget"><code>event.currentTarget</code></a>不同。</p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">let theTarget = event.target
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">// Make a list
+var ul = document.createElement(&#39;ul&#39;);
+document.body.appendChild(ul);
+
+var li1 = document.createElement(&#39;li&#39;);
+var li2 = document.createElement(&#39;li&#39;);
+ul.appendChild(li1);
+ul.appendChild(li2);
+
+function hide(e)&#123;
+  // e.target 引用着 &lt;li&gt; 元素
+  // 不像 e.currentTarget 引用着其父级的 &lt;ul&gt; 元素.
+  e.target.style.visibility = &#39;hidden&#39;;
+&#125;
+
+// 添加监听事件到列表，当每个 &lt;li&gt; 被点击的时候都会触发。
+ul.addEventListener(&#39;click&#39;, hide, false);
+</code></pre>
+</li>
+</ul>
+<h5 id="兼容写法"><a href="#兼容写法" class="headerlink" title="兼容写法"></a>兼容写法</h5><pre><code class="js"> otable.onclick = function(eve)&#123;
+        var e = eve || window.event;
+        var target = e.target || e.srcElement;//只看这行
+        if(target.nodeName === &quot;TD&quot;)&#123;
+            var ipt = document.createElement(&quot;input&quot;);
+            ipt.value = target.innerHTML;
+            target.innerHTML = &quot;&quot;;
+            target.appendChild(ipt);
+            ipt.focus();
+
+            var that = target;
+            ipt.onblur = function()&#123;
+                that.innerHTML = this.value;
+            &#125;
+            ipt.onclick = function(eve)&#123;
+                var e = eve || window.event;
+                e.stopPropagation();
+            &#125;
+        &#125;
+    &#125;
+</code></pre>
+<h5 id="闭包封装写法"><a href="#闭包封装写法" class="headerlink" title="闭包封装写法"></a>闭包封装写法</h5><p>HTML：</p>
+<pre><code class="html">&lt;div class=&quot;box&quot;&gt;
+    &lt;p class=&quot;red&quot;&gt;段落1&lt;/p&gt;
+    &lt;span&gt;文本1&lt;/span&gt;
+    &lt;p&gt;段落2&lt;/p&gt;
+    &lt;span&gt;文本2&lt;/span&gt;
+    &lt;p class=&quot;red&quot;&gt;段落3&lt;/p&gt;
+    &lt;span&gt;文本3&lt;/span&gt;
+    &lt;h2&gt;二级标题1&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div class=&quot;box1&quot;&gt;
+    &lt;p&gt;段落1&lt;/p&gt;
+    &lt;span class=&quot;red&quot;&gt;文本1&lt;/span&gt;
+    &lt;p&gt;段落2&lt;/p&gt;
+    &lt;span&gt;文本2&lt;/span&gt;
+    &lt;p class=&quot;red&quot;&gt;段落3&lt;/p&gt;
+    &lt;span&gt;文本3&lt;/span&gt;
+    &lt;h2 class=&quot;red&quot;&gt;二级标题2&lt;/h2&gt;
+&lt;/div&gt;
+</code></pre>
+<p>JS：</p>
+<pre><code class="js">let obox = document.querySelector(&quot;.box&quot;);
+    let obox1 = document.querySelector(&quot;.box1&quot;);
+    let aspan = document.querySelectorAll(&quot;.box span&quot;)
+    let ap = document.querySelectorAll(&quot;.box1 p&quot;)
+    let ared = document.querySelectorAll(&quot;.box1 .red&quot;)
+    obox.onclick = fn(aspan,function()&#123;
+        console.log(this);
+        this.style.color = &quot;red&quot;;
+    &#125;);
+    obox1.onclick = fn(ared,function () &#123; 
+        console.log(this);
+     &#125;)
+
+    function fn(achild,callback)&#123;
+        return function(eve)&#123;
+            let e = eve ||window.event;
+            let target = e.target || e.srcElement;
+            for(let i=0;i&lt;achild.length;i++)
+            &#123;
+                if(target == achild[i])
+                &#123;
+                    callback.call(target);
+                &#125;
+            &#125;
+        &#125;
+
+    &#125;
+</code></pre>
+<h4 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h4><table>
+<thead>
+<tr>
+<th>定义</th>
+<th>事件名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>左键单击</td>
+<td>click</td>
+</tr>
+<tr>
+<td>双击</td>
+<td>dblclick</td>
+</tr>
+<tr>
+<td>右键单击</td>
+<td>contextmenu</td>
+</tr>
+<tr>
+<td>按下</td>
+<td>mousedown</td>
+</tr>
+<tr>
+<td>移动</td>
+<td>mousemove</td>
+</tr>
+<tr>
+<td>抬起</td>
+<td>mouseup</td>
+</tr>
+<tr>
+<td>进入</td>
+<td>mouseover</td>
+</tr>
+<tr>
+<td>离开</td>
+<td>mouseout</td>
+</tr>
+</tbody></table>
+<h5 id="鼠标拖拽效果"><a href="#鼠标拖拽效果" class="headerlink" title="鼠标拖拽效果"></a>鼠标拖拽效果</h5><blockquote>
+<ol>
+<li>按下鼠标</li>
+<li>移动鼠标 </li>
+<li>松开鼠标</li>
+</ol>
+</blockquote>
+<ol>
+<li><p>给目标元素添加onmousedown事件，拖拽的前提是在目标元素按下鼠标左键</p>
+</li>
+<li><p>当onmousedown发生以后，此刻给document添加onmousemove事件，意味着此刻鼠标在网页的移动都将改变目标元素的位置</p>
+</li>
+<li><p>在onmousemove事件中，设定目标元素的left和top</p>
+<p>公式：</p>
+<p>目标元素的left = 鼠标的clientX – （鼠标和元素的横坐标差，即offsetX）</p>
+<p>目标元素的top = 鼠标的clientY– （鼠标和元素的纵坐标差，即offsetY）</p>
+</li>
+<li><p>当onmousedown发生以后，此刻给document添加onmouseup事件，意味着此刻鼠标在网页的任意位置松开鼠标，都会放弃拖拽的效果   在onmouseup事件中，取消document的onmousemove事件即可。</p>
+</li>
+</ol>
+<p> <a href="..%5C%E4%BD%9C%E4%B8%9A%5Cday12%5C%E5%BC%B9%E5%87%BA%E7%AA%97%E5%8F%A3%E6%8B%96%E6%8B%BD.html">弹出窗口拖拽.html</a> </p>
+<h4 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h4><table>
+<thead>
+<tr>
+<th>定义</th>
+<th>事件名</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>按下</td>
+<td>keydown</td>
+<td>一般作用于能加焦点的元素</td>
+</tr>
+<tr>
+<td>抬起</td>
+<td>keyup</td>
+<td>一般作用于能加焦点的元素</td>
+</tr>
+<tr>
+<td>敲击</td>
+<td>keypress</td>
+<td>一般作用于能加焦点的元素</td>
+</tr>
+</tbody></table>
+<h4 id="表单事件"><a href="#表单事件" class="headerlink" title="表单事件"></a>表单事件</h4><table>
+<thead>
+<tr>
+<th>定义</th>
+<th>事件名</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>获取焦点</td>
+<td>focus</td>
+<td></td>
+</tr>
+<tr>
+<td>失去焦点</td>
+<td>blur</td>
+<td></td>
+</tr>
+<tr>
+<td>内容改变</td>
+<td>change</td>
+<td>失去焦点后触发</td>
+</tr>
+<tr>
+<td>提交</td>
+<td>submit</td>
+<td>作用于form元素</td>
+</tr>
+<tr>
+<td>重置</td>
+<td>reset</td>
+<td>作用于form元素</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>input</td>
+<td>立即触发</td>
+</tr>
+</tbody></table>
+<h4 id="浏览器事件"><a href="#浏览器事件" class="headerlink" title="浏览器事件"></a>浏览器事件</h4><table>
+<thead>
+<tr>
+<th>浏览器事件</th>
+<th>window</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加载完成</td>
+<td>load</td>
+</tr>
+<tr>
+<td>滚动</td>
+<td>scroll</td>
+</tr>
+<tr>
+<td>改变大小</td>
+<td>resize</td>
+</tr>
+</tbody></table>
+<h5 id="onscroll"><a href="#onscroll" class="headerlink" title="onscroll"></a>onscroll</h5><blockquote>
+<p>事件在元素滚动条在滚动时触发。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">window.onscroll = ()=&gt;&#123;
+    console.log(1);
+&#125;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">&lt;body style=&quot;height: 5000px;&quot;&gt;//有滚动条时才可以触发滚动事件
+&lt;/body&gt;
+
+&lt;script&gt;
+   
+    window.onscroll = () =&gt; &#123;
+        console.log(1);
+    &#125;
+&lt;/script&gt;
+</code></pre>
+</li>
+<li><p>相关变量</p>
+<ol>
+<li><p><strong>document.documentElement.scrollTop</strong></p>
+<p>获取右滚动条的位置，可以赋值给该变量，赋值后配合事件触发会改变滚动条的位置</p>
+<pre><code class="js">    document.onclick = function()&#123;
+        document.documentElement.scrollTop += 100;
+    &#125;
+</code></pre>
+</li>
+<li><p><strong>document.documentElement.scrollLeft</strong></p>
+<p>获取下滚动条的位置，可以赋值给该变量，赋值后配合事件触发会改变滚动条的位置</p>
+<pre><code class="js">    document.onclick = function()&#123;
+        document.documentElement.scrollLeft += 100;
+    &#125;
+</code></pre>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="onresize"><a href="#onresize" class="headerlink" title="onresize()"></a>onresize()</h5><blockquote>
+<p> onresize 事件会在窗口或框架被调整大小时发生。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">onresize=&quot;SomeJavaScriptCode&quot;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">window.onresize = ()=&gt;&#123;
+    console.log(document.documentElement.clientWidth);
+    console.log(document.documentElement.clientHeight);
+&#125;
+</code></pre>
+</li>
+<li><p>相关变量</p>
+<ol>
+<li><p><strong>document.documentElement.clientWidth</strong></p>
+<p>浏览器窗口宽度</p>
+</li>
+<li><p><strong>document.documentElement.clientHeight</strong></p>
+<p>浏览器窗口高度</p>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="onload"><a href="#onload" class="headerlink" title="onload()"></a>onload()</h5><blockquote>
+<p> onload 事件会在页面或图像加载完成后立即发生。 </p>
+</blockquote>
+<ul>
+<li><p>语法</p>
+<pre><code class="js">onload=&quot;SomeJavaScriptCode&quot;
+</code></pre>
+</li>
+<li><p>实例</p>
+<pre><code class="js">&lt;head&gt;
+    &lt;script&gt;
+        // onload：页面和资源加载完成触发
+        onload = function()&#123;
+            // console.log(1)
+            var box = document.getElementById(&quot;box&quot;);
+            console.log(box);
+        &#125;
+
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body style=&quot;height: 3000px;&quot;&gt;
+    &lt;div id=&quot;box&quot;&gt;123&lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>按照<strong>浏览器的渲染规则</strong>，该实例的<strong>JS代码</strong>放在了body<strong>前面</strong>去执行，会造成先渲染到JS的时候找不到div元素，因此无法正常工作。</p>
+<p>因此，当JS代码放在body前面执行时，需要配合onload事件才能触发JS</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2024 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

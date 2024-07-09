@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>tags | 我的博客</title>
+  <title>js-闭包 | 我的博客</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将更新html5、css3知识点">
+  <meta name="description" content="闭包 利用作用域的嵌套，实现了将局部变量进化成私有（自由）变量，然后可以被原本不能获取到的作用域获取到的环境，叫闭包  概念JavaScript 闭包的本质源自两点，词法作用域和函数当作值传递。 词法作用域，就是，按照代码书写时的样子，内部函数可以访问函数外面的变量。引擎通过数据结构和算法表示一个函数，使得在代码解释执行时按照词法作用域的规则，可以访问外围的变量，这些变量就登记在相应的数据结构中。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://18821767806wxg.github.io/tags/index.html">
+<meta property="og:title" content="js-闭包">
+<meta property="og:url" content="https://18821767806wxg.github.io/%E7%AC%94%E8%AE%B0.assets/28%20%E9%97%AD%E5%8C%85.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将更新html5、css3知识点">
+<meta property="og:description" content="闭包 利用作用域的嵌套，实现了将局部变量进化成私有（自由）变量，然后可以被原本不能获取到的作用域获取到的环境，叫闭包  概念JavaScript 闭包的本质源自两点，词法作用域和函数当作值传递。 词法作用域，就是，按照代码书写时的样子，内部函数可以访问函数外面的变量。引擎通过数据结构和算法表示一个函数，使得在代码解释执行时按照词法作用域的规则，可以访问外围的变量，这些变量就登记在相应的数据结构中。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-09-19T08:19:22.000Z">
-<meta property="article:modified_time" content="2022-08-24T08:38:56.000Z">
+<meta property="article:published_time" content="2023-12-04T08:02:51.548Z">
+<meta property="article:modified_time" content="2022-09-15T08:46:33.159Z">
 <meta property="article:author" content="王小刚">
 <meta name="twitter:card" content="summary">
   
@@ -217,11 +217,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="tags-" class="article article-type-tags" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-  	<time datetime="2020-09-19T08:19:22.000Z" itemprop="datePublished">2020-09-19</time>
+      <a href="/%E7%AC%94%E8%AE%B0.assets/28%20%E9%97%AD%E5%8C%85.html" class="article-date">
+  	<time datetime="2023-12-04T08:02:51.548Z" itemprop="datePublished">2023-12-04</time>
 </a>
     </div>
   
@@ -234,7 +234,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tags
+      js-闭包
       
     </h1>
   
@@ -252,7 +252,61 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><blockquote>
+<p>利用作用域的嵌套，实现了将局部变量进化成<strong>私有（自由）变量</strong>，然后可以被原本不能获取到的作用域获取到的环境，叫闭包</p>
+</blockquote>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>JavaScript 闭包的本质源自两点，词法作用域和函数当作值传递。</p>
+<p>词法作用域，就是，按照代码书写时的样子，内部函数可以访问函数外面的变量。引擎通过数据结构和算法表示一个函数，使得在代码解释执行时按照词法作用域的规则，可以访问外围的变量，这些变量就登记在相应的数据结构中。</p>
+<p>函数当作值传递，即所谓的first class对象。就是可以把函数当作一个值来赋值，当作参数传给别的函数，也可以把函数当作一个值 return。一个函数被当作值返回时，也就相当于返回了一个通道，这个通道可以访问这个函数词法作用域中的变量，即函数所需要的数据结构保存了下来，数据结构中的值在外层函数执行时创建，外层函数执行完毕时理因销毁，但由于内部函数作为值返回出去，这些值得以保存下来。而且无法直接访问，必须通过返回的函数。这也就是私有性。</p>
+<h3 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h3><p>内存的：删除就删除，没了</p>
+<p>硬盘的：暂存到回收站，还在，可以找到继续使用</p>
+<h3 id="闭包特点"><a href="#闭包特点" class="headerlink" title="闭包特点"></a>闭包特点</h3><ol>
+<li>可以在全局修改局部</li>
+<li>连接函数内外部的桥梁</li>
+<li>IE9~浏览器会造成内存泄漏</li>
+<li>占内存</li>
+<li>避免全局变量命名空间的污染</li>
+</ol>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><h4 id="事件委托的封装"><a href="#事件委托的封装" class="headerlink" title="事件委托的封装"></a>事件委托的封装</h4><pre><code class="js">obox.onclick = eveEnt(achild, function () &#123;&#125;);
+
+function eveEnt(arr, cb) &#123;
+    return function () &#123;
+        arr
+        cb
+    &#125;
+&#125;
+</code></pre>
+<h4 id="循环中的事件需要获取循环中的变量"><a href="#循环中的事件需要获取循环中的变量" class="headerlink" title="循环中的事件需要获取循环中的变量"></a>循环中的事件需要获取循环中的变量</h4><pre><code class="js">for(var i in arr)&#123;
+    arr[i].onclick = function(i)&#123;
+        return funtion()&#123;
+            console.log(i);
+        &#125;
+    &#125;
+&#125;
+
+baidu
+for(var i = 0;i &lt; oLis.length;i ++)&#123;
+    ;(function(i)&#123;
+        oLis[i].onclick = function()&#123;
+            alert(i); //0123
+        &#125;
+    &#125;)(i);
+</code></pre>
+<h4 id="计时器的回调函数，想传参"><a href="#计时器的回调函数，想传参" class="headerlink" title="计时器的回调函数，想传参"></a>计时器的回调函数，想传参</h4><pre><code class="js">setTimeout(fn(&quot;world&quot;), 1000);
+
+function fn(data)&#123;
+
+    return function()&#123;
+
+        console.log(data);
+
+    &#125;
+
+&#125;
+
+
+</code></pre>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4>
       
     </div>
     

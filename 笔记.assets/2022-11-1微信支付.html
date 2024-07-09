@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>VX-微信支付 | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="微信支付地址官方地址：  https:&#x2F;&#x2F;developers.weixin.qq.com&#x2F;doc&#x2F;offiaccount&#x2F;OA_Web_Apps&#x2F;JS-SDK.html#58   &lt;——点击进入微信公众号官方文档 微信支付【 WeChatPay 】WeixinJSBridge.invoke、wx.chooseWXPay业务需求：现在涉及到微信相关的项目有很多，主要涉及到的功能有【微信自定义">
+<meta property="og:type" content="website">
+<meta property="og:title" content="VX-微信支付">
+<meta property="og:url" content="https://18821767806wxg.github.io/%E7%AC%94%E8%AE%B0.assets/2022-11-1%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="微信支付地址官方地址：  https:&#x2F;&#x2F;developers.weixin.qq.com&#x2F;doc&#x2F;offiaccount&#x2F;OA_Web_Apps&#x2F;JS-SDK.html#58   &lt;——点击进入微信公众号官方文档 微信支付【 WeChatPay 】WeixinJSBridge.invoke、wx.chooseWXPay业务需求：现在涉及到微信相关的项目有很多，主要涉及到的功能有【微信自定义">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-12-04T08:02:51.547Z">
+<meta property="article:modified_time" content="2022-11-01T09:31:58.116Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=30612793&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.css-js.com/tools/base64.html">在线转译base64图片工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference">MDN-javascript文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.yuque.com/cuggz/interview/vgbphi">前端面试题汇总</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/6/">React博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/25/11-1%E9%AB%98%E9%A2%91%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E4%B9%8BVue%E7%AF%87/">Vue-面试题汇总之Vue篇</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/5/">Vue-vuex</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/8/">vue博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点,------道阻且长...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/%E7%AC%94%E8%AE%B0.assets/2022-11-1%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98.html" class="article-date">
+  	<time datetime="2023-12-04T08:02:51.547Z" itemprop="datePublished">2023-12-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      VX-微信支付
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="微信支付地址官方"><a href="#微信支付地址官方" class="headerlink" title="微信支付地址官方"></a>微信支付地址官方</h2><p>地址：</p>
+<blockquote>
+<pre><code class="js">https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html#58
+</code></pre>
+</blockquote>
+<p>&lt;——点击进入微信公众号官方文档</p>
+<h3 id="微信支付【-WeChatPay-】"><a href="#微信支付【-WeChatPay-】" class="headerlink" title="微信支付【 WeChatPay 】"></a>微信支付【 WeChatPay 】</h3><h4 id="WeixinJSBridge-invoke、wx-chooseWXPay"><a href="#WeixinJSBridge-invoke、wx-chooseWXPay" class="headerlink" title="WeixinJSBridge.invoke、wx.chooseWXPay"></a>WeixinJSBridge.invoke、wx.chooseWXPay</h4><p>业务需求：<br>现在涉及到微信相关的项目有很多，主要涉及到的功能有【微信自定义分享、微信支付等】。开发微信公众号H5页面时，需要使用微信支付进行金融支付。当微信支付完成【支付成功 点击“完成”】时，需要出发相应的业务逻辑；比如：支付成功时跳转到订单页面；支付失败时跳转到下订单页面；支付取消时保持当前订单页面不变等。<br>前期开发微信H5页面时，大多考虑的就是【支付成功】之后如何处理，因为是刚接触微信支付，大多都是采用刷新页面获取新数据的方式来更新支付状态。这种方式可以解决当时面临的问题，但是从业务逻辑来看，处理的方式不是很合理。<br>支付场景越来越多，对微信支付流程有了进一步的了解和认识，现在回过头来对过去项目中使用【微信支付】的业务场景进行梳理和完善，进一步优化支付流程以及对支付后的不同状态做相应的处理和优化，并结合实际情况做相应的业务逻辑分析。</p>
+<h3 id="支付方式："><a href="#支付方式：" class="headerlink" title="支付方式："></a>支付方式：</h3><h5 id="方式一：微信支付【微信公众号】"><a href="#方式一：微信支付【微信公众号】" class="headerlink" title="方式一：微信支付【微信公众号】"></a>方式一：微信支付【微信公众号】</h5><p>此支付方式需要在HTML页面中引入JS文件，即【 jweixin-1.6.0.js 】；<br>此JS文件链接支持http和https两种形式，引用时需要匹配当前项目的请求-响应协议（即http、https）；<br>该JS文件支持使用AMD/CMD标准模块加载方式加载。</p>
+<pre><code>let WeChatPay = function() &#123;
+    // 2、引入js后、获取公众号校验信息
+    let timestamp = &#39;&#39;,
+        nonceStr = &#39;&#39;,
+        signature = &#39;&#39;;
+    let v = &#123;
+        // 用于换取微信校验信息的参数：要求不可以包含 “#” 号
+        url: location.split(&#39;#&#39;)[0]
+    &#125;;
+
+    // 3、通过config接口注入权限验证配置（需要同步进行，在获取到校验信息后方可注入config，否则校验失败！）
+    wx.config(&#123;
+        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: &#39;&#39;, // 必填，公众号的唯一标识
+        timestamp: , // 必填，生成签名的时间戳
+        nonceStr: &#39;&#39;, // 必填，生成签名的随机串
+        signature: &#39;&#39;, // 必填，签名
+        jsApiList: [&quot;checkJsApi&quot;, &quot;chooseWXPay&quot;, &quot;updateAppMessageShareData&quot;, &quot;updateTimelineShareData&quot;] // 必填，需要使用的JS接口列表
+    &#125;);
+    
+    axios.post(&#39;/wx/pay/orderPay_XXXX&#39;, data).then(res =&gt; &#123;
+        // 支付成功状态
+        if (res.code == 200) &#123;
+            // 获取支付必备的参数
+            let &#123;
+                nonceStr,
+                package,
+                signType,
+                paySign
+            &#125; = res.data;
+            // 4、通过ready接口处理成功验证
+            wx.ready(function() &#123;
+                /* 微信支付 */
+                wx.chooseWXPay(&#123;
+                    timestamp: 0, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+                    nonceStr: nonceStr, // 支付签名随机串，不长于 32 位
+                    package: package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）
+                    signType: signType, // 签名方式，默认为&#39;SHA1&#39;，使用新版支付需传入&#39;MD5&#39;
+                    paySign: paySign, // 支付签名
+                    success: function(res) &#123;
+                        // 前端判断返回方式，微信团队郑重提示：不保证绝对可靠，切记！
+                        if (res.errMsg == &#39;chooseWXPay:ok&#39;) &#123;
+                            // 【支付成功】 
+                        &#125; else if (res.errMsg == &#39;chooseWXPay:cancel&#39;) &#123;
+                            // 【支付取消】：用户取消支付不会进入这个判断，而是进入complate和cancel函数
+                        &#125; else &#123;
+    
+                        &#125;
+                    &#125;,
+                    complete: function(res) &#123;
+                        // 接口调用完成时执行的回调函数，无论成功或失败都会执行
+                        if (res.errMsg == &#39;chooseWXPay:ok&#39;) &#123;
+                            // 【支付成功】：支付成功提示页面，点击完成按钮之后
+                            wx.closeWindow(); /* 关闭微信窗口，调用时需要在config中进行校验 */
+                        &#125; else if (res.errMsg == &#39;chooseWXPay:cancel&#39;) &#123;
+                            // 【支付取消】
+                        &#125; else &#123;
+    
+                        &#125;
+                        /**
+                         * iOS和Android支付成功点击“完成”后都会进入success和complete函数，都返回&#39;chooseWXPay:ok&#39;
+                         * （也有人说Android支付成功不进入success函数，）
+                         * 原因是【iOS和Android返回数据不同。支付成功后Android返回 &#123;&quot;errMsg&quot;:&quot;getBrandWCPayRequest:ok&quot;&#125;，iOS返回&#123;&quot;err_Info&quot;:&quot;success&quot;,&quot;errMsg&quot;:&quot;chooseWXPay:ok&quot;&#125;，故Android找不到success方法，导致失败】
+                         * */
+                    &#125;,
+                    fail: function(err) &#123;
+                        // 接口调用失败
+                    &#125;,
+                    cancel: function(err) &#123;
+                        // 用户点击取消时的回调函数：用户取消支付后实际上进入cancel 和 complate函数
+                    &#125;
+                &#125;);
+            &#125;);
+        &#125;
+    &#125;).catch(err =&gt; &#123;
+        console.log(&#39;支付失败：&#39;, err);
+    &#125;);
+
+&#125;
+</code></pre>
+<p>接口说明：【不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回。】</p>
+<p>success：接口调用成功时执行的回调函数。<br>fail：接口调用失败时执行的回调函数。<br>complete：接口调用完成时执行的回调函数，无论成功或失败都会执行。<br>cancel：用户点击取消时的回调函数，仅部分有用户取消操作的api才会用到。<br>trigger: 监听Menu中的按钮点击时触发的方法，该方法仅支持Menu中的相关接口。</p>
+<h5 id="方式二：微信支付【-JSAPI-支付】（常用支付方式）"><a href="#方式二：微信支付【-JSAPI-支付】（常用支付方式）" class="headerlink" title="方式二：微信支付【 JSAPI 支付】（常用支付方式）"></a>方式二：微信支付【 JSAPI 支付】（常用支付方式）</h5><p>地址：<a target="_blank" rel="noopener" href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_7&amp;index=6">https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_7&amp;index=6</a></p>
+<pre><code>function onBridgeReady() &#123;
+    WeixinJSBridge.invoke(
+        &#39;getBrandWCPayRequest&#39;, &#123;
+            &quot;appId&quot;: &quot;appId&quot;, //公众号名称，由商户传入     
+            &quot;timeStamp&quot;: &quot;timeStamp&quot;, //时间戳，自1970年以来的秒数     
+            &quot;nonceStr&quot;: &quot;nonceStr&quot;, //随机串     
+            &quot;package&quot;: &quot;package&quot;,
+            &quot;signType&quot;: &quot;MD5&quot;, //微信签名方式：     
+            &quot;paySign&quot;: &quot;paySign&quot; //微信签名 
+        &#125;,
+        function(res) &#123;
+            // 支付成功
+            if (res.err_msg == &quot;get_brand_wcpay_request:ok&quot;) &#123;
+                // 使用以上方式判断前端返回,微信团队郑重提示：
+                //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+            &#125;
+            // 支付过程中用户取消
+            if (res.err_msg == &quot;get_brand_wcpay_request:cancel&quot;) &#123;
+
+​        &#125;
+​        // 支付失败
+​        if (res.err_msg == &quot;get_brand_wcpay_request:fail&quot;) &#123;
+
+​        &#125;
+​        /**
+</code></pre>
+<pre><code>     * 其它
+     * 1、请检查预支付会话标识prepay_id是否已失效
+     * 2、请求的appid与下单接口的appid是否一致
+     * */
+    if (res.err_msg == &quot;调用支付JSAPI缺少参数：total_fee&quot;) &#123;
+
+    &#125;
+     &#125;);
+</code></pre>
+<p>}<br>// 检测支付环境中的 WeixinJSBridge</p>
+<pre><code>if (typeof WeixinJSBridge == &quot;undefined&quot;) &#123;
+    if (document.addEventListener) &#123;
+        document.addEventListener(&#39;WeixinJSBridgeReady&#39;, onBridgeReady, false);
+    &#125; else if (document.attachEvent) &#123;
+        document.attachEvent(&#39;WeixinJSBridgeReady&#39;, onBridgeReady);
+        document.attachEvent(&#39;onWeixinJSBridgeReady&#39;, onBridgeReady);
+    &#125;
+&#125; else &#123;
+    onBridgeReady();
+&#125;
+</code></pre>
+<h5 id="JSAPI调起支付注意事项："><a href="#JSAPI调起支付注意事项：" class="headerlink" title="JSAPI调起支付注意事项："></a>JSAPI调起支付注意事项：</h5><p>在微信浏览器里打开H5网页中执行JS调起支付；<br>WeixinJSBridge是微信浏览器内置对象，在其他浏览器中无效；<br>调用支付传递的参数注意区分大小写。</p>
+<h5 id="WeixinJSBridge-invoke-、-wx-chooseWXPay-的区别"><a href="#WeixinJSBridge-invoke-、-wx-chooseWXPay-的区别" class="headerlink" title="WeixinJSBridge.invoke 、 wx.chooseWXPay 的区别"></a>WeixinJSBridge.invoke 、 wx.chooseWXPay 的区别</h5><p>WeixinJSBridge.invoke()出现的版本更早 无需引用jssdk 无需wx.config方法注入 需要参数appId 使用回调 有详细的说明<br>而wx.choosewxpay()出现的版本比较晚 需要jssdk注入 不需要参数appId 使用回调 只有SUCCESS 和 FAIL没有具体的说明<br>WeixinJSBridge.invoke()是微信浏览器的内置方法 其实wx.choosewxpay()在引用的微信jssdk文件中 也调用了WeixinJSBridge.invoke() 是对WeixinJSBridge.invoke()的再次封装<br>综上所诉 这是微信前后设计的不同方法的支付 还是weixinjsbridge更方便一些 有具体的失败回调</p>
+<p>代码演示：</p>
+<p>  // 支付按钮。</p>
+<p> 在vue里面</p>
+<pre><code class="vue">npm install weixin-js-sdk --save
+
+import wx from &quot;weixin-js-sdk&quot;;
+</code></pre>
+<pre><code class="vue">payBtn() &#123;
+
+​      new Promise((resolve, reject) =&gt; &#123;
+
+​        Api_insured.isWaitPay(this.orderNo)
+
+​          .then(res =&gt; &#123;
+
+​            // this.payDisabled = true
+
+​            if (this.selectedIndex == 1) &#123;
+
+​              console.log(&quot;微信内&quot;);
+
+​              if (
+
+​                navigator.userAgent.toLowerCase().indexOf(&quot;micromessenger&quot;) !==
+
+​                -1
+
+​              ) &#123;
+
+​                var that = this;
+
+​                new Promise((resolve, reject) =&gt; &#123;
+
+​                  Api_insured.payEnable()
+
+​                    .then(res =&gt; &#123;
+
+​                      if(res.result) &#123;
+
+​                        console.log(&quot;微信端&quot;);
+
+​                        that.$vux.loading.show();
+
+​                        
+
+​                        new Promise((resolve, reject) =&gt; &#123;
+
+​                          Api_insured.wxPay(that.orderNo, that.isSign)
+
+​                            .then(res =&gt; &#123;
+
+​                              // that.payDisabled = false
+
+​                              that.appId = res.result.appId;
+
+​                              that.timeStamp = res.result.timeStamp;
+
+​                              that.nonceStr = res.result.nonceStr;
+
+​                              that.package = res.result.package;
+
+​                              that.signType = res.result.signType;
+
+​                              that.paySign = res.result.paySign;
+
+​                              wx.config(&#123;
+
+​                                debug: false,
+
+​                                appId: res.result.appId,
+
+​                                timeStamp: res.result.timeStamp,
+
+​                                nonceStr: res.result.nonceStr,
+
+​                                signType: res.result.signType,
+
+​                                paySign: res.result.paySign,
+
+​                                jsApiList: [&quot;chooseWXPay&quot;]
+
+​                              &#125;);
+
+​                              that.$vux.loading.hide();
+
+​                              that.onBridgeReady();
+
+​                            &#125;)
+
+​                            .catch(error =&gt; &#123;
+
+​                              that.$vux.toast.text(error.message);
+
+​                              that.$vux.loading.hide();
+
+​                              // that.payDisabled = false
+
+​                              reject(error);
+
+​                            &#125;);
+
+​                        &#125;);
+
+​                      &#125; else &#123;
+
+​                        that.h5DialogShow = true
+
+​                        // location.href =
+
+​                        //   location.href.split(&quot;#&quot;)[0] +
+
+​                        //   &quot;pi-hz/api/wxpay/wapPay?orderNo=&quot; +
+
+​                        //   that.orderNo;
+
+​                        &#125;
+
+​                      &#125;)
+
+​                    .catch(error =&gt; &#123;
+
+​                      that.$vux.toast.text(error.message);
+
+​                      reject(error);
+
+​                    &#125;);
+
+​                &#125;);
+
+​                
+
+​              &#125; else &#123;
+
+​                // that.payDisabled = false
+
+​                console.log(&quot;H5&quot;);
+
+​                var that = this;
+
+​                location.href =
+
+​                  location.href.split(&quot;#&quot;)[0] +
+
+​                  &quot;pi-hz/api/wxpay/wapPay?orderNo=&quot; +
+
+​                  that.orderNo;
+
+​              &#125;
+
+​            &#125; else &#123;
+
+​              console.log(&quot;支付宝&quot;);
+
+​              if (
+
+​                navigator.userAgent.toLowerCase().indexOf(&quot;micromessenger&quot;) !==
+
+​                -1
+
+​              ) &#123;
+
+​                // 弹窗
+
+​                // this.payDisabled = false
+
+​                this.$refs.aliPayDialog.style.display = &quot;&quot;;
+
+​              &#125; else &#123;
+
+​                // this.payDisabled = false
+
+​                location.href =
+
+​                  location.href.split(&quot;#&quot;)[0] +
+
+​                  &quot;pi-hz/api/alipay/wapPay?orderNo=&quot; +
+
+​                  this.orderNo;
+
+​              &#125;
+
+​            &#125;
+
+​          &#125;)
+
+​          .catch(error =&gt; &#123;
+
+​            this.$vux.toast.text(error.message);
+
+​            reject(error);
+
+​          &#125;);
+
+​      &#125;);
+
+​    &#125;,
+</code></pre>
+<pre><code class="vue"> // 公众号支付
+
+​    onBridgeReady() &#123;
+
+​      let that = this;
+
+​      WeixinJSBridge.invoke(
+
+​        &quot;getBrandWCPayRequest&quot;,
+
+​        &#123;
+
+​          appId: that.appId, //公众号名称，由商户传入
+
+​          timeStamp: that.timeStamp, //时间戳，自1970年以来的秒数
+
+​          nonceStr: that.nonceStr, //随机串
+
+​          package: that.package,
+
+​          signType: that.signType, //微信签名方式
+
+​          paySign: that.paySign //微信签名
+
+​        &#125;,
+
+​        function(res) &#123;
+
+​          if (res.err_msg == &quot;get_brand_wcpay_request:ok&quot;) &#123;
+
+​            // 支付成功
+
+​            that.$router.push(&#123;
+
+​              path: &quot;/paySuccess&quot;,
+
+​              query: &#123;
+
+​                orderNo: that.orderNo
+
+​              &#125;
+
+​            &#125;);
+
+​            // that.payDisabled = false
+
+​          &#125; else if (res.err_msg == &quot;get_brand_wcpay_request:cancel&quot;) &#123;
+
+​            that.$vux.toast.text(&quot;支付取消&quot;);
+
+​            // that.payDisabled = false
+
+​          &#125; else &#123;
+
+​            that.$vux.toast.text(&quot;支付失败&quot;);
+
+​            // that.payDisabled = false
+
+​          &#125;
+
+​        &#125;
+
+​      );
+
+​    &#125;,
+</code></pre>
+
+      
+    </div>
+    
+  </div>
+  
+    
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2024 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

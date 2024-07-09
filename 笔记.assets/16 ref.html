@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>tags | 我的博客</title>
+  <title>Vue-ref | 我的博客</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将更新html5、css3知识点">
+  <meta name="description" content="ref 预期：string ref 被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 $refs 对象上。如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例： &lt;!-- &#96;vm.$refs.p&#96; will be the DOM node --&gt; &lt;p ref&#x3D;&quot;p&quot;&gt;hello&lt;&#x2F;p&amp;g">
 <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://18821767806wxg.github.io/tags/index.html">
+<meta property="og:title" content="Vue-ref">
+<meta property="og:url" content="https://18821767806wxg.github.io/%E7%AC%94%E8%AE%B0.assets/16%20ref.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将更新html5、css3知识点">
+<meta property="og:description" content="ref 预期：string ref 被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 $refs 对象上。如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例： &lt;!-- &#96;vm.$refs.p&#96; will be the DOM node --&gt; &lt;p ref&#x3D;&quot;p&quot;&gt;hello&lt;&#x2F;p&amp;g">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-09-19T08:19:22.000Z">
-<meta property="article:modified_time" content="2022-08-24T08:38:56.000Z">
+<meta property="article:published_time" content="2024-07-09T05:40:51.634Z">
+<meta property="article:modified_time" content="2022-08-25T02:58:18.000Z">
 <meta property="article:author" content="王小刚">
 <meta name="twitter:card" content="summary">
   
@@ -217,11 +217,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="tags-" class="article article-type-tags" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-  	<time datetime="2020-09-19T08:19:22.000Z" itemprop="datePublished">2020-09-19</time>
+      <a href="/%E7%AC%94%E8%AE%B0.assets/16%20ref.html" class="article-date">
+  	<time datetime="2024-07-09T05:40:51.634Z" itemprop="datePublished">2024-07-09</time>
 </a>
     </div>
   
@@ -234,7 +234,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tags
+      Vue-ref
       
     </h1>
   
@@ -252,7 +252,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h1><ul>
+<li><p><strong>预期</strong>：<code>string</code></p>
+<p><code>ref</code> 被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 <code>$refs</code> 对象上。如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例：</p>
+<pre><code class="html">&lt;!-- `vm.$refs.p` will be the DOM node --&gt;
+&lt;p ref=&quot;p&quot;&gt;hello&lt;/p&gt;
+
+&lt;!-- `vm.$refs.child` will be the child component instance --&gt;
+&lt;child-component ref=&quot;child&quot;&gt;&lt;/child-component&gt;
+</code></pre>
+<p>当 <code>v-for</code> 用于元素或组件的时候，引用信息将是包含 DOM 节点或组件实例的数组。</p>
+<p>关于 ref 注册时间的重要说明：因为 ref 本身是作为渲染结果被创建的，在初始渲染的时候你不能访问它们 - 它们还不存在！<code>$refs</code> 也不是响应式的，因此你不应该试图用它在模板中做数据绑定。</p>
+</li>
+<li><p><strong>参考</strong>：<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/components-edge-cases.html#%E8%AE%BF%E9%97%AE%E5%AD%90%E7%BB%84%E4%BB%B6%E5%AE%9E%E4%BE%8B%E6%88%96%E5%AD%90%E5%85%83%E7%B4%A0">子组件引用</a></p>
+</li>
+</ul>
+<h3 id="访问子组件实例或子元素"><a href="#访问子组件实例或子元素" class="headerlink" title="访问子组件实例或子元素"></a><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/components-edge-cases.html#%E8%AE%BF%E9%97%AE%E5%AD%90%E7%BB%84%E4%BB%B6%E5%AE%9E%E4%BE%8B%E6%88%96%E5%AD%90%E5%85%83%E7%B4%A0">访问子组件实例或子元素</a></h3><p>尽管存在 prop 和事件，有的时候你仍可能需要在 JavaScript 里直接访问一个子组件。为了达到这个目的，你可以通过 <code>ref</code> 这个 attribute 为子组件赋予一个 ID 引用。例如：</p>
+<pre><code class="htmk">&lt;base-input ref=&quot;usernameInput&quot;&gt;&lt;/base-input&gt;
+</code></pre>
+<p>现在在你已经定义了这个 <code>ref</code> 的组件里，你可以使用：</p>
+<pre><code class="js">this.$refs.usernameInput
+</code></pre>
+<p>来访问这个 <code>实例，以便不时之需。比如程序化地从一个父级组件聚焦这个输入框。在刚才那个例子中，该</code> 组件也可以使用一个类似的 <code>ref</code> 提供对内部这个指定元素的访问，例如：</p>
+<pre><code class="html">&lt;input ref=&quot;input&quot;&gt;
+</code></pre>
+<p>甚至可以通过其父级组件定义方法：</p>
+<pre><code class="js">methods: &#123;
+  // 用来从父级组件聚焦输入框
+  focus: function () &#123;
+    this.$refs.input.focus()
+  &#125;
+&#125;
+</code></pre>
+<p>这样就允许父级组件通过下面的代码聚焦 `` 里的输入框：</p>
+<pre><code class="js">this.$refs.usernameInput.focus()
+</code></pre>
+<p>当 <code>ref</code> 和 <code>v-for</code> 一起使用的时候，你得到的引用将会是一个包含了对应数据源的这些子组件的数组。</p>
+<p><code>$refs</code> 只会在组件渲染完成之后生效，并且它们不是响应式的。这仅作为一个用于直接操作子组件的“逃生舱”——你应该避免在模板或计算属性中访问 <code>$refs</code>。</p>
+
       
     </div>
     

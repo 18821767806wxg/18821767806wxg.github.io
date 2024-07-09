@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>React-react-router路由 | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="react-routerReact Router 是一个基于 React 之上的强大路由库，它可以让你向应用中快速地添加视图和数据流，同时保持页面与 URL 间的同步。 安装npm i --save react-router-dom  引入import &amp;#123;HashRouter as Router,Route,Redirect,Switch,Link&amp;#125; from &#39;rea">
+<meta property="og:type" content="website">
+<meta property="og:title" content="React-react-router路由">
+<meta property="og:url" content="https://18821767806wxg.github.io/%E7%AC%94%E8%AE%B0.assets/12%20react-router.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="react-routerReact Router 是一个基于 React 之上的强大路由库，它可以让你向应用中快速地添加视图和数据流，同时保持页面与 URL 间的同步。 安装npm i --save react-router-dom  引入import &amp;#123;HashRouter as Router,Route,Redirect,Switch,Link&amp;#125; from &#39;rea">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-05-13T02:44:22.852Z">
+<meta property="article:modified_time" content="2022-08-25T03:08:06.000Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=30612793&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.css-js.com/tools/base64.html">在线转译base64图片工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference">MDN-javascript文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.yuque.com/cuggz/interview/vgbphi">前端面试题汇总</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/6/">React博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/25/11-1%E9%AB%98%E9%A2%91%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E4%B9%8BVue%E7%AF%87/">Vue-面试题汇总之Vue篇</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/5/">Vue-vuex</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/8/">vue博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点,------道阻且长...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/%E7%AC%94%E8%AE%B0.assets/12%20react-router.html" class="article-date">
+  	<time datetime="2024-05-13T02:44:22.852Z" itemprop="datePublished">2024-05-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React-react-router路由
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="react-router"><a href="#react-router" class="headerlink" title="react-router"></a>react-router</h1><p>React Router 是一个基于 <a target="_blank" rel="noopener" href="http://facebook.github.io/react/">React</a> 之上的强大路由库，它可以让你向应用中快速地添加视图和数据流，同时保持页面与 URL 间的同步。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code class="j">npm i --save react-router-dom
+</code></pre>
+<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><pre><code class="js">import &#123;HashRouter as Router,Route,Redirect,Switch,Link&#125; from &#39;react-router-dom&#39;
+</code></pre>
+<h2 id="定义路由及重定向"><a href="#定义路由及重定向" class="headerlink" title="定义路由及重定向"></a>定义路由及重定向</h2><pre><code class="jsx">const MyRouter = ()=&gt;(
+    &lt;Router&gt;
+        &lt;Switch&gt;
+            &lt;Route path=&#39;/home&#39; component=&#123;Home&#125;&gt;&lt;/Route&gt;
+             &lt;Route path=&#39;/user&#39; component=&#123;User&#125;&gt;&lt;/Route&gt;
+             &lt;Redirect from=&#39;/&#39; to=&#39;/home&#39; exact &gt;&lt;/Redirect&gt;
+        &lt;/Switch&gt;
+    &lt;/Router&gt;
+)
+</code></pre>
+<h3 id="Redirect"><a href="#Redirect" class="headerlink" title="Redirect"></a>Redirect</h3><p>注意事项：exact 精确匹配 (Redirect 即使使用了exact, 外面还要嵌套Switch 来用)</p>
+<h3 id="HashRouter"><a href="#HashRouter" class="headerlink" title="HashRouter"></a>HashRouter</h3><p>注意事项：Warning: Hash history cannot PUSH the same path; a new entry will not be added to the history stack,这个警告只有在hash 模式会出现。在NavLink 加上 replace 来解决</p>
+<h2 id="嵌套路由"><a href="#嵌套路由" class="headerlink" title="嵌套路由"></a>嵌套路由</h2><pre><code class="jsx">const MyRouter = ()=&gt;(
+    &lt;Router&gt;
+        &lt;Switch&gt;
+            &lt;Route path=&#39;/home&#39; component=&#123;Home&#125;&gt;&lt;/Route&gt;
+             &lt;Route path=&#39;/user&#39; component=&#123;User&#125;&gt;&lt;/Route&gt;
+             &lt;Route path=&#39;/right&#39; render=&#123;()=&gt;(
+                    &lt;Right&gt;
+                        &lt;Route path=&#39;/right/roles&#39; component=&#123;Roles&#125;&gt;&lt;/Route&gt;
+                        &lt;Route path=&#39;/right/find&#39; component=&#123;Find&#125;&gt;&lt;/Route&gt;
+                    &lt;/Right&gt;
+                )&#125;&lt;/Route&gt;
+             &lt;Redirect from=&#39;/&#39; to=&#39;/home&#39; exact &gt;&lt;/Redirect&gt;
+        &lt;/Switch&gt;
+    &lt;/Router&gt;
+)
+</code></pre>
+<h2 id="路由跳转方式"><a href="#路由跳转方式" class="headerlink" title="路由跳转方式"></a>路由跳转方式</h2><p>声明式导航</p>
+<pre><code class="jsx">import React,&#123;Component&#125; from &#39;react&#39;
+import &#123;NavLink&#125; from &#39;react-router-dom&#39;
+export default class Right extends Component &#123;
+    render () &#123;
+        return (
+            &lt;div&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;
+                        &lt;NavLink to=&#39;/right/roles&#39;&gt;roles&lt;/NavLink&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;NavLink to=&#39;/right/find&#39;&gt;find&lt;/NavLink&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        )
+    &#125;
+&#125;
+</code></pre>
+<h3 id="编程式导航"><a href="#编程式导航" class="headerlink" title="编程式导航"></a>编程式导航</h3><pre><code class="js">handleClick = (data)=&gt;&#123;
+    this.props.history.push(`/right/preview/$&#123;data&#125;`)
+&#125;
+</code></pre>
+<pre><code class="jsx">&lt;Route path=&#39;/home/:id&#39;&gt;&lt;/Route&gt;
+</code></pre>
+<pre><code class="jsx">&lt;div&gt;&#123;this.props.match.params.id&#125;&lt;/div&gt;
+</code></pre>
+<h2 id="路由匹配原理"><a href="#路由匹配原理" class="headerlink" title="路由匹配原理"></a>路由匹配原理</h2><p><a target="_blank" rel="noopener" href="http://react-guide.github.io/react-router-cn/docs/guides/basics/docs/Glossary.md#route">路由</a>拥有三个属性来决定是否“匹配“一个 URL：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="http://react-guide.github.io/react-router-cn/docs/guides/basics/RouteMatching.html#nesting">嵌套关系</a> 和</li>
+<li>它的 <a target="_blank" rel="noopener" href="http://react-guide.github.io/react-router-cn/docs/guides/basics/RouteMatching.html#path-syntax"><code>路径语法</code></a></li>
+<li>它的 <a target="_blank" rel="noopener" href="http://react-guide.github.io/react-router-cn/docs/guides/basics/RouteMatching.html#precedence">优先级</a></li>
+</ol>
+<h3 id="嵌套关系"><a href="#嵌套关系" class="headerlink" title="嵌套关系"></a>嵌套关系</h3><p>React Router 使用路由嵌套的概念来让你定义 view 的嵌套集合，当一个给定的 URL 被调用时，整个集合中（命中的部分）都会被渲染。嵌套路由被描述成一种树形结构。React Router 会深度优先遍历整个<a target="_blank" rel="noopener" href="http://react-guide.github.io/react-router-cn/docs/guides/basics/docs/Glossary.md#routeconfig">路由配置</a>来寻找一个与给定的 URL 相匹配的路由。</p>
+<h3 id="路径语法"><a href="#路径语法" class="headerlink" title="路径语法"></a>路径语法</h3><p>路由路径是匹配一个（或一部分）URL 的 <a target="_blank" rel="noopener" href="http://react-guide.github.io/react-router-cn/docs/guides/basics/docs/Glossary.md#routepattern">一个字符串模式</a>。大部分的路由路径都可以直接按照字面量理解，除了以下几个特殊的符号：</p>
+<ul>
+<li><code>:paramName</code> – 匹配一段位于 <code>/</code>、<code>?</code> 或 <code>#</code> 之后的 URL。 命中的部分将被作为一个<a target="_blank" rel="noopener" href="http://react-guide.github.io/react-router-cn/docs/guides/basics/docs/Glossary.md#params">参数</a></li>
+<li><code>()</code> – 在它内部的内容被认为是可选的</li>
+<li><code>*</code> – 匹配任意字符（非贪婪的）直到命中下一个字符或者整个 URL 的末尾，并创建一个 <code>splat</code> <a target="_blank" rel="noopener" href="http://react-guide.github.io/react-router-cn/docs/guides/basics/docs/Glossary.md#params">参数</a></li>
+</ul>
+<pre><code class="js">&lt;Route path=&quot;/hello/:name&quot;&gt;         // 匹配 /hello/michael 和 /hello/ryan
+&lt;Route path=&quot;/hello(/:name)&quot;&gt;       // 匹配 /hello, /hello/michael 和 /hello/ryan
+&lt;Route path=&quot;/files/*.*&quot;&gt;           // 匹配 /files/hello.jpg 和 /files/path/to/hello.jpg
+</code></pre>
+<p>如果一个路由使用了相对<code>路径</code>，那么完整的路径将由它的所有祖先节点的<code>路径</code>和自身指定的相对<code>路径</code>拼接而成。<a target="_blank" rel="noopener" href="http://react-guide.github.io/react-router-cn/docs/guides/basics/RouteConfiguration.html#decoupling-the-ui-from-the-url">使用绝对<code>路径</code></a>可以使路由匹配行为忽略嵌套关系。</p>
+<h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><p>最后，路由算法会根据定义的顺序自顶向下匹配路由。因此，当你拥有两个兄弟路由节点配置时，你必须确认前一个路由不会匹配后一个路由中的<code>路径</code>。例如，千万<strong>不要</strong>这么做：</p>
+<pre><code class="js">&lt;Route path=&quot;/comments&quot; ... /&gt;
+&lt;Redirect from=&quot;/comments&quot; ... /&gt;
+</code></pre>
+
+      
+    </div>
+    
+  </div>
+  
+    
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2024 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

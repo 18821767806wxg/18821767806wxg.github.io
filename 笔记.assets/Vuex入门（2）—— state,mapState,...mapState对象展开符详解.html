@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>tags | 我的博客</title>
+  <title>Vue-vuex身上的state,mapState | 我的博客</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将更新html5、css3知识点">
+  <meta name="description" content="1.state  state是什么?   定义:state(vuex) ≈ data (vue)   vuex的state和vue的data有很多相似之处,都是用于存储一些数据,或者说状态值.这些值都将被挂载 数据和dom的双向绑定事件,也就是当你改变值的时候可以触发dom的更新.   虽然state和data有很多相似之处,但state在使用的时候一般被挂载到子组件的computed计算属性上,">
 <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://18821767806wxg.github.io/tags/index.html">
+<meta property="og:title" content="Vue-vuex身上的state,mapState">
+<meta property="og:url" content="https://18821767806wxg.github.io/%E7%AC%94%E8%AE%B0.assets/Vuex%E5%85%A5%E9%97%A8%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94%20state,mapState,...mapState%E5%AF%B9%E8%B1%A1%E5%B1%95%E5%BC%80%E7%AC%A6%E8%AF%A6%E8%A7%A3.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="主要记录了学习前端的vue、react框架，es6语法，git常用指令，后期将更新html5、css3知识点">
+<meta property="og:description" content="1.state  state是什么?   定义:state(vuex) ≈ data (vue)   vuex的state和vue的data有很多相似之处,都是用于存储一些数据,或者说状态值.这些值都将被挂载 数据和dom的双向绑定事件,也就是当你改变值的时候可以触发dom的更新.   虽然state和data有很多相似之处,但state在使用的时候一般被挂载到子组件的computed计算属性上,">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-09-19T08:19:22.000Z">
-<meta property="article:modified_time" content="2022-08-24T08:38:56.000Z">
+<meta property="article:published_time" content="2024-05-13T02:44:22.777Z">
+<meta property="article:modified_time" content="2022-08-29T07:38:50.000Z">
 <meta property="article:author" content="王小刚">
 <meta name="twitter:card" content="summary">
   
@@ -217,11 +217,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="tags-" class="article article-type-tags" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-  	<time datetime="2020-09-19T08:19:22.000Z" itemprop="datePublished">2020-09-19</time>
+      <a href="/%E7%AC%94%E8%AE%B0.assets/Vuex%E5%85%A5%E9%97%A8%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94%20state,mapState,...mapState%E5%AF%B9%E8%B1%A1%E5%B1%95%E5%BC%80%E7%AC%A6%E8%AF%A6%E8%A7%A3.html" class="article-date">
+  	<time datetime="2024-05-13T02:44:22.777Z" itemprop="datePublished">2024-05-13</time>
 </a>
     </div>
   
@@ -234,7 +234,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tags
+      Vue-vuex身上的state,mapState
       
     </h1>
   
@@ -252,7 +252,168 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>1.state<br>  state是什么?</p>
+<p>  定义:state(vuex) ≈ data (vue)</p>
+<p>  vuex的state和vue的data有很多相似之处,都是用于存储一些数据,或者说状态值.这些值都将被挂载 数据和dom的双向绑定事件,也就是当你改变值的时候可以触发dom的更新.</p>
+<p>  虽然state和data有很多相似之处,但state在使用的时候一般被挂载到子组件的computed计算属性上,这样有利于state的值发生改变的时候及时响应给子组件.如果你用data去接收$store.state,当然可以接收到值,但由于这只是一个简单的赋值操作,因此state中的状态改变的时候不能被vue中的data监听到,当然你也可以通过watch $store去解决这个问题,那你可以针是一个杠精</p>
+<p>  综上所述,请用computed去接收state,如下</p>
+<p>//state.js<br>let state = {<br>  count: 1,<br>  name: ‘dkr’,<br>  sex: ‘男’,<br>  from: ‘china’<br>}<br>export default state</p>
+<template>
+  <div id="example">
+    <button @click="decrement">-</button>
+    
+    
+    <button @click="increment">+</button>
+  </div>
+</template>
+<script>
+export default {
+  data () {
+    return {
+      dataCount: this.$store.state.count //用data接收
+    }
+  },
+  computed:{
+    count(){
+      return this.$store.state.count //用computed接收
+    }
+  }
+  methods: {
+    increment () {
+      this.$store.commit('increment')
+    },
+    decrement () {
+      this.$store.commit('decrement')
+    }
+  }
+}
+</script>
+结果如下,用data接收的值不能及时响应更新,用computed就可以.
+
+
+
+ 
+
+<p>2.mapState 辅助函数<br>  mapState是什么?</p>
+<p>  表面意思:mapState是state的辅助函数.这么说可能很难理解</p>
+<p>  抽象形容:mapState是state的语法糖,这么说可能你还想骂我,因为你根本不了解什么叫做语法糖,事实上我说的语法糖有自己的定义,什么是语法糖?我对语法糖的理解就是,用之前觉得,我明明已经对一种操作很熟练了,并且这种操作也不存在什么问题,为什么要用所谓的”更好的操作”,用了一段时间后,真香!</p>
+<p>  实际作用:当一个组件需要获取多个状态时候，将这些状态都声明为计算属性会有些重复和冗余。为了解决这个问题，我们可以使用 mapState 辅助函数帮助我们生成计算属性，让你少按几次键</p>
+<p>  在使用mapState之前,要导入这个辅助函数.</p>
+<p>import { mapState } from ‘vuex’<br>  然后就是使用方式了</p>
+<template>
+  <div id="example">
+    <button @click="decrement">-</button>
+    
+    
+    <button @click="increment">+</button>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</template>
+<script>
+import { mapState } from 'vuex'
+export default {
+  data () {
+    return {
+      str: '国籍',
+      dataCount: this.$store.state.count
+    }
+  },
+  computed: mapState({
+    count: 'count', // 第一种写法
+    sex: (state) => state.sex, // 第二种写法
+    from: function (state) { // 用普通函数this指向vue实例,要注意
+      return this.str + ':' + state.from
+    },
+    // 注意下面的写法看起来和上面相同,事实上箭头函数的this指针并没有指向vue实例,因此不要滥用箭头函数
+    // from: (state) => this.str + ':' + state.from
+    myCmpted: function () {
+      // 这里不需要state,测试一下computed的原有用法
+      return '测试' + this.str
+    }
+  }),
+  methods: {
+    increment () {
+      this.$store.commit('increment')
+    },
+    decrement () {
+      this.$store.commit('decrement')
+    }
+  },
+  created () {
+    // 写个定时器，发现computed依旧保持了只要内部有相关属性发生改变不管是当前实例data中的改变，还是vuex中的值改变都会触发dom和值更新
+    setTimeout(() => {
+      this.str = '国家'
+    }, 1000)
+  }
+}
+</script>
+
+<p>  在使用的时候,computed接收mapState函数的返回值,你可以用三种方式去接收store中的值,具体可以看注释.</p>
+<p>  事实上第二种和第三种是同一种,只是前者用了ES6的偷懒语法,箭头函数,在偷懒的时候要注意一个问题,this指针的指向问题,我已经在很多篇文章中提到不要在vue中为了偷懒使用箭头函数,会导致很多很难察觉的错误,如果你在用到state的同时还需要借助当前vue实例的this,请务必使用常规写法.</p>
+<p>  当然computed不会因为引入mapState辅助函数而失去原有的功能—用于扩展当前vue的data,只是写法会有一些奇怪,如果你已经写了一大堆的computed计算属性,做了一半发现你要引入vuex,还想使用mapState辅助函数的方便,你可以需要做下列事情.</p>
+<pre><code>//之前的computed
+computed:&#123;
+    fn1()&#123; return ...&#125;,
+    fn2()&#123; return ...&#125;,
+    fn3()&#123; return ...&#125;
+    ........
+&#125;
+//引入mapState辅助函数之后
+
+computed:mapState(&#123;
+    //先复制粘贴
+    fn1()&#123; return ...&#125;,
+    fn2()&#123; return ...&#125;,
+    fn3()&#123; return ...&#125;
+    ......
+    //再维护vuex
+    count:&#39;count&#39;
+    .......
+&#125;)
+</code></pre>
+<p>   从上述写法可以看出来,这不符合代码的某些说不明道不清的特性,我们希望我们可以不用去做一些复制粘贴的无用操作,而是直接使用mapState,希望它能自动融入到当前生产环境中,ok,ES6+(或者说ES7)提供了这个方便.</p>
+<p>3 …mapState<br>  事实上…mapState并不是mapState的扩展,而是…对象展开符的扩展.当然如果你把他用在这里会发现他能使得代码看起来变得,更加符合常规逻辑了,为什么这么说,你等下就会知道了.</p>
+<p>  首先,来回顾一下…对象展开符在数组中的表现,这在ES6语法学习分类里有相关说明,如果有兴趣可以关注我的ES6分类中的文章.</p>
+<pre><code>let arr = [1,2,3]
+console.log(...arr) //1,2,3
+ 然后来看一个例子.
+
+let MapState = mapState(&#123;
+      count: &#39;count&#39;,
+      sex: (state) =&gt; state.sex
+    &#125;)
+    let json = &#123;
+      &#39;a&#39;: &#39;我是json自带的&#39;,
+      ...MapState
+    &#125;
+    console.log(json)
+</code></pre>
+<p>这里的json可以成功将mapState return的json格式,和json自带的a属性成功融合成一个新的对象.你可以将这个称为对象混合</p>
+<p>这样,你就可以自由的使用mapState了.</p>
+<pre><code>//之前的computed
+computed:&#123;
+    fn1()&#123; return ...&#125;,
+    fn2()&#123; return ...&#125;,
+    fn3()&#123; return ...&#125;
+    ........
+&#125;
+//引入mapState辅助函数之后
+
+computed:&#123;
+    //原来的继续保留
+    fn1()&#123; return ...&#125;,
+    fn2()&#123; return ...&#125;,
+    fn3()&#123; return ...&#125;
+    ......
+    //再维护vuex
+    ...mapState(&#123;  //这里的...不是省略号了,是对象扩展符
+        count:&#39;count&#39;
+    &#125;)
+&#125;
+</code></pre>
+
       
     </div>
     

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Vue3-解构赋值失去响应式 | 我的博客</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言vue3发布以来经历两年风头正盛，现在大有和react 平分天下的势头，我们知道他是基于proxy 实现响应式的能力， 解决了vue2所遗留下来的一些问题，同时也正由于proxy的特性，也提高了运行时的性能 凡事有利有弊， proxy虽然无敌，但是他也有本身的局限，从而产生一些我认为的弊端（其实就是不符合js语言的自然书写方式，有的人觉得就是个特殊写法，他不属于弊端）  1、 原始值的响应式系">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vue3-解构赋值失去响应式">
+<meta property="og:url" content="https://18821767806wxg.github.io/%E7%AC%94%E8%AE%B0.assets/Vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84%E4%B8%A2%E5%A4%B1%E5%9C%BA%E6%99%AF.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="前言vue3发布以来经历两年风头正盛，现在大有和react 平分天下的势头，我们知道他是基于proxy 实现响应式的能力， 解决了vue2所遗留下来的一些问题，同时也正由于proxy的特性，也提高了运行时的性能 凡事有利有弊， proxy虽然无敌，但是他也有本身的局限，从而产生一些我认为的弊端（其实就是不符合js语言的自然书写方式，有的人觉得就是个特殊写法，他不属于弊端）  1、 原始值的响应式系">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/727e02e8b32849b0802f94cfc71ff660~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2e9fe55addfa411983362cd620e21069~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a22c36f0c6b844e7bd8de2527a8cc360~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp">
+<meta property="article:published_time" content="2023-12-04T08:02:51.551Z">
+<meta property="article:modified_time" content="2022-11-23T06:42:15.784Z">
+<meta property="article:author" content="王小刚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/727e02e8b32849b0802f94cfc71ff660~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp">
+  
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">王小刚</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">列表页</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=30612793&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/18821767806wxg">github仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gitee.com/xiao_gang_wanghhh">gitee仓库</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/people/xiao-gang-zi-2-34">知乎</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://blog.csdn.net/weixin_43357699?spm=1010.2135.3001.5421">CSDN</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vuejs.org/api/sfc-script-setup.html">Vue官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://vuex.vuejs.org/zh/">vuex官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://pinia.web3doc.top/">pinia-Vue3状态管理文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://cn.vitejs.dev/guide/why.html#the-problems">Vite官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://reactjs.org/docs/hello-world.html">React官网</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://imagecompressor.com/zh/">在线图片压缩工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.css-js.com/tools/base64.html">在线转译base64图片工具</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference">MDN-javascript文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.yuque.com/cuggz/interview/vgbphi">前端面试题汇总</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">微信支付文档</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/page/5/">ES6</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/29/vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Vue3-快速上手</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/6/">React博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/2022/08/25/11-1%E9%AB%98%E9%A2%91%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E4%B9%8BVue%E7%AF%87/">Vue-面试题汇总之Vue篇</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/5/">Vue-vuex</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="/archives/page/8/">vue博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">记录了学习前端的vue、react框架，es6语法，git常用指令，后期将不定期更新html5、css3知识点,------道阻且长...</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">王小刚</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/tu.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">王小刚</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">列表页</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/18821767806wxg/18821767806wxg.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/xiao-gang-zi-2-34" title="zhihu">zhihu</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://www.baidu.com/?tn=02003390_25_hao_pg" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/%E7%AC%94%E8%AE%B0.assets/Vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E7%9A%84%E4%B8%A2%E5%A4%B1%E5%9C%BA%E6%99%AF.html" class="article-date">
+  	<time datetime="2023-12-04T08:02:51.551Z" itemprop="datePublished">2023-12-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue3-解构赋值失去响应式
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><code>vue3</code>发布以来经历两年风头正盛，现在大有和react 平分天下的势头，我们知道他是基于proxy 实现响应式的能力， 解决了<code>vue2</code>所遗留下来的一些问题，同时也正由于proxy的特性，也提高了运行时的性能</p>
+<p>凡事有利有弊， <code>proxy</code>虽然无敌，但是他也有本身的局限，从而产生一些我认为的弊端（其实就是不符合js语言的自然书写方式，有的人觉得就是个特殊写法，他不属于弊端）</p>
+<ul>
+<li>1、 原始值的响应式系统的实现 导致必须将他包装为一个对象， 通过 <code>.value</code> 的方式访问</li>
+<li>2、 ES6 解构，不能随意使用。会破坏他的响应式特性</li>
+</ul>
+<p>好奇心驱使，研究琢磨了一下，为什么他会造成这两个弊端</p>
+<h1 id="原始值的响应式系统的实现"><a href="#原始值的响应式系统的实现" class="headerlink" title="原始值的响应式系统的实现"></a>原始值的响应式系统的实现</h1><p>在理解原始值的响应式系统的实现，我们先来温习一下proxy 的能力！</p>
+<pre><code class="js">const obj = &#123;
+  name: &#39;win&#39;
+&#125;
+
+const handler = &#123;
+  get: function(target, key)&#123;
+    console.log(&#39;get--&#39;, key)
+    return Reflect.get(...arguments)  
+  &#125;,
+  set: function(target, key, value)&#123;
+    console.log(&#39;set--&#39;, key, &#39;=&#39;, value)
+    return Reflect.set(...arguments)
+  &#125;
+&#125;
+
+const data = new Proxy(obj, handler)
+data.name = &#39;ten&#39;
+console.log(data.name,&#39;data.name22&#39;)
+
+复制代码
+</code></pre>
+<p>上述代码中，我们发现，proxy 的使用本身就是对于 对象的拦截， 通过<code>new Proxy</code>  的返回值，拦截了obj 对象</p>
+<p>如此一来，当你 访问对象中的值的时候，他会触发 <code>get</code> 方法， 当你修改对象中的值的时候 他会触发 <code>set</code>方法</p>
+<p>但是到了原始值的时候，他没有对象啊，咋办呢，<code>new proxy</code> 排不上用场了。</p>
+<p>无奈之下，我们只能包装一下了，所以就有了使用<code>.value</code>访问了</p>
+<p>我们来看看具体实现</p>
+<pre><code class="js">import &#123; reactive &#125; from &quot;./reactive&quot;;
+import &#123; trackEffects, triggerEffects &#125; from &#39;./effect&#39;
+
+export const isObject = (value) =&gt; &#123;
+    return typeof value === &#39;object&#39; &amp;&amp; value !== null
+&#125;
+
+// 将对象转化为响应式的
+function toReactive(value) &#123;
+    return isObject(value) ? reactive(value) : value
+&#125;
+
+class RefImpl &#123;
+    public _value;
+    public dep = new Set; // 依赖收集
+    public __v_isRef = true; // 是ref的标识
+    // rawValue 传递进来的值
+    constructor(public rawValue, public _shallow) &#123;
+        // 1、判断如果是对象 使用reactive将对象转为响应式的
+        // 浅ref不需要再次代理
+        this._value = _shallow ? rawValue : toReactive(rawValue);
+    &#125;
+    get value() &#123;
+        // 取值的时候依赖收集
+        trackEffects(this.dep)
+        return this._value;
+    &#125;
+    set value(newVal) &#123;
+        if (newVal !== this.rawValue) &#123;
+            // 2、set的值不等于初始值 判断新值是否是对象 进行赋值
+            this._value = this._shallow ? newVal : toReactive(newVal);
+            // 赋值完 将初始值变为本次的
+            this.rawValue = newVal
+            triggerEffects(this.dep)
+        &#125;
+    &#125;
+&#125;
+
+复制代码
+</code></pre>
+<p>上述代码，就是对于原始值，的包装，他被包装为一个对象，通过<code>get value</code> 和<code>set value</code> 方法来进行原始值的访问，从而导致必须有<code>.value</code> 的操作 ，这其实也是个无奈的选择</p>
+<p><code>相当于两瓶毒药，你得选一瓶</code> 鱼与熊掌不可兼得</p>
+<h1 id="为什么ES6-解构，不能随意使用会破坏他的响应式特性"><a href="#为什么ES6-解构，不能随意使用会破坏他的响应式特性" class="headerlink" title="为什么ES6 解构，不能随意使用会破坏他的响应式特性"></a>为什么ES6 解构，不能随意使用会破坏他的响应式特性</h1><p>第一个问题终于整明白了，那么我们来看看最重要的第二个问题，<code>为什么结构赋值，会破坏响应式特性</code></p>
+<h2 id="proxy背景"><a href="#proxy背景" class="headerlink" title="proxy背景"></a>proxy背景</h2><p>在开始之前，我们先来讨论一下为什么要更改<code>响应式方案</code></p>
+<p>vue2 基于<strong>Object.defineProperty</strong> ，但是他有很多缺陷，比如 <strong>无法监听数组基于下标的修改，不支持 Map、Set、WeakMap 和 WeakSet等缺陷</strong> ，</p>
+<p>其实这些也也不耽误我们开发， vue2到现在还是主流，</p>
+<p>我的理解就是<code>与时俱进</code>， <code>新一代的版本，一定要紧跟语言的特性，一定要符合新时代的书写风格</code>，虽然<code>proxy</code>相对于Object.defineProperty 有很多进步， 但是也不是一点缺点都没有，你比如说 <code>不兼容IE</code></p>
+<p>天底下的事情，哪有完美的呢？</p>
+<p>尤大的魄力就在于，舍弃一点现在，博一个未来！</p>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>在理解了背景之后，我们再来假模假式的温习一下<code>proxy</code> 原理，虽然这个都被讲烂了。</p>
+<p>但是，写水文，讲究什么：俩字-连贯</p>
+<pre><code class="js">        const obj = &#123;
+            count: 1
+        &#125;;
+        const proxy = new Proxy(obj, &#123;
+            get(target, key, receiver) &#123;
+                console.log(&quot;这里是get&quot;);
+                return Reflect.get(target, key, receiver);
+            &#125;,
+            set(target, key, value, receiver) &#123;
+                console.log(&quot;这里是set&quot;);
+                return Reflect.set(target, key, value, receiver);
+            &#125;
+        &#125;);
+        
+        console.log(proxy)
+        console.log(proxy.count)
+复制代码
+</code></pre>
+<p>以上代码就是Proxy的具体使用方式，通过和Reflect 的配合，  就能实现对于对象的拦截</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/727e02e8b32849b0802f94cfc71ff660~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp" alt="image.png"></p>
+<p>如此依赖，就能实现响应式了，大家可以发现，这个obj的整个对象就被拦截了，但是你发现对象在嵌套深一层</p>
+<p>比如：</p>
+<pre><code class="js">    const obj = &#123;
+            count: 1,
+            b: &#123;
+                c: 2
+            &#125;
+        &#125;;
+        
+        
+     console.log(proxy.b)
+     console.log(proxy.b.c)
+复制代码
+</code></pre>
+<p>他就无法拦截了，我们必须要来个包装</p>
+<pre><code class="js">    const obj = &#123;
+            a: &#123;
+                count: 1
+            &#125;
+        &#125;;
+        
+        function reactive(obj) &#123;
+            return new Proxy(obj, &#123;
+                get(target, key, receiver) &#123;
+                    console.log(&quot;这里是get&quot;);
+                    // 判断如果是个对象在包装一次，实现深层嵌套的响应式
+                    if (typeof target[key] === &quot;object&quot;) &#123;
+                        return reactive(target[key]);
+                    &#125;;
+                    return Reflect.get(target, key, receiver);
+                &#125;,
+                set(target, key, value, receiver) &#123;
+                    console.log(&quot;这里是set&quot;);
+                    return Reflect.set(target, key, value, receiver);
+                &#125;
+            &#125;);
+        &#125;;
+        const proxy = reactive(obj);
+复制代码
+</code></pre>
+<p>好了，原理搞完了，我们来正式研究一下</p>
+<p>现在列举一下我知道的响应式失去的几个情况：</p>
+<ul>
+<li>1、解构 <code>props</code> 对象，因为它会失去响应式</li>
+<li>2、 直接赋值<code>reactive</code>响应式对象</li>
+<li>3、 <code>vuex</code>中组合API赋值</li>
+</ul>
+<h2 id="解构-props-对象，因为它会失去响应式"><a href="#解构-props-对象，因为它会失去响应式" class="headerlink" title="解构 props 对象，因为它会失去响应式"></a>解构 <code>props</code> 对象，因为它会失去响应式</h2><pre><code class="js">       const obj = &#123;
+            a: &#123;
+                count: 1
+            &#125;,
+            b: 1
+        &#125;;
+            
+            //reactive 是上文中的reactive
+           const proxy = reactive(obj);
+        const &#123;
+            a,
+            b
+        &#125; = proxy;
+        console.log(a)
+        console.log(b)
+        console.log(a.count)
+        
+复制代码
+</code></pre>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2e9fe55addfa411983362cd620e21069~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp" alt="image.png"></p>
+<p>上述代码中，我们发现，  解构赋值，<code>b 不会触发响应式</code>，<code>a如果你访问的时候</code>，会触发响应式</p>
+<p>这是为什么呢？</p>
+<p>别急我们一个个解释？</p>
+<p>先来讨论为什么解构赋值，会丢失响应式呢？</p>
+<p>我们知道解构赋值，区分原始类型的赋值，和引用类型的赋值，</p>
+<pre><code>原始类型的赋值相当于按值传递`， `引用类型的值就相当于按引用传递
+</code></pre>
+<p>就相当于</p>
+<pre><code class="js">   // 假设a是个响应式对象
+  const a=&#123; b:1&#125;
+  // c 此时就是一个值跟当前的a 已经不沾边了
+  const c=a.b
+
+// 你直接访问c就相当于直接访问这个值 也就绕过了 a 对象的get ，也就像原文中说的失去响应式
+复制代码
+</code></pre>
+<p>那为啥<code>a</code> 具备响应式呢?</p>
+<p>因为<code>a</code> 是引用类型，我们还记得上述代码中的一个判断吗。如果他是个<code>object</code> 那么就重新包装为响应式</p>
+<p>正式由于当前特性，导致，如果是引用类型， 你再去访问其中的内容的时候并不会失去响应式</p>
+<pre><code class="js">  // 假设a是个响应式对象
+ const a=&#123; b:&#123;c:3&#125;&#125;
+ // 当你访问a.b的时候就已经重新初始化响应式了，此时的c就已经是个代理的对象
+ const c=a.b
+
+// 你直接访问c就相当于访问一个响应式对象，所以并不会失去响应式
+复制代码
+</code></pre>
+<p>以上就大致解释了为什么解构赋值，可能会失去响应式，我猜的文档中懒得解释其中缘由，索性就定了个规矩，您啊！</p>
+<p>就别用了，省的以为是<code>vue</code>的bug，提前改变用户的使用习惯！不惯着</p>
+<h2 id="直接赋值reactive响应式对象"><a href="#直接赋值reactive响应式对象" class="headerlink" title="直接赋值reactive响应式对象"></a>直接赋值<code>reactive</code>响应式对象</h2><p>我们最初使用vue3的时候,指定会写出以下代码</p>
+<pre><code class="js"> const vue = reactive(&#123; a: 1 &#125;)
+ vue = &#123; b: 2 &#125;
+
+复制代码
+</code></pre>
+<p>然后就发出疑问<code>reactive</code>不是响应式的吗？ 为啥我赋值了以后，他的响应式就没了 ，接着破口大骂，垃圾vue</p>
+<p>其实啊，这就是您对于js 原生的概念不清除，其实<code>尤大</code> 已经做了最大的努力，来防止你进行错误操作了</p>
+<p>比如，由于解构赋值的问题， 他直接禁止了reactive的解构赋值</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a22c36f0c6b844e7bd8de2527a8cc360~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp" alt="image.png"></p>
+<p>当你用解构赋值操作的时候，他直接禁用了</p>
+<p>那有人又问了， <code>为啥props 不给禁用了呢</code>?</p>
+<p><code>因为你的props 的数据可能不是响应式的啊，不是响应式的，我得能啊</code>，尤大他也不能干涉用户使用新语法啊</p>
+<p>所以还是那句话：<code>框架现在的呈现，其实充满了取舍</code>,有时候真是两瓶毒药，挑一瓶！</p>
+<p>回归正题，我们再来说说 原生js 语法</p>
+<p>首先需要确认的是，原生js  的引用类型的赋值，其实是 按照引用地址赋值！</p>
+<pre><code class="js"> // 当reactive 之后返回一个代理对象的地址被vue 存起来，
+ // 用一个不恰当的比喻来说，就是这个地址具备响应式的能力
+ const vue = reactive(&#123; a: 1 &#125;)
+ 
+ //  而当你对于vue重新赋值的时候不是将新的对象赋值给那个地址，而是将vue 换了个新地址
+ // 而此时新地址不具备响应式，可不就失去响应式了吗
+ vue = &#123; b: 2 &#125;
+
+复制代码
+</code></pre>
+<p>以上就是<code>reactive</code>失去响应式的解释，所以这个也是很多用户骂骂咧咧的原因。<code>不符合他的使用习惯了，这都是被vue2 培养起来的一代</code></p>
+<p>在这里我要替，尤大说句公道话，<code>人家又没收你钱，还因为他，你有口饭吃</code>，</p>
+<p>您自己不能与时俱进，拥抱新事物，那是您没<code>能耐</code>，</p>
+<p>这是典型的<code>端起碗吃肉，放下筷子骂娘</code></p>
+<h2 id="vuex中组合API赋值"><a href="#vuex中组合API赋值" class="headerlink" title="vuex中组合API赋值"></a><code>vuex</code>中组合API赋值</h2><p>在vuex 用赋值也可能会失去响应式</p>
+<pre><code class="js">import &#123; computed &#125; from &#39;vue&#39;
+import &#123; useStore &#125; from &#39;vuex&#39;
+
+export default &#123;
+  setup () &#123;
+    const store = useStore()
+    return &#123;
+      // 在 computed 函数中访问 state
+      count: computed(() =&gt; store.state.count),
+
+      // 在 computed 函数中访问 getter
+      double: computed(() =&gt; store.getters.double)
+    &#125;
+  &#125;
+&#125;
+
+复制代码
+</code></pre>
+<p>以上代码中我们发现<code>store.getters.double</code> 必须用<code>computed</code> 包裹起来，其实道理是一样的，也是变量赋值的原因，在这里我们就不再赘述！</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2024 王小刚
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
